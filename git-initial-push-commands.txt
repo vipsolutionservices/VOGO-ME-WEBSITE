@@ -1,0 +1,7 @@
+cd C:\sources\vogo.me
+git init
+git branch -M main
+git remote add origin https://github.com/vipsolutionservices/VOGO-ME-WEBSITE.git
+git add .
+git commit -m "Initial commit"
+git push -u origin main

@@ -1,0 +1,822 @@
+/*
+Theme Name: Astra Child
+Template: astra
+*/
+
+/* =========================================================
+   VOGO – GLOBAL VARIABLES
+   ========================================================= */
+:root{
+  --vogo-font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --vogo-ink: #0b1120;
+  --vogo-muted: #475569;
+
+  --vogo-border: rgba(2,6,23,.10);
+  --vogo-border-strong: rgba(2,6,23,.14);
+
+  --vogo-card: #ffffff;
+  --vogo-bg: #f7f8fb;
+
+  --vogo-accent: #0c542d; /* VOGO green */
+  --vogo-link: #0c542d;
+
+  --vogo-radius: 16px;
+  --vogo-shadow: 0 10px 28px rgba(2,6,23,.07);
+
+  /* Typography scale */
+  --vogo-base: 16px;
+  --vogo-small: 14px;
+  --vogo-title: 18px;
+}
+
+/* =========================================================
+   FORCE VOGO FONT ON bbPress PAGES
+   ========================================================= */
+body.post-type-archive-forum,
+body.single-forum,
+body.single-topic,
+body.bbp-user-page,
+body.bbp-search{
+  font-family: var(--vogo-font) !important;
+  background: var(--vogo-bg);
+  color: var(--vogo-ink);
+  font-size: var(--vogo-base);
+  line-height: 1.65;
+}
+
+/* Ensure inheritance everywhere inside forum */
+#bbpress-forums,
+#bbpress-forums *{
+  font-family: inherit;
+}
+
+/* =========================================================
+   bbPress MAIN WRAPPER (wider + better spacing)
+   ========================================================= */
+#bbpress-forums{
+  max-width: 1320px;              /* wider */
+  margin: 28px auto;
+  padding: 0 18px;
+}
+
+/* =========================================================
+   BREADCRUMB – VOGO STYLE
+   ========================================================= */
+.vogo-bbp-breadcrumb{
+  max-width: 1320px;
+  margin: 14px auto 14px;
+  padding: 0 18px;
+  font-size: 13px;
+  color: var(--vogo-muted);
+}
+.vogo-bbp-breadcrumb a{
+  color: var(--vogo-link);
+  text-decoration: none;
+  font-weight: 600;
+}
+.vogo-bbp-breadcrumb a:hover{ text-decoration: underline; }
+
+/* =========================================================
+   HEADINGS & LINKS (bigger)
+   ========================================================= */
+#bbpress-forums h1,
+#bbpress-forums h2,
+#bbpress-forums h3{
+  color: var(--vogo-ink);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+#bbpress-forums a{
+  color: var(--vogo-link);
+  text-decoration: none;
+}
+#bbpress-forums a:hover{ text-decoration: underline; }
+
+/* =========================================================
+   SEARCH – smaller box, aligned, with spacing from table
+   Works for forum root + single forum + topics list
+   ========================================================= */
+#bbpress-forums .bbp-search-form{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;              /* space above table */
+}
+
+#bbpress-forums #bbp_search{
+  width: 280px;                   /* smaller */
+  max-width: 52vw;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--vogo-border-strong);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 14px;
+  line-height: 40px;
+  box-shadow: 0 4px 14px rgba(2,6,23,.06);
+}
+
+#bbpress-forums #bbp_search:focus{
+  outline: none;
+  border-color: rgba(12,84,45,.45);
+  box-shadow: 0 0 0 4px rgba(12,84,45,.10);
+}
+
+#bbpress-forums #bbp_search_submit{
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  background: var(--vogo-accent);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+#bbpress-forums #bbp_search_submit:hover{ filter: brightness(0.95); }
+
+/* =========================================================
+   FORUM / TOPIC LISTS – cleaner cards (more VOGO)
+   ========================================================= */
+#bbpress-forums ul.bbp-forums,
+#bbpress-forums ul.bbp-topics,
+#bbpress-forums ul.bbp-replies{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--vogo-card);
+  border: 1px solid var(--vogo-border);
+  border-radius: var(--vogo-radius);
+  overflow: hidden;
+  box-shadow: var(--vogo-shadow);
+}
+
+/* header/footer rows */
+#bbpress-forums li.bbp-header,
+#bbpress-forums li.bbp-footer{
+  background: rgba(2,6,23,.025);
+  border-bottom: 1px solid var(--vogo-border);
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--vogo-muted);
+  text-transform: none;
+}
+
+/* body rows */
+#bbpress-forums li.bbp-body > ul > li{
+  padding: 18px 16px;            /* more air */
+  border-bottom: 1px solid var(--vogo-border);
+}
+#bbpress-forums li.bbp-body > ul > li:last-child{ border-bottom: 0; }
+
+/* =========================================================
+   TITLES & META (bigger + cleaner)
+   ========================================================= */
+#bbpress-forums .bbp-forum-title,
+#bbpress-forums .bbp-topic-permalink{
+  font-weight: 750;
+  font-size: var(--vogo-title);
+  color: var(--vogo-ink);
+}
+
+#bbpress-forums .bbp-forum-content{
+  margin-top: 6px;
+  color: var(--vogo-muted);
+  font-size: var(--vogo-small);
+  line-height: 1.65;
+}
+
+#bbpress-forums .bbp-topic-meta,
+#bbpress-forums .bbp-reply-post-date,
+#bbpress-forums .bbp-author-name{
+  color: var(--vogo-muted);
+  font-size: var(--vogo-small);
+}
+
+/* Make counts columns less visually heavy */
+#bbpress-forums .bbp-forum-info,
+#bbpress-forums .bbp-topic-title{
+  padding-right: 10px;
+}
+#bbpress-forums .bbp-forum-topic-count,
+#bbpress-forums .bbp-forum-reply-count,
+#bbpress-forums .bbp-topic-voice-count,
+#bbpress-forums .bbp-topic-reply-count{
+  font-weight: 700;
+  color: var(--vogo-ink);
+  font-size: 14px;
+}
+
+/* =========================================================
+   BUTTONS (general)
+   ========================================================= */
+#bbpress-forums .button,
+#bbpress-forums button,
+#bbpress-forums input[type="submit"]{
+  background: var(--vogo-accent);
+  border: 0;
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+#bbpress-forums .button:hover,
+#bbpress-forums input[type="submit"]:hover{
+  filter: brightness(0.95);
+}
+
+/* =========================================================
+   FORMS (better defaults)
+   ========================================================= */
+#bbpress-forums input[type="text"],
+#bbpress-forums input[type="email"],
+#bbpress-forums input[type="password"],
+#bbpress-forums textarea,
+#bbpress-forums select{
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--vogo-border-strong);
+  border-radius: 12px;
+  background: #fff;
+  font-family: var(--vogo-font);
+  font-size: 15px;
+}
+
+#bbpress-forums textarea{ min-height: 140px; }
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+#bbpress-forums .bbp-pagination{
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--vogo-muted);
+}
+
+/* =========================================================
+   HERO BUTTON ALIGN FIX (only forum archive)
+   ========================================================= */
+body.post-type-archive-forum .elementor-button-wrapper{
+  margin-top: -18px;
+}
+body.post-type-archive-forum .elementor-section.elementor-top-section{
+  padding-top: 72px !important;
+  padding-bottom: 72px !important;
+}
+
+/* Hide only navigation, keep logo (forum + topics pages) */
+body.post-type-archive-forum .main-header-bar-navigation,
+body.single-forum .main-header-bar-navigation,
+body.single-topic .main-header-bar-navigation{
+  display: none !important;
+}
+
+/* =========================================================
+   RESPONSIVE TWEAKS
+   ========================================================= */
+@media (max-width: 768px){
+  #bbpress-forums{
+    padding: 0 14px;
+  }
+  #bbpress-forums .bbp-search-form{
+    justify-content: stretch;
+    gap: 8px;
+  }
+  #bbpress-forums #bbp_search{
+    width: 100%;
+    max-width: none;
+  }
+  #bbpress-forums #bbp_search_submit{
+    white-space: nowrap;
+  }
+  #bbpress-forums li.bbp-body > ul > li{
+    padding: 14px 12px;
+  }
+}
+
+
+/* ONLY bbPress: avoid duplicate headers */
+body.bbpress header.site-header{ display:none !important; }
+
+/* =========================================================
+   VOGO – Reduce spacing header → search (bbPress only)
+   ========================================================= */
+
+/* Reduce spațiul de sus al containerului forumului */
+/* =========================================================
+   VOGO – Tight top spacing on bbPress pages (reduce white + grey)
+   ONLY bbPress pages
+   ========================================================= */
+
+/* =========================================================
+   VOGO – Forum & Topic titles as clear links
+   ========================================================= */
+
+/* Forum titles (forum list) */
+body.bbpress #bbpress-forums .bbp-forum-title,
+body.bbpress #bbpress-forums .bbp-forum-title a{
+  color: var(--vogo-accent) !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  font-weight: 750;
+}
+
+/* Topic titles (inside forum + topic lists) */
+body.bbpress #bbpress-forums .bbp-topic-permalink{
+  color: var(--vogo-accent) !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  font-weight: 750;
+}
+
+/* Hover state – stronger visual cue */
+body.bbpress #bbpress-forums .bbp-forum-title a:hover,
+body.bbpress #bbpress-forums .bbp-topic-permalink:hover{
+  filter: brightness(0.9);
+  text-decoration-thickness: 3px;
+}
+
+/* =========================================================
+   VOGO – Topbar (Home Forum + Search + Next Topic) on topic page
+   ========================================================= */
+
+body.single-topic #bbpress-forums{
+  position: relative;
+}
+
+/* Topbar container */
+body.single-topic .vogo-bbp-topbar{
+  max-width: 1320px;
+  margin: 12px auto 14px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Left: Home Forum */
+body.single-topic .vogo-bbp-homeforum{
+  color: var(--vogo-accent);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* Right group: search + next */
+body.single-topic .vogo-bbp-topbar-right{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Make bbPress search form inline (on topic page too) */
+body.single-topic .vogo-bbp-topbar-right form#bbp-search-form{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 !important;
+}
+
+/* Search input compact */
+body.single-topic .vogo-bbp-topbar-right #bbp_search{
+  width: 260px;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--vogo-border-strong);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(2,6,23,.06);
+}
+
+/* Search button */
+body.single-topic .vogo-bbp-topbar-right #bbp_search_submit{
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  background: var(--vogo-accent);
+  color: #fff;
+  border: 0;
+}
+
+/* =========================================================
+   VOGO – Topbar on single topic
+   ========================================================= */
+
+body.single-topic .vogo-topic-topbar{
+  max-width: 1320px;
+  margin: 18px auto 14px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+body.single-topic .vogo-topic-home{
+  color: var(--vogo-accent);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+body.single-topic .vogo-topic-topbar-right{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Make bbPress search inline in our topbar */
+body.single-topic .vogo-topic-topbar-right form#bbp-search-form{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 !important;
+}
+
+body.single-topic .vogo-topic-topbar-right #bbp_search{
+  width: 260px;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--vogo-border-strong);
+  border-radius: 12px;
+}
+
+body.single-topic .vogo-topic-topbar-right #bbp_search_submit{
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  background: var(--vogo-accent);
+  color: #fff;
+  border: 0;
+}
+
+/* Next Topic as secondary button */
+body.single-topic .vogo-topic-next{
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(12,84,45,.22);
+  background: #fff;
+  color: var(--vogo-accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+body.single-topic .vogo-topic-next:hover{ background: rgba(12,84,45,.06); }
+
+/* Hide Astra bottom navigation ("Next Topic" old) only on topic pages */
+body.single-topic nav.post-navigation{
+  display: none !important;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  body.single-topic .vogo-topic-topbar{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  body.single-topic .vogo-topic-topbar-right{
+    justify-content: space-between;
+  }
+  body.single-topic .vogo-topic-topbar-right #bbp_search{
+    width: 100%;
+  }
+}
+
+
+/* "Forum home" next to pagination count (align right) */
+/* "Forum home" next to pagination count (force right + underline) */
+#bbpress-forums .bbp-pagination-count{
+  display: block !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+/* Force the link to the far right */
+#bbpress-forums .bbp-pagination-count a.vogo-forum-home-link{
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+
+  color: var(--vogo-accent) !important;
+  font-weight: 800 !important;
+
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4px !important;
+}
+
+#bbpress-forums .bbp-pagination-count a.vogo-forum-home-link:hover{
+  filter: brightness(0.9);
+}
+
+
+
+/* ================================
+   Reduce space ABOVE search (forum)
+   ================================ */
+
+/* Kill Astra top spacing */
+body.post-type-archive-forum .site-content,
+body.post-type-archive-forum .ast-container,
+body.post-type-archive-forum #primary,
+body.post-type-archive-forum main#main{
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Kill article / row spacing */
+body.post-type-archive-forum .ast-row,
+body.post-type-archive-forum .ast-article-post,
+body.post-type-archive-forum .entry-content{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Fine-tune search position */
+body.post-type-archive-forum #bbpress-forums .bbp-search-form{
+  margin-top: 4px !important;   /* ← aici controlezi exact */
+  margin-bottom: 4px;
+}
+
+/* =========================================
+   Tight top spacing above search (single forum)
+   ========================================= */
+body.single-forum #content.site-content,
+body.single-forum .ast-container,
+body.single-forum #primary,
+body.single-forum main#main,
+body.single-forum .ast-row,
+body.single-forum .ast-article-single,
+body.single-forum .entry-content{
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Control exact: cât spațiu vrei deasupra search */
+body.single-forum #bbpress-forums .bbp-search-form{
+  margin-top: 8px !important;   /* pune 0 / 4 / 8 / 12 */
+  margin-bottom: 16px !important;
+}
+
+/* =========================================
+   Tight top spacing above content (single topic)
+   ========================================= */
+body.single-topic #content.site-content,
+body.single-topic .ast-container,
+body.single-topic #primary,
+body.single-topic main#main,
+body.single-topic .ast-row,
+body.single-topic .ast-article-single,
+body.single-topic .entry-content{
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+
+
+
+/* Hide Voices + Posts columns in topic list (bbPress) */
+body.single-forum #bbpress-forums .bbp-topic-voice-count,
+body.single-forum #bbpress-forums .bbp-topic-reply-count,
+body.single-forum #bbpress-forums .bbp-topic-voice-count,
+body.single-forum #bbpress-forums .bbp-topic-reply-count,
+body.single-forum #bbpress-forums li.bbp-header .bbp-topic-voice-count,
+body.single-forum #bbpress-forums li.bbp-header .bbp-topic-reply-count,
+body.single-forum #bbpress-forums ul.bbp-topics > li.bbp-body .bbp-topic-voice-count,
+body.single-forum #bbpress-forums ul.bbp-topics > li.bbp-body .bbp-topic-reply-count{
+  display: none !important;
+}
+
+/* Optional: make remaining columns use space nicely */
+body.single-forum #bbpress-forums .bbp-topic-title{ width: 70% !important; }
+body.single-forum #bbpress-forums .bbp-topic-freshness{ width: 30% !important; text-align: right; }
+
+
+/* =========================================================
+   Hide Topics / Posts / Last Post on FORUM INDEX (/forums/)
+   ========================================================= */
+
+/* Header columns */
+body.post-type-archive-forum #bbpress-forums .bbp-forum-topic-count,
+body.post-type-archive-forum #bbpress-forums .bbp-forum-reply-count,
+body.post-type-archive-forum #bbpress-forums .bbp-forum-freshness{
+  display: none !important;
+}
+
+/* Row cells */
+body.post-type-archive-forum #bbpress-forums li.bbp-body .bbp-forum-topic-count,
+body.post-type-archive-forum #bbpress-forums li.bbp-body .bbp-forum-reply-count,
+body.post-type-archive-forum #bbpress-forums li.bbp-body .bbp-forum-freshness{
+  display: none !important;
+}
+
+/* Make the remaining "Forum" column take full width */
+body.post-type-archive-forum #bbpress-forums .bbp-forum-info{
+  width: 100% !important;
+}
+
+
+body.post-type-archive-forum #bbpress-forums .forum-titles{
+  display: block !important;
+}
+body.post-type-archive-forum #bbpress-forums .forum-titles > li{
+  display: block !important;
+}
+
+
+/* ================================
+   VOGO Footer (Astra Child)
+   ================================ */
+   
+   /* ================================
+   VOGO Footer (Astra Child) – FINAL (dark VOGO ink, no glow)
+   ================================ */
+
+:root{
+  --vogo-ink:#0c542d;
+  --vf-bg:#0b1220;
+  --vf-text:#e5e7eb;
+  --vf-muted:#a7b0be;
+  --vf-border:rgba(255,255,255,.10);
+  --vf-link:#d7f3e6;
+  --vf-link-hover:#ffffff;
+  --vf-radius:14px;
+}
+
+/* Footer base (NO radial glow) */
+.vogo-footer{
+  background:linear-gradient(180deg, rgba(12,84,45,.95) 0%, rgba(8,60,34,1) 100%);
+  color:var(--vf-text);
+  padding:48px 0 26px;
+  border-top:1px solid var(--vf-border);
+  font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-weight:400;
+}
+
+.vogo-footer *{box-sizing:border-box}
+
+.vogo-footer a{color:var(--vf-link);text-decoration:none}
+.vogo-footer a:hover{color:var(--vf-link-hover);text-decoration:underline}
+.vogo-footer a:focus{outline:2px solid rgba(255,255,255,.35);outline-offset:2px;border-radius:8px}
+
+/* Layout wrapper */
+.vogo-footer .vf-wrap{
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 18px;
+}
+
+.vogo-footer .vf-grid{
+  display:grid;
+  grid-template-columns:repeat(6, minmax(0,1fr));
+  gap:18px;
+}
+
+/* Columns/cards (remove white "glass" that brightens) */
+.vogo-footer .vf-col{
+  background:linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.10));
+  border:1px solid var(--vf-border);
+  border-radius:var(--vf-radius);
+  padding:18px 16px 14px;
+  min-height:100%;
+}
+
+/* Headings */
+.vogo-footer .vf-col h4{
+  margin:0 0 10px;
+  font-size:13px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  color:#ffffff;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+}
+
+/* Heading separator (less shine) */
+.vogo-footer .vf-col h4::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg, rgba(255,255,255,.14), rgba(255,255,255,0));
+}
+
+/* Lists */
+.vogo-footer .vf-col ul{list-style:none;margin:0;padding:0}
+.vogo-footer .vf-col li{margin:0;padding:0}
+
+.vogo-footer .vf-col li a{
+  display:block;
+  padding:7px 8px;
+  border-radius:10px;
+  color:rgba(255,255,255,.80);
+  line-height:1.25;
+  font-size:14px;
+  transition:background .15s ease, color .15s ease, transform .15s ease;
+}
+
+.vogo-footer .vf-col li a:hover{
+  background:rgba(0,0,0,.16);
+  color:#fff;
+  text-decoration:none;
+  transform:translateY(-1px);
+}
+
+/* Divider line */
+.vogo-footer .vf-line{
+  height:1px;
+  background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.14), rgba(255,255,255,0));
+  margin:22px 0 18px;
+}
+
+/* Bottom row */
+.vogo-footer .vf-bottom{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+/* Social */
+.vogo-footer .vf-social{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.vogo-footer .vf-social a{
+  width:36px;height:36px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  border:1px solid var(--vf-border);
+  background:rgba(0,0,0,.12);
+  color:#fff;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-decoration:none;
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.vogo-footer .vf-social a:hover{
+  background:rgba(0,0,0,.20);
+  border-color:rgba(255,255,255,.18);
+  transform:translateY(-1px);
+}
+
+/* Legal */
+.vogo-footer .vf-legal{
+  display:flex;
+  gap:10px 14px;
+  align-items:center;
+  flex-wrap:wrap;
+  color:rgba(255,255,255,.72);
+  font-size:14px;
+}
+
+.vogo-footer .vf-legal a{
+  color:rgba(255,255,255,.72);
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.10);
+  text-decoration:none;
+}
+
+.vogo-footer .vf-legal a:hover{
+  color:#fff;
+  background:rgba(0,0,0,.18);
+  text-decoration:none;
+}
+
+/* Responsive */
+@media (max-width:1200px){
+  .vogo-footer .vf-grid{grid-template-columns:repeat(3, minmax(0,1fr))}
+}
+@media (max-width:780px){
+  .vogo-footer{padding:38px 0 22px}
+  .vogo-footer .vf-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width:520px){
+  .vogo-footer .vf-grid{grid-template-columns:1fr}
+  .vogo-footer .vf-col{padding:16px 14px 12px}
+}
