@@ -1,0 +1,396 @@
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--vogo-green:#0e7f4e;--ink:#0e1116;--muted:#5a6072;--line:#e8efe9;--sticky-top:72px}
+#compare-plans .vcompare{border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 8px 26px rgba(3,28,20,.06)}
+/* sticky header bar (floats under main menu) */
+#compare-plans .vsticky{position:sticky;top:var(--sticky-top);z-index:9;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 8px 20px rgba(3,28,20,.06)}
+
+#compare-plans .vsticky .vbtn{
+  display:inline-block;padding:10px 16px;border-radius:7px;
+  background:#0e7f4e;color:#fff;text-decoration:none;font-weight:600;
+  border:2px solid #0e7f4e
+}
+#compare-plans .vsticky .vbtn:hover{background:#065c3d;border-color:#065c3d}
+
+#compare-plans .vtiers{display:grid;grid-template-columns:1fr 170px 170px 170px}
+#compare-plans .vtiers>div{padding:16px 14px}
+#compare-plans .head{font-weight:700;color:var(--ink)}
+#compare-plans .small{font-size:.92rem;color:var(--muted)}
+#compare-plans .center{display:flex;align-items:center;justify-content:center;text-align:center}
+#compare-plans .ok{color:var(--vogo-green);font-weight:700}
+#compare-plans .dim{color:#9aa4b2}
+
+/* accordion */
+#compare-plans .vsec{border-top:1px solid var(--line);position:relative;overflow:hidden}
+#compare-plans .vtoggle{
+  all:unset;display:flex;align-items:center;justify-content:space-between;width:100%;
+  padding:18px 16px 18px 12px;
+  padding-right:46px;
+  cursor:pointer;font-weight:700;color:#1a1f27;position:relative;z-index:1
+}
+#compare-plans .vtoggle .fa-store{margin-left:-4px;margin-right:10px}
+
+#compare-plans .vchev{
+  position:absolute; right:96px; top:50%; transform:translateY(-50%);
+  font-size:18px; color:#23303a; margin:0; transition:transform .2s,color .2s
+}
+
+#compare-plans .vghost{position:absolute;right:72px;top:8px;font-size:40px;opacity:.06;color:#0b3a27;pointer-events:none;z-index:0}
+
+#compare-plans .vrows{display:none;border-top:1px solid var(--line)}
+#compare-plans .vrow{display:grid;grid-template-columns:1fr 170px 170px 170px;align-items:center}
+#compare-plans .vrow{background:#fbfdfc}
+#compare-plans .vrow:nth-child(even){background:#fff}
+#compare-plans .vrow>div{padding:14px;border-top:1px solid var(--line);background:transparent}
+#compare-plans .vsec.open .vrow{background:#f6faf8}
+
+#compare-plans .vsec.open .vtoggle{background:var(--vogo-green);color:#fff}
+#compare-plans .vsec.open .vchev{color:#fff;transform:rotate(180deg)}
+#compare-plans .vsec.open .vrows{display:block}
+#compare-plans .vsec.open .vrow>div{background:#f6faf8}
+
+@media(max-width:920px){#compare-plans .vtiers,#compare-plans .vrow{grid-template-columns:1fr 120px 120px 120px}}
+@media(max-width:720px){#compare-plans .vtiers,#compare-plans .vrow{grid-template-columns:1fr 90px 90px 90px}#compare-plans .vghost{display:none}}
+
+/* elimină spațiul când bara NU e fixată */
+#compare-plans .vsticky-spacer{height:0!important;transition:height .2s}
+#compare-plans .vsticky.fixed + .vsticky-spacer{height:var(--cp-height)!important}
+
+/* zeroizează eventuale margini */
+#compare-plans .vsticky{margin:0;padding-bottom:0}
+#compare-plans .vsec:first-of-type{margin-top:0}
+</style>
+
+<!-- JS STICKY HEADER-->
+<style>
+#compare-plans, #compare-plans .vcompare{overflow:visible!important}
+#compare-plans .vsticky{position:sticky; top:var(--cp-top,72px); z-index:50; background:#fff; border-bottom:1px solid #e8efe9; box-shadow:0 8px 20px rgba(3,28,20,.06)}
+/* când părinții rup sticky, comutăm pe fixed */
+#compare-plans .vsticky.fixed{position:fixed; top:var(--cp-top,72px); left:var(--cp-left,0); width:var(--cp-width,100%); right:auto}
+#compare-plans .vsticky-spacer{height:var(--cp-height,0)}
+</style>
+
+<!-- JS expandare acordeon-->
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('#compare-plans .vsec').forEach(sec=>{
+    const btn=sec.querySelector('.vtoggle');
+    btn.setAttribute('type','button');
+    btn.addEventListener('click',()=>{
+      const open=sec.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  });
+});
+</script>
+
+<!-- HTML -->
+<section class="vogo-section" id="compare-plans">
+  <div class="vogo-max">
+    <div class="eyebrow">Compare plans</div>
+
+    <div class="vcompare" role="table" aria-label="VOGO plan comparison">
+      <!-- sticky header -->
+      <div class="vsticky">
+        <div class="vtiers">
+          <div class="head">Packages contains (licenses and included services)</div>
+          <div><div class="head">Business</div><div class="small">€ 249/mo</div><div style="margin-top:8px"><a href="/contact" class="vbtn">Get started</a></div></div>
+          <div><div class="head">Premium</div><div class="small">€ 980/mo</div><div style="margin-top:8px"><a href="/contact" class="vbtn">Get started</a></div></div>
+          <div><div class="head">Enterprise</div><div class="small">€ ask</div><div style="margin-top:8px"><a href="/contact" class="vbtn">Get started</a></div></div>
+        </div>
+      </div>
+
+      <!-- Modules-->
+      <div class="vsec open">
+        <i class="fa-solid fa-layer-group vghost" aria-hidden="true"></i>
+        <button class="vtoggle" aria-expanded="true"><span><i class="fa-solid fa-layer-group"></i> Modules </span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button>
+        <div class="vrows">
+            <!-- 1) Core platform -->
+            <div class="vrow"><div><b>eCommerce VOGO Portal Module — white label core storefront, catalog, cart, checkout</b></div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Payments Module — Stripe, Netopia, PayPal, Apple Pay, Google Pay</b></div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Shipments Module— couriers, tracking, labels</b></div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Forum — community discussions and Q&A</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Module Blog — articles, news, and content hub</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>SEO Module — sitemaps, meta, redirects, schema.org</b></div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+
+            <!-- 2) Mobile apps -->
+            <div class="vrow"><div><b>Android Mobile Application</b></div><div class="center ok">on request</div><div class="center ok">Standard</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Apple iOS Mobile Application</b></div><div class="center ok">on request</div><div class="center ok">Standard</div><div class="center ok">✓</div></div>
+
+            <!-- 4) AI and Messaging -->
+            <div class="vrow"><div><b>AI-powered customer assistant chatbot</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Messaging (Chat · Voice · Video)</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+
+            <!-- 6) Mobility -->
+            <div class="vrow"><div><b>Vogo Drive · In-City Delivery</b></div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">on request</div></div>
+            <div class="vrow"><div><b>Vogo Taxi · Passenger transport</b></div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">on request</div></div>
+
+            <!-- Commerce add-ons -->
+            <div class="vrow"><div><b>Gift Cards & Vouchers</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Ticketing</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Integrations — ERP/CRM, couriers, accounting</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Import / Export — CSV/Excel pipelines</b></div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>AI Modules</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div><b>Affiliate & Influencer</b></div><div class="center ok">on request</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+
+            <!-- Compliance & Operations -->
+            <div class="vrow"><div>GDPR · Logs · Audit</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div>Tax & Invoicing EU</div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div>Warehouse</div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">on request</div></div>
+        </div>
+      </div>        
+      
+      <!-- Register & Login - Social Media-->
+      <div class="vsec">
+        <i class="fa-solid fa-shield-halved vghost" aria-hidden="true"></i>
+        <button class="vtoggle" aria-expanded="false"><span><i class="fa-solid fa-shield-halved"></i> Register & Login - Social Media </span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button>
+        <div class="vrows">
+          <div class="vrow"><div>Register with email</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Register with OTP / SMS</div><div class="center dim">-</div><div class="center dim">-</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Register with OTP / WhatsApp</div><div class="center dim">-</div><div class="center dim">-</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Register with Google</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Register with Facebook</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Register with Apple</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+        </div>
+      </div>      
+      
+      <!-- END Register & Login - Social Media-->
+
+<!-- Technical details - Storage - backup, hosting and optimization -->
+      <div class="vsec">
+        <i class="fa-solid fa-gears vghost" aria-hidden="true"></i>
+        <button class="vtoggle" aria-expanded="false"><span><i class="fa-solid fa-gears"></i> Technical details - Storage - backup, hosting and optimization</span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button>
+        <div class="vrows">
+          <div class="vrow"><div>Storage</div><div class="center">25 GB SSD</div><div class="center">50 GB NVMe</div><div class="center">100 GB NVMe</div></div>
+          <div class="vrow"><div>Unlimited bandwidth</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>99.9% infrastructure uptime guarantee</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Global data centers</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>WordPress acceleration (LiteSpeed)</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>SaaS option</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>On-Premise</div><div class="center dim">-</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Performance testing & tuning for unlimited users</div><div class="center dim">-</div><div class="center dim">-</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>SSL</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Backup & recovery</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>CDN web speed optimization</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Dedicated IP address</div><div class="center dim">-</div><div class="center dim">-</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Smart WordPress auto updates</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>WP-CLI and SSH</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>WordPress staging tool</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Object cache for WordPress</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Automatic backup</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>On-demand backup</div><div class="center dim">-</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>DNS management</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Unlimited FTP accounts</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>PHP workers</div><div class="center">40</div><div class="center">60</div><div class="center">100</div></div>
+          <div class="vrow"><div>Files and directories (inodes)</div><div class="center">400,000</div><div class="center">600,000</div><div class="center">2,000,000</div></div>
+        </div>
+      </div>        
+      
+<!-- END Technical details - Storage - backup, hosting and optimization -->      
+
+      <!-- Managed commerce core -->
+<div class="vsec"><i class="fa-solid fa-store vghost" aria-hidden="true"></i><button class="vtoggle" aria-expanded="false"><span><i class="fa-solid fa-store"></i> Managed commerce core - Setup and configuration</span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button><div class="vrows">
+<div class="vrow"><div>Storefront · product catalog · product categories · product images · search · cart · checkout · user account · website radio station/music · multilanguage</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+<div class="vrow"><div>Pre-built page templates customized using import: font, text, images, colors, logo, header, footer: Home page, Category page, Product page, Checkout, Contact, User account, Login, Register, My account, My orders, Delivery locations, Shipments, Payments, History, Export, About</div><div class="center">✓</div><div class="center">✓</div><div class="center">✓</div></div>
+<div class="vrow"><div>Initial categories and product catalog load</div><div class="center">1000</div><div class="center">3000</div><div class="center">5000</div></div>
+<div class="vrow"><div>Advanced product features: video-call, in-store chat, A/V calls</div><div class="center dim">-</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+<div class="vrow"><div>Unlimited client users — accounts and sessions without limits</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+<div class="vrow"><div>Administrators and power users — advanced access for configuration and reporting</div><div class="center">5</div><div class="center">10</div><div class="center">100</div></div>
+<div class="vrow"><div>Standard web pages customized by import — brand-based templates</div><div class="center">5</div><div class="center">7</div><div class="center">10</div></div>
+<div class="vrow"><div>Products/services included in the initial catalog upload</div><div class="center">5,000</div><div class="center">10,000</div><div class="center">Unlimited</div></div>
+<div class="vrow"><div>Access to training materials — playbooks, guides, and examples</div><div class="center">access standard</div><div class="center">access premium</div><div class="center">access enterprise</div></div>
+<div class="vrow"><div>Single-vendor operation — simplified flow for one merchant</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+<div class="vrow"><div>User and role creation (RBAC) — team- and process-based permissions</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+</div></div>
+
+  <!-- END Managed commerce core -->
+
+
+         
+
+      <!-- Asistance and Training-->
+      <div class="vsec">
+        <i class="fa-solid fa-phone-volume vghost" aria-hidden="true"></i>
+        <button class="vtoggle" aria-expanded="false"><span><i class="fa-solid fa-phone-volume"></i> Asistance, Suport and Training</span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button>
+        <div class="vrows">
+            <div class="vrow"><div>Business training package — live team sessions</div><div class="center">1</div><div class="center">2</div><div class="center">ask</div></div>
+            <div class="vrow"><div>Priority support</div><div class="center dim">-</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div>Unlimited bandwidth</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div>99.9% infrastructure uptime guarantee</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div>Global data centers</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+            <div class="vrow"><div>24/7 infrastructure support</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+        </div>
+      </div>
+<!-- END Asistance and Training-->      
+
+      <!-- Security & Compliance -->
+      <div class="vsec">
+        <i class="fa-solid fa-shield-halved vghost" aria-hidden="true"></i>
+        <button class="vtoggle" aria-expanded="false"><span><i class="fa-solid fa-shield-halved"></i> Security & Compliance</span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button>
+        <div class="vrows">
+          <div class="vrow"><div>SSL certificate</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Standard DDoS protection</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Malware scanner</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Web application firewall (WAF)</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Cloudflare protected nameservers</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Secure access manager</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>GDPR & compliance</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>WordPress vulnerabilities scanner</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Smart WordPress auto updates</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+        </div>
+      </div>
+
+      <!-- AI & Smart technologies -->
+      <div class="vsec">
+        <i class="fa-solid fa-headset vghost" aria-hidden="true"></i>
+        <button class="vtoggle" aria-expanded="false"><span><i class="fa-solid fa-headset"></i> AI & Smart technologies</span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button>
+        <div class="vrows">
+          <div class="vrow"><div>AI SEO ready</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Support chatbot training</div><div class="center dim">-</div><div class="center">basic</div><div class="center ok">✓</div></div>
+
+          
+          <div class="vrow"><div>OpenAI integration</div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">on request</div></div>          
+          <div class="vrow"><div>Groq integration</div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">on request</div></div>          
+          <div class="vrow"><div>Perplexity integration</div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">on request</div></div>                    
+          <div class="vrow"><div>Gemini integration</div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">on request</div></div>                    
+          <div class="vrow"><div>Other AI integration</div><div class="center ok">on request</div><div class="center ok">on request</div><div class="center ok">on request</div></div>                    
+
+          <div class="vrow"><div>WordPress AI tools</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>AI image generator</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>AI writer</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>AI blog generator</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>AI SEO tools</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+        </div>
+      </div>      
+<!-- END AI & Smart technologies -->      
+
+       
+
+      <!-- SEO, PR & Advertising -->
+      <div class="vsec">
+        <i class="fa-solid fa-share-from-square vghost" aria-hidden="true"></i>
+        <button class="vtoggle" aria-expanded="false"><span><i class="fa-solid fa-share-from-square"></i> SEO, PR & Advertising </span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button>
+        <div class="vrows">
+          <div class="vrow"><div>SEO services / training</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>AI SEO ready</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Influencer recommendations</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Google Ads management (Search · Display · Performance Max)</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Meta Ads (Facebook & Instagram) campaigns and creatives</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>TikTok Ads setup, targeting, and optimization</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>YouTube Ads (pre-roll, in-stream, bumper) strategy & buys</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Influencer campaigns (brief, selection, contracts, reporting)</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Digital PR & press release distribution to media outlets</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Local SEO & business listings (Google Business Profile, maps)</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Link building & digital PR outreach (white-hat)</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Conversion rate optimization (CRO) & A/B testing landing pages</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+          <div class="vrow"><div>Outdoor/Indoor advertising planning (OOH/DOOH, retail screens)</div><div class="center ok">✓</div><div class="center ok">✓</div><div class="center ok">✓</div></div>
+        </div>
+      </div>                
+
+      <!-- Aditional features and services -->
+      <div class="vsec">
+        <i class="fa-solid fa-bullseye vghost" aria-hidden="true"></i>
+        <button class="vtoggle" aria-expanded="false"><span><i class="fa-solid fa-bullseye"></i> Aditional features and services </span><i class="fa-solid fa-chevron-down vchev" aria-hidden="true"></i></button>
+        <div class="vrows">
+<!-- one-time CSS to allow col-span across all three plan columns -->
+<style>#compare-plans .span-all{grid-column:2 / span 3; text-align:center}</style>
+
+        <!-- Services list -->
+        <div class="vrow"><div>Advanced web page customization to business requirements</div><div class="center span-all">hourly cost</div></div>
+        <div class="vrow"><div>Domain acquisition</div><div class="center span-all">annual fee</div></div>
+        <div class="vrow"><div>On-prem infrastructure penetration test</div><div class="center span-all">on request</div></div>
+        <div class="vrow"><div>One-time import · special data export</div><div class="center span-all">one-time service</div></div>
+        <div class="vrow"><div>On-prem installation: Database & App server (middle-tier + frontend)</div><div class="center span-all">one-time setup</div></div>
+        <div class="vrow"><div>Trainings: business · technical · consultants</div><div class="center span-all">per session</div></div>
+        <div class="vrow"><div>SEO services</div><div class="center span-all">monthly retainer/on request</div></div>
+        <div class="vrow"><div>PR services · influencers · marketing materials · logo · branding</div><div class="center span-all">on request</div></div>
+        <div class="vrow"><div>Apple App Store publishing</div><div class="center span-all">on request</div></div>
+        <div class="vrow"><div>Google Play publishing</div><div class="center span-all">on request</div></div>
+        <div class="vrow"><div>Special Support and maintenance</div><div class="center span-all">monthly, on request</div></div>
+        <div class="vrow"><div>White-label personalization (web design, programming, BA, consulting, training)</div><div class="center span-all">project-based</div></div>
+        <div class="vrow"><div>Portal webpage custom development</div><div class="center span-all">price per hour, on request</div></div>
+        <div class="vrow"><div>Payment gateways configuration services</div><div class="center span-all">on request</div></div>
+        <div class="vrow"><div>Courier / shipping configuration services</div><div class="center span-all">on request</div></div>
+        <div class="vrow"><div>Billing / invoicing configuration services</div><div class="center span-all">on request</div></div>
+        <div class="vrow"><div>Logistics / stock configuration services</div><div class="center span-all">on request</div></div>
+
+        <!-- 1) Implementation & initial configuration -->
+        <div class="vrow"><div>Business & architecture analysis</div><div class="center span-all">on request</div></div>
+        <div class="vrow"><div>Cloud/OnPrem Server/hosting & WordPress infrastructure setup (SSL, firewall, caching, CDN)</div><div class="center span-all">initial one-time setup</div></div>
+        <div class="vrow"><div>Cloud/OnPrem - WordPress + WooCommerce + ecosystem installation/config</div><div class="center span-all">initial one-time setup</div></div>
+        <div class="vrow"><div>Mobile apps setup (Android + iOS): branding, push, OTP, social login, store build/publish</div><div class="center span-all">project-based</div></div>
+        <div class="vrow"><div>Chat integration (Agora · AI chatbot · support)</div><div class="center span-all">project-based</div></div>
+        <div class="vrow"><div>Custom AI chatbot configuration (OpenAI API / fine-tuning)</div><div class="center span-all">project-based</div></div>
+        <div class="vrow"><div>ERP/accounting/CRM integration (SAP · Oracle · Salesforce)</div><div class="center span-all">per integration</div></div>
+
+        <!-- 2) Personalization & extensions -->
+        <div class="vrow"><div>Custom UI/UX for web & mobile</div><div class="center span-all">project-based</div></div>
+        <div class="vrow"><div>Full white-labeling mobile and app(name, logo, custom domain, app brand)</div><div class="center span-all">project-based</div></div>
+        <div class="vrow"><div>Additional integrations (couriers, payments, local ERPs)</div><div class="center span-all">per integration</div></div>
+        <div class="vrow"><div>AI module for sales/logistics prediction</div><div class="center span-all">project-based</div></div>
+
+        <!-- 3) Training & operational assistance -->
+        <div class="vrow"><div>Platform administrators training</div><div class="center span-all">per session</div></div>
+        <div class="vrow"><div>Vendors / transporters training</div><div class="center span-all">per session</div></div>
+        <div class="vrow"><div>Priority technical support (L1–L3) · email/WhatsApp/ticketing · optional 24/7 SLA</div><div class="center span-all">monthly</div></div>
+
+        <!-- 4) Maintenance, monitoring & audit -->
+        <div class="vrow"><div>Full technical maintenance (WP updates, plugins, security)</div><div class="center span-all">monthly</div></div>
+        <div class="vrow"><div>Performance & uptime monitoring</div><div class="center span-all">monthly</div></div>
+        <div class="vrow"><div>Security audit + ISO/OWASP report</div><div class="center span-all">per quarter</div></div>
+        <div class="vrow"><div>Mobile apps maintenance (SDK updates, push, store re-publishing)</div><div class="center span-all">monthly</div></div>
+
+        <!-- 5) Advanced and evolutionary support -->
+        <div class="vrow"><div>Dedicated developments for new modules</div><div class="center span-all">per module</div></div>
+        <div class="vrow"><div>Data migration from external systems</div><div class="center span-all">project-based</div></div>
+        <div class="vrow"><div>AI analysis & automations (chatbot, order prediction, deliveries)</div><div class="center span-all">project-based</div></div>
+        <div class="vrow"><div>Digital business consulting / market expansion</div><div class="center span-all">price per hour</div></div>
+        </div>
+      </div>      
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  function q(s){return document.querySelector(s)}
+  function ready(fn){if(document.readyState==='complete'){fn()}else{addEventListener('load',fn,{once:true})}}
+
+  ready(function(){
+    const wrap=q('#compare-plans'); if(!wrap) return;
+    const bar=wrap.querySelector('.vsticky'); if(!bar) return;
+
+    // creează santinelă + spacer dacă lipsesc
+    let sent=wrap.querySelector('.vsticky-sentinel'); if(!sent){ sent=document.createElement('div'); sent.className='vsticky-sentinel'; wrap.querySelector('.vcompare').insertBefore(sent,bar) }
+    let spacer=wrap.querySelector('.vsticky-spacer'); if(!spacer){ spacer=document.createElement('div'); spacer.className='vsticky-spacer'; wrap.querySelector('.vcompare').insertBefore(spacer,bar.nextSibling) }
+
+    function headerOffset(){
+      const admin=q('#wpadminbar');
+      const hdr=q('#vogo-sticky')||q('.site-header')||q('header');
+      const h=(hdr?hdr.getBoundingClientRect().height:0)+(admin?admin.getBoundingClientRect().height:0)+8;
+      document.documentElement.style.setProperty('--cp-top',h+'px');
+    }
+    function setDims(){
+      const box=wrap.getBoundingClientRect(), h=bar.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--cp-left',box.left+'px');
+      document.documentElement.style.setProperty('--cp-width',box.width+'px');
+      document.documentElement.style.setProperty('--cp-height',h+'px');
+    }
+    function onScroll(){
+      const top=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cp-top'))||72;
+      const shouldFix=sent.getBoundingClientRect().top<=top;
+      bar.classList.toggle('fixed',shouldFix);
+    }
+
+    wrap.style.overflow='visible';
+    (wrap.querySelector('.vcompare')||wrap).style.overflow='visible';
+
+    headerOffset(); setDims(); onScroll();
+    addEventListener('resize',()=>{headerOffset(); setDims(); onScroll()},{passive:true});
+    addEventListener('scroll',onScroll,{passive:true});
+    setTimeout(()=>{headerOffset(); setDims(); onScroll()},300);
+  });
+})();
+</script>

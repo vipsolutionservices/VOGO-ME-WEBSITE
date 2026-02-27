@@ -1,0 +1,153 @@
+<!-- ✅ Adi-BC-GUARD: compat OK, LOCK format respectat, JS/CSS validate -->
+<!-- VOGO Sticky Topbar (verde, text alb, logo V albizat) -->
+<div id="vogo-sticky-spacer"></div>
+<div id="vogo-sticky" role="navigation" aria-label="Main">
+  <div class="vs-wrap">
+    <a class="vs-logo" href="/" aria-label="VOGO Home">
+      <img src="https://vogo.me/wp-content/uploads/2025/10/cropped-vogo-doar-v-verde.png" alt="VOGO logo">
+      <span>VOGO®</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="vs-nav" aria-label="Primary">
+      <a href="/">HOME</a>
+      <a href="/about-overview">OVERVIEW</a>
+      <a href="/packages-licensing">PACKAGES</a>
+      <a href="/methodology">METHODOLOGY</a>
+      <a href="/ai-innovation">AI</a>
+      <a href="/partner-network">PARTNER NETWORK</a>
+      <a href="/technology-architecture">TECHNOLOGY</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="vs-actions">
+      <a class="vs-btn vs-btn--solid" href="/request">REQUEST</a>
+      <!-- [ADI-ADD] rename label only, păstrez URL -->
+      <a class="vs-btn vs-btn--ghost" href="/partners-login" aria-label="Partner Login">PARTNER LOGIN</a>
+      <button class="vs-burger" id="vsBurger" aria-label="Open menu" aria-expanded="false" aria-controls="vsDrawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Drawer mobil -->
+<div id="vsDrawer" aria-hidden="true">
+  <nav class="vs-drawer-nav">
+    <a href="/">HOME</a>
+    <a href="/about-overview">OVERVIEW</a>
+    <a href="/packages-licensing">PACKAGES</a>
+    <a href="/methodology">METHODOLOGY</a>
+    <a href="/ai-innovation">AI &amp; INNOVATE</a>
+    <a href="/technology-architecture">TECHNOLOGY</a>
+    <div class="vs-drawer-actions">
+      <a class="vs-btn vs-btn--solid" href="/request">REQUEST</a>
+      <a class="vs-btn vs-btn--ghost" href="/partners-login">PARTNER LOGIN</a>
+    </div>
+  </nav>
+</div>
+
+<style>
+  :root{ --vogo-green:#0F5132; --white:#ffffff; --h-desktop:72px; --h-scrolled:60px; }
+
+  /* Sticky bar full width */
+  #vogo-sticky{ position:fixed; inset:0 0 auto 0; z-index:9999; height:var(--h-desktop); background:var(--vogo-green); color:var(--white); transition:height .18s ease, box-shadow .18s ease, border-color .18s ease; border-bottom:1px solid rgba(0,0,0,0); }
+  #vogo-sticky-spacer{ height:var(--h-desktop); }
+
+  /* Container full-bleed */
+  #vogo-sticky .vs-wrap{ max-width:none; width:100vw; box-sizing:border-box; padding:0 20px; display:grid; grid-template-columns:auto 1fr auto; column-gap:16px; align-items:center; height:100%; }
+
+  /* Logo */
+  .vs-logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--white); font-weight:800;}
+  .vs-logo img{ height:28px; width:auto; filter:brightness(0) invert(1) saturate(0); opacity:.92; }
+  .vs-logo span{font-size:16px; letter-spacing:.2px; color:var(--white);}
+
+  /* Nav desktop */
+  .vs-nav{ display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; gap:16px; overflow:visible; }
+  .vs-nav a{ color:var(--white); text-decoration:none; font-weight:600; font-size:13.5px; padding:8px 10px; border-radius:5px; border:1px solid transparent; }
+  .vs-nav a:hover{ background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.18); }
+
+  /* Buttons */
+  .vs-actions{display:flex; align-items:center; gap:10px;}
+  .vs-btn{display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:13.5px; line-height:1; text-decoration:none; border-radius:5px; padding:8px 12px; border:1px solid #ffffff; background:var(--vogo-green); color:#ffffff; }
+  .vs-btn:hover{ background:#0E4B2E; }
+
+  /* Burger */
+  .vs-burger{ display:none; background:transparent; border:0; padding:6px; cursor:pointer; }
+  .vs-burger span{ display:block; width:24px; height:2px; background:#fff; margin:5px 0; }
+
+  /* Drawer */
+  #vsDrawer{ position:fixed; inset:auto 0 0 0; background:#0F5D3C; color:#fff; transform:translateY(100%); transition:transform .18s ease; z-index:9998; border-top:1px solid rgba(255,255,255,.15); }
+  #vsDrawer[aria-hidden="false"]{ transform:translateY(0); }
+  .vs-drawer-nav{ max-width:1220px; margin:0 auto; padding:10px 16px 14px; }
+  .vs-drawer-nav a{ display:block; padding:10px 0; color:#fff; text-decoration:none; font-weight:600; border-radius:5px; }
+  .vs-drawer-actions{ display:flex; gap:8px; padding-top:8px; }
+  .vs-drawer-actions .vs-btn{ flex:1; text-align:center; }
+
+  /* Scroll state */
+  .is-scrolled #vogo-sticky{ height:var(--h-scrolled); box-shadow:0 6px 20px rgba(0,0,0,.18); border-bottom-color:rgba(0,0,0,.06); }
+  .is-scrolled #vogo-sticky-spacer{ height:var(--h-scrolled); }
+
+  /* Responsive */
+  @media (max-width: 991px){
+    .vs-nav{ display:none; }
+    .vs-actions{ margin-left:auto; gap:8px; }
+    .vs-btn{ display:none; } /* ascunde toate by default */
+    /* [ADI-ADD] make PARTNER LOGIN visible on mobile */
+    .vs-actions .vs-btn--ghost[href="/partners-login"]{ display:inline-flex; padding:6px 10px; font-size:12.5px; line-height:1; order:1; }
+    /* [ADI-ADD] burger la dreapta */
+    .vs-burger{ display:inline-block; order:2; margin-left:2px; }
+  }
+</style>
+
+<script>
+(function(){
+  var root=document.documentElement, spacer=document.getElementById('vogo-sticky-spacer'), sticky=document.getElementById('vogo-sticky'), drawer=document.getElementById('vsDrawer'), burger=document.getElementById('vsBurger');
+  function setScrolled(){ var sc=(window.pageYOffset||document.documentElement.scrollTop||0); if(sc>6){ root.classList.add('is-scrolled'); } else { root.classList.remove('is-scrolled'); } }
+  function closeDrawer(){ if(!drawer) return; drawer.setAttribute('aria-hidden','true'); if(burger) burger.setAttribute('aria-expanded','false'); }
+  function toggleDrawer(){ if(!drawer) return; var isOpen=drawer.getAttribute('aria-hidden')==='false'; if(isOpen){ closeDrawer(); } else { drawer.setAttribute('aria-hidden','false'); if(burger) burger.setAttribute('aria-expanded','true'); } }
+  function syncSpacer(){ if(!spacer||!sticky) return; var h=sticky.offsetHeight||parseInt(getComputedStyle(sticky).height,10)||0; spacer.style.height=h+'px'; }
+  setScrolled(); syncSpacer();
+  window.addEventListener('scroll', setScrolled, {passive:true});
+  window.addEventListener('resize', syncSpacer);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
+  if(burger){ burger.addEventListener('click', toggleDrawer); }
+  if(drawer){ drawer.addEventListener('click', function(e){ if(e.target && e.target.tagName==='A'){ closeDrawer(); } }); }
+})();
+</script>
+
+<style>
+  /* ✅ Adi-BC-GUARD: override strict pt. buton GHOST (reverse) */
+  .vs-btn--ghost{ background:#ffffff !important; color:var(--vogo-green) !important; border:1px solid var(--vogo-green) !important; border-radius:5px !important; }
+  .vs-btn--ghost:hover{ background:rgba(18,152,20,0.1) !important; border-color:rgba(222,116,35,0.87); }
+</style>
+
+<style>
+  /* ✅ Adi-BC-GUARD: hover Partner Login = comportament OVERVIEW */
+  a.vs-btn[href="/partners-login"]:hover{ background:rgba(255,255,255,.10) !important; border-color:rgba(255,255,255,.18) !important; color:#ffffff !important; }
+</style>
+
+<style>
+  /* ✅ Adi-BC-GUARD: override REQUEST = WhatsApp + hover ca OVERVIEW */
+  a.vs-btn[href="/request"]{ position:relative; padding-left:12px; display:inline-flex !important; align-items:center !important; gap:8px !important; }
+  a.vs-btn[href="/request"]::before{ content:"\260E"; font-size:16px; line-height:1; display:inline-block; }
+  a.vs-btn[href="/request"]:hover{ background:rgba(255,255,255,.10) !important; border-color:rgba(255,255,255,.18) !important; color:#ffffff !important; }
+</style>
+
+<script>
+/* ✅ Adi-BC-GUARD [ADI-ADD]: WhatsApp link cu mesaj implicit */
+(function(){
+  var req = document.querySelector('a.vs-btn[href="/request"]');
+  if (!req) return;
+
+  var base = 'https://wa.me/40742203383';
+  var msg  = 'Hello, we are contacting you from vogo.me website for the following request: ';
+  var href = base + '?text=' + encodeURIComponent(msg);
+
+  req.setAttribute('href', href);
+  req.setAttribute('target','_blank');
+  req.setAttribute('rel','noopener');
+  req.setAttribute('aria-label','Open WhatsApp chat +40742203383');
+})();
+</script>
+

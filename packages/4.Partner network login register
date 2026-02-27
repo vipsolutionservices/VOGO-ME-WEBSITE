@@ -1,0 +1,165 @@
+<!-- VOGO · Unified Join Flow (role-aware via URL hash or #role=) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+  /* ====== THEME ====== */
+  :root{--vogo-green:#0e7f4e;--vogo-green-2:#065c3d;--ink:#0e1116;--muted:#5a6072;--bg:#fff;--alt:#f6faf8;--line:#e8efe9}
+  html{scroll-behavior:smooth}
+  /* ====== LAYOUT ====== */
+  .vogo-section{padding:48px 16px;background:var(--bg)}
+  .vogo-max{max-width:980px;margin:0 auto}
+  .eyebrow{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--vogo-green);font-weight:600;margin:0 0 10px}
+  .h1{font:700 clamp(28px,4vw,44px)/1.15 Inter,system-ui,sans-serif;margin:0 0 12px}
+  .lead{font-size:1.06rem;line-height:1.6;color:#1a1f27;margin:0 0 18px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(3,28,20,.06);padding:18px}
+  .card h3{margin:0 0 8px;font-size:1.02rem;color:#0F5132}
+  .card p{margin:0 0 10px;color:#232a33;line-height:1.55}
+  .btn{display:inline-block;padding:8px 12px;border-radius:8px;border:2px solid var(--vogo-green);color:var(--vogo-green);text-decoration:none;font-weight:700}
+  .btn.primary{background:var(--vogo-green);color:#fff}
+  .btn.primary:hover{background:var(--vogo-green-2);border-color:var(--vogo-green-2)}
+  .btn.ghost:hover{background:#eaf5f0}
+  .muted{color:var(--muted);font-size:.94rem}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+</style>
+
+<section class="vogo-section" id="join-role">
+  <div class="vogo-max">
+    <div class="eyebrow">Partner Network</div>
+    <h1 class="h1">Login | Register — <span id="roleTitle">Partner</span></h1>
+    <p class="lead">Use the quick actions below. The page adapts to your role from the URL anchor/parameter.</p>
+
+    <div class="cards">
+      <!-- 1) New user register -->
+      <article class="card">
+        <h3><i class="fa-solid fa-user-plus"></i> New user?</h3>
+        <p>Register here, then confirm your username via the contact form or WhatsApp to a VOGO consultant.</p>
+        <div class="row">
+          <!-- link de înregistrare -->
+          <a class="btn primary" href="https://vogo.family/register/" target="_blank" rel="noopener">Register</a>
+          <!-- formular de contact -->
+          <a class="btn ghost" href="/contact" target="_blank" rel="noopener">Contact form</a>
+          <!-- WhatsApp confirmare, text setat din JS în funcție de rol -->
+          <a id="waConfirm" class="btn ghost" href="#" target="_blank" rel="noopener">WhatsApp confirm</a>
+        </div>
+      </article>
+
+      <!-- 2) Existing user login -->
+      <article class="card">
+        <h3><i class="fa-solid fa-right-to-bracket"></i> Existing user</h3>
+        <p>Already have an account? Log in and proceed with your selected role workflows.</p>
+        <a class="btn primary" href="https://vogo.family/login/" target="_blank" rel="noopener">Login</a>
+      </article>
+
+      <!-- 3) Ask a question -->
+      <article class="card">
+        <h3><i class="fa-regular fa-circle-question"></i> Ask a question</h3>
+        <p>Send us a message related to your role: <b id="roleInline1">partner</b>. Our team responds quickly.</p>
+        <a class="btn ghost" href="/contact" target="_blank" rel="noopener">Open contact center</a>
+      </article>
+
+      <!-- 4) Talk to a consultant -->
+      <article class="card">
+        <h3><i class="fa-brands fa-whatsapp"></i> Talk to a VOGO consultant</h3>
+        <p>Start a WhatsApp chat with a default message referencing your role and question.</p>
+        <!-- WhatsApp consultanță, text setat din JS -->
+        <a id="waConsult" class="btn primary" href="#" target="_blank" rel="noopener">WhatsApp Chat</a>
+      </article>
+
+      <!-- 5) AI assistant -->
+      <article class="card">
+        <h3><i class="fa-solid fa-robot"></i> VOGO AI assistant</h3>
+        <p>Open the AI assistant and ask about onboarding, benefits, or next steps for <b id="roleInline2">partner</b>.</p>
+        <!-- Înlocuiește #open-vogo-ai cu triggerul real al pluginului AI, dacă există -->
+        <a class="btn ghost" href="#open-vogo-ai" id="openAI">AI assistant</a>
+      </article>
+    </div>
+
+    <p class="muted" style="margin-top:14px">
+      Contact us for any other details!
+    </p>
+  </div>
+</section>
+
+<script>
+/* ====== Role-aware join flow ======
+   Acceptă hash simplu (#vendor) sau cheie (#role=vendor).
+   Actualizează textele, linkurile WhatsApp și derulează la #join-role.
+*/
+(function(){
+  // Denumiri user-facing
+  const labels = {
+    vendor:"Vendor",
+    ambassador:"Ambassador",
+    ambasador:"Ambassador",     // toleranță la RO
+    consultant:"Consultant",
+    fleet:"Drive | Fleet",
+    influencer:"Influencer",
+    reseller:"Reseller",
+    partner:"Partner"
+  };
+
+  // WhatsApp
+  const phone = "40723313296";
+  const waBase = "https://wa.me/" + phone + "?text=";
+
+  // Citește rolul din hash
+  function parseRole(){
+    const raw = location.hash.replace(/^#/,'');
+    if(!raw) return null;
+    // format #role=vendor
+    if(raw.includes('=')){
+      const p = new URLSearchParams(raw);
+      const v = (p.get('role')||'').toLowerCase();
+      return labels[v] ? v : null;
+    }
+    // format #vendor
+    const v = raw.toLowerCase();
+    return labels[v] ? v : null;
+  }
+
+// evenimente
+document.addEventListener("DOMContentLoaded",()=>applyRole(!!location.hash)); // derulează doar dacă ai hash
+window.addEventListener("hashchange",()=>applyRole(true),{passive:true});
+
+// funcția
+function applyRole(scrollIntoView){
+  const role = parseRole() || "partner";
+  const name = labels[role] || "Partner";
+
+  const elTitle = document.getElementById("roleTitle");
+  const elR1 = document.getElementById("roleInline1");
+  const elR2 = document.getElementById("roleInline2");
+  if(elTitle) elTitle.textContent = name;
+  if(elR1) elR1.textContent = name.toLowerCase();
+  if(elR2) elR2.textContent = name.toLowerCase();
+
+  const msgConfirm = `I confirm that I registered on VOGO as a ${name.toLowerCase()} using email/username: ______`;
+  const msgConsult = `Hello, I am addressing the following question related to ${name.toLowerCase()}: ______`;
+
+  const waConfirm = document.getElementById("waConfirm");
+  const waConsult  = document.getElementById("waConsult");
+  if(waConfirm) waConfirm.href = waBase + encodeURIComponent(msgConfirm);
+  if(waConsult) waConsult.href = waBase + encodeURIComponent(msgConsult);
+
+  // derulează doar dacă e cerut și există hash
+  if(scrollIntoView && location.hash){
+    const tgt = document.getElementById("join-role");
+    if(tgt) tgt.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+}
+
+
+  // Init + hashchange
+  document.addEventListener("DOMContentLoaded",()=>applyRole(true));
+  window.addEventListener("hashchange",()=>applyRole(true),{passive:true});
+
+  // Hook opțional pentru AI
+  const ai = document.getElementById("openAI");
+  if(ai){
+    ai.addEventListener("click", function(e){
+      // Exemplu: window.dispatchEvent(new CustomEvent('vogo:ai:open',{detail:{context:document.getElementById('roleTitle')?.textContent||'Partner'}}));
+    });
+  }
+})();
+</script>

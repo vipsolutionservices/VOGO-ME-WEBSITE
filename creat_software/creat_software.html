@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Dezvoltare aplicații mobile iOS & Android în România | Vogo</title>
+  <meta name="description" content="Creăm aplicații mobile rapide și sigure pe iOS și Android. Platformă white-label Vogo, livrare accelerată, proprietate pe cod și conformitate GDPR.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://vogo.me/aplicatii-mobile/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dezvoltare aplicații mobile iOS & Android | Vogo">
+  <meta property="og:description" content="Aplicații mobile dezvoltate rapid și sigur în România. White-label, UI/UX personalizat, middleware și integrări.">
+  <meta property="og:url" content="https://vogo.me/aplicatii-mobile/">
+  <meta property="og:image" content="https://vogo.me/static/og/vogo-mobile-apps.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dezvoltare aplicații mobile iOS & Android | Vogo">
+  <meta name="twitter:description" content="Lansare accelerată, cod transferabil, conform GDPR, hosting UE.">
+  <meta name="twitter:image" content="https://vogo.me/static/og/vogo-mobile-apps.jpg">
+
+  <!-- Robots -->
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  <!-- Minimal styles for readability (opțional, se pot scoate în producție) -->
+  <style>
+    :root {--max:1120px;--c:#0f172a;--m:#64748b;--p:#0ea5e9;--bg:#f8fafc;}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:var(--c);background:var(--bg);line-height:1.6}
+    .wrap{max-width:var(--max);margin:auto;padding:clamp(16px,2vw,28px)}
+    h1,h2,h3{line-height:1.25;margin:0.6em 0 0.35em}
+    h1{font-size:clamp(28px,4vw,44px)}
+    h2{font-size:clamp(22px,3vw,30px)}
+    h3{font-size:clamp(18px,2.2vw,22px)}
+    p{color:var(--m);margin:0 0 1rem}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+    .badge{display:inline-block;background:#e0f2fe;color:#0369a1;border-radius:999px;padding:4px 10px;font-size:12px}
+    .btn{display:inline-block;background:var(--p);color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;font-weight:600}
+    .btn.sec{background:#0ea5e91a;color:#0369a1}
+    .muted{color:var(--m)}
+    ul{margin:0 0 1rem 1.2rem}
+    li{margin:0.3rem 0}
+    .hero{display:grid;gap:14px;align-items:center}
+    .hero .kpis{display:flex;gap:14px;flex-wrap:wrap}
+    .kpi{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:10px 14px}
+    .faq details{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;margin:8px 0}
+    .cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+    .crumbs{font-size:14px;margin:8px 0 0}
+    .crumbs a{color:#0369a1;text-decoration:none}
+    .note{font-size:14px}
+    .divider{height:1px;background:#e5e7eb;margin:22px 0}
+    
+    
+/* containerul păstrează stilul de badge */
+.badge.countries.marquee{
+  display:block;
+  position:relative;
+  overflow:hidden;
+  padding:4px 10px;
+  /* estompare margini (opțional) */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* banda care se mișcă */
+.marquee__track{
+  display:flex;
+  gap:2rem;
+  width:max-content;
+  will-change: transform;
+  animation: vogo-marquee 60s linear infinite;
+}
+
+/* conținutul nu rupe linia */
+.marquee__track > span{
+  white-space:nowrap;
+}
+
+/* pauză la hover (opțional) */
+.badge.countries.marquee:hover .marquee__track{
+  animation-play-state: paused;
+}
+
+/* respectă „reduce motion” */
+@media (prefers-reduced-motion: reduce){
+  .marquee__track{ animation: none; }
+}
+
+/* direcție LTR → RTL: schimbă semnul dacă vrei invers */
+@keyframes vogo-marquee{
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* -50% pentru că avem două copii */
+}
+
+/* FAQ*/
+.faq summary{
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary:hover{ color:#0369a1; }
+.faq details{ transition: border-color .2s ease; }
+.faq details[open]{ border-color:#bae6fd; }
+
+
+</style>
+    
+
+  <!-- JSON-LD: Organization + Service + Breadcrumb + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://vogo.me/#org",
+        "name": "Vogo",
+        "url": "https://vogo.me/",
+        "logo": "https://vogo.me/static/logo/vogo-logo.svg",
+        "sameAs": ["https://www.linkedin.com/company/vogo"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://vogo.me/aplicatii-mobile/#breadcrumbs",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Acasă","item":"https://vogo.me/"},
+          {"@type":"ListItem","position":2,"name":"Servicii","item":"https://vogo.me/servicii/"},
+          {"@type":"ListItem","position":3,"name":"Aplicații mobile iOS & Android","item":"https://vogo.me/aplicatii-mobile/"}
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://vogo.me/aplicatii-mobile/#service",
+        "name": "Dezvoltare aplicații mobile iOS & Android",
+        "provider": {"@id": "https://vogo.me/#org"},
+
+
+        "areaServed": [
+  {"@type":"Country","name":"Germany"},
+  {"@type":"Country","name":"France"},
+  {"@type":"Country","name":"Italy"},
+  {"@type":"Country","name":"Spain"},
+  {"@type":"Country","name":"Poland"},
+  {"@type":"Country","name":"Romania"},
+  {"@type":"Country","name":"Netherlands"},
+  {"@type":"Country","name":"Belgium"},
+  {"@type":"Country","name":"Czech Republic"},
+  {"@type":"Country","name":"Greece"},
+  {"@type":"Country","name":"Portugal"},
+  {"@type":"Country","name":"Sweden"},
+  {"@type":"Country","name":"Hungary"},
+  {"@type":"Country","name":"Austria"},
+  {"@type":"Country","name":"Bulgaria"},
+  {"@type":"Country","name":"Denmark"},
+  {"@type":"Country","name":"Finland"},
+  {"@type":"Country","name":"Slovakia"},
+  {"@type":"Country","name":"Ireland"},
+  {"@type":"Country","name":"Croatia"}
+],
+        "serviceType": "Mobile App Development",
+        "offers": {
+          "@type":"Offer",
+          "priceSpecification": {"@type":"PriceSpecification","priceCurrency":"EUR"},
+          "availability":"https://schema.org/InStock"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Pachete white-label",
+          "itemListElement": [
+            {"@type":"OfferCatalog","name":"MVP 2–6 săptămâni"},
+            {"@type":"OfferCatalog","name":"Enterprise cu integrări"},
+            {"@type":"OfferCatalog","name":"Mentenanță & SLA"}
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://vogo.me/aplicatii-mobile/#faq",
+        "mainEntity": [
+          {"@type":"Question","name":"Cât durează dezvoltarea unei aplicații?","acceptedAnswer":{"@type":"Answer","text":"Cu platforma white-label Vogo, un MVP poate fi livrat în 2–6 săptămâni, în funcție de complexitate și integrări."}},
+          {"@type":"Question","name":"Cine deține codul sursă?","acceptedAnswer":{"@type":"Answer","text":"După implementare, codul sursă poate fi transferat beneficiarului, conform clauzelor contractuale și limitărilor de licențiere a componentelor."}},
+          {"@type":"Question","name":"Cum este asigurată conformitatea GDPR?","acceptedAnswer":{"@type":"Answer","text":"Proiectăm privacy-by-design, păstrăm datele în centre de date din UE, aplicăm DPIA la nevoie și oferim DPA."}},
+          {"@type":"Question","name":"Ce integrări sunt disponibile?","acceptedAnswer":{"@type":"Answer","text":"Middleware-ul Vogo include autentificare, push, plăți, CRM, analitice și conectori spre ERP, e-commerce, servicii de marketing și logistică."}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="wrap crumbs" aria-label="breadcrumb">
+    <a href="https://vogo.me/">Acasă</a> › <a href="https://vogo.me/servicii/">Servicii</a> › Aplicații mobile iOS &amp; Android
+  </nav>
+
+  <header class="wrap hero" role="banner">
+      
+<div class="badge countries marquee" aria-label="Țări servite în UE">
+    
+<!-- scrollable points -->
+
+  <div class="marquee__track">
+    <span><b>| Multilanguage: </b> Romanian • English • French • German • Spanish • Italian • Portuguese • Greek | <b>Technologies & Features: </b> Flutter • Gradle • GitHub • FVM • CRUMB • JDK 21 • JDK 25 • Firebase • REST API • GraphQL • Node.js • Kotlin • Swift • Dart • Fastlane • Docker • CI/CD Pipelines • GitHub Actions • Cloud Build (GCP / AWS / Azure) • Secure Auth (OAuth2 / JWT) • GDPR Compliance • App Store & Play Console Automation • Push Notifications • Analytics & Crashlytics • In-App Payments (Stripe / Apple Pay / Google Pay) • Modular Architecture • Scalability & Performance Optimization | Secure Auth (OAuth2 / JWT) • GDPR Compliance • App Store / Play Console Automation • Push Notifications • Analytics & Crashlytics • In-App Payments (Stripe / Apple Pay / Google Pay) • Modular Architecture • Performance Optimization • Scalability & Cloud Integration (GCP / AWS) </span>
+
+  </div>
+</div>
+
+<!-- Intro -->
+    
+    <h1>Dezvoltare aplicații mobile iOS &amp; Android</h1>
+    <p>La <strong>Vogo</strong> construim aplicații mobile performante pe <strong>iOS</strong> și <strong>Android</strong> folosind o platformă <strong>white-label</strong> matură. Lansare accelerată, risc scăzut, proprietate pe cod și conformitate <strong>GDPR</strong>, cu suport local.</p>
+    
+<!-- number bullets points -->    
+    
+<div class="kpis">
+  <div class="kpi"><strong>2–6 săpt.</strong><br><span class="muted">MVP tipic</span></div>
+  <div class="kpi"><strong>60%+</strong><br><span class="muted">timp redus</span></div>
+  <div class="kpi"><strong>UE</strong><br><span class="muted">hosting & conformitate</span></div>
+  <div class="kpi"><strong>24/7</strong><br><span class="muted">support dedicat</span></div>
+  <div class="kpi"><strong>99.9%</strong><br><span class="muted">uptime garantat</span></div>
+  <div class="kpi"><strong>SSL</strong><br><span class="muted">certificat gratuit</span></div>
+  <div class="kpi"><strong>Backups</strong><br><span class="muted">săptămânale automate</span></div>
+  <div class="kpi"><strong>AI SEO</strong><br><span class="muted">optimizare inteligentă</span></div>
+  <div class="kpi"><strong>CDN</strong><br><span class="muted">livrare globală rapidă</span></div>
+  <div class="kpi"><strong>WAF</strong><br><span class="muted">protecție firewall web</span></div>
+  <div class="kpi"><strong>DDoS</strong><br><span class="muted">filtrare avansată</span></div>
+
+</div>
+
+<!-- butoane cta -->
+    
+    <div class="cta">
+      <a class="btn" href="https://vogo.me/ecomm-contact-request/">Cere ofertă</a>
+      <a class="btn sec" href="https://vogo.me/ecommerce-services/">Vezi funcționalități si servicii</a>
+    </div>
+  </header>
+  
+<!-- white label -->  
+
+  <main id="content" class="wrap" role="main">
+    <section id="platforma">
+      <h2>Platforma white-label Vogo</h2>
+      <p>Platforma <strong>white-label vogo.me</strong> include infrastructura esențială: autentificare, baze de date, API, notificări push, plăți, analitice și integrare cu servicii externe. Astfel, scurtăm timpul de dezvoltare și reducem riscurile tehnice.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Livrare accelerată</h3>
+          <ul>
+            <li>Arhitectură validată</li>
+            <li>Pipeline CI/CD și QA automat</li>
+            <li>Publicare în App Store &amp; Google Play</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Proprietate pe cod</h3>
+          <ul>
+            <li>Transfer cod sursă către beneficiar</li>
+            <li>Licențe clare pe componente</li>
+            <li>Mentenanță internă sau prin Vogo</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Conformitate UE</h3>
+          <ul>
+            <li>GDPR &amp; privacy-by-design</li>
+            <li>Centre de date în UE</li>
+            <li>Suport pentru înregistrarea mărcii la EUIPO</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="uiux">
+      <h2>UI/UX personalizabil integral</h2>
+      <p>Interfața se adaptează identității brandului: culori, logo, fonturi, ton de voce și structura fluxurilor. Suportăm localizare multi-limbă și mod offline acolo unde este necesar.</p>
+      <ul>
+        <li>Design system modular</li>
+        <li>Accesibilitate și performanță ridicată</li>
+        <li>Testare pe dispozitive reale și simulatoare</li>
+      </ul>
+    </section>
+
+    <section id="functionalitati">
+      <h2>Functionalități standard și middleware</h2>
+      <p>Vogo deține un <strong>middleware</strong> cu module web predefinite ce pot fi activate la cerere.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Autentificare &amp; cont</h3>
+          <ul>
+            <li>SSO, OAuth2, MFA</li>
+            <li>Roluri și permisiuni</li>
+            <li>Reset/recuperare securizată</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Plăți și comerț</h3>
+          <ul>
+            <li>Stripe, PayPal, Apple/Google Pay</li>
+            <li>Abonamente și facturare</li>
+            <li>Integrare WooCommerce/ERP</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Engagement</h3>
+          <ul>
+            <li>Push, inbox in-app</li>
+            <li>Chat și ticketing</li>
+            <li>Analitice și A/B testing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+<section id="procese">
+  <h2>Proces end-to-end</h2>
+
+  <ol>
+    <li>
+      <strong>Definire</strong> – analizăm obiectivele, piața și utilizatorii finali. 
+      Stabilim KPI măsurabili, identificăm riscurile și conturăm aria funcțională a produsului. 
+      Rezultatul: un document de specificații și roadmap realist.
+    </li>
+
+    <li>
+      <strong>Proiectare</strong> – construim arhitectura tehnică, fluxurile de date și interfața utilizatorului. 
+      Design-ul UI/UX reflectă brandul tău și optimizează conversia. 
+      Creăm backlog-ul de feature-uri prioritizate pentru MVP și etapele următoare.
+    </li>
+
+    <li>
+      <strong>Dezvoltare</strong> – livrăm în iterații bilunare (sprinturi). 
+      Fiecare etapă include un demo live, cod versionat și raport de progres. 
+      Folosim tehnologii moderne (React, Next.js, Node, Python, etc.) și respectăm standardele de securitate.
+    </li>
+
+    <li>
+      <strong>Testare</strong> – aplicăm QA automatizat și teste de utilizator (UAT). 
+      Identificăm erorile înainte de lansare, validăm performanța, compatibilitatea și conformitatea GDPR.
+    </li>
+
+    <li>
+      <strong>Publicare</strong> – gestionăm implementarea în magazine (App Store, Google Play, web). 
+      Ne ocupăm de certificate, documentație, configurări de server și verificări de conformitate tehnică și legală.
+    </li>
+
+    <li>
+      <strong>Creștere</strong> – oferim mentenanță, monitorizare și analize de performanță. 
+      Optimizăm aplicația pe baza datelor colectate și coordonăm acțiuni de marketing, retenție și scalare.
+    </li>
+  </ol>
+
+  <p class="note">
+    <strong>Opțional:</strong> colaborăm cu agenți, consultanți și influenceri pentru lansări sincronizate și creștere rapidă pe piețele UE, UK și Turcia. 
+    Acoperim atât partea tehnică, cât și strategia de go-to-market.
+  </p>
+</section>
+
+    
+    <!-- Industries ----------------------------------------------------------------------- -->  
+
+<section id="industrii">
+  <h2>Industrii adresate</h2>
+  <div class="grid cols-3">
+    <div class="card"><h3>E-commerce</h3><p class="muted">Magazine mobile, fidelizare, integrări ERP/WMS.</p></div>
+    <div class="card"><h3>Servicii</h3><p class="muted">Programări, plăți, notificări și CRM.</p></div>
+    <div class="card"><h3>Educație</h3><p class="muted">Cursuri, abonamente, evaluări, streaming.</p></div>
+    <div class="card"><h3>Logistică</h3><p class="muted">Tracking, rute, semnături, scanări coduri.</p></div>
+    <div class="card"><h3>Fintech</h3><p class="muted">KYC, PSD2, rapoarte, dashboard-uri.</p></div>
+    <div class="card"><h3>Sănătate</h3><p class="muted">Telemedicină, programări, dosar, confidențialitate.</p></div>
+
+    <!-- Extinderi -->
+    <div class="card"><h3>Retail</h3><p class="muted">Lanțuri de magazine, francize, aplicații de fidelizare și vânzare directă.</p></div>
+    <div class="card"><h3>Producători</h3><p class="muted">Automotive, alimentare, băuturi, construcții, textile, mobilier, electronice.</p></div>
+    <div class="card"><h3>Asociații patronale</h3><p class="muted">Transporturi, construcții, agricultură, turism, energie, IT&C.</p></div>
+    <div class="card"><h3>Asociații profesionale</h3><p class="muted">ONG-uri, camere de comerț, organizații de certificare, sindicate, cooperative.</p></div>
+    <div class="card"><h3>HoReCa</h3><p class="muted">Restaurante, hoteluri, cafenele, gastro pub-uri, livrări și rezervări mobile.</p></div>
+    <div class="card"><h3>Pets & animale</h3><p class="muted">Petshop-uri, clinici veterinare, dresaj, grooming, produse specializate.</p></div>
+    <div class="card"><h3>Copii & parenting</h3><p class="muted">Magazine și servicii pentru bebeluși, educație, activități recreative.</p></div>
+    <div class="card"><h3>Servicii medicale</h3><p class="muted">Clinici private, laboratoare, aplicații de programări, dosare electronice.</p></div>
+    <div class="card"><h3>Travel & turism</h3><p class="muted">Agenții ANAT, ghiduri locale, rezervări, tururi și oferte dinamice.</p></div>
+    <div class="card"><h3>Producători locali & gastronomie</h3><p class="muted">Fermieri, gastro pub-uri, piețe, puncte de degustare, asociații regionale.</p></div>
+    <div class="card"><h3>Importatori</h3><p class="muted">Distribuitori de produse alimentare, băuturi, fashion, IT, echipamente.</p></div>
+    <div class="card"><h3>Panificație & patiserie</h3><p class="muted">Brutării artizanale, lanțuri de panificație, comenzi și livrări mobile.</p></div>
+    <div class="card"><h3>Cluburi private</h3><p class="muted">Golf, tenis, yachting, fitness, lifestyle exclusivist, membership apps.</p></div>
+  </div>
+</section>
+
+<!-- keywords ----------------------------------------------------------------------- -->  
+<br>
+    <section id="seo" class="card">
+      <h2></h2>
+      <ul>
+        <li>dezvoltare aplicații mobile</li>
+        <li>aplicații iOS Android România</li>
+        <li>white-label app</li>
+        <li>creare aplicație mobilă rapid</li>
+        <li>companie dezvoltare aplicații</li>
+        <li>software house România</li>
+        <li>dezvoltare aplicații UE UK Turcia</li>
+      </ul>
+    </section>
+
+    <div class="divider" role="separator" aria-hidden="true"></div>
+
+<!-- FAQ ----------------------------------------------------------------------- -->  
+
+  <section id="faq" class="faq">
+  <h2>Întrebări frecvente</h2>
+
+  <details>
+    <summary>Cât durează dezvoltarea unei aplicații și ce condiții influențează termenul?</summary>
+    <p>Un MVP pe platforma white-label Vogo se livrează, în mod obișnuit, în <strong>2–6 săptămâni</strong>. Acest interval acoperă configurarea infrastructurii, personalizarea UI/UX, implementarea modulelor standard, testele esențiale și publicarea inițială.</p>
+    <p>Durata este influențată de: <strong>complexitatea fluxurilor</strong> (ex. onboarding cu KYC și plăți recurente), <strong>numărul de integrări</strong> (ERP, CRM, sisteme de plăți, e-commerce), <strong>nivelul de personalizare</strong> a designului și <strong>ritmul de feedback</strong> în UAT. Proiectele enterprise cu integrări multiple pot ajunge la <strong>8–12 săptămâni</strong>, însă lucrăm în sprinturi bilunare, cu demo la finalul fiecăruia.</p>
+    <p><strong>Livrabile</strong> pe etape: specificații + backlog, prototip clicabil, builduri intermediare pentru testare pe dispozitive reale, plan de lansare în magazine, documentație tehnică și de operare.</p>
+  </details>
+
+  <details>
+    <summary>Cum arată procesul de lucru end-to-end și ce livrabile primesc?</summary>
+    <p><strong>1) Analiză & scoping.</strong> Definim obiective, KPI, audiențe, riscuri, restricții legale. Rezultat: document de scop și plan de sprinturi.</p>
+    <p><strong>2) Proiectare.</strong> Arhitectură, modele de date, diagrame de integrare, wireframes și kit de UI. Rezultat: prototip clicabil, backlog estimat.</p>
+    <p><strong>3) Dezvoltare.</strong> Sprinturi de 2 săptămâni cu code review, ramuri Git izolate, CI/CD, teste automate. Rezultat: builduri testabile, changelog, note de release.</p>
+    <p><strong>4) QA & securitate.</strong> Teste funcționale, de regresie și pe dispozitive reale, audit OWASP, scanări de vulnerabilități. Rezultat: raport QA, listă de remediere.</p>
+    <p><strong>5) Publicare.</strong> Configurare App Store Connect și Google Play Console, semnare, privacy labels, capturi, descrieri. Rezultat: aplicația listată sau în phased rollout.</p>
+    <p><strong>6) Creștere.</strong> Monitorizare, analytics, A/B testing, optimizări, roadmap pe 3–6 luni. Rezultat: iterații cu impact măsurabil.</p>
+  </details>
+
+  <details>
+    <summary>Cine deține codul sursă și cum funcționează licențierea?</summary>
+    <p><strong>Codul personalizat</strong> dezvoltat pentru proiectul tău este transferabil către beneficiar la livrare. <strong>Componentele platformei white-label</strong> rămân licențiate, dar sunt incluse cu drept de utilizare nelimitată în produsul livrat.</p>
+    <p>Primești acces la repository Git, pipeline-urile de build, documentație de setup și ghid de release. Putem organiza o sesiune de handover pentru echipa ta internă sau oferim mentenanță continuă cu SLA.</p>
+  </details>
+
+  <details>
+    <summary>Ce înseamnă „white-label” în practică și ce pot personaliza?</summary>
+    <p>White-label înseamnă că nucleul aplicației include deja mecanisme validate: autentificare, stocare, API-uri, notificări push, plăți, analytics. Avantajele sunt <strong>timp redus de lansare</strong> și <strong>risc tehnic scăzut</strong>.</p>
+    <p><strong>Personalizare completă</strong> pentru identitatea vizuală, structura fluxurilor, funcționalități suplimentare și integrări. Activăm numai modulele necesare pentru a menține aplicația rapidă și stabilă.</p>
+  </details>
+
+  <details>
+    <summary>Ce integrări sunt disponibile și cum se gestionează API-urile?</summary>
+    <p>Standard: <strong>Stripe, PayPal, Apple Pay, Google Pay</strong>, push notifications, analytics & crash reporting, CRM ușor, REST/GraphQL. Extensii: <strong>ERP</strong> (facturare, stocuri), <strong>WooCommerce</strong>, marketing automation, servicii de geolocație și logistică.</p>
+    <p>Expunem API-uri documentate și securizate, folosim <strong>OAuth2/JWT</strong>, rate limiting și monitorizare. Conectoarele pot fi cache-uite pentru latență redusă și reziliență la indisponibilități temporare ale sistemelor externe.</p>
+  </details>
+
+  <details>
+    <summary>Cum asigurați securitatea și conformitatea GDPR?</summary>
+    <p>Aplicăm <strong>privacy-by-design</strong> din faza de analiză. Criptare în tranzit și la rest, management de secrete, politici de acces pe roluri, logare și audit. Urmăm ghidurile <strong>OWASP</strong> pentru mobile și backend.</p>
+    <p>Conformitate <strong>GDPR</strong>: găzduire în UE, <strong>DPA</strong>, DPIA la nevoie, proceduri pentru drepturile persoanelor vizate, perioade clare de retenție, ștergere și export date. La cerere, organizăm <strong>penetration testing</strong> extern.</p>
+  </details>
+
+  <details>
+    <summary>Unde sunt găzduite serviciile și cum funcționează backupul?</summary>
+    <p>Implicit, resursele rulează în centre de date din <strong>UE</strong> cu opțiuni multi-region. Pentru UK/Turcia configurăm instanțe dedicate și rutare prin <strong>CDN</strong> pentru latență redusă.</p>
+    <p>Backupuri <strong>automate</strong> zilnice/săptămânale, retenție configurabilă, teste periodice de restaurare. Monitorizăm uptime, erorile și performanța API pentru reacție rapidă la incidente.</p>
+  </details>
+
+  <details>
+    <summary>Ce garanții și SLA oferiți după lansare?</summary>
+    <p>Oferim garanție pentru defecte <strong>30–90 zile</strong>, în funcție de pachet. Pachetele de mentenanță includ <strong>SLA</strong> pe timpi de răspuns și remediere, actualizări de securitate, patching pentru OS/SDK-uri și raportare lunară cu recomandări.</p>
+    <p>La nivel enterprise, putem include ferestre de mentenanță, standby pentru incidente critice și canale de suport prioritare.</p>
+  </details>
+
+  <details>
+    <summary>Oferiți migrare și publicare în App Store / Google Play?</summary>
+    <p>Da. Pregătim conturile, semnarea, certificatele, provisioning profiles, <strong>privacy labels</strong>, capturile și descrierile. Rulăm verificări de conformitate și folosim rollout gradual pentru a controla riscurile.</p>
+    <p>Automatizăm livrarea cu <strong>Fastlane</strong>/CI, astfel încât actualizările viitoare să fie rapide și repetabile.</p>
+  </details>
+
+  <details>
+    <summary>Aplicația va fi multilingvă și localizată complet?</summary>
+    <p>Da. Asigurăm <strong>multilingual</strong> out-of-the-box: Romanian • English • French • German • Spanish • Italian • Portuguese • Greek. Adăugăm rapid alte limbi și gestionăm <strong>RTL</strong>, formate locale, pluralizare și resurse media specifice pieței.</p>
+    <p>Procesele de traducere pot fi integrate cu platforme de localization management sau prin fișiere JSON/ARB gestionate în Git.</p>
+  </details>
+
+  <details>
+    <summary>Ce metrici de produs urmăriți după lansare și cum optimizați?</summary>
+    <p>Monitorizăm <strong>DAU/MAU</strong>, retenție, funnel de conversie, crash-free sessions, latență API, TTFI. Construim dashboard-uri și definim praguri de alertare.</p>
+    <p>Rulăm <strong>A/B testing</strong> pentru ecrane critice, iterăm pe baza datelor, iar recomandările de optimizare sunt incluse în rapoartele lunare.</p>
+  </details>
+
+  <details>
+    <summary>Care este rolul echipei mele și cum gestionăm schimbările de scope?</summary>
+    <p>Nominăm un <strong>Product Owner</strong> din partea clientului pentru decizii rapide. Echipa ta validează prototipul, face UAT pe buildurile intermediare și aprobă schimbările majore.</p>
+    <p>Schimbările de scope sunt estimate și planificate pe sprinturi viitoare. Menținem transparență totală: backlog, velocity, burn-down, riscuri curente.</p>
+  </details>
+
+  <details>
+    <summary>Ce include pachetul de suport post-lansare și cum arată roadmap-ul?</summary>
+    <p>Suportul include monitorizare 24/7, intervenții pe incidente, actualizări de securitate, compatibilitate cu noile versiuni iOS/Android, mentenanță pentru SDK-uri terțe.</p>
+    <p>Roadmapul pe 3–6 luni e construit din insight-uri analytics, feedback de la utilizatori și obiectivele de business. Livrăm incremental fără să întrerupem operațiunile curente.</p>
+  </details>
+</section>
+
+<!-- cerere oferta ----------------------------------------------------------------------- -->      
+
+    <section id="cerere-oferta" class="card" aria-labelledby="cta-titlu">
+      <h2 id="cta-titlu">Cere o ofertă</h2>
+      <p>Consultanță gratuită în faza de definire. Răspundem în 24–48h lucrătoare.</p>
+      <p>Cere o ofertă <a href="https://vogo.me/ecomm-contact-request/">aici</a></p>
+
+
+     
+    </section>
+
+<!-- linkuri interne ----------------------------------------------------------------------- -->      
+
+    <section id="linkuri-interne">
+      <h2>Legături utile</h2>
+      <ul>
+        <li><a href="https://vogo.me/ecommerce-services/">Toate serviciile Vogo</a></li>
+        <li><a href="https://vogo.me/ecommerce-mobile-app-white-label/">Plans and Pricing</a></li>
+        <li><a href="https://vogo.me/partner-network/">Retea de parteneri</a></li>
+        <li><a href="https://vogo.me/ecomm-contact-request/">Contact</a></li>
+      </ul>
+    </section>
+  </main>
+
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

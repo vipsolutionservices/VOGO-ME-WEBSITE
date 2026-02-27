@@ -1,0 +1,199 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root{
+    --vogo-green:#0e7f4e;
+    --vogo-green-2:#065c3d;
+    --ink:#0e1116;
+    --muted:#5a6072;
+    --bg:#ffffff;
+    --alt:#f6faf8;
+    --line:#e8efe9;
+  }
+
+  /* Base */
+  .vogo-wrap{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  .vogo-section{padding:56px 16px}
+  .vogo-max{max-width:1200px;margin:0 auto}
+  .eyebrow{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--vogo-green);font-weight:600;margin:0 0 10px}
+  .h1{font-size:clamp(28px,4.2vw,48px);line-height:1.15;margin:0 0 14px}
+.h2{
+  font-family: Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif !important;
+  color:#000 !important;
+  font-size:clamp(22px,3vw,32px);
+  line-height:1.2;
+  margin:0 0 12px;
+}
+
+  .lead{font-size:1.125rem;line-height:1.6;color:#1a1f27;max-width:80ch;  text-align:justify;
+  text-justify:inter-word;}
+  .muted{color:var(--muted)}
+  .grid{display:grid;gap:20px}
+  .btn{display:inline-block;padding:14px 20px;border-radius:8px;border:2px solid transparent;font-weight:600;text-decoration:none}
+  .btn.primary{background:var(--vogo-green);color:#fff}
+  .btn.primary:hover{background:var(--vogo-green-2)}
+  .btn.ghost{background:transparent;border-color:var(--vogo-green);color:var(--vogo-green)}
+  .btn.ghost:hover{background:#eaf5f0}
+
+  /* Overview (wide band) */
+  .section-overview{background:linear-gradient(180deg,#fbfffd 0%,var(--alt) 100%)}
+  .overview-card{display:flex;flex-direction:column;gap:18px;padding:28px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 10px 30px rgba(3,28,20,.06)}
+  .overview-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:-30px}
+.chip{
+  display:inline-flex;
+  align-items:center;      /* vertical middle în chip */
+  justify-content:center;  /* orizontal centrat în chip */
+  vertical-align:middle;   /* aliniere între elemente inline */
+  padding:8px 10px;
+  border-radius:999px;
+  background:#ecf7f1;
+  color:#0c5132;
+  font-size:.92rem;
+  border:1px solid #d6efe2;
+  line-height:1;           /* evită deplasarea pe verticală */
+  text-align:center;
+}
+  /* modules */
+.modules-wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+.module-card{position:relative;width:320px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px 20px;box-shadow:0 10px 28px rgba(3,28,20,.06);transition:.18s}
+.module-card:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(3,28,20,.1);border-color:#dce9e1}
+.module-card h4{margin:0 0 6px;font-size:1.06rem;color:#0F5132}
+.module-card p{margin:0;color:#24303a;line-height:1.55;font-size:.96rem}
+
+
+.module-icon{position:absolute;top:10px;right:10px;font-size:28px;color:#0b3a27;opacity:.08;pointer-events:none}
+.module-icon{color:#0F5132;opacity:.16}
+@media(max-width:540px){.module-card{width:100%}}
+@media(min-width:541px) and (max-width:900px){.module-card{width:calc(50% - 9px)}}
+@media(min-width:901px) and (max-width:1200px){.module-card{width:calc(33.333% - 12px)}}
+
+.module-card .module-icon{
+  position:absolute; top:10px; right:10px; font-size:28px; pointer-events:none;
+  color:#0F5132 !important;   /* verde VOGO */
+  opacity:.90 !important;     /* fă-l vizibil; ajustează 0.16–0.32 după gust */
+}
+
+  /* Packages (fixed-width cards in a wrap) */
+  .section-packages{background:var(--bg)}
+  .pkg-wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+  .pkg-card{position:relative;width:320px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 26px rgba(3,28,20,.06);overflow:hidden}
+  .pkg-inner{padding:22px}
+  .pkg-tier{font-weight:700;font-size:1rem;color:var(--vogo-green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .pkg-title{font-size:1.25rem;font-weight:700;margin:0 0 6px}
+  .pkg-desc{font-size:.98rem;line-height:1.55;color:#232a33;margin-bottom:14px;min-height:68px}
+  .pkg-feats{list-style:none;padding:0;margin:0 0 14px}
+  .pkg-feats li{display:flex;gap:8px;align-items:flex-start;margin:8px 0;color:#1c242d;font-size:.96rem}
+  .pkg-feats li:before{content:"";width:14px;height:14px;border-radius:3px;background:var(--vogo-green);margin-top:3px;flex:0 0 14px;opacity:.9}
+  .pkg-cta{display:flex;gap:10px;margin-top:10px}
+  .badge-icon{position:absolute;top:10px;right:10px;font-size:28px;opacity:.08;color:#0b3a27;pointer-events:none}
+  
+  /* FUNCTIONALITATI PACHETE) */  
+  
+.pmatrix{margin-top:8px;border:1px solid var(--line);border-radius:14px;overflow:auto;background:#fff;box-shadow:0 8px 26px rgba(3,28,20,.06)}
+.pmatrix table{width:100%;border-collapse:separate;border-spacing:0;min-width:760px}
+.pmatrix thead th{position:sticky;top:0;background:#ecf7f1;color:#0F5132;font-weight:700}
+.pmatrix th,.pmatrix td{padding:12px 14px;border-bottom:1px solid var(--line);font-size:.965rem}
+.pmatrix tbody tr:nth-child(odd){background:#fbfdfc}
+.pmatrix tbody tr:hover{background:#f2faf6}
+.pmatrix td.center,.pmatrix th.center{text-align:center;white-space:nowrap}
+.pmatrix .feat{width:52%;line-height:1.5}
+.pmatrix .tier{width:16%}  
+
+  /* Responsive tweaks */
+  @media (max-width:540px){
+    .pkg-card{width:100%}
+  }
+</style>
+
+
+  <!-- OVERVIEW -->
+<div class="vogo-wrap">
+    <section class="vogo-section section-overview">
+    <div class="vogo-max">
+      <div class="eyebrow">Overview</div>
+      <div class="overview-card">
+        <p class="lead">
+          VOGO unifies multivendor commerce, logistics, real-time communications, and AI into one license-ready platform. Deploy fast as SaaS or keep full control On-Prem. White-label your apps and storefronts, integrate ERP/CRM via APIs, and scale with EU-grade security and audit. <br> 
+          Modules assures the complete infrastructure for modern digital commerce businesses. From online marketplace modules and Apple/Android mobile apps to AI, logistics, and ERP integration, everything operates modularly, customizable, and in a white-label format. Explore the Platform Overview to see how you can build your own digital ecosystem with the support of Vogo modules.
+        </p>
+        <div class="overview-list">
+          <span class="chip">White-Label Web & Mobile</span>
+          <span class="chip">AI Assistant & Automation</span>
+          <span class="chip">Transport & Live Tracking</span>
+          <span class="chip">Chat · Voice · Video</span>
+          <span class="chip">ERP/CRM Integrations</span>
+          <span class="chip">GDPR · Logs · Audit</span>
+<span class="chip">Google/Apple/Facebook </span>
+<span class="chip">SMS/OTP Registration</span>
+<span class="chip">Email-based Login</span>
+<span class="chip">Stripe.Netopia.PayPal</span>
+<span class="chip"> GPay. Apple Pay.</span>
+<span class="chip">PayPal Payments</span>
+<span class="chip">Push Notifications</span>
+<span class="chip">Live Video Broadcasting</span>
+<span class="chip">ERP & CRM Integration</span>
+<span class="chip">ORACLE.SAP. Microsoft</span>
+<span class="chip">API: REST/SOAP Web Services</span>
+<span class="chip">Cloudflare. SSL. OpenID</span>
+<span class="chip">Shippo.ShipStation</span>
+<span class="chip">DHL.UPS.FedEx</span>
+<span class="chip">Local Couriers. Direct Delivery</span>
+<span class="chip">OpenAI.Gemini.Groq</span>
+<span class="chip">Python.PHP.AI</span>
+<span class="chip">Python.PHP.AI</span>
+
+
+          
+        </div>
+      
+   <p class="lead">
+          Vogo is a European platform certified and compliant with top international standards — including GDPR, and Privacy; D-U-N-S™ and Google Business verified</p>        
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <a href="/contact" class="btn primary">Info Request</a>
+        <a href="https://www.vogo.family" target="_blank" class="btn ghost">Explore the Platform</a>
+      </div>
+      </div>
+    </div>
+  </section>
+  <!-- END OVERVIEW -->
+
+  <!-- MODULES -->
+<section class="vogo-section" id="modules"><div class="vogo-max">
+<h3 class="h2">
+  <span style="white-space:nowrap">
+    VOGO<sup style="font-size:.6em;position:relative;top:-.45em;">©</sup>
+  </span> modules.  
+  Build your ecosystem with modular capabilities.
+
+</h3>
+
+  <div class="modules-wrap">
+    <article class="module-card"><i class="fa-solid fa-store module-icon" aria-hidden="true"></i><h4>eCommerce Vogo Portal</h4><p>Multivendor storefront cu catalog, căutare, coș, checkout, promoții și SEO.</p></article>
+    <article class="module-card"><i class="fa-brands fa-android module-icon" aria-hidden="true"></i><h4>Android Mobile Application</h4><p>Aplicație nativă white-label. Push, SSO și plăți sincronizate cu portalul.</p></article>
+    <article class="module-card"><i class="fa-brands fa-apple module-icon" aria-hidden="true"></i><h4>Apple Mobile Application</h4><p>iOS/iPadOS white-label. Sync în timp real, push și checkout securizat.</p></article>
+    <article class="module-card"><i class="fa-solid fa-robot module-icon" aria-hidden="true"></i><h4>Customers AI Assistant</h4><p>Chatbot 24/7 pentru vânzare asistată și suport. Escalare către agenți.</p></article>
+    <article class="module-card"><i class="fa-solid fa-comments module-icon" aria-hidden="true"></i><h4>Messaging (Chat · Voice · Video)</h4><p>Mesagerie și apeluri în platformă. Opțional: înregistrări și transcript.</p></article>
+    <article class="module-card"><i class="fa-solid fa-truck-fast module-icon" aria-hidden="true"></i><h4>Vogo Drive · In-City Delivery</h4><p>Dispatch, rutare, GPS live, status livrare și proof-of-delivery.</p></article>
+
+    <article class="module-card"><i class="fa-solid fa-people-group module-icon" aria-hidden="true"></i><h4>Forum</h4><p>Community Q&amp;A și anunțuri. Roluri, moderare, căutare.</p></article>
+    <article class="module-card"><i class="fa-solid fa-ticket module-icon" aria-hidden="true"></i><h4>Ticketing</h4><p>Helpdesk cu SLA. Taguri, asignări, reguli și analytics.</p></article>
+    <article class="module-card"><i class="fa-solid fa-plug module-icon" aria-hidden="true"></i><h4>Integrations</h4><p>Plăți, curieri, ERP/CRM, webhooks și API REST/SOAP.</p></article>
+    <article class="module-card"><i class="fa-solid fa-right-left module-icon" aria-hidden="true"></i><h4>Import · Export</h4><p>Pipelines CSV/Excel pentru catalog, comenzi, parteneri.</p></article>
+    <article class="module-card"><i class="fa-solid fa-brain module-icon" aria-hidden="true"></i><h4>AI Modules</h4><p>Recomandări, detecție anomalii, automatizare și insighturi.</p></article>
+    <article class="module-card"><i class="fa-solid fa-shield-halved module-icon" aria-hidden="true"></i><h4>GDPR · Logs · Audit</h4><p>Consimțământ, export/ștergere date, loguri și audit trail.</p></article>
+<article class="module-card"><i class="fa-solid fa-credit-card module-icon" aria-hidden="true"></i><h4>Plăți</h4><p>Stripe, Netopia, PayPal, Apple Pay, Google Pay. SCA, tokenizare, rambursări și reconcilieri.</p></article>
+<article class="module-card"><i class="fa-solid fa-truck module-icon" aria-hidden="true"></i><h4>Livrări</h4><p>DHL, UPS, FedEx, curieri locali. AWB, tracking live, cod PIN/OTP și proof-of-delivery.</p></article>
+<article class="module-card"><i class="fa-solid fa-chart-line module-icon" aria-hidden="true"></i><h4>SEO</h4><p>Schema.org, sitemap, URL-uri curate, meta & Open Graph, redirectări și raportare performanță.</p></article>
+<article class="module-card"><i class="fa-solid fa-taxi module-icon" aria-hidden="true"></i><h4>Vogo Taxi · Transport persoane</h4><p>In-city și inter-city, comenzi în app/telefon, dispecerat, preluare programată, ETA & tracking live, plăți și facturare.</p></article>
+<article class="module-card"><i class="fa-solid fa-robot module-icon" aria-hidden="true"></i><h4>Vogo Chatbot</h4><p>Asistență 24/7, răspunsuri instant, ghidare la cumpărare, colectare intenții, escalare către agenți.</p></article>
+<article class="module-card"><i class="fa-solid fa-gift module-icon" aria-hidden="true"></i><h4>Gift Cards & Vouchere</h4><p>Carduri digitale/fizice, cumpărare și cadou, balanță și istoric, corporate bulk.</p></article>
+<article class="module-card"><i class="fa-solid fa-handshake module-icon" aria-hidden="true"></i><h4>Affiliate & Influencer</h4><p>Link tracking, comisioane, payouturi, coduri personalizate și rapoarte.</p></article>
+<article class="module-card"><i class="fa-solid fa-file-invoice module-icon" aria-hidden="true"></i><h4>Tax & Invoicing EU</h4><p>TVA OSS/IOSS, e-Factura RO, facturi PDF, numerotare și export contabil.</p></article>
+<article class="module-card"><i class="fa-solid fa-warehouse module-icon" aria-hidden="true"></i><h4>WMS Light</h4><p>Stoc, locații, picking/packing, recepție și inventar rapid.</p></article>
+  </div>
+</div></section>
+  <!--END  MODULES -->
+
+
+</div>
+
+

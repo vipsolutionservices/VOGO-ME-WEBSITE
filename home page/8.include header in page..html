@@ -1,0 +1,17 @@
+<div id="vogo-header"></div>
+<script>
+(function(){
+  if(document.getElementById('vogo-header').dataset.loaded) return;
+  fetch('/wp-content/uploads/vogo-header.html',{cache:'no-store'})
+    .then(r=>r.text())
+    .then(html=>{
+      const host=document.getElementById('vogo-header');
+      host.innerHTML=html; host.dataset.loaded='1';
+      host.querySelectorAll('script').forEach(s=>{
+        const n=document.createElement('script');
+        if(s.src){ n.src=s.src; } else { n.textContent=s.textContent; }
+        document.body.appendChild(n); s.remove();
+      });
+    });
+})();
+</script>

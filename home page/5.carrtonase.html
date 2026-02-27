@@ -1,0 +1,177 @@
+<section class="vogo-cards">
+  <style>
+    :root{--vogo-green:#0e7f4e;--vogo-green-2:#065c3d;--vogo-deep:#031c14;--ink:#111319;--muted:#5a6072;--line:#e9ecf1;--bg:#ffffff}
+    .vogo-cards{padding:48px 16px;background:linear-gradient(180deg,#fbfcfd 0%,#f6faf8 100%)}
+    .vogo-cards__wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;max-width:1440px;margin:0 auto}
+    .vogo-card{width:clamp(280px,92vw,320px); /* “fixă”, dar sigură pe mobil */
+      background:var(--bg); border:1px solid var(--line); border-radius:16px;
+      padding:18px 18px 16px; display:flex; flex-direction:column; gap:10px;
+      box-shadow:0 2px 0 rgba(0,0,0,.03); transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease}
+    .vogo-card:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(0,0,0,.06); border-color:#dfe6ea}
+    .vogo-card__tag{align-self:flex-start;font:700 10px/1 Inter,system-ui,Segoe UI,Roboto;color:#fff;background:linear-gradient(90deg,var(--vogo-green-2),var(--vogo-green));padding:6px 10px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+    .vogo-card h3{margin:2px 0 0;font:700 18px/1.2 Inter,system-ui;color:var(--ink);letter-spacing:-.2px}
+    .vogo-card p{margin:0;color:var(--muted);font:400 14px/1.5 Inter,system-ui}
+    .vogo-card a{margin-top:auto;display:inline-flex;align-items:center;gap:6px;text-decoration:none;font:600 14px/1 Inter,system-ui;color:var(--vogo-green)}
+    .vogo-card a:hover{text-decoration:underline}
+    /* layout hint lines (optional): remove if not needed */
+    .vogo-cards__wrap:after{content:"";flex-basis:320px}
+    
+.vogo-card__tag{align-self:flex-end;margin:0 0 6px 0}
+.vogo-card h3{margin:-37px 0 0} /* urcat titlul puțin */
+
+@media (max-width:768px){
+  .vogo-card{position:relative;padding-top:34px}
+  .vogo-card__tag{position:absolute;top:10px;right:12px;margin:0;align-self:auto;z-index:1}
+  .vogo-card h3{margin:-22px 0 0}
+}
+
+/* Align "Explore more →" right (desktop + mobile) */
+.vogo-card a{align-self:flex-end;margin-top:auto;text-align:right}
+
+    
+  </style>
+
+  <div class="vogo-cards__wrap">
+    <!-- 1 -->
+    <!-- 2 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Company</span>
+      <h3>DESPRE / OVERVIEW</h3>
+      <p>Descoperă cum funcționează Ecosystemul eCommerce Vogo  — infrastructura completă pentru afaceri digitale moderne.
+De la modulele de market on-line și aplicații mobile Apple si Android, la AI, logistică și integrare ERP, totul lucrează modular, personalizabil de la formatul white label.
+Explorează Platform Overview și vezi cum poți construi propriul tău ecosistem digital cu suportul modulelor Vogo.</p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 3 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Brand</span>
+      <h3>WHITE LABEL</h3>
+      <p>Transformă platforma Vogo în propriul tău brand complet operațional.
+Cu soluția White-Label, controlezi designul, funcțiile, aplicațiile și procesele interne.
+Creează un ecosistem digital unic, sub identitatea ta, susținut de tehnologia Vogo. Poti sa iti particularizezi atat propriul brand (logo, imagini, schema de culori, produse, plati, livratori) cat si functionalitati, ecrane si fluxuri speciale afacerii tale</p>
+      <a href="#">Explore more →</a>
+    </article>
+    
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Start</span>
+      <h3>MODUL APLICATII MOBILE </h3>
+      <p>Aplicațiile mobile white-label pentru Android și Apple oferă brandurilor o soluție complet personalizabilă, pregătită pentru lansare rapidă și scalare globală. Integrează perfect funcțiile platformei VOGO® — comerț electronic, chat, asistență AI și livrări — sub propria identitate vizuală, menținând controlul total asupra experienței utilizatorului.
+      </p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 4 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Pricing</span>
+      <h3>PACHETE &amp; LICENȚĂ</h3>
+      <p>Alege pachetul potrivit pentru nivelul tău de creștere.
+De la versiunea Standard si pana la versiunea Enterprise, fiecare licență oferă funcții clare și suport garantat.
+Compară pachetele Vogo Standard, Premium și Enterprise și vezi ce se potrivește afacerii tale.</p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 5 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Know How</span>
+      <h3>METODOLOGIE</h3>
+      <p>Metodologia Vogo este construită pentru personalizare completă și lansare rapidă.
+White-Label design, import automat de produse și categorii, integrare agilă cu echipe pe GitHub și Kanban.
+Fiecare proiect este configurat, testat și scalat după regulile tale, cu suport real / local.</p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 6 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">AI</span>
+      <h3>AI &amp; INOVARE</h3>
+      <p>AI & Innovation este motorul care diferențiază ecosistemul Vogo.
+Arhitectura noastră pe servicii AI include chatbot propriu, analiză inteligentă și mecanisme automate de învățare.
+Sistemul integrat de chat, apeluri audio-video și video broadcasting oferă comunicare completă, direct în platformă.</p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 7 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Network</span>
+      <h3>PARTNER NETWORK</h3>
+      <p>Descopera avantajele Vogo Partner Network si beneficile primite atat de distribuitori, reselleri, influenceri, producatori, vendori cat si pentru transportatori, ambasadori Vogo inclusiv consultanti certificați. Fiecare partener are acces dedicat, autentificare proprie și vizibilitate, acces la resursele vogo si beneficii atractive. </p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 8 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Tech</span>
+      <h3>TECHNOLOGIE &amp; ARCHITECTURA</h3>
+      <p>Vogo este o platforma disponibila atat SaaS cat si On Prem. Este construită pe o arhitectură modulară, sigură și scalabilă.
+Bazată pe microservicii, API-uri REST și integrare nativă cu WooCommerce, sisteme de tip ERP, CRM si custom.
+Performanță enterprise, securitate avansată și compatibilitate cu cele mai moderne standarde.</p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 9 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Trust</span>
+      <h3>SECURITATE &amp; <br> CONFORMITATE</h3>
+      <p>Securitatea și conformitatea sunt fundamentale în ecosistemul Vogo.
+Fiecare modul este protejat prin JWT, loguri de audit și permisiuni granularizate.
+Platforma este complet GDPR și ISO-ready, găzduită pe infrastructură EU-compliant. SSL Encryption / HTTPS Secure , GDPR Compliant (EU), ISO 27001 Certified (Info Security), reCAPTCHA, PCI DSS.</p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 10 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Payments</span>
+      <h3>MODUL PLATI</h3>
+      <p>Modulul de plati VOGO® asigura plati rapide, sigure și complet integrate în platformă. Clienții pot plăti cu Visa, Mastercard, Apple Pay, Google Pay, PayPal sau Revolut Pay, prin procesatori precum Stripe, Netopia și Braintree. Sistemul este certificat Verified by Visa și Mastercard Identity Check, garantând conformitate europeană și protecție maximă la fiecare tranzacție — pentru o experiență de plată fără fricțiune</p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 11 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Logistics</span>
+      <h3>DELIVERY</h3>
+      <p>Curieri naționali si internationali, flotă proprie, tracking live, rute optimizate, SLA și notificări automate. Modulul Delivery oferă funcționalități complexe la costuri accesibile, similare platformelor Bolt, Glovo sau Uber. Include tracking live, management complet al transportatorilor și integrare cu soluții globale precum Shippo, ShipStation, Easyship, DHL, UPS și FedEx.
+Ideal pentru producători, furnizori, restaurante și servicii cu livrare directă.</p>
+      <a href="#">Explore more →</a>
+    </article>
+
+    <!-- 12 -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">Drive</span>
+      <h3>VOGO DRIVE</h3>
+      <p>Modulul Vogo Drive oferă management complet al transportatorilor — comenzi, hărți, statusuri live, performanță și rapoarte.
+Un avantaj unic: permite, în aceeași platformă, gestionarea integrată a transportului de persoane premium și a serviciilor de livrări premium.
+Totul într-un sistem unificat, sigur și optimizat pentru performanță. <b>Apeluri audio si video, hands-free, intre client, furnizor si transportator</b></p>
+      <a href="#">Explore more →</a>
+    </article>
+    
+    <!-- ARTICOL -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">PUSH</span>
+      <h3>NOTIFICARI OMNICANAL </h3>
+      <p>Modulul de notificări omnicanal permite comunicare instantă prin SMS, e-mail, WhatsApp și push notifications. Ideal pentru marketing automatizat, confirmări de comenzi și suport clienți. Integrare completă cu ecosistemul VOGO® pentru mesaje personalizate, livrate în timp real și cu rapoarte detaliate de performanță.</p>
+      <a href="#">Explore more →</a>
+    </article>
+    
+    <!-- ARTICOL -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">INTERFACE</span>
+      <h3>INTEGRARE</h3>
+      <p>Modulul Vogo Drive oferă management complet al transportatorilor — comenzi, hărți, statusuri live, performanță și rapoarte.
+Un avantaj unic: permite, în aceeași platformă, gestionarea integrată a transportului de persoane premium și a serviciilor de livrări premium.
+Totul într-un sistem unificat, sigur și optimizat pentru performanță. <b>Apeluri audio si video, hands-free, intre client, furnizor si transportator</b></p>
+      <a href="#">Explore more →</a>
+    </article>
+    
+    <!-- ARTICOL -->
+    <article class="vogo-card">
+      <span class="vogo-card__tag">SOCIAL MEDIA</span>
+      <h3>MODUL REGISTER</h3>
+      <p>Autentificarea în VOGO® este simplă și sigură, cu suport pentru Google, Apple, Facebook, e-mail și SMS OTP. Sistemul folosește token-uri JWT și respectă standardele internaționale de securitate și confidențialitate. Login-ul unificat permite acces rapid, fără parole complexe, menținând protecția completă a datelor utilizatorilor și compatibilitate totală cu ecosistemul digital al platformei.</p>
+      <a href="#">Explore more →</a>
+    </article>
+    
+    
+  </div>
+</section>

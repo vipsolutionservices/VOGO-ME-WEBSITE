@@ -1,0 +1,61 @@
+<section class="vogo-hero" style="
+  /* --------- Config culori (corporate dark) --------- */
+  --vogo-green: #0b5e3b;      /* verde principal */
+  --vogo-deep:  #010e0b;      /* aproape negru cu tentă verde */
+  --vogo-mid:   #063b29;      /* verde închis intermediar */
+  --white:      #ffffff;
+
+  /* --------- Background (overlay + radial) --------- */
+  background:
+    linear-gradient(0deg, rgba(0,0,0,.22), rgba(0,0,0,.22)),
+    radial-gradient(78% 128% at 50% 0%,
+      var(--vogo-mid) 0%,
+      var(--vogo-green) 44%,
+      var(--vogo-deep) 100%
+    );
+
+  padding: 96px 24px;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+">
+  <style>
+    .vogo-hero * { font-family: Inter, Poppins, Roboto, "Helvetica Neue", Arial, sans-serif; }
+
+    .vogo-hero h1{
+      margin:0 0 12px; font-weight:400;
+      font-size:clamp(40px,7.5vw,96px); line-height:1.08; letter-spacing:-.5px; color:var(--white);
+    }
+    .vogo-hero h2{
+      margin:0 0 32px; font-weight:400;
+      font-size:clamp(18px,2.2vw,28px); line-height:1.4; color:var(--white); opacity:.95;
+    }
+
+    .vogo-hero .btns{ display:inline-flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+
+    /* Buton verde implicit -> alb la hover (ambele butoane) */
+    .vogo-hero .btn{
+      display:inline-block; padding:14px 24px; border-radius:12px; text-decoration:none;
+      font-weight:600; font-size:16px; line-height:1;
+      background:var(--vogo-green); color:var(--white); border:2px solid var(--vogo-green);
+      box-shadow:0 6px 24px rgba(0,0,0,.22);
+      transition:transform .08s ease-out, background-color .18s ease, color .18s ease, border-color .18s ease;
+      will-change:transform;
+    }
+    .vogo-hero .btn:hover,
+    .vogo-hero .btn:focus-visible{
+      background:var(--white); color:var(--vogo-green); border-color:var(--white);
+    }
+    .vogo-hero .btn:active{ transform:translateY(1px); }
+  </style>
+
+  <h1>The European AI Digital Commerce Ecosystem</h1>
+  <h2>Cloud &amp; On-Prem — unified commerce for modern enterprises</h2>
+
+  <div class="btns">
+    <a class="btn" href="#contact"   aria-label="Contact Sales">Contact Sales</a>
+    <a class="btn" href="#platform"  aria-label="Explore the Platform">Explore the Platform</a>
+  </div>
+</section>
+

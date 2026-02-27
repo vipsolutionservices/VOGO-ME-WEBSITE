@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Contact VOGO — Enterprise & Partnerships</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/themes/light.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact VOGO for registration, partnerships, and commercial or technical discussions. Response in 24 hours." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+
+  <script>
+    window.initLocale = window.initLocale || function(){
+      const lang = (document.documentElement.lang || navigator.language || 'en').slice(0,2);
+      const dir  = document.documentElement.dir || (['ar','he','fa','ur'].includes(lang)?'rtl':'ltr');
+      return { lang, dir };
+    };
+    (function(){ const {lang, dir}=window.initLocale(); document.documentElement.lang=lang; document.documentElement.dir=dir; })();
+  </script>
+
+  <!-- INLINE DATASET -->
+  <script>
+    const MARKET_CITIES = {
+      "Albania":["Tirana","Durres","Vlore","Shkoder","Elbasan","Fier","Korce","Berat","Lushnje","Sarande"],
+      "Argentina":["Buenos Aires","Córdoba","Rosario","Mendoza","La Plata","San Miguel de Tucumán","Mar del Plata","Salta","Santa Fe","Neuquén"],
+      "Australia":["Sydney","Melbourne","Brisbane","Perth","Adelaide","Canberra","Gold Coast","Newcastle","Wollongong","Hobart"],
+      "Austria":["Vienna","Graz","Linz","Salzburg","Innsbruck","Klagenfurt","Wels","St. Pölten","Villach","Dornbirn"],
+      "Belarus":["Minsk","Gomel","Mogilev","Vitebsk","Hrodna","Brest","Baranavichy","Babruysk","Orsha","Mazyr"],
+      "Belgium":["Brussels","Antwerp","Ghent","Charleroi","Liège","Bruges","Leuven","Namur","Mons","Hasselt"],
+      "Bosnia and Herzegovina":["Sarajevo","Banja Luka","Mostar","Tuzla","Zenica","Bijeljina","Prijedor","Doboj","Brcko","Trebinje"],
+      "Brazil":["São Paulo","Rio de Janeiro","Brasília","Belo Horizonte","Curitiba","Porto Alegre","Recife","Fortaleza","Campinas","Salvador"],
+      "Bulgaria":["Sofia","Plovdiv","Varna","Burgas","Ruse","Stara Zagora","Pleven","Sliven","Dobrich","Shumen"],
+      "Canada":["Toronto","Montreal","Vancouver","Calgary","Ottawa","Edmonton","Quebec City","Hamilton","Kitchener–Waterloo","Winnipeg"],
+      "Chile":["Santiago","Valparaíso","Concepción","Antofagasta","Temuco","Rancagua","La Serena","Puerto Montt","Talca","Iquique"],
+      "China":["Beijing","Shanghai","Shenzhen","Guangzhou","Chengdu","Hangzhou","Wuhan","Nanjing","Tianjin","Chongqing"],
+      "Croatia":["Zagreb","Split","Rijeka","Osijek","Zadar","Pula","Slavonski Brod","Karlovac","Varazdin","Sibenik"],
+      "Cyprus":["Nicosia","Limassol","Larnaca","Paphos","Famagusta","Paralimni","Ayia Napa","Strovolos","Kato Polemidia","Germasogeia"],
+      "Czechia":["Prague","Brno","Ostrava","Pilsen","Olomouc","Liberec","Ústí nad Labem","Hradec Králové","Pardubice","Zlín"],
+      "Denmark":["Copenhagen","Aarhus","Odense","Aalborg","Esbjerg","Randers","Kolding","Vejle","Horsens","Roskilde"],
+      "Egypt":["Cairo","Alexandria","Giza","Port Said","Suez","Mansoura","Tanta","Ismailia","Asyut","Luxor"],
+      "Estonia":["Tallinn","Tartu","Narva","Pärnu","Kohtla-Järve","Viljandi","Rakvere","Maardu","Kuressaare","Valga"],
+      "Finland":["Helsinki","Espoo","Tampere","Vantaa","Oulu","Turku","Jyväskylä","Lahti","Kuopio","Pori"],
+      "France":["Paris","Lyon","Marseille","Toulouse","Lille","Bordeaux","Nice","Nantes","Strasbourg","Rennes"],
+      "Germany":["Berlin","Munich","Frankfurt","Hamburg","Cologne","Stuttgart","Düsseldorf","Leipzig","Dortmund","Essen"],
+      "Greece":["Athens","Thessaloniki","Patras","Heraklion","Larissa","Volos","Ioannina","Chania","Kavala","Rhodes"],
+      "Hong Kong":["Hong Kong"],
+      "Hungary":["Budapest","Debrecen","Szeged","Miskolc","Pécs","Győr","Nyíregyháza","Kecskemét","Székesfehérvár","Szombathely"],
+      "Iceland":["Reykjavik","Kopavogur","Hafnarfjordur","Akureyri","Reykjanesbær","Gardabaer","Mosfellsbaer","Akranes","Selfoss","Egilsstadir"],
+      "India":["Mumbai","Delhi","Bangalore","Hyderabad","Chennai","Pune","Kolkata","Ahmedabad","Jaipur","Surat"],
+      "Ireland":["Dublin","Cork","Limerick","Galway","Waterford","Drogheda","Dundalk","Swords","Bray","Kilkenny"],
+      "Israel":["Tel Aviv","Jerusalem","Haifa","Rishon LeZion","Petah Tikva","Netanya","Ashdod","Beer Sheva","Herzliya","Holon"],
+      "Italy":["Milan","Rome","Turin","Bologna","Florence","Naples","Genoa","Verona","Padua","Bari"],
+      "Japan":["Tokyo","Osaka","Nagoya","Yokohama","Fukuoka","Sapporo","Kobe","Hiroshima","Sendai","Kyoto"],
+      "Kenya":["Nairobi","Mombasa","Kisumu","Nakuru","Eldoret","Thika","Malindi","Nyeri","Machakos","Meru"],
+      "Kosovo":["Pristina","Prizren","Gjakova","Peja","Mitrovica","Ferizaj","Gjilan","Vushtrri","Suhareka","Podujeva"],
+      "Latvia":["Riga","Daugavpils","Liepaja","Jelgava","Jurmala","Ventspils","Rezekne","Valmiera","Ogre","Jekabpils"],
+      "Lithuania":["Vilnius","Kaunas","Klaipeda","Siauliai","Panevezys","Alytus","Marijampole","Mazeikiai","Jonava","Utena"],
+      "Luxembourg":["Luxembourg City","Esch-sur-Alzette","Differdange","Dudelange","Ettelbruck","Diekirch","Strassen","Bertrange","Bettembourg","Mamer"],
+      "Malaysia":["Kuala Lumpur","George Town","Johor Bahru","Shah Alam","Petaling Jaya","Kuching","Kota Kinabalu","Ipoh","Malacca City","Seremban"],
+      "Malta":["Valletta","Birkirkara","Sliema","St. Julian's","Qormi","Mosta","Zabbar","Zejtun","Hamrun","Paola"],
+      "Mexico":["Mexico City","Guadalajara","Monterrey","Puebla","Tijuana","León","Querétaro","Cancún","Mérida","Toluca"],
+      "Moldova":["Chisinau","Balti","Cahul","Orhei","Ungheni","Soroca","Comrat","Edinet","Hincesti","Causeni"],
+      "Montenegro":["Podgorica","Niksic","Herceg Novi","Pljevlja","Bar","Budva","Cetinje","Ulcinj","Tivat","Kotor"],
+      "Netherlands":["Amsterdam","Rotterdam","The Hague","Utrecht","Eindhoven","Tilburg","Groningen","Almere","Nijmegen","Breda"],
+      "New Zealand":["Auckland","Wellington","Christchurch","Hamilton","Tauranga","Dunedin","Palmerston North","Napier–Hastings","Nelson","New Plymouth"],
+      "Nigeria":["Lagos","Abuja","Kano","Ibadan","Port Harcourt","Benin City","Kaduna","Enugu","Abeokuta","Ilorin"],
+      "North Macedonia":["Skopje","Bitola","Kumanovo","Prilep","Tetovo","Ohrid","Veles","Gostivar","Stip","Strumica"],
+      "Norway":["Oslo","Bergen","Trondheim","Stavanger","Drammen","Fredrikstad","Sandnes","Kristiansand","Tromsø","Sarpsborg"],
+      "Poland":["Warsaw","Krakow","Wroclaw","Poznan","Gdansk","Szczecin","Lodz","Lublin","Katowice","Bydgoszcz"],
+      "Portugal":["Lisbon","Porto","Vila Nova de Gaia","Braga","Coimbra","Faro","Aveiro","Setúbal","Guimarães","Funchal"],
+      "Qatar":["Doha","Al Rayyan","Al Khor","Umm Salal","Al Wakrah","Dukhan","Mesaieed","Al Shamal","Madinat ash Shamal","Lusail"],
+      "Romania":["Bucharest","Cluj-Napoca","Timisoara","Iasi","Constanta","Brasov","Craiova","Sibiu","Oradea","Ploiesti"],
+      "Saudi Arabia":["Riyadh","Jeddah","Dammam","Khobar","Mecca","Medina","Jubail","Tabuk","Abha","Yanbu"],
+      "Serbia":["Belgrade","Novi Sad","Nis","Kragujevac","Subotica","Zrenjanin","Pancevo","Cacak","Kraljevo","Smederevo"],
+      "Singapore":["Singapore"],
+      "Slovakia":["Bratislava","Kosice","Zilina","Nitra","Trnava","Presov","Banska Bystrica","Martin","Trencin","Poprad"],
+      "Slovenia":["Ljubljana","Maribor","Celje","Kranj","Koper","Novo Mesto","Velenje","Ptuj","Murska Sobota","Nova Gorica"],
+      "South Africa":["Johannesburg","Cape Town","Durban","Pretoria","Port Elizabeth","Bloemfontein","East London","Polokwane","Pietermaritzburg","Nelspruit"],
+      "South Korea":["Seoul","Busan","Incheon","Daegu","Daejeon","Gwangju","Suwon","Ulsan","Changwon","Goyang"],
+      "Spain":["Madrid","Barcelona","Valencia","Seville","Zaragoza","Bilbao","Malaga","Alicante","Valladolid","Murcia"],
+      "Sweden":["Stockholm","Gothenburg","Malmö","Uppsala","Västerås","Örebro","Linköping","Helsingborg","Jönköping","Norrköping"],
+      "Switzerland":["Zurich","Geneva","Basel","Lausanne","Bern","Zug","Winterthur","Lugano","St. Gallen","Lucerne"],
+      "Turkey":["Istanbul","Ankara","Izmir","Bursa","Kocaeli","Antalya","Gaziantep","Konya","Adana","Mersin"],
+      "Ukraine":["Kyiv","Lviv","Kharkiv","Dnipro","Odesa","Zaporizhzhia","Vinnytsia","Ivano-Frankivsk","Ternopil","Chernihiv"],
+      "UAE":["Dubai","Abu Dhabi","Sharjah","Ajman","Ras Al Khaimah","Fujairah","Umm Al Quwain","Al Ain","Jebel Ali","Khor Fakkan"],
+      "UK":["London","Manchester","Birmingham","Leeds","Glasgow","Edinburgh","Bristol","Liverpool","Nottingham","Newcastle"],
+      "USA":["New York","Los Angeles","Chicago","Houston","Dallas–Fort Worth","San Francisco Bay Area","Seattle","Boston","Atlanta","Miami"]
+    };
+  </script>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/shoelace-autoloader.js"></script>
+
+  <style>
+
+.help{
+  font-size: 14px;                 /* mai mare */
+  line-height: 1.55;               /* mai lizibil */
+  color: #0f172a;                  /* text mai închis */
+  background: #ecfdf5;             /* verde foarte light, dar contrast bun */
+  border: 1px solid rgba(15,109,71,.18); /* border mai clar */
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+#requestHelp.help{
+  font-weight: 600;   /* semi-bold */
+}
+
+
+
+    :root{--bg:#f8fafc;--card:#fff;--ink:#0f172a;--muted:#64748b;--border:#e2e8f0;--vogo:#0f6d47;--vogo-soft:#e8f5ec;--shadow:0 8px 20px rgba(2,6,23,.06)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    .wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
+    .grid{display:grid;grid-template-columns:1fr;gap:20px}
+    @media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
+    .hero{display:grid;gap:16px;margin-bottom:24px}
+    h1{font-size:28px;margin:0}
+    p.lead{color:var(--muted);margin:0}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .badge{display:inline-block;background:var(--vogo-soft);color:var(--vogo);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:600;text-decoration:none}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+    label{display:block;font-weight:600;margin-bottom:8px}
+    select,input,textarea,.rte{width:100%;border:1px solid var(--border);border-radius:12px;padding:12px 14px;font:inherit;background:#fff;transition:border-color .15s ease}
+    select:focus,input:focus,textarea:focus,.rte:focus{border-color:var(--vogo);outline:2px solid rgba(15,109,71,.15)}
+
+    .row{display:grid;gap:14px}
+    .row-2{grid-template-columns:1fr}
+    @media(min-width:560px){.row-2{grid-template-columns:1fr 1fr}}
+    .btn{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:600;cursor:pointer}
+    .btn[disabled]{opacity:.6;cursor:not-allowed}
+    .btn-primary{background:var(--vogo);color:#fff}
+    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--ink)}
+    .note{font-size:12px;color:var(--muted)}
+    .error{color:#dc2626;font-size:12px;margin-top:6px}
+    .toast{display:none;margin-top:12px;padding:12px 14px;border-radius:10px;background:#d1fae5;border:2px solid #10b981;color:#065f46;font-weight:700;box-shadow:0 2px 10px rgba(2,6,23,.12)}
+    .toast::before{content:"✓ ";font-weight:900}
+    .rte{min-height:140px;border-radius:12px}
+    .rte[data-placeholder]:empty:before{content:attr(data-placeholder);color:#94a3b8}
+    .seo-h{position:absolute;left:-9999px}
+    .reps{display:grid;gap:10px}
+    .rep-item{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:#fff}
+    .rep-item a{color:#0f6d47;text-decoration:none;word-break:break-all}
+    .qr-captcha{margin-top:14px;border:1px dashed var(--border);border-radius:12px;padding:14px;background:#fff}
+    .qr-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+    .qr-wrap figure{width:180px}
+    .qr-wrap img{display:block;width:100%;aspect-ratio:1/1;height:auto;object-fit:contain;padding:6px;border:1px solid var(--border);border-radius:10px;background:#fff}
+    .cap-row{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
+    #captchaInput{flex:1 1 auto;min-width:0;width:100px}
+    .cap-q{flex:0 0 auto;white-space:nowrap;background:var(--vogo-soft);padding:6px 10px;border-radius:8px;border:1px solid var(--border);font-weight:600}
+    .cap-refresh{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);border-radius:10px;background:#fff!important;color:var(--ink);cursor:pointer;line-height:1;box-shadow:none!important;padding:0;user-select:none}
+    .cap-refresh:hover{background:#f8fafc}
+    .cap-refresh:focus-visible{outline:2px solid rgba(15,109,71,.25)}
+    /* Shoelace sizing to match inputs */
+    sl-select{--sl-input-height-medium:48px;--sl-input-border-radius-medium:12px;--sl-input-font-size-medium:15px}
+    sl-select::part(form-control){width:100%}
+    @media(max-width:420px){.cap-row{flex-wrap:wrap}}
+
+/* STEP 1.1 Inputs Email + Phone: same look as Request details */
+#contactForm input[type="email"],
+#contactForm input[type="tel"]{
+  height:48px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+  font:inherit;
+  color:var(--ink);
+  appearance:none;
+  -webkit-appearance:none;
+  outline:none;
+}
+#contactForm input[type="email"]:focus,
+#contactForm input[type="tel"]:focus{
+  border-color:var(--vogo);
+  outline:2px solid rgba(15,109,71,.15);
+}
+
+/* STEP 1.2 Request: same look as inputs */
+#contactForm select#requestType{
+  height:48px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+  font:inherit;
+  color:var(--ink);
+  line-height:1.4;
+  appearance:auto; /* păstrează săgeata nativă */
+}
+#contactForm select#requestType:focus{
+  border-color:var(--vogo);
+  outline:2px solid rgba(15,109,71,.15);
+}
+
+/* doar pentru dropdownul acesta */
+#requestType option {
+  padding-block: 6px;   /* spațiu vertical */
+  padding-inline: 10px; /* margini laterale */
+  line-height: 1.6;     /* înălțime rând mărită */
+}
+
+/* opțional: mărim puțin textul pentru lizibilitate */
+#requestType { font-size: 15px; }
+
+
+  </style>
+
+  
+</head>
+<body>
+  <h2 class="seo-h">Contact VOGO for registration, partnerships, and technical discussions</h2>
+
+  <div class="wrap">
+    <section class="hero">
+      <h1>Contact VOGO</h1>
+      <p class="lead">Connect for registration, partnerships, and commercial or technical discussions. Response in 24 hours.</p>
+      <div class="actions">
+        <!-- badge #meta xxx 
+        <a class="badge" href="?request=enterprise#request-field">Enterprise registration</a>
+        <a class="badge" href="?request=service#request-field">Service request</a>         
+        <a class="badge" href="?request=reseller#request-field">Become a VOGO Agent</a>
+        <a class="badge" href="?request=reseller#request-field">Registration</a>
+        <a class="badge" href="?request=presentation#request-field">Schedule a Call</a>
+        <a class="badge" href="?request=influencer#request-field">Accreditation as Influencer</a>
+        <a class="badge" href="?request=vendor_cert#request-field">Register as VOGO Premium Vendor</a>
+        -->
+        
+    <a class="badge" href="?request=store_owner#request-field">
+      Build My Mobile App
+    </a>        
+
+      </div>
+    </section>
+
+    <div class="grid" id="request-field">
+      <form id="contactForm" class="card" novalidate>
+
+        <!-- request field meta-->
+        <div  class="row">
+          <label for="requestType">Request</label>
+          <select  style="font-weight:700" id="requestType" name="requestType" required aria-describedby="requestHelp requestErr"></select>
+          <div id="requestHelp" class="help" role="note"></div>
+          <div id="requestErr" class="error" aria-live="polite"></div>
+        </div>
+
+        <div class="row row-2">
+          <div>
+            <label for="email">Email <span class="note">(required)</span></label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@company.com" required />
+            <div id="emailErr" class="error" aria-live="polite"></div>
+          </div>
+          <div>
+            <label for="phone">Phone / WhatsApp</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+40723313296" pattern="^[0-9+()\-.\s]{6,}$" />
+            <div id="phoneErr" class="error" aria-live="polite"></div>
+          </div>
+        </div>
+
+
+        <!-- country meta-->
+<div class="row row-2">
+  <div>
+    <label for="country">Country</label>
+    <sl-select id="country" placeholder="Select country"></sl-select>
+  </div>
+
+  <div>
+    <label for="city">City</label>
+    <sl-select id="city" placeholder="Select city" disabled></sl-select>
+  </div>
+ 
+  <div>
+    <!-- #meta request list -->
+    <label for="interest">Interest</label>
+    <sl-select id="interest" placeholder="Select interest">
+      <sl-option value="service">Service request</sl-option>
+      <sl-option value="client">Client on-boarding request</sl-option> 
+      <sl-option value="software-sales">Software - Sales</sl-option>      
+      <sl-option value="software-consultant">Software - Consultant</sl-option>            
+      <sl-option value="influencer">Influencer</sl-option>   
+      <sl-option value="products-services">Products or services</sl-option>          
+      <sl-option value="restaurant">Restaurants</sl-option>
+      <sl-option value="hotel">Hotels</sl-option>
+      <sl-option value="travel-agency">Travel agency</sl-option>
+      <sl-option value="transport">Transport</sl-option>
+      <sl-option value="food-delivery">Food delivery</sl-option>
+      <sl-option value="healthcare">Healthcare</sl-option>
+      <sl-option value="home-garden">Home and garden</sl-option>
+      <sl-option value="coaching">Coaching</sl-option>
+      <sl-option value="children-activities">Children's activities</sl-option>
+      <sl-option value="psychologist">Psychologist</sl-option>
+      <sl-option value="other">Other</sl-option>
+    </sl-select>
+<input type="hidden" name="interestOK" id="interestOK">    
+  </div>
+</div>
+
+
+        <div class="row" style="padding-top:20px">
+          <label for="details">Request details <span class="note">(min. 50 chars)</span></label>
+          <div id="details" class="rte" contenteditable="true" data-placeholder="Describe your use case, goals, constraints, and timeline..." aria-multiline="true" role="textbox"></div>
+          <div id="detailsErr" class="error" aria-live="polite"></div>
+        </div>
+
+        <input type="text" name="website" id="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;padding:0;margin:0;border:0" />
+
+<!-- #meta captcha field-->
+<div class="captcha" style="opacity:.9; filter:contrast(.95)">
+  <label for="captchaInput">Captcha</label>
+  <div class="cap-row">
+<span id="captchaQuestion" class="cap-q"
+  style="font-family:'Special Elite', monospace;
+         opacity: 0.2; filter:contrast(.5) blur(.29px);
+         letter-spacing:.3px; transform:skewX(-10deg) rotate(-0.6deg);"
+  aria-live="polite">0 + 0 = ?</span>
+
+    <input id="captchaInput" type="text" inputmode="numeric" autocomplete="off" placeholder="Answer" aria-describedby="captchaQuestion" />
+    <button id="captchaRefresh" type="button" aria-label="Refresh captcha" class="cap-refresh">↻</button>
+  </div>
+  <div id="captchaErr" class="error" aria-live="polite"></div>
+</div>
+
+
+<div class="actions" style="margin-top:10px; padding-left:100px">
+  <button id="submitBtn" type="submit" class="btn btn-primary">Submit request</button>
+  <a class="btn btn-ghost" id="waLink" href="https://wa.me/40742203383" target="_blank" rel="noopener">Contact us on WhatsApp</a>
+</div>
+
+
+        <div id="toast" class="toast" role="status" aria-live="polite">Request submitted. Check your inbox.</div>
+        <p class="note">By submitting, you agree to be contacted regarding your request. Our team responds within 24 hours.</p>
+
+        <div class="qr-captcha" aria-label="Quick contacts">
+          <div class="qr-wrap">
+            <figure><img src="https://vogo.me/wp-content/uploads/2025/10/wr-code-vogo-mic.png" alt="WhatsApp contact QR" loading="lazy" width="180" height="180" /></figure>
+            <figure><img src="https://vogo.me/wp-content/uploads/2025/10/visit-card-gp-scan-me-bottom-green.png" alt="VOGO website QR" loading="lazy" width="180" height="180" /></figure>
+          </div>
+        </div>
+      </form>
+
+      <aside class="card" aria-labelledby="regionalRepsTitle">
+        <!-- #meta regional agents representatives-->
+        <label style="font-size:20px;font-weight:700;display:block;margin:0 0 12px;color:#0f172a"for="Regional representatives">Regional representatives</label>         
+        <p class="note" style="margin-top:-6px;margin-bottom:12px">Speak with a local representative for faster coordination.</p>
+        <div class="reps" aria-label="Regional representatives list">
+          <div class="rep-item"><strong>United Kingdom</strong><a href="mailto:uk.office@vogo.family">uk.office@vogo.family</a></div>
+          <div class="rep-item"><strong>United States</strong><a href="mailto:usa.office@vogo.family">usa.office@vogo.family</a></div>
+          <div class="rep-item"><strong>Germany</strong><a href="mailto:de.office@vogo.family">de.office@vogo.family</a></div>
+          <div class="rep-item"><strong>Paris</strong><a href="mailto:fr.office@vogo.family">fr.office@vogo.family</a></div>
+          <div class="rep-item"><strong>Italy</strong><a href="mailto:it.office@vogo.family">it.office@vogo.family</a></div>
+          <div class="rep-item"><strong>Bucharest</strong><a href="mailto:ro.office@vogo.family">ro.office@vogo.family</a></div>
+          <div class="rep-item"><strong>Barcelona</strong><a href="mailto:es@vogo.family">es@vogo.family</a></div>          
+          <div class="rep-item"><strong>Dubai</strong><a href="mailto:uae@vogo.family">uae@vogo.family</a></div> 
+          <div class="rep-item"><strong>South Africa</strong><a href="mailto:za.office@vogo.family">za.office@vogo.family</a></div>         
+        </div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:18px 0" />
+        <label for="Global partnership">Global partnership</label>               
+        <p class="note" style="margin-top:-6px;margin-bottom:10px">Alliances, reseller programs, and strategic initiatives.</p>
+        <p><a class="badge" href="mailto:gp@vogo.family" style="padding:8px 12px">gp@vogo.family</a></p>
+        <hr style="border:none;border-top:1px solid var(--border);margin:18px 0" />
+        
+        <label for="Direct contacts">Direct contacts</label>           
+
+        <p class="reps">
+          <span><strong>Email:</strong> <a href="mailto:info@vogo.family">info@vogo.family</a></span>
+          <span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/107941562" target="_blank" rel="noopener">linkedin.com/vogo-company</a></span>
+          <span><strong>WhatsApp:</strong> <a href="https://wa.me/40742203383" target="_blank" rel="noopener">+40 742 203 383</a></span>
+        </p>
+        <div class="euipo-card" style="margin-top:20px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center">
+          <a href="https://euipo.europa.eu/eSearch/#details/trademarks/019103505" target="_blank" rel="noopener">
+            <img src="https://vogo.me/wp-content/uploads/2025/10/EUIPO-VOGO.png" alt="EUIPO - European Union Intellectual Property Office" loading="lazy" style="max-width:220px;height:auto;display:inline-block" />
+          </a>
+          <p class="note" style="margin-top:6px;text-align:center">Registered trademark — EUIPO / European Union Intellectual Property Office</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    let ctry, city;
+
+// Populate request types //requestmeta #meta xxx
+const REQUESTS = [
+
+{
+  value: "store_owner",
+  label: "Build My Mobile App",
+  info: "Describe your online store and what you want to achieve with a native mobile app. Please include whether you already have a WordPress/WooCommerce site, the main features you need, your expected timeline and budget range, and any existing integrations. This helps us propose the best mobile app setup for your business."
+}
+,
+{
+  value: "service",
+  label: "Service Request",
+  info: "Tell us your needs and we’ll bring the best solution for them. In Request details, include: type of service required (implementation, customization, integration, or support), business goals and current challenges, expected outcomes, timeline and budget range, and any specific systems or tools you already use. The more context you provide, the more precisely our team can tailor your solution."
+}
+,
+{
+  value: "enterprise",
+  label: "Client — Enterprise Request",
+  info: "Submit your enterprise onboarding or expansion request. Our enterprise team provides tailored implementation and licensing solutions for complex environments. In Request details, include: company domain and industry, subscription type requested, required initial setup (modules, integrations, hosting), main functional requirements, critical success factors, number of users or entities needing licenses, and required services (training, customization, ongoing support)."
+}
+,  
+  {
+    value: "technical_info",
+    label: "Request technical information",
+    info: "Discover the platform’s architecture, deployment options, and security standards. Learn how VOGO ensures reliability, scalability, and full data protection. In Request details, include: deployment model (Cloud/On-Prem), data residency, required integrations (ERP/CRM/POS), SSO/IdP, user counts & roles, SLAs, compliance needs."
+  },
+  {
+    value: "commercial_info",
+    label: "Request commercial information",
+    info: "Get tailored pricing, package comparisons, and onboarding guidance. Find the best plan to launch or scale your business with VOGO. In Request details, include: company size, main use cases, expected order/traffic volume, number of locations, budget range, decision timeline."
+  },
+  {
+    value: "presentation",
+    label: "Request a presentation",
+    info: "Book a personalized demo with our team. Explore how VOGO fits your operations and experience its capabilities live. In Request details, include: audience and goals, focus areas/modules of interest, preferred language/time zone, 2–3 time slots."
+  },
+  {
+    value: "reseller",
+    label: "Become a VOGO Agent",
+    info: "Join our partner network and expand your portfolio with VOGO solutions. Access exclusive discounts, marketing materials, and continuous support. In Request details, include: target markets and industries, current solutions portfolio, sales model, certifications, territory coverage, expected pipeline."
+  },
+  {
+    value: "consultant",
+    label: "Become a certified consultant",
+    info: "Get certified to implement and optimize VOGO for clients. Boost your credibility, gain new projects, and grow your consulting practice. In Request details, include: tech stack expertise, relevant certifications, 2–3 project examples, regions served, availability."
+  },
+  {
+    value: "influencer",
+    label: "Become an accredited influencer",
+    info: "Collaborate with VOGO to share insights, tutorials, or success stories. Earn recognition and benefits for promoting digital transformation. In Request details, include: audience size and demographics, primary channels, content formats, sample links, collaboration concept."
+  },
+  {
+    value: "ambassador",
+    label: "Become a VOGO ambassador",
+    info: "Represent VOGO in your community. Build connections, co-create content, and help inspire innovation across industries. In Request details, include: community reach, events/networks, proposed initiatives, KPIs you track, time commitment."
+  },
+  {
+    value: "vendor_cert",
+    label: "VOGO vendor certification",
+    info: "Apply to become a certified VOGO Premium Vendor. Gain visibility, verified credibility, and access to enterprise-level opportunities. In Request details, include: product/service category, key capabilities, compliance and quality standards, delivery regions, client references, SLAs."
+  }
+];
+
+
+
+//pozitionare pe request
+document.addEventListener('DOMContentLoaded', () => {
+  const sel  = document.getElementById('requestType');
+  const help = document.getElementById('requestHelp');
+
+  // populează
+  sel.innerHTML = REQUESTS.map(r =>
+    `<option value="${r.value}">${r.label}</option>`
+  ).join('');
+
+  // helper: setează info
+  function updateInfo(val) {
+    const item = REQUESTS.find(r => r.value === val);
+    help.textContent = item ? item.info : '';
+  }
+
+  // actualizează info la schimbare manuală
+  sel.addEventListener('change', () => updateInfo(sel.value));
+
+  // parametru URL
+  const q = new URLSearchParams(location.search).get('request');
+  const norm = q?.toLowerCase().replace(/\s+/g,'_').replace(/-/g,'_');
+  const hit = REQUESTS.find(r => r.value === norm || r.label.toLowerCase() === q?.toLowerCase());
+
+  if (hit) {
+    sel.value = hit.value;
+    updateInfo(hit.value);                // setează info și pentru link
+  } else {
+    sel.selectedIndex = -1;               // nicio selecție
+    help.textContent = '';                // info gol
+    sel.dispatchEvent(new Event('change')); // dacă ai logică onChange
+  }
+});
+
+
+
+    const reqSel=document.getElementById('requestType');
+    const reqHelp=document.getElementById('requestHelp');
+    const reqErr=document.getElementById('requestErr');
+    const ph=document.createElement('option'); ph.value=""; ph.textContent="Select a request type"; ph.disabled=true; ph.selected=true; reqSel.appendChild(ph);
+    REQUESTS.forEach(r=>{ const o=document.createElement('option'); o.value=r.value; o.textContent=r.label; o.dataset.info=r.info; reqSel.appendChild(o); });
+    function updateHelp(){ reqHelp.textContent=reqSel.selectedOptions[0]?.dataset.info||"" }
+    reqSel.addEventListener('change',()=>{ updateHelp(); reqErr.textContent=''; reqSel.removeAttribute('aria-invalid'); });
+    updateHelp();
+
+    // Shoelace selects -> populate from inline MARKET_CITIES
+    (async()=>{
+      await customElements.whenDefined('sl-select');
+      ctry=document.querySelector('sl-select#country');
+      city=document.querySelector('sl-select#city');
+
+      function populateCountries(){
+        const countries=Object.keys(MARKET_CITIES||{}).sort((a,b)=>a.localeCompare(b));
+        ctry.innerHTML = countries.map(c=>`<sl-option value="${c}">${c}</sl-option>`).join('');
+        ctry.disabled = countries.length===0;
+        city.disabled = true; city.innerHTML=''; city.value='';
+      }
+      function populateCities(){
+        const list=MARKET_CITIES[ctry.value]||[];
+        city.innerHTML = list.map(x=>`<sl-option value="${x}">${x}</sl-option>`).join('');
+        city.disabled = list.length===0; city.value='';
+      }
+      ctry.addEventListener('sl-change',populateCities);
+      populateCountries();
+
+
+
+      window._vogoResetCountryCity=function(){ ctry.value=''; city.value=''; city.disabled=true; city.innerHTML=''; };
+    })();
+
+// --- Interest sync -> hidden field
+const interestEl = document.getElementById('interest');
+const interestHidden = document.getElementById('interestOK');
+function syncInterest(){
+  interestHidden.value =
+    interestEl?.value || interestEl?.querySelector('sl-option[checked]')?.value || '';
+}
+interestEl.addEventListener('sl-change', syncInterest);
+syncInterest();
+
+
+    // WhatsApp deeplink
+    const waLink=document.getElementById('waLink');
+    function buildWaText(){ const req=reqSel.selectedOptions[0]?.textContent||'General inquiry'; const email=document.getElementById('email').value||''; return 'https://wa.me/40742203383?text='+encodeURIComponent(`Hello VOGO, I'd like to discuss: ${req}. My email: ${email}`) }
+    ['click','focus'].forEach(ev=>waLink.addEventListener(ev,()=>{ waLink.href=buildWaText(); }));
+
+    // RTE helpers
+    const detailsEl=document.getElementById('details');
+    function getDetailsHTML(){ return detailsEl.innerHTML.trim() }
+    function getDetailsPlain(){ const t=document.createElement('div'); t.innerHTML=getDetailsHTML(); return (t.textContent||'').replace(/\s+/g,' ').trim() }
+
+    // Captcha
+    let capAns=0; const capQ=document.getElementById('captchaQuestion'); const capIn=document.getElementById('captchaInput'); const capErr=document.getElementById('captchaErr'); const capRef=document.getElementById('captchaRefresh');
+    function newCaptcha(){ const a=2+Math.floor(Math.random()*8), b=1+Math.floor(Math.random()*9); capAns=a+b; capQ.textContent=`${a} + ${b} = ?`; capIn.value=''; capErr.textContent=''; }
+    capRef.addEventListener('click',newCaptcha); newCaptcha();
+
+    // Validation
+    const emailErr=document.getElementById('emailErr'); const phoneErr=document.getElementById('phoneErr'); const detailsErr=document.getElementById('detailsErr');
+    function setInvalid(el,box,msg){ if(msg){ box.textContent=msg; el.setAttribute('aria-invalid','true'); } else{ box.textContent=''; el.removeAttribute('aria-invalid'); } }
+    function validate(){
+      let ok=true; reqErr.textContent=''; emailErr.textContent=''; phoneErr.textContent=''; detailsErr.textContent=''; capErr.textContent='';
+      if(document.getElementById('website').value.trim()){ return false; }
+      if(!reqSel.value){ reqErr.textContent='Please select a request type.'; reqSel.setAttribute('aria-invalid','true'); ok=false } else reqSel.removeAttribute('aria-invalid');
+      const email=document.getElementById('email').value.trim(); const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!re.test(email)){ setInvalid(document.getElementById('email'),emailErr,'Valid email required.'); ok=false } else setInvalid(document.getElementById('email'),emailErr,'');
+      const phone=document.getElementById('phone').value.replace(/\s+/g,' ').trim();
+      if(phone && !/^[0-9+()\-.\s]{6,}$/.test(phone)){ setInvalid(document.getElementById('phone'),phoneErr,'Invalid phone format.'); ok=false } else setInvalid(document.getElementById('phone'),phoneErr,'');
+      const plain=getDetailsPlain(); if(plain.length<50){ detailsErr.textContent=`Please provide at least 50 characters. Current: ${plain.length}.`; detailsEl.setAttribute('aria-invalid','true'); ok=false } else{ detailsErr.textContent=''; detailsEl.removeAttribute('aria-invalid'); }
+      if(String(capIn.value).trim()!==String(capAns)){ capErr.textContent='Captcha incorrect.'; ok=false }
+      return ok;
+    }
+
+    // Submit
+    const form=document.getElementById('contactForm'); const toast=document.getElementById('toast'); const submitBtn=document.getElementById('submitBtn');
+    form.addEventListener('submit',async e=>{
+      e.preventDefault(); if(!validate()) return;
+      submitBtn.disabled=true;
+      const ajaxUrl=(window.VOGO_CONTACT&&VOGO_CONTACT.ajax_url)||'/wp-admin/admin-ajax.php';
+      const nonce=(window.VOGO_CONTACT&&VOGO_CONTACT.nonce)||'';
+      const payload={
+        action:'vogo_contact_submit',
+        _ajax_nonce:nonce,
+        requestValue:reqSel.value,
+        requestLabel:reqSel.selectedOptions[0].textContent,
+        email:document.getElementById('email').value.trim(),
+        phone:document.getElementById('phone').value.trim(),
+        country:ctry?.value||'not selected',
+        city:city?.value||'not selected',
+        interest: document.getElementById('interestOK').value,                 // ← aici        
+        details_html:getDetailsHTML(),
+        details_text:getDetailsPlain(),
+        ts:Date.now()
+      };
+      try{
+        const res=await fetch(ajaxUrl,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(payload).toString(),credentials:'same-origin',cache:'no-store'});
+        let json=null; try{ json=await res.json(); }catch(_){}
+        if(json&&json.success){
+          toast.style.display='block';
+          form.reset(); detailsEl.innerHTML=''; window._vogoResetCountryCity?.(); newCaptcha();
+          reqSel.selectedIndex=0; updateHelp();
+          toast.scrollIntoView({behavior:'smooth',block:'center'});
+        }else{
+          alert((json&&(json.error||json.data||'Submission failed. Please try again.'))||'Submission failed. Please try again.'); newCaptcha();
+        }
+      }catch(_){ alert('Network error. Please try again.'); newCaptcha(); }
+      finally{ submitBtn.disabled=false; }
+    });
+  </script>
+</body>
+</html>

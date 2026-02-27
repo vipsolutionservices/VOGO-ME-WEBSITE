@@ -1,0 +1,264 @@
+<!-- se incarca in wp-content > uploads > vogo-header.html-->
+<!-- ============================== CSS ============================== -->
+<style>
+:root{--vogo-green:#0F5132;--white:#fff;--h-desktop:72px;--h-scrolled:60px}
+#vogo-sticky{position:fixed;inset:0 0 auto 0;z-index:2147483647;height:var(--h-desktop);background:#0F5132;color:#fff;transition:height .18s ease,box-shadow .18s ease;border-bottom:1px solid transparent;overflow:hidden}
+#vogo-sticky-spacer{height:var(--h-desktop)}
+#vogo-sticky .vs-wrap{width:100%;box-sizing:border-box;padding:0 20px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;height:100%}
+.vs-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:800}
+.vs-logo img{height:28px;width:auto;filter:brightness(0) invert(1) saturate(0);opacity:.92}
+.vs-logo span{font-size:16px;letter-spacing:.2px}
+.vs-nav{display:flex;gap:16px}
+.vs-nav a{color:#fff;text-decoration:none;font-weight:600;font-size:13.5px;padding:8px 10px;border-radius:5px;border:1px solid transparent}
+.vs-nav a:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.18)}
+.vs-actions{display:flex;align-items:center;gap:10px}
+.vs-btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13.5px;border-radius:5px;padding:8px 12px;border:1px solid #fff;background:var(--vogo-green);color:#fff}
+.vs-btn:hover{background:#0E4B2E}
+.vs-burger{display:none;background:transparent;border:0;padding:6px}
+.vs-burger span{display:block;width:24px;height:2px;background:#fff;margin:5px 0}
+#vsDrawer{position:fixed;inset:auto 0 0 0;background:#0F5D3C;color:#fff;transform:translateY(100%);transition:transform .18s ease;z-index:9998;border-top:1px solid rgba(255,255,255,.15)}
+#vsDrawer[aria-hidden="false"]{transform:translateY(0)}
+.vs-drawer-nav{max-width:1220px;margin:0 auto;padding:10px 16px 14px}
+.vs-drawer-nav a{display:block;padding:10px 0;color:#fff;text-decoration:none;font-weight:600;border-radius:5px}
+.vs-drawer-actions{display:flex;gap:8px;padding-top:8px}
+.vs-drawer-actions .vs-btn{flex:1;text-align:center}
+.is-scrolled #vogo-sticky{height:var(--h-scrolled);box-shadow:0 6px 20px rgba(0,0,0,.18);border-bottom-color:rgba(0,0,0,.06)}
+.is-scrolled #vogo-sticky-spacer{height:var(--h-scrolled)}
+@media (max-width:991px){.vs-nav{display:none}.vs-actions{margin-left:auto;gap:8px}.vs-btn{display:none}.vs-actions .vs-btn--ghost[href="/partners-login"]{display:inline-flex;padding:6px 10px;font-size:12.5px;line-height:1;order:1}.vs-burger{display:inline-block;order:2;margin-left:2px}}
+.locale-switch{position:relative;display:inline-block}
+.locale-switch select{appearance:none;height:30px;line-height:30px;padding:0 28px 0 10px;font-size:12px;font-weight:600;border:1px solid #ffffffcc;border-radius:6px;background:#0f5132;color:#fff;max-width:132px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.locale-switch::after{content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:10px;height:10px;background:linear-gradient(to bottom,transparent 50%,#fff 50%) no-repeat center/100% 50%,linear-gradient(to top,transparent 50%,#fff 50%) no-repeat center/100% 50%;clip-path:polygon(0 35%,50% 85%,100% 35%,100% 45%,50% 95%,0 45%);opacity:.9;pointer-events:none}
+@media (max-width:991px){.locale-switch select{height:28px;line-height:28px;font-size:11.5px;padding:0 24px 0 8px;max-width:118px}}
+.vs-nav .current-menu-item>a,.vs-nav .current_page_item>a{border:0;color:inherit;background:transparent}
+.vs-nav a.active{border-bottom:2px solid currentColor}
+a[aria-current="page"]{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22)}
+#overview,#packages{scroll-margin-top:88px}
+html,body{overflow-x:hidden}
+.vs-btn--ghost{background:#fff!important;color:var(--vogo-green)!important;border:1px solid var(--vogo-green)!important;border-radius:5px!important}
+#vogo-sticky{overflow:visible}
+@media (min-width:992px){.vs-nav{justify-content:center!important;padding-left:0!important}}
+.vs-nav a[aria-current],.vs-drawer-nav a[aria-current]{background:transparent;border-color:transparent}
+.vs-nav a.active,.vs-drawer-nav a.active{border:0}
+.vs-nav a:hover,.vs-drawer-nav a:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.18)}
+</style>
+
+<!-- ============================== JS ============================== -->
+<script>
+(function(){
+  /* -------- Helpers -------- */
+  function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
+  function once(flagEl,flag){ if(flagEl.dataset[flag]==='1') return false; flagEl.dataset[flag]='1'; return true; }
+
+  /* -------- Sticky + Drawer -------- */
+  function initSticky(){
+    var root=document.documentElement,
+        sp=document.getElementById('vogo-sticky-spacer'),
+        st=document.getElementById('vogo-sticky'),
+        dr=document.getElementById('vsDrawer'),
+        bg=document.getElementById('vsBurger');
+    if(!st) return;
+    if(!once(st,'stickyInit')) return;
+
+    function sc(){var y=window.pageYOffset||document.documentElement.scrollTop||0; y>6?root.classList.add('is-scrolled'):root.classList.remove('is-scrolled')}
+    function sync(){if(sp&&st) sp.style.height=(st.offsetHeight||0)+'px'}
+    function close(){if(!dr)return; dr.setAttribute('aria-hidden','true'); if(bg) bg.setAttribute('aria-expanded','false')}
+    function toggle(){if(!dr)return; var o=dr.getAttribute('aria-hidden')==='false'; o?close():(dr.setAttribute('aria-hidden','false'),bg&&bg.setAttribute('aria-expanded','true'))}
+
+    sc(); sync();
+    addEventListener('scroll',sc,{passive:true});
+    addEventListener('resize',sync);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+    bg&&bg.addEventListener('click',toggle);
+    dr&&dr.addEventListener('click',function(e){if(e.target&&e.target.tagName==='A')close()});
+  }
+
+  /* -------- Active by path -------- */
+  function initActive(){
+    var nav=document.querySelector('.vs-nav'); if(!nav) return;
+    if(!once(nav,'activeInit')) return;
+
+    var path=(location.pathname.replace(/\/+$/,'')||'/').toLowerCase();
+    var links=[...document.querySelectorAll('.vs-nav a,.vs-drawer-nav a')];
+    links.forEach(a=>a.removeAttribute('aria-current'));
+    var best=links.find(a=>{
+      var href=(a.getAttribute('href')||'').split('#')[0].replace(/\/+$/,'').toLowerCase()||'/';
+      return href==='/'?path==='/':(path===href||path.indexOf(href+'/')===0);
+    });
+    if(best) best.setAttribute('aria-current','page');
+  }
+
+  /* -------- Menu translations (EN, FR, CH, ES, GE, IT, RO, TR) -------- */
+  function initMenuI18n(){
+    var rootEl=document.getElementById('vogo-sticky'); if(!rootEl) return;
+    if(!once(rootEl,'i18nInit')) return;
+
+    const SUP=['en','fr','ch','es','ge','it','ro','tr'];
+    const ITEMS=['home','overview','packages','partners','tech'];
+    const TEXTS={
+      en:{home:'HOME',overview:'PLANS AND PRICING',packages:'SERVICES',partners:'PARTNER NETWORK',tech:'CONTACT-REQUEST'},
+      fr:{home:'ACCUEIL',overview:'OFFRES & TARIFS',packages:'SERVICES',partners:'RÉSEAU DE PARTENAIRES',tech:'CONTACT-DEMANDE'},
+      es:{home:'INICIO',overview:'PLANES Y PRECIOS',packages:'SERVICIOS',partners:'RED DE SOCIOS',tech:'CONTACTO-SOLICITUD'},
+      ge:{home:'STARTSEITE',overview:'PLÄNE UND PREISE',packages:'DIENSTE',partners:'PARTNERNETZWERK',tech:'KONTAKT-ANFRAGE'},
+      it:{home:'HOME',overview:'PIANI E PREZZI',packages:'SERVIZI',partners:'RETE PARTNER',tech:'CONTATTO-RICHIESTA'},
+      ro:{home:'ACASĂ',overview:'PLANURI ȘI PREȚURI',packages:'SERVICII',partners:'REȚEA PARTENERI',tech:'CONTACT-SOLICITARE'},
+      tr:{home:'ANA SAYFA',overview:'PLANLAR VE FİYATLANDIRMA',packages:'HİZMETLER',partners:'İŞ ORTAĞI AĞI',tech:'İLETİŞİM-TALEP'}
+    };
+    const PATHS={home:'/',overview:'/ecommerce-mobile-app-white-label',packages:'/services',partners:'/partner-network',tech:'/ecomm-contact-request'};
+    function getLoc(){const seg=(location.pathname.split('/')[1]||'').toLowerCase(); return SUP.includes(seg)?seg:'en'}
+    function href(loc,key){const p=PATHS[key]||'/'; if(p==='/') return loc==='en'?'/':`/${loc}/`; return loc==='en'?p:`/${loc}${p}`}
+    const loc=getLoc(),T=TEXTS[loc]||TEXTS.en;
+
+    ITEMS.forEach(k=>{
+      const a=document.querySelector(`.vs-nav a[data-nav="${k}"]`);
+      if(a){a.textContent=T[k]; a.setAttribute('href',href(loc,k));}
+    });
+    ITEMS.forEach(k=>{
+      const a=document.querySelector(`.vs-drawer-nav a[data-nav="${k}"]`);
+      if(a){a.textContent=T[k]; a.setAttribute('href',href(loc,k));}
+    });
+  }
+
+(function(){
+  const SELECTOR = '#vogo-header .locale-switch select, .locale-switch select';
+
+  const MAP = {
+    'Country':'',
+    'United States':'en','United Kingdom':'en','Ireland':'en','India':'en','Singapore - English':'en',
+    'South Africa - English':'en','Malaysia - English':'en','Philippines - English':'en','Taiwan - English':'en',
+    'Canada - English':'en','Canada - français':'fr','France':'fr','Belgium':'fr',
+    'Deutschland':'ge','Austria':'ge',
+    'Romania':'ro','Italia':'it',
+    'España':'es','México':'es','Brasil':'es',
+    'Turkey':'tr',
+    /* rest -> en */
+    'Portugal':'en','Nederland':'en','Poland':'en','Japan':'en','Australia':'en','Denmark':'en',
+    'Estonia':'en','Finland':'en','Greece':'en','Hungary':'en','Latvia':'en','Lithuania':'en',
+    'Luxembourg':'en','Malta':'en','Czech Republic':'en','Slovakia':'en','Slovenia':'en',
+    'Sweden':'en','Croatia':'en','Cyprus':'en','Bulgaria':'en','Taiwan':'en'
+  };
+
+  function applyMap(sel){
+    Array.from(sel.options).forEach(function(o){
+      var t = (o.text || '').trim();
+      var v = (t in MAP) ? MAP[t] : 'en';
+      o.value = v;
+      o.setAttribute('value', v);
+    });
+  }
+
+  function handleSelect(e){
+    var sel = e.currentTarget;
+    var loc = sel.value;
+    if(!loc) return;
+    var url = (loc === 'en') ? '/' : '/' + loc + '/';
+    window.location.assign(url);
+  }
+
+  function init(){
+    document.querySelectorAll(SELECTOR).forEach(function(sel){
+      if(sel.dataset.localeBound === '1') return;
+      sel.dataset.localeBound = '1';
+      applyMap(sel);
+      sel.addEventListener('change', handleSelect);
+      sel.addEventListener('input', handleSelect);
+    });
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+  document.addEventListener('vogo:header-ready', init);
+})();
+
+  /* -------- Bootstrap order -------- */
+  function bootAll(){ initSticky(); initActive(); initMenuI18n(); initLocale(); }
+
+  // rulează acum sau la DOMContentLoaded
+  onReady(bootAll);
+  // rulează și la evenimentul custom din loader
+  document.addEventListener('vogo:header-ready', bootAll);
+})();
+</script>
+
+<!-- ============================== HTML ============================== -->
+<div id="vogo-sticky-spacer"></div>
+<div id="vogo-sticky" role="navigation" aria-label="Main">
+  <div class="vs-wrap">
+    <a class="vs-logo" href="/" aria-label="VOGO Home">
+      <img src="https://vogo.me/wp-content/uploads/2025/10/cropped-vogo-doar-v-verde.png" alt="VOGO logo"><span>VOGO®</span>
+    </a>
+
+    <nav class="vs-nav" aria-label="Primary">
+      <a href="/" data-nav="home">HOME</a>
+      <a href="/ecommerce-mobile-app-white-label" data-nav="overview">PLANS AND PRICING</a>
+      <a href="/ecommerce-services" data-nav="ecommerce-services">SERVICES</a>
+      <a href="/ecommerce-partner-network" data-nav="partners">PARTNER NETWORK</a>
+      <a href="/ecomm-contact-request" data-nav="tech">CONTACT-REQUEST</a>
+    </nav>
+
+    <div class="vs-actions">
+      <label class="locale-switch">
+        <select aria-label="Select region">
+          <option>Country</option>
+          <option>United States</option>
+          <option>Canada - English</option>
+          <option>Canada - français</option>
+          <option>France</option>
+          <option>Australia</option>
+          <option>Brasil</option>
+          <option>Nederland</option>
+          <option>Deutschland</option>
+          <option>United Kingdom</option>
+          <option>España</option>
+          <option>Austria</option>
+          <option>Belgium</option>
+          <option>Bulgaria</option>
+          <option>Croatia</option>
+          <option>Cyprus</option>
+          <option>Czech Republic</option>
+          <option>Denmark</option>
+          <option>Estonia</option>
+          <option>Finland</option>
+          <option>Greece</option>
+          <option>Hungary</option>
+          <option>Ireland</option>
+          <option>Latvia</option>
+          <option>Lithuania</option>
+          <option>Luxembourg</option>
+          <option>Malta</option>
+          <option>Poland</option>
+          <option>Portugal</option>
+          <option>Romania</option>
+          <option>Slovakia</option>
+          <option>Slovenia</option>
+          <option>Sweden</option>
+          <option>Turkey</option>
+          <option>India</option>
+          <option>Italia</option>
+          <option>México</option>
+          <option>Malaysia - English</option>
+          <option>South Africa - English</option>
+          <option>Philippines - English</option>
+          <option>Singapore - English</option>
+          <option>Taiwan - English</option>
+        </select>
+      </label>
+
+      <a class="vs-btn vs-btn--ghost" href="/partners-login" aria-label="Partner Login">PARTNER LOGIN</a>
+      <button class="vs-burger" id="vsBurger" aria-label="Open menu" aria-expanded="false" aria-controls="vsDrawer"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</div>
+
+<div id="vsDrawer" aria-hidden="true">
+  <nav class="vs-drawer-nav" aria-label="Mobile">
+    <a href="/" data-nav="home">HOME</a>
+    <a href="/ecommerce-mobile-app-white-label" data-nav="overview">PLANS AND PRICING</a>
+    <a href="/ecommerce-services" data-nav="ecommerce-services">SERVICES</a>
+    <a href="/partner-network" data-nav="partners">PARTNER NETWORK</a>
+    <a href="/ecomm-contact-request" data-nav="tech">CONTACT-REQUEST</a>
+    <div class="vs-drawer-actions">
+      <a class="vs-btn vs-btn--solid" href="/request">REQUEST</a>
+      <a class="vs-btn vs-btn--ghost" href="/partners-login">PARTNER LOGIN</a>
+    </div>
+  </nav>
+</div>
