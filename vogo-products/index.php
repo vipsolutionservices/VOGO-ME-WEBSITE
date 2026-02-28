@@ -1,46 +1,10 @@
-<!DOCTYPE html>
-<!--
-  File role: SEO-optimized Romanian landing page for VOGO Enterprise.
-  Main goal: present portfolio cards with full summaries and scroll-to detailed sections.
--->
-<html lang="ro">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise</title>
-  <meta name="description" content="VOGO Enterprise România oferă soluții AI pentru suport clienți, aplicații mobile, migrare și integrare enterprise. Descoperă portofoliul VOGO și cere un demo personalizat." />
-  <meta name="keywords" content="VOGO Enterprise, soluții AI România, aplicații mobile business, integrare enterprise, migrare aplicații, suport clienți AI" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:locale" content="ro_RO" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise" />
-  <meta property="og:description" content="Portofoliu VOGO cu soluții AI, servicii enterprise și aplicații mobile scalabile pentru companii din România." />
-  <meta property="og:site_name" content="VOGO" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+<?php include __DIR__ . '/../products-header.php'; ?>
+
   <!--
     File role: This is the main VOGO landing page in Romanian.
     It presents compact product/service cards and expands details on click,
     plus trust, plans, FAQ, enterprise, and CTA sections.
   -->
-
-  <!-- Main top navigation inspired by the provided layout, adapted to VOGO green palette -->
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <div class="logo">VOGO</div>
-      <nav class="main-nav">
-        <a href="#overview">Produse</a>
-        <a href="#services">Servicii</a>
-        <a href="#products">Products</a>
-        <a href="#plans">Prețuri</a>
-      </nav>
-      <a class="btn btn-primary" href="#contact">Solicită demo</a>
-    </div>
-  </header>
 
   <main>
     <!-- Hero section: concise value proposition with visual trust cue -->
@@ -212,24 +176,4 @@
     </section>
   </main>
 
-  <!-- Footer: concise informational footer in the same style language -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="logo">VOGO</div>
-        <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
-      </div>
-      <div>
-        <h4>Companie</h4>
-        <ul><li>Despre noi</li><li>Contact</li><li>Cariere</li></ul>
-      </div>
-      <div id="services">
-        <h4>Servicii</h4>
-        <ul><li>Build</li><li>Migrate</li><li>Integrate</li></ul>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<?php include __DIR__ . '/../products-footer.php'; ?>
