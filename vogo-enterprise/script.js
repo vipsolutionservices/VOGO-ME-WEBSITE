@@ -1,78 +1,116 @@
 /**
- * File role: Client-side interactions for VOGO landing page.
+ * File role: Portfolio and FAQ interactions for the VOGO Enterprise Romanian page.
  * Responsibilities:
- * 1) Render clickable product/service cards.
- * 2) Show details in a dedicated panel when a card is clicked.
- * 3) Render FAQ accordion with progressive disclosure behavior.
+ * 1) Render portfolio cards with fully visible summaries.
+ * 2) Render detailed portfolio sections stacked vertically under cards.
+ * 3) Scroll smoothly to the related detailed section when a card is clicked.
+ * 4) Render FAQ accordion with single-item expansion.
  */
 
-// Data source for the compact cards and expanded details panel.
+/**
+ * Portfolio data source used in both the summary cards and the detailed sections.
+ * Each item includes an icon and a category chip for stronger visual scanning.
+ */
 const offers = [
   {
-    title: '1. VOGO AI Customer Support Plugin',
+    title: 'VOGO AI Customer Support Plugin',
+    chip: 'SUPPORT',
+    icon: '🤖',
+    summary:
+      'Suport clienți multi-canal cu AI conversațional pentru voice, text și chat, plus automatizări inteligente pentru operațiuni rapide.',
     details: [
-      'Suport clienți multi-canal: voice, text, chat și automatizări AI.',
-      'Răspunsuri contextuale, escaladare către operator și log-uri utile pentru echipă.',
-      'Potrivit pentru ecommerce, servicii, SaaS și call-center modern.'
+      'VOGO AI Customer Support Plugin este proiectat pentru companiile care vor să răspundă mai rapid, mai corect și mai personalizat fiecărui client, pe toate canalele digitale relevante.',
+      'Soluția combină chat, voice și text într-un flux unificat, oferă răspunsuri contextuale, poate escalada instant către operator uman și păstrează log-uri structurate pentru audit, training și optimizare continuă.',
+      'Este potrivită pentru ecommerce, servicii, SaaS, centre de suport și organizații care vor să reducă timpul de răspuns, să crească satisfacția clienților și să mențină standarde profesionale de calitate.'
     ]
   },
   {
-    title: '2. VOGO Get My Mobile Applications Plugin',
+    title: 'VOGO Get My Mobile Applications Plugin',
+    chip: 'MOBILE',
+    icon: '📱',
+    summary:
+      'Platformă de aplicații mobile cu securitate JWT, autentificare socială, multi-language și publicare asistată în ecosistemele Apple și Google.',
     details: [
-      'VOGO Essentials: JWT secure, multi-language, comunicare în aplicație, login Google/Gmail/Apple.',
-      'Publicare aplicații pe Apple App Store și Google Play - Essentials Edition.',
-      'VOGO Enterprise Project: push notifications și Agora calls în pachete separate.',
-      'Curse drive: comenzi inter-city, aeroport, intra-city + opțiuni viitoare competitive.'
+      'VOGO Get My Mobile Applications Plugin accelerează lansarea de aplicații mobile performante printr-un set complet de funcții pregătite pentru business: securitate JWT, autentificare Google/Gmail/Apple, comunicare în aplicație și arhitectură multi-language.',
+      'Pentru dezvoltare graduală, include opțiuni de publicare în Apple App Store și Google Play în ediția Essentials, iar pentru proiecte extinse se pot activa pachete separate precum push notifications și Agora calls.',
+      'Componenta de mobilitate poate fi adaptată și pentru scenarii de tip drive, cu comenzi inter-city, aeroport și intra-city, susținând o experiență modernă pentru utilizatori și echipe operaționale.'
     ]
   },
   {
-    title: '3. VOGO Services: Build • Migrate • Integrate',
+    title: 'VOGO Services: Build • Migrate • Integrate',
+    chip: 'SERVICES',
+    icon: '🛠️',
+    summary:
+      'Servicii enterprise cap-coadă pentru dezvoltare de produs nou, migrare sigură și integrare avansată de module AI în aplicații existente.',
     details: [
-      'Build: dezvoltare aplicație nouă de la zero.',
-      'Migrate: migrare profesională pentru aplicația actuală.',
-      'Integrate: integrare funcții AI/plugin-uri în aplicația existentă.'
+      'Prin serviciul Build, VOGO dezvoltă aplicații noi de la zero, cu arhitectură scalabilă, fluxuri clare și focus pe performanță, securitate și experiență de utilizare.',
+      'Prin serviciul Migrate, VOGO execută migrarea controlată a aplicațiilor existente, cu analiză inițială, plan tehnic etapizat și reducerea riscurilor operaționale în tranziție.',
+      'Prin serviciul Integrate, VOGO conectează funcții AI, plugin-uri și sisteme externe în infrastructura curentă, pentru creșterea eficienței fără întreruperi majore în business.'
     ]
   },
   {
-    title: '4. VOGO Bricolage M Series',
+    title: 'VOGO Bricolage M Series',
+    chip: 'RETAIL',
+    icon: '🏬',
+    summary:
+      'Soluție AI specializată pentru magazine de bricolaj, cu asistent conversațional, ghidare în magazin și recomandări tehnice pentru produse.',
     details: [
-      'Plugin AI pre-antrenat pentru magazine de bricolaj.',
-      'Discuție cu robot online și asistență vocală/scrisă în magazin.',
-      'Harta magazinului, localizare produse pe raft, recomandări tehnice și ghidare către locator.',
-      'Oferă denumire produs, raion, descriere, informații utile, asistență și materiale video.'
+      'VOGO Bricolage M Series este un plugin AI pre-antrenat pentru retailul de bricolaj, optimizat pentru a oferi răspunsuri rapide și corecte în interacțiuni online și în spațiul fizic al magazinului.',
+      'Asistentul poate indica poziționarea produselor pe raft, poate interpreta întrebări tehnice și poate recomanda produse complementare pe baza contextului transmis de client.',
+      'Soluția oferă informații clare despre denumire, raion, descriere, materiale și instrucțiuni, inclusiv conținut video acolo unde este relevant, pentru o experiență completă de cumpărare.'
     ]
   },
   {
-    title: '5. VOGO Retail X Series',
+    title: 'VOGO Retail X Series',
+    chip: 'COMMERCE',
+    icon: '🛒',
+    summary:
+      'Asistent AI pentru food retail și magazine generale, cu recomandări personalizate, căutare rapidă și suport în timp real pentru clienți.',
     details: [
-      'Plugin AI pre-antrenat pentru food retail și magazine generale.',
-      'Recomandări personalizate, căutare rapidă produse, asistență clienți în timp real.'
+      'VOGO Retail X Series ajută magazinele food retail și comercianții generali să transforme experiența clientului prin interacțiuni rapide, clare și relevante.',
+      'Sistemul optimizează căutarea produselor, propune recomandări personalizate și răspunde în timp real la întrebări frecvente despre stoc, alternative sau caracteristici.',
+      'Rezultatul este un flux de cumpărare mai simplu, conversii mai bune și un nivel crescut de încredere în comunicarea dintre brand și client.'
     ]
   },
   {
-    title: '6. VOGO Support Services',
+    title: 'VOGO Support Services',
+    chip: 'CARE',
+    icon: '🎧',
+    summary:
+      'Suport tehnic continuu, mentenanță proactivă și SLA-uri clare pentru stabilitate operațională și predictibilitate în livrare.',
     details: [
-      'Suport tehnic continuu, mentenanță și optimizare performanță.',
-      'SLA-uri clare pentru stabilitate operațională și timp de răspuns predictibil.'
+      'VOGO Support Services oferă continuitate operațională prin monitorizare, mentenanță și intervenții rapide atunci când apar incidente sau nevoi de optimizare.',
+      'Serviciul include procese clare de comunicare, SLA-uri definite și prioritizare profesională a ticketelor, astfel încât echipele interne să poată planifica eficient activitățile critice.',
+      'Abordarea este orientată spre prevenție și performanță constantă, nu doar spre rezolvarea punctuală a problemelor tehnice.'
     ]
   },
   {
-    title: '7. VOGO Storage Services',
+    title: 'VOGO Storage Services',
+    chip: 'CLOUD',
+    icon: '☁️',
+    summary:
+      'Servicii de storage scalabile, cu backup, securizare și administrare adaptată volumului de date și nivelului de trafic al afacerii.',
     details: [
-      'Servicii de storage bazate pe infrastructură Hostinger.',
-      'Backup, securizare și scalare în funcție de volum și trafic.'
+      'VOGO Storage Services furnizează infrastructură de stocare adaptată pentru aplicații enterprise, platforme comerciale și proiecte cu cerințe dinamice de date.',
+      'Serviciul acoperă backup recurent, politici de securitate și scalare progresivă, astfel încât sistemele să rămână disponibile și performante în perioade de încărcare ridicată.',
+      'Prin planificare corectă a resurselor, companiile obțin control mai bun asupra costurilor și asupra rezilienței infrastructurii digitale.'
     ]
   },
   {
-    title: '8. Enterprise Projects',
+    title: 'Enterprise Projects',
+    chip: 'CUSTOM',
+    icon: '🚀',
+    summary:
+      'Proiecte enterprise personalizate, cu arhitectură custom, roadmap etapizat și integrare cu sisteme interne pentru ROI măsurabil.',
     details: [
-      'Arhitecturi custom pentru proiecte complexe și extinse.',
-      'Roadmap pe etape, integrare cu sisteme interne și livrare orientată pe ROI.'
+      'Pentru inițiative complexe, VOGO livrează proiecte enterprise custom, pornind de la audit funcțional și tehnic, până la implementare și validare în producție.',
+      'Arhitectura este construită pe nevoi reale de business, cu roadmap clar pe etape, milestone-uri măsurabile și integrare controlată cu ecosistemele interne existente.',
+      'Obiectivul final este obținerea unui ROI clar, susținut de stabilitate tehnică, eficiență operațională și capacitate de scalare pe termen lung.'
     ]
   }
 ];
 
-// FAQ entries that mirror the style of the provided visual reference.
+// FAQ entries in Romanian for better local relevance.
 const faqData = [
   ['De ce să aleg VOGO One și care este diferența față de varianta standard?', 'VOGO One grupează funcții avansate AI, suport prioritar și opțiuni enterprise într-un flux unificat.'],
   ['Cum funcționează pachetele modulare (push notifications / agora calls)?', 'Sunt activate separat pentru a permite cost optim și scalare doar când ai nevoie.'],
@@ -82,32 +120,61 @@ const faqData = [
 ];
 
 const cardsContainer = document.getElementById('offer-cards');
-const detailTitle = document.getElementById('detail-title');
-const detailContent = document.getElementById('detail-content');
+const detailsStack = document.getElementById('details-stack');
 const faqList = document.getElementById('faq-list');
 
 /**
- * Renders compact cards and binds click events to update detail panel.
+ * Creates stacked detailed sections once, each with an id target for smooth scrolling.
+ */
+function renderDetailedSections() {
+  offers.forEach((offer, index) => {
+    const section = document.createElement('article');
+    section.className = 'detail-section';
+    section.id = `detail-${index + 1}`;
+
+    section.innerHTML = `
+      <h3>${offer.title}</h3>
+      <div class="detail-section-content">
+        ${offer.details.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+      </div>
+    `;
+
+    detailsStack.appendChild(section);
+  });
+}
+
+/**
+ * Renders cards with icon, chip and Explore more green button.
+ * On click, the page scrolls to the corresponding detailed section below.
  */
 function renderOffers() {
   offers.forEach((offer, index) => {
     const card = document.createElement('button');
     card.className = 'offer-card';
     card.type = 'button';
-    card.innerHTML = `<h3>${offer.title}</h3>`;
+    card.innerHTML = `
+      <div class="offer-card-head">
+        <h3>${offer.title}</h3>
+        <span class="offer-chip">${offer.chip}</span>
+      </div>
+      <div class="offer-icon" aria-hidden="true">${offer.icon}</div>
+      <p>${offer.summary}</p>
+      <span class="offer-more">Explore more <span aria-hidden="true">→</span></span>
+    `;
 
     card.addEventListener('click', () => {
       document.querySelectorAll('.offer-card').forEach((el) => el.classList.remove('active'));
       card.classList.add('active');
-      detailTitle.textContent = offer.title;
-      detailContent.innerHTML = `<ul>${offer.details.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+
+      const targetSection = document.getElementById(`detail-${index + 1}`);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
 
-    // Auto-open first card to present content immediately.
+    // Keep first card highlighted to indicate initial context.
     if (index === 0) {
       card.classList.add('active');
-      detailTitle.textContent = offer.title;
-      detailContent.innerHTML = `<ul>${offer.details.map((item) => `<li>${item}</li>`).join('')}</ul>`;
     }
 
     cardsContainer.appendChild(card);
@@ -155,5 +222,6 @@ function renderFaq() {
   });
 }
 
+renderDetailedSections();
 renderOffers();
 renderFaq();

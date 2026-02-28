@@ -1,9 +1,21 @@
 <!DOCTYPE html>
+<!--
+  File role: SEO-optimized Romanian landing page for VOGO Enterprise.
+  Main goal: present portfolio cards with full summaries and scroll-to detailed sections.
+-->
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VOGO Enterprise Solutions</title>
+  <title>VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise</title>
+  <meta name="description" content="VOGO Enterprise România oferă soluții AI pentru suport clienți, aplicații mobile, migrare și integrare enterprise. Descoperă portofoliul VOGO și cere un demo personalizat." />
+  <meta name="keywords" content="VOGO Enterprise, soluții AI România, aplicații mobile business, integrare enterprise, migrare aplicații, suport clienți AI" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:locale" content="ro_RO" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise" />
+  <meta property="og:description" content="Portofoliu VOGO cu soluții AI, servicii enterprise și aplicații mobile scalabile pentru companii din România." />
+  <meta property="og:site_name" content="VOGO" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -23,7 +35,7 @@
       <nav class="main-nav">
         <a href="#overview">Produse</a>
         <a href="#services">Servicii</a>
-        <a href="#enterprise">Enterprise</a>
+        <a href="#products">Products</a>
         <a href="#plans">Prețuri</a>
       </nav>
       <a class="btn btn-primary" href="#contact">Solicită demo</a>
@@ -53,22 +65,18 @@
       </div>
     </section>
 
-    <!-- Interactive catalog section: compact cards + dynamic detail panel -->
+    <!-- Portfolio section: full-summary cards + stacked detailed sections -->
     <section id="overview" class="section">
       <div class="container">
         <h2>Portofoliu VOGO</h2>
         <p class="section-subtitle">
-          Selectează un element pentru a vedea detaliile complete în panoul de mai jos.
+          Fiecare cartonaș include rezumatul complet. La click, pagina face scroll către secțiunea detaliată aferentă.
         </p>
 
         <div class="cards-grid" id="offer-cards" aria-label="Lista soluțiilor VOGO"></div>
 
-        <article class="detail-panel" id="detail-panel" aria-live="polite">
-          <h3 id="detail-title">Selectează un produs sau serviciu</h3>
-          <div id="detail-content">
-            <p>Apasă pe unul dintre cardurile de mai sus pentru detalii.</p>
-          </div>
-        </article>
+        <!-- Stacked detailed content rendered one section under another by script.js -->
+        <div class="details-stack" id="details-stack" aria-label="Detalii extinse pentru portofoliul VOGO"></div>
       </div>
     </section>
 
@@ -144,8 +152,8 @@
       </div>
     </section>
 
-    <!-- Enterprise contact section inspired by form-focused screenshot -->
-    <section id="enterprise" class="section enterprise-section">
+    <!-- Products contact section inspired by form-focused screenshot -->
+    <section id="products" class="section enterprise-section">
       <div class="container enterprise-grid">
         <div>
           <p class="eyebrow">Soluții enterprise VOGO</p>
