@@ -125,6 +125,8 @@ const faqList = document.getElementById('faq-list');
 
 /**
  * Creates stacked detailed sections once, each with an id target for smooth scrolling.
+ * Visual parity note: detailed sections reuse the same icon/chip/button language as top cards
+ * so users can instantly map every lower section to the corresponding upper card.
  */
 function renderDetailedSections() {
   offers.forEach((offer, index) => {
@@ -133,10 +135,17 @@ function renderDetailedSections() {
     section.id = `detail-${index + 1}`;
 
     section.innerHTML = `
-      <h3>${offer.title}</h3>
+      <div class="detail-section-head">
+        <div class="detail-title-wrap">
+          <div class="offer-icon" aria-hidden="true">${offer.icon}</div>
+          <h3>${offer.title}</h3>
+        </div>
+        <span class="offer-chip">${offer.chip}</span>
+      </div>
       <div class="detail-section-content">
         ${offer.details.map((paragraph) => `<p>${paragraph}</p>`).join('')}
       </div>
+      <span class="offer-more detail-offer-more">Explore more <span aria-hidden="true">→</span></span>
     `;
 
     detailsStack.appendChild(section);
