@@ -28,19 +28,7 @@
     plus trust, plans, FAQ, enterprise, and CTA sections.
   -->
 
-  <!-- Main top navigation inspired by the provided layout, adapted to VOGO green palette -->
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <div class="logo">VOGO</div>
-      <nav class="main-nav">
-        <a href="#overview">Produse</a>
-        <a href="#services">Servicii</a>
-        <a href="#products">Products</a>
-        <a href="#plans">Prețuri</a>
-      </nav>
-      <a class="btn btn-primary" href="#contact">Solicită demo</a>
-    </div>
-  </header>
+  <div id="products-header"></div>
 
   <main>
     <!-- Hero section: concise value proposition with visual trust cue -->
@@ -212,24 +200,25 @@
     </section>
   </main>
 
-  <!-- Footer: concise informational footer in the same style language -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="logo">VOGO</div>
-        <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
-      </div>
-      <div>
-        <h4>Companie</h4>
-        <ul><li>Despre noi</li><li>Contact</li><li>Cariere</li></ul>
-      </div>
-      <div id="services">
-        <h4>Servicii</h4>
-        <ul><li>Build</li><li>Migrate</li><li>Integrate</li></ul>
-      </div>
-    </div>
-  </footer>
+  <div id="products-footer"></div>
 
+  <script>
+    async function includeFragment(targetId, relativePath) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      const response = await fetch(relativePath);
+      if (!response.ok) {
+        console.error(`Nu am putut încărca fragmentul: ${relativePath}`);
+        return;
+      }
+
+      target.innerHTML = await response.text();
+    }
+
+    includeFragment('products-header', '../products-header.html');
+    includeFragment('products-footer', '../products-footer.html');
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
