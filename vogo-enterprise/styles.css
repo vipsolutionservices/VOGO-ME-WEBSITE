@@ -121,6 +121,27 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   padding: 24px;
 }
 .detail-section h3 { color: var(--vogo-green-dark); margin-bottom: 10px; }
+
+/* Detailed section header: mirrors card visuals (icon + chip) for clear recognition */
+.detail-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.detail-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.detail-title-wrap h3 {
+  color: var(--vogo-green-dark);
+  margin: 0;
+}
+.detail-offer-more {
+  margin-top: 16px;
+}
 .detail-section-content {
   display: grid;
   gap: 12px;
