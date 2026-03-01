@@ -283,7 +283,7 @@ function renderHeroCarouselSlides(imageUrls) {
     figure.className = 'hero-slide';
 
     const image = document.createElement('img');
-    image.src = imageUrl;
+    image.src = imageUrl.replace(/\+/g, '%2B');
     image.alt = buildCarouselAltFromName(imageUrl.split('/').pop() || 'image', index);
     image.loading = index === 0 ? 'eager' : 'lazy';
     image.decoding = 'async';
@@ -320,7 +320,7 @@ async function loadHeroCarouselImages() {
     const imageUrls = Array.from(doc.querySelectorAll('a[href]'))
       .map((link) => link.getAttribute('href'))
       .filter((href) => Boolean(href) && /\.(png|jpe?g|webp|gif|svg)$/i.test(href))
-      .map((href) => new URL(href, folderAbsoluteUrl).toString())
+      .map((href) => new URL(href, folderAbsoluteUrl).toString().replace(/\+/g, '%2B'))
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
 
     if (imageUrls.length > 0) {
