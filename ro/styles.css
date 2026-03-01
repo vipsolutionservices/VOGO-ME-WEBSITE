@@ -88,17 +88,18 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 /* Hero section layout: centered, cleaner and visually aligned with the provided reference style. */
 .hero.section {
-  padding-top: 44px;
+  padding-top: 64px;
   /* Keep less empty room under the CTA row to match the requested tighter hero rhythm. */
-  padding-bottom: 11px;
+  padding-bottom: 31px;
 }
 .hero-grid { display: grid; grid-template-columns: 1fr; justify-items: center; }
 .hero-content { text-align: center; max-width: 940px; }
 .hero-content h1 {
-  font-size: clamp(1.5rem, 3.5vw, 4.35rem);
-  line-height: 1.05;
+  font-size: clamp(2.5rem, 3.5vw, 5.35rem);
+  line-height: 1.15;
   letter-spacing: -0.02em;
-  margin-bottom: 16px;
+  margin-bottom: 26px;
+  margin-top: 26px;
 }
 
 /*
@@ -124,7 +125,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 .hero-content .lead {
   margin: 0 auto;
-  font-size: clamp(1.04rem, 1.65vw, 1.05rem);
+  font-size: clamp(1.16rem, 1.95vw, 1.24rem);
   max-width: 93ch;
 }
 .hero-actions {
@@ -145,7 +146,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .made-in-europe-badge {
   grid-column: 3;
   justify-self: end;
-  width: clamp(69px, 7.7vw, 98px);
+  width: clamp(79px, 8.86vw, 113px);
   max-width: 100%;
   opacity: 0.99;
 }
