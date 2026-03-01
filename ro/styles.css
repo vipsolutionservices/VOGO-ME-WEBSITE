@@ -708,7 +708,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 /* Section-level list item hooks keep feature groups easy to target for spacing refinements. */
 .plan-group { margin: 0; }
-/* Remove forced min-heights so there is no artificial gap between "Brand control center" and "Mobile ready" sections. */
+/* Keep feature groups content-driven to avoid artificial empty gaps between subsections. */
 .plan-group-brand { min-height: 0; }
 .plan-group-backend { min-height: 0; }
 /* CTA alignment mirrors the reference: full-width button before the feature list. */
