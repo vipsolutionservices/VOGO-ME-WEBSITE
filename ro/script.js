@@ -264,13 +264,36 @@ function buildOfferDetailLayout(offer, offerIndex) {
     return `<div class="detail-section-content">${detailsMarkup}</div>`;
   }
 
-  const previewImages = offer.supportGalleryImages
-    .slice(0, 3)
-    .map((imagePath, imageIndex) => {
-      const altText = `VOGO AI preview ${imageIndex + 1}`;
+  // Keep a deterministic layout for the support card:
+  // - right column uses ai-chatbot5 + ai-chatbot7
+  // - left column (under text) shows ai-chatbot2
+  const preferredImageNames = {
+    leftBottom: 'ai-chatbot2.png',
+    rightColumn: ['ai-chatbot5.png', 'ai-chatbot7.png']
+  };
+
+  const findImagePath = (fileName) => offer.supportGalleryImages.find((path) => path.endsWith(fileName));
+  const leftBottomImage = findImagePath(preferredImageNames.leftBottom);
+  const rightColumnImages = preferredImageNames.rightColumn
+    .map(findImagePath)
+    .filter(Boolean);
+
+  const leftBottomMarkup = leftBottomImage
+    ? `
+      <button class="support-gallery-thumb support-gallery-thumb--left" type="button" data-gallery-index="${offer.supportGalleryImages.indexOf(leftBottomImage)}" aria-label="Open image ${preferredImageNames.leftBottom}">
+        <img src="${leftBottomImage}" alt="VOGO AI preview - left section" loading="lazy" decoding="async" />
+      </button>
+    `
+    : '';
+
+  const rightColumnMarkup = rightColumnImages
+    .map((imagePath) => {
+      const galleryIndex = offer.supportGalleryImages.indexOf(imagePath);
+      const imageName = imagePath.split('/').pop();
+
       return `
-        <button class="support-gallery-thumb" type="button" data-gallery-index="${imageIndex}" aria-label="Open image ${imageIndex + 1}">
-          <img src="${imagePath}" alt="${altText}" loading="lazy" decoding="async" />
+        <button class="support-gallery-thumb" type="button" data-gallery-index="${galleryIndex}" aria-label="Open image ${imageName}">
+          <img src="${imagePath}" alt="VOGO AI preview - right section" loading="lazy" decoding="async" />
         </button>
       `;
     })
@@ -280,9 +303,12 @@ function buildOfferDetailLayout(offer, offerIndex) {
 
   return `
     <div class="support-detail-layout">
-      <div class="detail-section-content">${detailsMarkup}</div>
+      <div class="detail-section-content">
+        ${detailsMarkup}
+        ${leftBottomMarkup}
+      </div>
       <aside class="support-gallery-column" aria-label="VOGO AI image preview">
-        <div class="support-gallery-grid">${previewImages}</div>
+        <div class="support-gallery-grid">${rightColumnMarkup}</div>
         <button class="support-gallery-link" type="button" data-gallery-images="${imagesPayload}" data-gallery-index="0">
           Vezi imagini
         </button>
