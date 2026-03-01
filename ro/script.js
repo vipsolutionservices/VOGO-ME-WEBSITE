@@ -153,7 +153,7 @@ function renderDetailedSections() {
 }
 
 /**
- * Renders cards with icon, chip and Explore more green button.
+ * Renders cards in a compact product-tile style with icon, title and CTA button.
  * On click, the page scrolls to the corresponding detailed section below.
  */
 function renderOffers() {
@@ -162,13 +162,14 @@ function renderOffers() {
     card.className = 'offer-card';
     card.type = 'button';
     card.innerHTML = `
-      <div class="offer-card-head">
-        <h3>${offer.title}</h3>
-        <span class="offer-chip">${offer.chip}</span>
+      <div class="offer-card-top">
+        <div class="offer-icon-badge" aria-hidden="true">${offer.icon}</div>
+        <div>
+          <h3>${offer.title}</h3>
+          <p>${offer.summary}</p>
+        </div>
       </div>
-      <div class="offer-icon" aria-hidden="true">${offer.icon}</div>
-      <p>${offer.summary}</p>
-      <span class="offer-more">Explore more <span aria-hidden="true">→</span></span>
+      <span class="offer-more">Let's Go</span>
     `;
 
     card.addEventListener('click', () => {
