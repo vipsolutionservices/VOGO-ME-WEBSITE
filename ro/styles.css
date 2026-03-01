@@ -89,7 +89,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 /* Hero section layout: centered, cleaner and visually aligned with the provided reference style. */
 .hero.section {
   padding-top: 44px;
-  padding-bottom: 44px;
+  /* Keep less empty room under the CTA row to match the requested tighter hero rhythm. */
+  padding-bottom: 11px;
 }
 .hero-grid { display: grid; grid-template-columns: 1fr; justify-items: center; }
 .hero-content { text-align: center; max-width: 940px; }
@@ -127,7 +128,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   max-width: 93ch;
 }
 .hero-actions {
-  margin-top: 24px;
+  /* Halve the vertical gap above the CTA buttons for a denser above-the-fold layout. */
+  margin-top: 6px;
   display: grid;
   width: min(100%, 920px);
   grid-template-columns: 1fr auto 1fr;
