@@ -596,6 +596,9 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 /* Pricing/plan cards */
 .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .plan-card {
+  /* Make each card a vertical flex container so the CTA can stay pinned at the bottom. */
+  display: flex;
+  flex-direction: column;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -604,10 +607,17 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 /* Top-level feature list: keeps only the 3 required section bullets visible and spaced. */
 .plan-feature-groups {
+  /* Let feature content consume available space and keep CTA buttons bottom-aligned across cards. */
+  flex: 1;
   margin: 12px 0 18px;
   padding-left: 20px;
   display: grid;
   gap: 10px;
+}
+/* Center the plan CTA horizontally while keeping it anchored to the bottom edge of the card. */
+.plan-card .btn {
+  margin-top: auto;
+  align-self: center;
 }
 /* Subsection bullets: compact, gray typography in two responsive columns like the provided model. */
 .plan-sublist {
