@@ -17,7 +17,7 @@ const offers = [
     chip: 'SUPPORT',
     icon: '🤖',
     summary:
-      'Suport clienți multi-canal cu AI conversațional pentru voice, text și chat, plus automatizări inteligente pentru operațiuni rapide.',
+      'VOGO AI Chatbot este un plugin inteligent pentru WordPress / WooCommerce / Site-uri web care transformă conversațiile în acțiuni reale. Nu este doar un chatbot care răspunde la întrebări — este un asistent AI capabil să execute operațiuni direct în contul utilizatorului, să interacționeze cu WooCommerce și să transfere conversația către un operator uman atunci când este necesar.',
     // Rich text is intentionally structured with paragraphs + lists only,
     // so the detailed card stays visually consistent with existing CSS.
     detailsHtml: `
