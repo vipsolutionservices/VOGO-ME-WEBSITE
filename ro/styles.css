@@ -706,10 +706,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   display: grid;
   gap: 10px;
 }
-/* Section-level list item hooks keep feature group starts consistently aligned across all three plans. */
+/* Section-level list item hooks keep feature groups easy to target for spacing refinements. */
 .plan-group { margin: 0; }
-.plan-group-brand { min-height: 210px; }
-.plan-group-backend { min-height: 250px; }
+/* Remove forced min-heights so there is no artificial gap between "Brand control center" and "Mobile ready" sections. */
+.plan-group-brand { min-height: 0; }
+.plan-group-backend { min-height: 0; }
 /* CTA alignment mirrors the reference: full-width button before the feature list. */
 .plan-card .btn {
   width: 100%;
@@ -738,24 +739,37 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   box-shadow: none;
   transform: none;
 }
-/* Subsection bullets: compact, gray typography in two responsive columns like the provided model. */
+/* Subsection options: use VOGO green checkmarks instead of default bullets for a cleaner validation-style visual. */
 .plan-sublist {
   margin: 8px 0 0;
-  padding-left: 18px;
+  padding-left: 0;
   color: #6a7382;
   font-size: 0.86rem;
   line-height: 1.4;
   column-count: 2;
   column-gap: 20px;
+  list-style: none;
 }
 /* Avoid splitting single bullet text across columns for better readability. */
 .plan-sublist li {
   break-inside: avoid;
   margin-bottom: 4px;
+  position: relative;
+  padding-left: 16px;
+}
+/* Checkmark indicator matches the requested PS reference while using the VOGO green brand tone. */
+.plan-sublist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--vogo-green);
+  font-weight: 700;
 }
 .price { font-size: 2rem; font-weight: 800; margin: 10px 0; }
 .price span { font-size: .95rem; font-weight: 600; }
-.featured { border-color: var(--vogo-green); background: #effaf7; }
+/* Enterprise card visual parity: keep the same neutral background/border as the other plans. */
+.featured { border-color: var(--border); background: var(--white); }
 .tag {
   position: absolute;
   right: 18px;
@@ -779,7 +793,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .plans-footer p {
   margin: 0;
   max-width: 980px;
-  color: var(--text);
+  color: #a3acba;
   line-height: 1.45;
 }
 .compare-plans-btn {
@@ -791,9 +805,9 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 .compare-plans-btn:hover,
 .compare-plans-btn:focus-visible {
-  background: #151a21;
+  background: var(--vogo-green);
   color: var(--white);
-  border-color: #151a21;
+  border-color: var(--vogo-green);
 }
 
 /* Enterprise form area */
