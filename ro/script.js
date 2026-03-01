@@ -185,7 +185,7 @@ function renderOffers() {
           <p>${offer.summary}</p>
         </div>
       </div>
-      <span class="offer-more">Let's Go</span>
+      <span class="offer-more">Let's go</span>
     `;
 
     card.addEventListener('click', () => {
