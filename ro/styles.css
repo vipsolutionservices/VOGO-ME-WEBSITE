@@ -63,6 +63,13 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .btn-outline { border-color: #cad0d9; background: var(--white); color: var(--text); }
 .btn-light { background: var(--white); color: #050608; }
 
+/* Header promo CTA override: requested white background with green text and border. */
+.promo-cta {
+  color: var(--vogo-green);
+  background: var(--white);
+  border-color: var(--vogo-green);
+}
+
 /* Hero section layout: centered, cleaner and visually aligned with the provided reference style. */
 .hero.section {
   padding-top: 44px;
