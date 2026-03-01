@@ -112,7 +112,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   width: 100%;
   height: auto;
   display: block;
-  aspect-ratio: 16 / 9;
+  /* Requested tweak: make carousel ~10% shorter to reduce visible top/bottom dark bands. */
+  aspect-ratio: 16 / 8.1;
   /* Show each image fully inside the carousel frame without cropping. */
   object-fit: contain;
 }
