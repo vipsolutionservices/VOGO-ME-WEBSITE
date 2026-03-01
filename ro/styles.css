@@ -248,21 +248,25 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   display: block;
 }
 .offer-card h3 {
-  /* Keep titles in a neutral gray tone instead of solid black. */
-  color: #4b5563;
+  /* Requested update: use a clear gray tone for card titles in the VOGO offers section. */
+  color: #6b7280;
   font-size: 1.28rem;
   margin: 0;
 }
 .offer-card p {
   margin: 0;
-  color: #212f4a;
+  /* Keep summary text lighter than the title to improve hierarchy and readability. */
+  color: #9ca3af;
   font-size: 1.03rem;
-  line-height: 1.42;
+  /* Slightly tighter leading makes the paragraph block feel more compact. */
+  line-height: 1.34;
 }
 
 /* Summary text spans card width while keeping exactly 10px horizontal breathing space. */
 .offer-card-summary {
   margin: 0 10px;
+  /* Requested update: justify paragraph content inside each card. */
+  text-align: justify;
 }
 .offer-more {
   align-self: flex-end;
