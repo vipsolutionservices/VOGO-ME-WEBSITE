@@ -44,6 +44,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   color: var(--vogo-green);
   display: inline-flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
   gap: 10px;
 }
 .logo-mark {
