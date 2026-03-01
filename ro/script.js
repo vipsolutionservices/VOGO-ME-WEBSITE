@@ -177,11 +177,15 @@ function renderOffers() {
     const card = document.createElement('button');
     card.className = 'offer-card';
     card.type = 'button';
+    // The category tag is placed top-right, matching the visual pattern from home page cards.
     card.innerHTML = `
       <div class="offer-card-top">
         <div class="offer-icon-badge" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
-        <div>
-          <h3>${offer.title}</h3>
+        <div class="offer-card-content">
+          <div class="offer-card-head">
+            <h3>${offer.title}</h3>
+            <span class="offer-bullet">${offer.chip}</span>
+          </div>
           <p>${offer.summary}</p>
         </div>
       </div>
