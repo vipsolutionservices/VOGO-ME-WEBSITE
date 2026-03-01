@@ -134,6 +134,18 @@ const offers = [
       'Arhitectura este construită pe nevoi reale de business, cu roadmap clar pe etape, milestone-uri măsurabile și integrare controlată cu ecosistemele interne existente.',
       'Obiectivul final este obținerea unui ROI clar, susținut de stabilitate tehnică, eficiență operațională și capacitate de scalare pe termen lung.'
     ]
+  },
+  {
+    title: 'Pluginuri recomandate',
+    chip: 'CUSTOM',
+    icon: '🔗',
+    summary:
+      'Descoperă selecția VOGO de pluginuri recomandate pentru performanță, integrare rapidă și extindere eficientă a funcționalităților.',
+    // External route card: opens the recommended plugins page in a new browser tab.
+    externalUrl: '../vogo-recommended-plugins.html',
+    details: [
+      'Accesează pagina VOGO Recommended pentru lista curată de pluginuri validate, cu focus pe fiabilitate, compatibilitate și rezultate practice.'
+    ]
   }
 ];
 
@@ -327,9 +339,17 @@ function initSupportGalleryLightbox() {
  */
 function renderOffers() {
   offers.forEach((offer, index) => {
-    const card = document.createElement('button');
+    // Use anchor cards for external routes and button cards for local in-page navigation.
+    const card = document.createElement(offer.externalUrl ? 'a' : 'button');
     card.className = 'offer-card';
-    card.type = 'button';
+
+    if (offer.externalUrl) {
+      card.href = offer.externalUrl;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+    } else {
+      card.type = 'button';
+    }
     // Keep content split by role: header row, full-width summary text, then bottom footer actions.
     card.innerHTML = `
       <div class="offer-card-top">
@@ -345,15 +365,17 @@ function renderOffers() {
       </div>
     `;
 
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.offer-card').forEach((el) => el.classList.remove('active'));
-      card.classList.add('active');
+    if (!offer.externalUrl) {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.offer-card').forEach((el) => el.classList.remove('active'));
+        card.classList.add('active');
 
-      const targetSection = document.getElementById(`detail-${index + 1}`);
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+        const targetSection = document.getElementById(`detail-${index + 1}`);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
 
     // Keep first card highlighted to indicate initial context.
     if (index === 0) {
