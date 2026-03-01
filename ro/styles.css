@@ -240,27 +240,26 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   align-self: flex-end;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  /* Mirror promo CTA behavior with brand-green default and interactive hover feedback. */
-  border: 1px solid var(--vogo-green);
-  border-radius: 6px;
-  padding: 9px 18px;
-  font-weight: 700;
-  font-size: .98rem;
+  justify-content: flex-end;
+  /* Match the "Explore more" link style from home page/5.carrtonase.html for visual consistency. */
+  margin-top: auto;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  font: 600 14px/1 Inter, system-ui, Segoe UI, Roboto, sans-serif;
   color: var(--vogo-green);
-  background: var(--white);
-  margin-top: -6px;
-  transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  background: transparent;
+  text-decoration: none;
+  text-align: right;
+  transition: text-decoration-color .2s ease;
 }
 
 .offer-card:hover .offer-more,
 .offer-card:focus-visible .offer-more,
 .offer-card.active .offer-more {
-  color: var(--white);
-  background: var(--vogo-green);
-  border-color: var(--vogo-green);
-  box-shadow: 0 0 0 4px rgba(15, 123, 101, 0.18), 0 10px 22px rgba(15, 123, 101, 0.28);
-  transform: translateY(-1px);
+  color: var(--vogo-green);
+  background: transparent;
+  text-decoration: underline;
 }
 .offer-chip {
   background: rgba(15, 123, 101, 0.14);
