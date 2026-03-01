@@ -90,11 +90,15 @@ const offers = [
     ctaLinks: [
       {
         label: 'Discută acum cu un consultant',
-        href: 'https://wa.me/40723313296'
+        href: 'https://wa.me/40723313296',
+        // Render this CTA as a filled button to match the requested Git-like style.
+        asButton: true
       },
       {
         label: 'Contact us',
-        href: 'https://vogo.me/ecomm-contact-request/'
+        href: 'https://vogo.me/ecomm-contact-request/',
+        // Render this CTA as a filled button to match the requested Git-like style.
+        asButton: true
       }
     ]
   },
@@ -236,7 +240,7 @@ function buildDetailCtaMarkup(offer) {
         ${offer.ctaLinks
           .map(
             (cta) => `
-              <a class="offer-more detail-offer-more" href="${cta.href}" target="_blank" rel="noopener noreferrer">
+              <a class="offer-more detail-offer-more${cta.asButton ? ' detail-offer-more--button' : ''}" href="${cta.href}" target="_blank" rel="noopener noreferrer">
                 ${cta.label} <span aria-hidden="true">→</span>
               </a>
             `
