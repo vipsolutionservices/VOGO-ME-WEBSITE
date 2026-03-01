@@ -44,23 +44,23 @@
     }
 
     .checkout-header-inner {
-      max-width: 1180px;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 20px 24px;
+      padding: 18px 24px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
     .checkout-logo {
-      width: 36px;
-      height: 36px;
+      width: 30px;
+      height: 30px;
       object-fit: contain;
       border-radius: 50%;
     }
 
     .checkout-brand {
-      font-size: 44px;
+      font-size: 24px;
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1;
@@ -91,18 +91,18 @@
      */
     .checkout-main {
       text-align: center;
-      padding: 6px 0 48px;
+      padding: 6px 0 40px;
     }
 
     .checkout-main h1 {
-      margin: 0 0 26px;
-      font-size: 62px;
-      line-height: 1.05;
+      margin: 0 0 28px;
+      font-size: 66px;
+      line-height: 1.06;
       letter-spacing: -0.02em;
     }
 
     .billing-card {
-      max-width: 880px;
+      max-width: 700px;
       margin: 0 auto;
       background: var(--card-bg);
       border: 1px solid var(--line);
@@ -113,8 +113,8 @@
 
     .billing-card-header {
       margin: 0;
-      padding: 30px 30px 24px;
-      font-size: 40px;
+      padding: 22px 28px;
+      font-size: 22px;
       line-height: 1.1;
       letter-spacing: -0.02em;
       border-bottom: 1px solid var(--line);
@@ -127,7 +127,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      padding: 28px 30px;
+      padding: 28px;
       border-bottom: 1px solid var(--line);
       cursor: pointer;
     }
@@ -137,22 +137,22 @@
     }
 
     .billing-option input {
-      width: 26px;
-      height: 26px;
+      width: 18px;
+      height: 18px;
       accent-color: var(--vogo-green);
       margin: 0;
       flex: 0 0 auto;
     }
 
     .billing-option-label {
-      min-width: 86px;
-      font-size: 38px;
+      min-width: 90px;
+      font-size: 36px;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
 
     .billing-option-price {
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
@@ -164,12 +164,12 @@
 
     .badge-save {
       margin-left: auto;
-      font-size: 30px;
+      font-size: 14px;
       font-weight: 700;
       color: #084e2b;
       background: var(--vogo-green-soft);
       border-radius: 999px;
-      padding: 12px 22px;
+      padding: 9px 18px;
       line-height: 1;
     }
 
@@ -177,7 +177,7 @@
      * Section role: Primary checkout action and trust notes.
      */
     .action-wrap {
-      margin-top: 36px;
+      margin-top: 34px;
     }
 
     .checkout-btn {
@@ -186,10 +186,10 @@
       background: #000;
       color: #fff;
       text-decoration: none;
-      font-size: 42px;
-      font-weight: 700;
-      border-radius: 14px;
-      padding: 22px 44px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 16px 30px;
     }
 
     .checkout-btn:hover {
@@ -198,7 +198,7 @@
 
     .trust-note {
       margin-top: 28px;
-      font-size: 40px;
+      font-size: 17px;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -207,29 +207,40 @@
     }
 
     .trust-note svg {
-      width: 38px;
-      height: 38px;
+      width: 20px;
+      height: 20px;
       color: var(--vogo-green);
       flex: 0 0 auto;
     }
 
     .fine-print {
-      margin-top: 14px;
+      margin-top: 10px;
       color: #262626;
-      font-size: 36px;
+      font-size: 13px;
     }
 
     @media (max-width: 960px) {
-      .checkout-brand { font-size: 28px; }
-      .checkout-main h1 { font-size: 42px; }
+      .checkout-brand { font-size: 22px; }
+      .checkout-main h1 { font-size: 44px; }
       .billing-card-header,
       .billing-option-label,
       .billing-option-price,
       .trust-note,
       .fine-print,
       .badge-save,
-      .checkout-btn { font-size: 24px; }
-      .badge-save { padding: 9px 16px; }
+      .checkout-btn { font-size: 18px; }
+      .badge-save { padding: 8px 14px; }
+    }
+
+    @media (max-width: 640px) {
+      .checkout-wrapper { padding: 18px; }
+      .checkout-main h1 { font-size: 34px; }
+      .billing-option { gap: 12px; padding: 20px 18px; }
+      .billing-option-label,
+      .billing-option-price { font-size: 24px; }
+      .billing-option-label { min-width: 70px; }
+      .badge-save { font-size: 12px; padding: 7px 12px; }
+      .checkout-btn { width: 100%; max-width: 320px; }
     }
   </style>
 </head>
