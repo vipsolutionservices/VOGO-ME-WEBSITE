@@ -123,6 +123,22 @@ const cardsContainer = document.getElementById('offer-cards');
 const detailsStack = document.getElementById('details-stack');
 const faqList = document.getElementById('faq-list');
 
+// Icon set styled as line illustrations to match the monochrome VOGO-green look.
+const offerLineIcons = {
+  SUPPORT: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a8 8 0 0 0-8 8v3a2 2 0 0 0 2 2h1v-5H6a6 6 0 0 1 12 0h-1v5h1a2 2 0 0 0 2-2v-3a8 8 0 0 0-8-8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 16.5a3 3 0 0 0 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  MOBILE: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M10 6h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>',
+  SERVICES: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 4.5a3.5 3.5 0 0 1 4.95 4.95l-2.02 2.02-4.95-4.95 2.02-2.02Z" stroke="currentColor" stroke-width="1.8"/><path d="m4 20 5.1-1.05 8.4-8.4-4.95-4.95-8.4 8.4L4 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+  RETAIL: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Z" stroke="currentColor" stroke-width="1.8"/><path d="M7 9V6a5 5 0 1 1 10 0v3" stroke="currentColor" stroke-width="1.8"/><path d="M9 14h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  COMMERCE: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="19" r="1.5" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="19" r="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 5h2l2.2 9.2a1 1 0 0 0 .98.8H18a1 1 0 0 0 .98-.78L20 8H7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  CARE: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4a6 6 0 0 0-6 6v2a2 2 0 0 0 2 2h1v-4H8a4 4 0 1 1 8 0h-1v4h1a2 2 0 0 0 2-2v-2a6 6 0 0 0-6-6Z" stroke="currentColor" stroke-width="1.8"/><path d="M10 17h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  CLOUD: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 18a4 4 0 1 1 .5-7.97A5.5 5.5 0 0 1 18 12a3.5 3.5 0 1 1 0 7H7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  CUSTOM: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.1 4.6L19 9.2l-3.5 3.5.8 4.8L12 15.9 7.7 17.5l.8-4.8L5 9.2l4.9-1.6L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M18.5 4.5v3M17 6h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+};
+
+function getOfferIcon(chip) {
+  return offerLineIcons[chip] || offerLineIcons.CUSTOM;
+}
+
 /**
  * Creates stacked detailed sections once, each with an id target for smooth scrolling.
  * Visual parity note: detailed sections reuse the same icon/chip/button language as top cards
@@ -137,7 +153,7 @@ function renderDetailedSections() {
     section.innerHTML = `
       <div class="detail-section-head">
         <div class="detail-title-wrap">
-          <div class="offer-icon" aria-hidden="true">${offer.icon}</div>
+          <div class="offer-icon" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
           <h3>${offer.title}</h3>
         </div>
         <span class="offer-chip">${offer.chip}</span>
@@ -163,7 +179,7 @@ function renderOffers() {
     card.type = 'button';
     card.innerHTML = `
       <div class="offer-card-top">
-        <div class="offer-icon-badge" aria-hidden="true">${offer.icon}</div>
+        <div class="offer-icon-badge" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
         <div>
           <h3>${offer.title}</h3>
           <p>${offer.summary}</p>
@@ -243,9 +259,78 @@ renderFaq();
  * - Pauses rotation while the user hovers the carousel.
  */
 const heroCarouselTrack = document.querySelector('.hero-carousel-track');
-const heroCarouselSlides = heroCarouselTrack ? Array.from(heroCarouselTrack.children) : [];
+let heroCarouselSlides = heroCarouselTrack ? Array.from(heroCarouselTrack.children) : [];
 let heroCarouselIndex = 0;
 let heroCarouselTimer;
+
+/** Returns a readable alt text from an image file name. */
+function buildCarouselAltFromName(filename, index) {
+  const cleanName = filename.replace(/\.[a-z0-9]+$/i, '').replace(/[_+\-]+/g, ' ').trim();
+  return `VOGO carousel image ${index + 1}: ${cleanName}`;
+}
+
+/** Renders carousel slides from a dynamic list of image URLs. */
+function renderHeroCarouselSlides(imageUrls) {
+  if (!heroCarouselTrack || imageUrls.length === 0) return;
+
+  heroCarouselTrack.innerHTML = '';
+  imageUrls.forEach((imageUrl, index) => {
+    const figure = document.createElement('figure');
+    figure.className = 'hero-slide';
+
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = buildCarouselAltFromName(imageUrl.split('/').pop() || 'image', index);
+    image.loading = index === 0 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+
+    figure.appendChild(image);
+    heroCarouselTrack.appendChild(figure);
+  });
+
+  heroCarouselSlides = Array.from(heroCarouselTrack.children);
+  setHeroCarouselSlide(0);
+}
+
+/**
+ * Loads carousel images dynamically by reading the /img/products/carousel directory index.
+ * Falls back to static HTML slides when local file protocol or directory listing is unavailable.
+ */
+async function loadHeroCarouselImages() {
+  if (!heroCarouselTrack) return;
+
+  const folderUrl = heroCarouselTrack.dataset.carouselFolder;
+  if (!folderUrl) return;
+
+  if (window.location.protocol === 'file:') return;
+
+  try {
+    const response = await fetch(folderUrl, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const folderAbsoluteUrl = new URL(folderUrl, window.location.href);
+    const imageUrls = Array.from(doc.querySelectorAll('a[href]'))
+      .map((link) => link.getAttribute('href'))
+      .filter((href) => Boolean(href) && /\.(png|jpe?g|webp|gif|svg)$/i.test(href))
+      .map((href) => new URL(href, folderAbsoluteUrl).toString())
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+
+    if (imageUrls.length > 0) {
+      renderHeroCarouselSlides(imageUrls);
+    }
+  } catch (_) {
+    // Fallback keeps static slides from HTML without noisy console errors.
+  }
+
+  heroCarouselSlides = Array.from(heroCarouselTrack.children);
+  if (heroCarouselSlides.length > 1) {
+    startHeroCarouselAutoplay();
+  }
+}
 
 /** Moves carousel to the requested slide index with loop wrapping. */
 function setHeroCarouselSlide(nextIndex) {
@@ -268,8 +353,8 @@ function stopHeroCarouselAutoplay() {
   clearInterval(heroCarouselTimer);
 }
 
-if (heroCarouselTrack && heroCarouselSlides.length) {
-  startHeroCarouselAutoplay();
+if (heroCarouselTrack) {
+  loadHeroCarouselImages();
 
   heroCarouselTrack.addEventListener('mouseenter', stopHeroCarouselAutoplay);
   heroCarouselTrack.addEventListener('mouseleave', startHeroCarouselAutoplay);
