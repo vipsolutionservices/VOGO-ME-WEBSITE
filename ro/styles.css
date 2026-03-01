@@ -274,9 +274,16 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 .offer-card[data-chip='SUPPORT'] .offer-icon-badge::before,
 .offer-icon[data-chip='SUPPORT']::before {
-  /* Bot/chat icon for AI support. */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a9 9 0 0 0-9 9v7a2 2 0 0 0 2 2h2v2l3-2h2a9 9 0 1 0 0-18Zm-4 9a1.5 1.5 0 1 1 0 .001V11Zm8 0a1.5 1.5 0 1 1 0 .001V11Zm-8 5h8v-2H8v2Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a9 9 0 0 0-9 9v7a2 2 0 0 0 2 2h2v2l3-2h2a9 9 0 1 0 0-18Zm-4 9a1.5 1.5 0 1 1 0 .001V11Zm8 0a1.5 1.5 0 1 1 0 .001V11Zm-8 5h8v-2H8v2Z'/%3E%3C/svg%3E");
+  /* Requested badge update: use a compact "AI" label instead of the bot glyph. */
+  content: 'AI';
+  width: auto;
+  height: auto;
+  display: inline-block;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 .offer-card[data-chip='MOBILE'] .offer-icon-badge::before,
 .offer-icon[data-chip='MOBILE']::before {
