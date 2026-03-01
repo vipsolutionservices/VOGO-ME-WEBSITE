@@ -101,13 +101,16 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 
 /*
-  Keep the section title typography aligned with the hero headline family and rhythm.
-  This gives the "Products and Services by VOGO" heading the same visual DNA as hero text.
+  Keep both overview titles visually identical for consistency:
+  - same type family and weight
+  - explicit black text color as requested
 */
-#overview > .container > h2 {
+#overview > .container > h2,
+.details-stack-title {
   font-family: inherit;
   font-weight: 800;
   letter-spacing: -0.02em;
+  color: #000000;
 }
 .hero-content .lead {
   margin: 0 auto;
@@ -318,7 +321,6 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 .details-stack-title {
   margin: 34px 0 16px;
-  color: var(--vogo-green-dark);
   font-size: clamp(1.35rem, 2.4vw, 1.85rem);
 }
 
