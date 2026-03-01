@@ -69,10 +69,33 @@ const offers = [
     icon: '🛠️',
     summary:
       'Servicii enterprise cap-coadă pentru dezvoltare de produs nou, migrare sigură și integrare avansată de module AI în aplicații existente.',
-    details: [
-      'Prin serviciul Build, VOGO dezvoltă aplicații noi de la zero, cu arhitectură scalabilă, fluxuri clare și focus pe performanță, securitate și experiență de utilizare.',
-      'Prin serviciul Migrate, VOGO execută migrarea controlată a aplicațiilor existente, cu analiză inițială, plan tehnic etapizat și reducerea riscurilor operaționale în tranziție.',
-      'Prin serviciul Integrate, VOGO conectează funcții AI, plugin-uri și sisteme externe în infrastructura curentă, pentru creșterea eficienței fără întreruperi majore în business.'
+    // Service description uses a dedicated two-column bullet layout focused on WordPress integrations.
+    detailsHtml: `
+      <p><strong>Nu aveți încă un website pe WordPress?</strong> Nicio problemă. VOGO livrează integrare profesionistă prin pluginuri WordPress, cu instrumente moderne și procese clare de implementare.</p>
+      <div class="services-columns" role="list" aria-label="VOGO Build Migrate Integrate services">
+        <ul>
+          <li><strong>Build smart:</strong> construim website-uri WordPress / WooCommerce de la zero, cu structură pregătită pentru creștere și mentenanță ușoară.</li>
+          <li><strong>Upgrade profesional:</strong> dacă site-ul actual nu mai performează, refacem experiența completă cu design modern și fluxuri comerciale optimizate.</li>
+          <li><strong>Integrare prin feed-uri:</strong> conectăm rapid catalogul prin XML feed, CSV feed și import Excel cu mapare controlată pe câmpuri.</li>
+          <li><strong>Servicii web & API:</strong> activăm conectări sigure prin REST API și servicii web pentru sincronizare automată între sisteme.</li>
+        </ul>
+        <ul>
+          <li><strong>Migrare fără stres:</strong> mutăm proiectele existente către WordPress, WooCommerce sau Shopify cu plan etapizat și risc minim.</li>
+          <li><strong>Pluginuri WordPress dedicate:</strong> folosim pluginuri stabile pentru import, sincronizare stoc, actualizare prețuri și management produse.</li>
+          <li><strong>Automatizare operațională:</strong> integrăm procese de update periodic pentru produse, comenzi și conținut, fără intervenții manuale repetitive.</li>
+          <li><strong>Suport expert VOGO:</strong> primești consultanță tehnică, implementare cap-coadă și ghidaj continuu pentru evoluția platformei tale.</li>
+        </ul>
+      </div>
+    `,
+    ctaLinks: [
+      {
+        label: 'Discută acum cu un consultant',
+        href: 'https://wa.me/40723313296'
+      },
+      {
+        label: 'Contact us',
+        href: 'https://vogo.me/ecomm-contact-request/'
+      }
     ]
   },
   {
@@ -198,11 +221,32 @@ function renderDetailedSections() {
         <span class="offer-chip">${offer.chip}</span>
       </div>
       ${buildOfferDetailLayout(offer, index)}
-      <span class="offer-more detail-offer-more">Explore more <span aria-hidden="true">→</span></span>
+      ${buildDetailCtaMarkup(offer)}
     `;
 
     detailsStack.appendChild(section);
   });
+}
+
+/** Builds per-section CTA links; uses a default label if a section has no custom links. */
+function buildDetailCtaMarkup(offer) {
+  if (Array.isArray(offer.ctaLinks) && offer.ctaLinks.length > 0) {
+    return `
+      <div class="detail-cta-row" aria-label="Section links">
+        ${offer.ctaLinks
+          .map(
+            (cta) => `
+              <a class="offer-more detail-offer-more" href="${cta.href}" target="_blank" rel="noopener noreferrer">
+                ${cta.label} <span aria-hidden="true">→</span>
+              </a>
+            `
+          )
+          .join('')}
+      </div>
+    `;
+  }
+
+  return '<span class="offer-more detail-offer-more">Explore more <span aria-hidden="true">→</span></span>';
 }
 
 /**
