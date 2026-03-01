@@ -278,13 +278,15 @@ function renderHeroCarouselSlides(imageUrls) {
 
 /**
  * Loads carousel images dynamically by reading the /img/products/carousel directory index.
- * Falls back to the existing HTML slide if directory listing is disabled.
+ * Falls back to static HTML slides when local file protocol or directory listing is unavailable.
  */
 async function loadHeroCarouselImages() {
   if (!heroCarouselTrack) return;
 
   const folderUrl = heroCarouselTrack.dataset.carouselFolder;
   if (!folderUrl) return;
+
+  if (window.location.protocol === 'file:') return;
 
   try {
     const response = await fetch(folderUrl, { cache: 'no-store' });
@@ -304,9 +306,8 @@ async function loadHeroCarouselImages() {
     if (imageUrls.length > 0) {
       renderHeroCarouselSlides(imageUrls);
     }
-  } catch (error) {
-    // Fallback keeps first slide from HTML when directory indexing is unavailable.
-    console.warn('Hero carousel dynamic load fallback:', error);
+  } catch (_) {
+    // Fallback keeps static slides from HTML without noisy console errors.
   }
 
   heroCarouselSlides = Array.from(heroCarouselTrack.children);

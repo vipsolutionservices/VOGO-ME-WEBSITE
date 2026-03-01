@@ -8,47 +8,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>
-    /**
-     * Loads shared <head> SEO tags from seo-common.html.
-     * Note: keep page-unique SEO tags directly in this file.
-     */
-    (async function loadSharedSeoHead() {
-      try {
-        // Try both local and canonical Romanian paths so SEO tags still load
-        // when the page is served from nested routes (e.g. /ro/vogo-products/).
-        const seoCandidatePaths = ['seo-common.html', '/ro/seo-common.html'];
-        const response = await fetchFirstAvailable(seoCandidatePaths);
-        if (!response) return;
-
-        const html = await response.text();
-        const fragment = document.createRange().createContextualFragment(html);
-        document.head.appendChild(fragment);
-      } catch (_) {
-        // Fail silently: page-specific SEO tags remain in place.
-      }
-    })();
-
-    /**
-     * Returns the first successful fetch Response from a list of candidate paths.
-     * This keeps shared includes resilient across different deployment paths.
-     */
-    async function fetchFirstAvailable(paths) {
-      for (const path of paths) {
-        try {
-          const response = await fetch(path);
-          if (response.ok) {
-            return response;
-          }
-        } catch (_) {
-          // Ignore per-path errors and continue with the next candidate.
-        }
-      }
-
-      return null;
-    }
-  </script>
-
   <title>VOGO Technology România | Soluții AI, aplicații mobile și integrare enterprise</title>
   <meta name="description" content="VOGO Enterprise România oferă soluții AI pentru suport clienți, aplicații mobile, migrare și integrare enterprise. Descoperă portofoliul VOGO și cere un demo personalizat." />
   <!-- Primary keyword cluster for high-intent Romanian and English searches. -->
@@ -58,7 +17,7 @@
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://vogo.me/ro/vogo-products/" />
 
-  <!-- Shared SEO tags are loaded from seo-common.html. -->
+  <!-- Shared SEO tags sunt inline în acest fișier (fără fetch/include). -->
   <meta property="og:title" content="VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise" />
   <meta property="og:description" content="Portofoliu VOGO cu soluții AI, servicii enterprise și aplicații mobile scalabile pentru companii din România." />
   <meta property="og:url" content="https://vogo.me/ro/vogo-products/" />
@@ -135,7 +94,25 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
         <div class="hero-carousel" role="region" aria-roledescription="carousel" aria-label="VOGO WordPress control center preview">
           <div class="hero-carousel-track" data-carousel-folder="../img/products/carousel/" aria-live="polite">
             <figure class="hero-slide">
-              <img src="../img/products/carousel/vogo_wordpress_branc_control+center_1.png" alt="VOGO WordPress branch control center - previzualizare" loading="eager" decoding="async" />
+              <img src="../img/products/carousel/vogo_wordpress_branc_control+center_1.png" alt="VOGO WordPress branch control center - ecran 1" loading="eager" decoding="async" />
+            </figure>
+            <figure class="hero-slide">
+              <img src="../img/products/carousel/vogo_wordpress_branc_control+center_2.png" alt="VOGO WordPress branch control center - ecran 2" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="hero-slide">
+              <img src="../img/products/carousel/vogo_wordpress_branc_control+center_ai_asistance.png" alt="VOGO WordPress branch control center - ecran 3" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="hero-slide">
+              <img src="../img/products/carousel/mobile_set_1.png" alt="VOGO mobile app showcase - set 1" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="hero-slide">
+              <img src="../img/products/carousel/mobile_set_2.png" alt="VOGO mobile app showcase - set 2" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="hero-slide">
+              <img src="../img/products/carousel/mobile_set_3.png" alt="VOGO mobile app showcase - set 3" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="hero-slide">
+              <img src="../img/products/carousel/mobile_set_4.png" alt="VOGO mobile app showcase - set 4" loading="lazy" decoding="async" />
             </figure>
           </div>
         </div>
