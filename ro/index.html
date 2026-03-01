@@ -84,8 +84,22 @@
   </script>
 </head>
 <body>
-  <!-- Shared header include mount point loaded from /ro/header.html. -->
-  <div id="site-header-include" data-include="header.html" data-include-fallback="/ro/header.html"></div>
+  <!-- Header is rendered directly in-page for deterministic loading on every environment. -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="logo">
+        <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
+        <span>VOGO</span>
+      </div>
+      <nav class="main-nav">
+        <a href="#overview">Produse</a>
+        <a href="#services">Servicii</a>
+        <a href="#products">Products</a>
+        <a href="#plans">Prețuri</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Solicită demo</a>
+    </div>
+  </header>
 
   <main>
     <!-- Hero section: switched to a centered composition with white background parity. -->
@@ -265,36 +279,26 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
     </section>
   </main>
 
-  <!-- Shared footer include mount point loaded from /ro/footer.html. -->
-  <div id="site-footer-include" data-include="footer.html" data-include-fallback="/ro/footer.html"></div>
-
-  <script>
-    /**
-     * File-local include loader for shared layout fragments.
-     * Loads header and footer HTML files into dedicated mount points.
-     */
-    async function loadSharedIncludes() {
-      const includeNodes = document.querySelectorAll('[data-include]');
-
-      await Promise.all(
-        Array.from(includeNodes).map(async (node) => {
-          const includePath = node.getAttribute('data-include');
-          const includeFallbackPath = node.getAttribute('data-include-fallback');
-          if (!includePath) return;
-
-          // Use a fallback path so header/footer remain visible on nested routes.
-          const response = await fetchFirstAvailable(
-            includeFallbackPath ? [includePath, includeFallbackPath] : [includePath]
-          );
-          if (!response) return;
-
-          node.outerHTML = await response.text();
-        })
-      );
-    }
-
-    loadSharedIncludes();
-  </script>
+  <!-- Footer is rendered directly in-page for deterministic loading on every environment. -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo">
+          <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="lazy" decoding="async" />
+          <span>VOGO</span>
+        </div>
+        <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
+      </div>
+      <div>
+        <h4>Companie</h4>
+        <ul><li>Despre noi</li><li>Contact</li><li>Cariere</li></ul>
+      </div>
+      <div id="services">
+        <h4>Servicii</h4>
+        <ul><li>Build</li><li>Migrate</li><li>Integrate</li></ul>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
