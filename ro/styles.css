@@ -605,6 +605,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   padding: 22px;
   position: relative;
 }
+/* Plan title hierarchy: increased size/weight for stronger visual scanning in pricing cards. */
+.plan-card h3 {
+  font-size: clamp(1.72rem, 2.3vw, 2rem);
+  line-height: 1.12;
+}
 /* Top-level feature list: keeps only the 3 required section bullets visible and spaced. */
 .plan-feature-groups {
   /* Let feature content consume available space and keep CTA buttons bottom-aligned across cards. */
@@ -614,10 +619,35 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   display: grid;
   gap: 10px;
 }
+/* Section-level list item hooks keep feature group starts consistently aligned across all three plans. */
+.plan-group { margin: 0; }
+.plan-group-brand { min-height: 210px; }
+.plan-group-backend { min-height: 250px; }
 /* Center the plan CTA horizontally while keeping it anchored to the bottom edge of the card. */
 .plan-card .btn {
   margin-top: auto;
   align-self: center;
+}
+/* Hover treatment is enabled only for first two outline buttons, matching enterprise visual language. */
+.plan-card .btn-outline {
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.plan-card .btn-outline:hover,
+.plan-card .btn-outline:focus-visible {
+  color: var(--white);
+  background: var(--vogo-green);
+  border-color: var(--vogo-green);
+  box-shadow: 0 0 0 4px rgba(15, 123, 101, 0.18), 0 10px 22px rgba(15, 123, 101, 0.28);
+  transform: translateY(-1px);
+}
+/* Enterprise CTA remains static on hover as requested. */
+.plan-card.featured .btn-primary:hover,
+.plan-card.featured .btn-primary:focus-visible {
+  background: var(--vogo-green);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
 }
 /* Subsection bullets: compact, gray typography in two responsive columns like the provided model. */
 .plan-sublist {
@@ -721,6 +751,10 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 /* On small screens, sub-bullets fallback to one column to preserve legibility. */
 @media (max-width: 900px) {
+  .plan-group-brand,
+  .plan-group-backend {
+    min-height: auto;
+  }
   .plan-sublist {
     column-count: 1;
   }

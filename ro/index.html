@@ -188,14 +188,16 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
         <h2>Selectează planul potrivit</h2>
         <p class="section-subtitle">Prezentare orientativă. Planurile pot fi personalizate în funcție de proiect.</p>
 
+        <!-- Pricing cards: titles, labels, and feature group hooks are tuned to match requested UX details. -->
         <div class="plans-grid">
           <article class="plan-card">
-            <h3>Essentials</h3>
+            <h3>Essentis</h3>
             <p class="price">€7 <span>/lună</span></p>
-            <p><strong>100 Credits</strong> si <strong>1 site</strong></p>
+            <p><strong>100 Users</strong> si <strong>1 site</strong></p>
             <!-- Plan feature groups: each core subsection has compact gray bullet details in two columns. -->
             <ul class="plan-feature-groups">
-              <li>
+              <!-- Group class names are used by CSS to keep cross-card section headings aligned. -->
+              <li class="plan-group plan-group-brand">
                 <strong>Brand control center:</strong>
                 <ul class="plan-sublist">
                   <li>JWT secure autoconfigurator</li>
@@ -206,7 +208,7 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
                   <li>Version history</li>
                 </ul>
               </li>
-              <li>
+              <li class="plan-group plan-group-backend">
                 <strong>Mobile ready backend webservices:</strong>
                 <ul class="plan-sublist">
                   <li>Secure authorization</li>
@@ -224,7 +226,7 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
                   <li>Payment: cash on delivery</li>
                 </ul>
               </li>
-              <li>
+              <li class="plan-group plan-group-mobile">
                 <strong>Mobile applications:</strong>
                 <ul class="plan-sublist">
                   <li>Google play app</li>
@@ -248,12 +250,12 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
           </article>
 
           <article class="plan-card">
-            <h3>Essentials Plus</h3>
+            <h3>Essentials plus</h3>
             <p class="price">€27 <span>/lună</span></p>
-            <p><strong>1000 Credits</strong> si <strong>1 site</strong></p>
+            <p><strong>1000 Users</strong> si <strong>1 site</strong></p>
             <!-- Plan feature groups: each core subsection has compact gray bullet details in two columns. -->
             <ul class="plan-feature-groups">
-              <li>
+              <li class="plan-group plan-group-brand">
                 <strong>Brand control center:</strong>
                 <ul class="plan-sublist">
                   <li>JWT secure autoconfigurator</li>
@@ -264,7 +266,7 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
                   <li>Version history</li>
                 </ul>
               </li>
-              <li>
+              <li class="plan-group plan-group-backend">
                 <strong>Mobile ready backend webservices:</strong>
                 <ul class="plan-sublist">
                   <li>Secure authorization</li>
@@ -282,7 +284,7 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
                   <li>Payment: cash on delivery</li>
                 </ul>
               </li>
-              <li>
+              <li class="plan-group plan-group-mobile">
                 <strong>Mobile applications:</strong>
                 <ul class="plan-sublist">
                   <li>Scan QR for brand control</li>
@@ -305,12 +307,12 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
 
           <article class="plan-card featured">
             <p class="tag">Enterprise</p>
-            <h3>Enterprise - ask</h3>
+            <h3>Eterprise</h3>
             <p class="price">€ask <span>/lună</span></p>
-            <p><strong>unlimited Credits</strong> si <strong>1 site</strong></p>
+            <p><strong>unlimited Users</strong> si <strong>1 site</strong></p>
             <!-- Plan feature groups: each core subsection has compact gray bullet details in two columns. -->
             <ul class="plan-feature-groups">
-              <li>
+              <li class="plan-group plan-group-brand">
                 <strong>Brand control center:</strong>
                 <ul class="plan-sublist">
                   <li>JWT secure autoconfigurator</li>
@@ -321,7 +323,7 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
                   <li>Version history</li>
                 </ul>
               </li>
-              <li>
+              <li class="plan-group plan-group-backend">
                 <strong>Mobile ready backend webservices:</strong>
                 <ul class="plan-sublist">
                   <li>Secure authorization</li>
@@ -339,7 +341,7 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
                   <li>Payment: cash on delivery / Bank accout / Stripe / Paypay / Mobile</li>
                 </ul>
               </li>
-              <li>
+              <li class="plan-group plan-group-mobile">
                 <strong>Mobile applications:</strong>
                 <ul class="plan-sublist">
                   <li>Propertary mobile app</li>
