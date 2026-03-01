@@ -22,6 +22,12 @@ const offers = [
       'VOGO AI Customer Support Plugin este proiectat pentru companiile care vor să răspundă mai rapid, mai corect și mai personalizat fiecărui client, pe toate canalele digitale relevante.',
       'Soluția combină chat, voice și text într-un flux unificat, oferă răspunsuri contextuale, poate escalada instant către operator uman și păstrează log-uri structurate pentru audit, training și optimizare continuă.',
       'Este potrivită pentru ecommerce, servicii, SaaS, centre de suport și organizații care vor să reducă timpul de răspuns, să crească satisfacția clienților și să mențină standarde profesionale de calitate.'
+    ],
+    supportCarouselSets: [
+      ['../img/ai-chatbot/1.png'],
+      ['../img/ai-chatbot/2.png'],
+      ['../img/ai-chatbot/3.png', '../img/ai-chatbot/4.png', '../img/ai-chatbot/5.png'],
+      ['../img/ai-chatbot/6.png', '../img/ai-chatbot/7.png', '../img/ai-chatbot/8.png']
     ]
   },
   {
@@ -161,11 +167,53 @@ function renderDetailedSections() {
       <div class="detail-section-content">
         ${offer.details.map((paragraph) => `<p>${paragraph}</p>`).join('')}
       </div>
+      ${buildSupportPluginCarousel(offer)}
       <span class="offer-more detail-offer-more">Explore more <span aria-hidden="true">→</span></span>
     `;
 
     detailsStack.appendChild(section);
   });
+}
+
+/**
+ * Builds the support plugin carousel requested for the AI plugin section only.
+ * The lane is duplicated to create a smooth infinite loop moving left-to-right.
+ */
+function buildSupportPluginCarousel(offer) {
+  if (!offer.supportCarouselSets || offer.supportCarouselSets.length === 0) {
+    return '';
+  }
+
+  const singleSequenceMarkup = offer.supportCarouselSets
+    .map((set, setIndex) => {
+      const setTypeClass = set.length === 1 ? 'is-wide-set' : 'is-mobile-set';
+      const imagesMarkup = set
+        .map((imagePath, imageIndex) => {
+          const altText = `VOGO AI customer support preview ${setIndex + 1}.${imageIndex + 1}`;
+          return `<img src="${imagePath}" alt="${altText}" loading="lazy" decoding="async" />`;
+        })
+        .join('');
+
+      return `
+        <article class="support-plugin-carousel__set ${setTypeClass}" aria-label="Set ${setIndex + 1}">
+          ${imagesMarkup}
+        </article>
+      `;
+    })
+    .join('');
+
+  return `
+    <section class="support-plugin-carousel" aria-label="VOGO AI Customer Support Plugin gallery">
+      <div class="support-plugin-carousel__lane">
+        <div class="support-plugin-carousel__sequence">
+          ${singleSequenceMarkup}
+        </div>
+        <div class="support-plugin-carousel__sequence" aria-hidden="true">
+          ${singleSequenceMarkup}
+        </div>
+      </div>
+    </section>
+  `;
 }
 
 /**
