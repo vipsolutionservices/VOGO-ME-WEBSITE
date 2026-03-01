@@ -15,8 +15,11 @@
      */
     (async function loadSharedSeoHead() {
       try {
-        const response = await fetch('seo-common.html');
-        if (!response.ok) return;
+        // Try both local and canonical Romanian paths so SEO tags still load
+        // when the page is served from nested routes (e.g. /ro/vogo-products/).
+        const seoCandidatePaths = ['seo-common.html', '/ro/seo-common.html'];
+        const response = await fetchFirstAvailable(seoCandidatePaths);
+        if (!response) return;
 
         const html = await response.text();
         const fragment = document.createRange().createContextualFragment(html);
@@ -25,6 +28,25 @@
         // Fail silently: page-specific SEO tags remain in place.
       }
     })();
+
+    /**
+     * Returns the first successful fetch Response from a list of candidate paths.
+     * This keeps shared includes resilient across different deployment paths.
+     */
+    async function fetchFirstAvailable(paths) {
+      for (const path of paths) {
+        try {
+          const response = await fetch(path);
+          if (response.ok) {
+            return response;
+          }
+        } catch (_) {
+          // Ignore per-path errors and continue with the next candidate.
+        }
+      }
+
+      return null;
+    }
   </script>
 
   <title>VOGO Technology România | Soluții AI, aplicații mobile și integrare enterprise</title>
