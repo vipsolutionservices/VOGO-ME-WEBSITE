@@ -37,7 +37,21 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 /* Header and nav area */
 .site-header { position: sticky; top: 0; z-index: 10; background: rgba(247,248,250,.95); backdrop-filter: blur(8px); border-bottom: 1px solid #eceff3; }
 .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 74px; }
-.logo { font-weight: 800; font-size: 1.4rem; letter-spacing: .04em; color: var(--vogo-green); }
+.logo {
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: .04em;
+  color: var(--vogo-green);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  display: block;
+}
 .main-nav { display: flex; gap: 26px; }
 .main-nav a { color: var(--text); text-decoration: none; font-weight: 500; }
 
