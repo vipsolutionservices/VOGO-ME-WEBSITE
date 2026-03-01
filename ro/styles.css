@@ -233,7 +233,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .offer-card h3 {
   color: #0c1630;
   font-size: 1.28rem;
-  margin: 0 0 8px;
+  margin: 0;
 }
 .offer-card p {
   margin: 0;
