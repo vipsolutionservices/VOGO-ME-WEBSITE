@@ -1,6 +1,7 @@
 /*
   File role: External stylesheet for the VOGO enterprise landing page.
   Design intent: airy Elementor-like structure with VOGO green palette.
+  This file also controls the hero image carousel sizing, corners, and image visibility behavior.
 */
 
 :root {
@@ -76,7 +77,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .hero-carousel-section { padding-top: 10px; }
 .hero-carousel {
   border: 1px solid var(--border);
-  border-radius: 22px;
+  /* Requested visual update: keep carousel corners subtly rounded at exactly 3px. */
+  border-radius: 3px;
   overflow: hidden;
   background: #0b1018;
   box-shadow: 0 14px 42px rgba(10, 18, 32, 0.18);
@@ -95,7 +97,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   height: auto;
   display: block;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  /* Show each image fully inside the carousel frame without cropping. */
+  object-fit: contain;
 }
 
 /* Portfolio cards: green transparent visual style with compact 3px corners. */
