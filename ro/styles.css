@@ -704,19 +704,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   margin: 16px 0 0;
   padding-left: 20px;
   display: grid;
-  gap: 10px;
+  /* Keep subsection flow compact so groups follow one another without large empty blocks. */
+  gap: 8px;
 }
 /* Section-level list item hooks keep feature groups easy to target for spacing refinements. */
 .plan-group { margin: 0; }
-/* Fixed group heights keep section headers vertically aligned across all pricing cards. */
-.plan-group-brand {
-  /* Lock the first group height so the backend section starts at the same vertical position on every card. */
-  min-height: 188px;
-}
-.plan-group-backend {
-  /* Keep the second group baseline consistent before the Mobile applications section. */
-  min-height: 284px;
-}
 /* CTA alignment mirrors the reference: full-width button before the feature list. */
 .plan-card .btn {
   width: 100%;
@@ -820,6 +812,47 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   border-color: var(--vogo-green);
 }
 
+/* Agency helper block is intentionally highlighted to stand out beneath the pricing legal note. */
+.agency-note {
+  width: min(980px, 100%);
+  margin: 6px 0 0;
+  padding: 16px;
+  border: 1px solid #b8e2d6;
+  border-radius: 14px;
+  background: #eaf8f3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.agency-note p {
+  margin: 0;
+  color: #173f35;
+  font-weight: 600;
+}
+.agency-note-link {
+  color: var(--vogo-green-dark);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.agency-note-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  border-radius: 999px;
+  background: #25d366;
+  border-color: #25d366;
+  color: #ffffff;
+}
+.agency-note-whatsapp:hover,
+.agency-note-whatsapp:focus-visible {
+  background: #1faa53;
+  border-color: #1faa53;
+  color: #ffffff;
+}
+
 /* Enterprise form area */
 .enterprise-section { background: #ecf8f4; }
 .enterprise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
@@ -898,5 +931,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   }
   .plan-sublist {
     column-count: 1;
+  }
+  .agency-note {
+    flex-direction: column;
   }
 }
