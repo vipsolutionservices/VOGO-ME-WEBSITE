@@ -708,15 +708,25 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 /* Section-level list item hooks keep feature groups easy to target for spacing refinements. */
 .plan-group { margin: 0; }
-/* Keep feature groups content-driven to avoid artificial empty gaps between subsections. */
-.plan-group-brand { min-height: 0; }
-.plan-group-backend { min-height: 0; }
+/* Fixed group heights keep section headers vertically aligned across all pricing cards. */
+.plan-group-brand {
+  /* Lock the first group height so the backend section starts at the same vertical position on every card. */
+  min-height: 188px;
+}
+.plan-group-backend {
+  /* Keep the second group baseline consistent before the Mobile applications section. */
+  min-height: 284px;
+}
 /* CTA alignment mirrors the reference: full-width button before the feature list. */
 .plan-card .btn {
   width: 100%;
   text-align: center;
   margin-top: 10px;
   align-self: stretch;
+  /* Force identical typography on <a> and <button> CTAs so all plan buttons keep the same visual size. */
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.2;
 }
 /* Hover treatment is enabled only for first two outline buttons, matching enterprise visual language. */
 .plan-card .btn-outline {
@@ -750,7 +760,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   column-gap: 20px;
   list-style: none;
 }
-/* Avoid splitting single bullet text across columns for better readability. */
+/* Keep each bullet intact and naturally top-aligned in each column flow. */
 .plan-sublist li {
   break-inside: avoid;
   margin-bottom: 4px;
