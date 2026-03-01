@@ -109,19 +109,17 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 
 /*
-  Typography parity with the hero title:
-  - keep the same family/weight/style behavior as hero
-  - set size to 70% of the hero title scale for both overview headings
+  Match the overview title typography with the hero headline,
+  so both headings share the exact same visual weight and scale.
 */
-#overview > .container > h2,
-.details-stack-title {
+#overview > .container > h2 {
   font-family: inherit;
-  font-weight: 800;
+  font-weight: 700;
   font-style: normal;
-  font-size: clamp(1.05rem, 2.45vw, 3.045rem);
+  font-size: clamp(1.5rem, 3.5vw, 4.35rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: #000000;
+  color: var(--text);
 }
 .hero-content .lead {
   margin: 0 auto;
