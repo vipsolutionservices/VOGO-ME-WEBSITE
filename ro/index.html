@@ -129,17 +129,100 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate. Soluții de Inte
       </div>
     </section>
 
-    <!-- Portfolio overview section: listing VOGO offers with card-first navigation. -->
+    <!-- Portfolio overview section: product/service cards stay first in the flow. -->
     <section id="overview" class="section">
       <div class="container">
         <h2>Produse si servicii VOGO Technology:</h2>
 
-        <div class="cards-grid" id="offer-cards" aria-label="Lista soluțiilor VOGO"></div>
-<br> <br>
-        <h2>Alege solutia potrivita pentru afacerea ta:</h2>
+        <div class="cards-grid" id="offer-cards" aria-label="Lista soluțiilor VOGO">
+          <!--
+            Offer cards are written as regular HTML for easy content editing.
+            JavaScript only handles interactivity (active state, smooth scroll and icons).
+          -->
+          <button class="offer-card active" type="button" data-detail-target="detail-1" data-chip="SUPPORT">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>VOGO AI Customer Support Plugin</h3></div>
+            </div>
+            <p class="offer-card-summary">VOGO AI Chatbot este un plugin inteligent pentru WordPress / WooCommerce / Site-uri web care transformă conversațiile în acțiuni reale. Nu este doar un chatbot care răspunde la întrebări — este un asistent AI capabil să execute operațiuni direct în contul utilizatorului, să interacționeze cu WooCommerce și să transfere conversația către un operator uman atunci când este necesar.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">SUPPORT</span><span class="offer-more">Let's go</span></div>
+          </button>
 
+          <button class="offer-card" type="button" data-detail-target="detail-2" data-chip="MOBILE">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>VOGO Get My Mobile Applications Plugin</h3></div>
+            </div>
+            <p class="offer-card-summary">Platformă de aplicații mobile cu securitate JWT, autentificare socială, multi-language și publicare asistată în ecosistemele Apple și Google.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">MOBILE</span><span class="offer-more">Let's go</span></div>
+          </button>
 
-        <div class="details-stack" id="details-stack" aria-label="Detalii extinse pentru portofoliul VOGO"></div>
+          <button class="offer-card" type="button" data-detail-target="detail-3" data-chip="SERVICES">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>VOGO Services: Build • Migrate • Integrate</h3></div>
+            </div>
+            <p class="offer-card-summary">Servicii enterprise cap-coadă pentru dezvoltare de produs nou, migrare sigură și integrare avansată de module AI în aplicații existente.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">SERVICES</span><span class="offer-more">Let's go</span></div>
+          </button>
+
+          <button class="offer-card" type="button" data-detail-target="detail-4" data-chip="RETAIL">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>VOGO Bricolage M Series</h3></div>
+            </div>
+            <p class="offer-card-summary">Soluție AI specializată pentru magazine de bricolaj, cu asistent conversațional, ghidare în magazin și integrare operațională pentru experiență omnichannel.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">RETAIL</span><span class="offer-more">Let's go</span></div>
+          </button>
+
+          <button class="offer-card" type="button" data-detail-target="detail-5" data-chip="COMMERCE">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>VOGO Retail X Series</h3></div>
+            </div>
+            <p class="offer-card-summary">Asistent AI pentru food retail și magazine generale, cu recomandări personalizate, căutare rapidă și suport pentru conversie crescută în punctele de vânzare.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">COMMERCE</span><span class="offer-more">Let's go</span></div>
+          </button>
+
+          <button class="offer-card" type="button" data-detail-target="detail-6" data-chip="CARE">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>VOGO Support Services</h3></div>
+            </div>
+            <p class="offer-card-summary">Suport tehnic continuu, mentenanță proactivă și SLA-uri clare pentru stabilitate operațională și predictibilitate în exploatarea produselor digitale.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">CARE</span><span class="offer-more">Let's go</span></div>
+          </button>
+
+          <button class="offer-card" type="button" data-detail-target="detail-7" data-chip="CLOUD">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>VOGO Storage Services</h3></div>
+            </div>
+            <p class="offer-card-summary">Servicii de storage scalabile, cu backup, securizare și administrare adaptată volumului de date și nevoilor de continuitate operațională.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">CLOUD</span><span class="offer-more">Let's go</span></div>
+          </button>
+
+          <button class="offer-card" type="button" data-detail-target="detail-8" data-chip="CUSTOM">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>Enterprise Projects</h3></div>
+            </div>
+            <p class="offer-card-summary">Proiecte enterprise personalizate, cu arhitectură custom, roadmap etapizat și integrare cu sisteme interne pentru ROI măsurabil.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">CUSTOM</span><span class="offer-more">Let's go</span></div>
+          </button>
+
+          <a class="offer-card" href="../vogo-recommended-plugins.html" target="_blank" rel="noopener noreferrer" data-chip="CUSTOM">
+            <div class="offer-card-top">
+              <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
+              <div class="offer-card-title-wrap"><h3>Pluginuri recomandate</h3></div>
+            </div>
+            <p class="offer-card-summary">Descoperă selecția VOGO de pluginuri recomandate pentru performanță, integrare rapidă și extindere eficientă a funcționalităților.</p>
+            <div class="offer-card-footer"><span class="offer-bullet">CUSTOM</span><span class="offer-more">Let's go</span></div>
+          </a>
+        </div>
+<br>
+
+        <!-- Moved sections: certifications and pricing now appear directly before the solution chooser heading, as requested. -->
       </div>
     </section>
 
@@ -193,6 +276,7 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate. Soluții de Inte
         </div>
       </div>
     </section>
+
 
     <section id="plans" class="section">
       <div class="container">
@@ -383,6 +467,18 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate. Soluții de Inte
       </div>
     </section>
 
+
+    <!-- Portfolio continuation: keep the solution chooser heading after certifications and pricing. -->
+    <section class="section">
+      <div class="container">
+        <h2>Alege solutia potrivita pentru afacerea ta:</h2>
+
+
+        <div class="details-stack" id="details-stack" aria-label="Detalii extinse pentru portofoliul VOGO"></div>
+      </div>
+    </section>
+
+
     <section id="products" class="section enterprise-section">
       <div class="container enterprise-grid">
         <div>
@@ -460,7 +556,6 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate. Soluții de Inte
       </div>
     </div>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
