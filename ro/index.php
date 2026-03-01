@@ -1,69 +1,6 @@
-<!DOCTYPE html>
-<!--
-  File role: Main VOGO landing page in Romanian.
-  Static HTML version using .html files only.
-  Update scope: SEO enhancement, hero refinements, and sub-hero image carousel.
--->
-<html lang="ro">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VOGO Technology România | Soluții AI, aplicații mobile și integrare enterprise</title>
-  <meta name="description" content="VOGO Enterprise România oferă soluții AI pentru suport clienți, aplicații mobile, migrare și integrare enterprise. Descoperă portofoliul VOGO și cere un demo personalizat." />
-  <meta name="keywords" content="VOGO Enterprise, soluții AI România, aplicații mobile business, integrare enterprise, migrare aplicații, suport clienți AI" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://vogo.me/ro/vogo-products/" />
+<?php include __DIR__ . '/header.html'; ?>
 
-  <!-- Open Graph metadata for richer previews and clearer SEO context. -->
-  <meta property="og:locale" content="ro_RO" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise" />
-  <meta property="og:description" content="Portofoliu VOGO cu soluții AI, servicii enterprise și aplicații mobile scalabile pentru companii din România." />
-  <meta property="og:url" content="https://vogo.me/ro/vogo-products/" />
-  <meta property="og:site_name" content="VOGO" />
-
-  <!-- Twitter card metadata for social distribution consistency. -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise" />
-  <meta name="twitter:description" content="Portofoliu VOGO cu soluții AI, servicii enterprise și aplicații mobile scalabile pentru companii din România." />
-
-  <!-- Performance hint: preloads first sub-hero slide for faster above-the-fold rendering. -->
-  <link rel="preload" as="image" href="img/vogo_wordpress_branc_control+center_1.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Structured data: explicit organization context for search engines. -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "VOGO",
-    "url": "https://vogo.me",
-    "logo": "https://vogo.me/wp-content/uploads/2025/10/Logo-vogo.svg"
-  }
-  </script>
-</head>
-<body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <div class="logo">
-        <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
-        <span>VOGO</span>
-      </div>
-      <nav class="main-nav">
-        <a href="#overview">Produse</a>
-        <a href="#services">Servicii</a>
-        <a href="#products">Products</a>
-        <a href="#plans">Prețuri</a>
-      </nav>
-      <a class="btn btn-primary" href="#contact">Solicită demo</a>
-    </div>
-  </header>
-
-  <main>
+<main>
     <!-- Hero section: switched to a centered composition with white background parity. -->
     <section class="hero section">
       <div class="container hero-grid">
@@ -238,26 +175,4 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="logo">
-          <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="lazy" decoding="async" />
-          <span>VOGO</span>
-        </div>
-        <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
-      </div>
-      <div>
-        <h4>Companie</h4>
-        <ul><li>Despre noi</li><li>Contact</li><li>Cariere</li></ul>
-      </div>
-      <div id="services">
-        <h4>Servicii</h4>
-        <ul><li>Build</li><li>Migrate</li><li>Integrate</li></ul>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<?php include __DIR__ . '/footer.html'; ?>
