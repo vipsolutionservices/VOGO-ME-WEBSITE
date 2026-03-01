@@ -203,7 +203,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .offer-card-top {
   display: grid;
   grid-template-columns: auto 1fr;
-  align-items: start;
+  /* Vertically center title block with the icon inside each product/service card. */
+  align-items: center;
   gap: 14px;
 }
 
@@ -231,7 +232,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   display: block;
 }
 .offer-card h3 {
-  color: #0c1630;
+  /* Keep titles in a neutral gray tone instead of solid black. */
+  color: #4b5563;
   font-size: 1.28rem;
   margin: 0;
 }
