@@ -1,13 +1,34 @@
 <!DOCTYPE html>
+<!-- /**
+  File role: VOGO recommended plugins page with searchable Elementor add-ons and partner links.
+  Update scope: SEO optimization plus shared-looking header and footer layout for consistent branding.
+*/ -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VOGO Recommended Plugins</title>
-  <meta name="description" content="Alphabetically organized list of recommended Elementor add-ons with instant search." />
+  <title>VOGO Recommended Plugins | Elementor Add-ons Directory</title>
+  <!-- /** Core SEO metadata for indexing, relevance, and snippet quality. */ -->
+  <meta name="description" content="Explore VOGO recommended Elementor plugins with instant search, trusted partner tools, and direct links to each add-on." />
+  <meta name="keywords" content="VOGO recommended plugins, Elementor add-ons, WordPress plugins, Elementor plugin directory" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://vogo.me/vogo-recommended-plugins" />
+
+  <!-- /** Open Graph metadata for social sharing previews. */ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VOGO Recommended Plugins | Elementor Add-ons Directory" />
+  <meta property="og:description" content="Search VOGO's recommended Elementor plugins and discover trusted add-ons for modern WordPress websites." />
+  <meta property="og:url" content="https://vogo.me/vogo-recommended-plugins" />
+  <meta property="og:image" content="https://vogo.me/img-general/vogo-logo.png" />
+
+  <!-- /** Twitter Card metadata for optimized link previews. */ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VOGO Recommended Plugins | Elementor Add-ons Directory" />
+  <meta name="twitter:description" content="Search VOGO's recommended Elementor plugins and discover trusted add-ons for modern WordPress websites." />
+  <meta name="twitter:image" content="https://vogo.me/img-general/vogo-logo.png" />
   <style>
     :root {
-      --bg: #f7f8fb;
+      --bg: #ffffff;
       --surface: #ffffff;
       --text: #1b2030;
       --muted: #5f6472;
@@ -28,8 +49,48 @@
       line-height: 1.55;
     }
 
+    /** Shared header section styles for consistent VOGO navigation experience. */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247,248,250,.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #eceff3;
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 74px;
+    }
+
+
+    .main-nav {
+      display: flex;
+      gap: 26px;
+    }
+
+    .main-nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .main-nav a:hover {
+      color: var(--primary);
+    }
+
+
+    /** Main content container keeps page sections centered and readable. */
     .container {
       width: min(1200px, 92vw);
+      margin: 0 auto;
+    }
+
+    main.container {
       margin: 40px auto 60px;
     }
 
@@ -52,7 +113,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: linear-gradient(180deg, var(--bg) 78%, rgba(247, 248, 251, 0));
+      background: linear-gradient(180deg, var(--bg) 78%, rgba(255, 255, 255, 0));
       padding: 12px 0;
     }
 
@@ -178,20 +239,110 @@
       border-radius: 10px;
       background: var(--surface);
     }
+
+    /** Footer section styles for consistent end-of-page navigation and branding. */
+    .site-header .logo,
+    .site-footer .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: .04em;
+      color: #0f7b65;
+      display: inline-flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display: block;
+      border: 0;
+      background: transparent;
+    }
+
+    .btn-primary {
+      background: #0f7b65;
+      color: #ffffff;
+      border-color: #0f7b65;
+    }
+
+    .promo-cta {
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: #0f7b65;
+      background: #ffffff;
+      border-color: #0f7b65;
+      transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+      white-space: nowrap;
+    }
+
+    .promo-cta:hover,
+    .promo-cta:focus-visible {
+      color: #ffffff;
+      background: #0f7b65;
+      border-color: #0f7b65;
+      box-shadow: 0 0 0 4px rgba(15, 123, 101, 0.18), 0 10px 22px rgba(15, 123, 101, 0.28);
+      transform: translateY(-1px);
+    }
+
+    .site-footer {
+      margin-top: 36px;
+      background: #030807;
+      color: #d7e2df;
+      padding: 36px 0 54px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
   </style>
 </head>
 <body>
+  <!-- /** Header section: exact shared header structure used in ro/index.html. */ -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="logo">
+        <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
+        <span>VOGO</span>
+      </div>
+      <nav class="main-nav">
+        <a href="#overview">Produse</a>
+        <a href="#services">Servicii</a>
+        <a href="#products">Products</a>
+        <a href="#plans">Prețuri</a>
+      </nav>
+      <a class="btn btn-primary promo-cta" href="#contact">Obține acum reducerea – valabilă doar în perioada promo</a>
+    </div>
+  </header>
+
+  <!-- /** Main page content: searchable recommended plugins catalog. */ -->
   <main class="container">
     <header class="header">
       <h1>VOGO Recommended Plugins</h1>
       <p>Recommended add-ons list organized alphabetically, with instant search.</p>
     </header>
 
+    <!-- /** Search section: instant filtering by plugin name, author, and description. */ -->
     <section class="search-wrap" aria-label="Search section">
       <input id="pluginSearch" class="search" type="search" placeholder="Search by plugin name, author, or description..." aria-label="Search plugins" />
       <p id="resultCount" class="result-count">Showing 13 of 13 plugins</p>
     </section>
 
+    <!-- /** Plugins grid section: cards for each recommended partner add-on. */ -->
     <section id="pluginsGrid" class="grid" aria-label="Recommended plugins">
       <article class="card" data-plugin="Draw Attention" data-author="N Squared" data-description="Easy to use drawing tool for creating interactive images (fully responsive image maps). Highlight sections of your images with clickable hotspots!">
         <div class="card-head">
@@ -392,7 +543,31 @@
     <p id="emptyState" class="empty-state">No plugins match your search.</p>
   </main>
 
+  <!-- /** Footer section: exact shared footer structure used in ro/index.html. */ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo">
+          <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="lazy" decoding="async" />
+          <span>VOGO</span>
+        </div>
+        <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
+      </div>
+      <div>
+        <h4>Companie</h4>
+        <ul><li>Despre noi</li><li>Contact</li><li>Cariere</li></ul>
+      </div>
+      <div id="services">
+        <h4>Servicii</h4>
+        <ul><li>Build</li><li>Migrate</li><li>Integrate</li></ul>
+      </div>
+    </div>
+  </footer>
+
   <script>
+    /**
+     * Search behavior section: isolates filtering logic for easy maintenance and debugging.
+     */
     // Keep behavior isolated and explicit for easier maintenance.
     (function initPluginsSearch() {
       const searchInput = document.getElementById('pluginSearch');
