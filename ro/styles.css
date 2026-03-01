@@ -140,36 +140,73 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   object-fit: contain;
 }
 
-/* Portfolio cards: green transparent visual style with compact 3px corners. */
+/* Portfolio cards: arranged as clean product tiles with icon, body and right-aligned CTA. */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 26px;
 }
 .offer-card {
-  background: rgba(15, 123, 101, 0.06);
-  border: 1px solid rgba(15, 123, 101, 0.22);
-  border-radius: 3px;
+  background: var(--white);
+  border: 1px solid #d6dbe3;
+  border-radius: 4px;
   padding: 18px;
+  min-height: 218px;
   cursor: pointer;
   transition: .2s ease;
   text-align: left;
-  display: grid;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
 }
 .offer-card:hover,
 .offer-card.active {
-  border-color: rgba(15, 123, 101, 0.5);
-  box-shadow: 0 12px 22px rgba(15, 123, 101, 0.12);
-  transform: translateY(-2px);
+  border-color: #c2c9d3;
+  box-shadow: 0 8px 20px rgba(10, 18, 32, 0.08);
+  transform: translateY(-1px);
 }
-.offer-card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
+.offer-card-top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 14px;
 }
-.offer-card h3 { font-size: 1.12rem; margin: 0; }
+.offer-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  background: #f1e4f9;
+  color: #d319d1;
+  display: grid;
+  place-items: center;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+.offer-card h3 {
+  color: #0c1630;
+  font-size: 1.28rem;
+  margin: 0 0 8px;
+}
+.offer-card p {
+  margin: 0;
+  color: #212f4a;
+  font-size: 1.03rem;
+  line-height: 1.42;
+}
+.offer-more {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e000db;
+  border-radius: 6px;
+  padding: 9px 18px;
+  font-weight: 700;
+  font-size: .98rem;
+  color: #e000db;
+  background: #fff;
+}
 .offer-chip {
   background: rgba(15, 123, 101, 0.14);
   color: var(--vogo-green-dark);
@@ -182,20 +219,6 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .offer-icon {
   font-size: 2rem;
   line-height: 1;
-}
-.offer-card p { margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.55; }
-.offer-more {
-  margin-top: 2px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(15, 123, 101, 0.12);
-  color: var(--vogo-green-dark);
-  border: 1px solid rgba(15, 123, 101, 0.35);
-  border-radius: 3px;
-  padding: 10px 14px;
-  font-weight: 700;
-  font-size: .93rem;
 }
 
 /* Detailed sections stack: large explanatory content shown one section under another */
