@@ -271,6 +271,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .offer-card h3 {
   /* Requested update: use a clear gray tone for card titles in the VOGO offers section. */
   color: #6b7280;
+  /* Sales-oriented heading stack: geometric sans fonts improve emphasis and visual punch. */
+  font-family: "Montserrat", "Avenir Next", "Segoe UI", Inter, Roboto, Arial, sans-serif;
   font-size: 1.28rem;
   margin: 0;
 }
