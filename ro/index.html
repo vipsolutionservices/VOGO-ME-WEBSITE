@@ -330,12 +330,14 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
         <h2>Selectează planul potrivit</h2>
         <p class="section-subtitle">Prezentare orientativă. Planurile pot fi personalizate în funcție de proiect.</p>
 
-        <!-- Pricing cards: titles, labels, and feature group hooks are tuned to match requested UX details. -->
+        <!-- Pricing cards: reorganized to mirror the reference layout while preserving all existing text content. -->
         <div class="plans-grid">
           <article class="plan-card">
             <h3>Essentis</h3>
             <p class="price">€7 <span>/lună</span></p>
             <p><strong>100 Users</strong> si <strong>1 site</strong></p>
+            <!-- Card-level CTA is intentionally placed before feature groups to match the requested visual order. -->
+            <button class="btn btn-outline">Alege Essentials</button>
             <!-- Plan feature groups: each core subsection has compact gray bullet details in two columns. -->
             <ul class="plan-feature-groups">
               <!-- Group class names are used by CSS to keep cross-card section headings aligned. -->
@@ -388,13 +390,14 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
                 </ul>
               </li>
             </ul>
-            <button class="btn btn-outline">Alege Essentials</button>
           </article>
 
           <article class="plan-card">
             <h3>Essentials plus</h3>
             <p class="price">€27 <span>/lună</span></p>
             <p><strong>1000 Users</strong> si <strong>1 site</strong></p>
+            <!-- Card-level CTA is intentionally placed before feature groups to match the requested visual order. -->
+            <button class="btn btn-outline">Alege Essentials Plus</button>
             <!-- Plan feature groups: each core subsection has compact gray bullet details in two columns. -->
             <ul class="plan-feature-groups">
               <li class="plan-group plan-group-brand">
@@ -444,7 +447,6 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
                 </ul>
               </li>
             </ul>
-            <button class="btn btn-outline">Alege Essentials Plus</button>
           </article>
 
           <article class="plan-card featured">
@@ -452,6 +454,8 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
             <h3>Eterprise</h3>
             <p class="price">€ask <span>/lună</span></p>
             <p><strong>unlimited Users</strong> si <strong>1 site</strong></p>
+            <!-- Featured plan CTA remains highlighted and appears before details to mirror the reference hierarchy. -->
+            <button class="btn btn-primary">Alege Enterprise</button>
             <!-- Plan feature groups: each core subsection has compact gray bullet details in two columns. -->
             <ul class="plan-feature-groups">
               <li class="plan-group plan-group-brand">
@@ -508,8 +512,18 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
                 </ul>
               </li>
             </ul>
-            <button class="btn btn-primary">Alege Enterprise</button>
           </article>
+        </div>
+
+        <!-- Pricing legal/supportive note and compare action requested under the pricing cards. -->
+        <div class="plans-footer" aria-label="Informații suplimentare planuri">
+          <p>
+            The above prices do not include applicable taxes based on your billing address. The final price will be displayed on the checkout page.
+            All subscriptions renew based on your billing cycle at list price.<br />
+            Prices are rounded for display. Your final price at checkout may be slightly lower.<br />
+            30-day money-back guarantee applies only for annual plans.
+          </p>
+          <a class="btn btn-outline compare-plans-btn" href="https://vogo.me/ecommerce-mobile-app-white-label/">Compare plans</a>
         </div>
       </div>
     </section>

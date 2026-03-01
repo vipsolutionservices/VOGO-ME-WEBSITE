@@ -673,9 +673,9 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 
 /* Pricing/plan cards */
-.plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
 .plan-card {
-  /* Make each card a vertical flex container so the CTA can stay pinned at the bottom. */
+  /* Vertical card layout keeps a predictable visual rhythm across all pricing columns. */
   display: flex;
   flex-direction: column;
   background: var(--white);
@@ -689,11 +689,10 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   font-size: clamp(1.72rem, 2.3vw, 2rem);
   line-height: 1.12;
 }
-/* Top-level feature list: keeps only the 3 required section bullets visible and spaced. */
+/* Top-level feature list sits under CTA to match the requested card composition. */
 .plan-feature-groups {
-  /* Let feature content consume available space and keep CTA buttons bottom-aligned across cards. */
   flex: 1;
-  margin: 12px 0 18px;
+  margin: 16px 0 0;
   padding-left: 20px;
   display: grid;
   gap: 10px;
@@ -702,10 +701,12 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .plan-group { margin: 0; }
 .plan-group-brand { min-height: 210px; }
 .plan-group-backend { min-height: 250px; }
-/* Center the plan CTA horizontally while keeping it anchored to the bottom edge of the card. */
+/* CTA alignment mirrors the reference: full-width button before the feature list. */
 .plan-card .btn {
-  margin-top: auto;
-  align-self: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  align-self: stretch;
 }
 /* Hover treatment is enabled only for first two outline buttons, matching enterprise visual language. */
 .plan-card .btn-outline {
@@ -756,6 +757,34 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   font-weight: 700;
   border-radius: 999px;
   padding: 4px 10px;
+}
+
+/* Pricing footer replicates the legal note + compare action below pricing cards. */
+.plans-footer {
+  margin-top: 42px;
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+}
+.plans-footer p {
+  margin: 0;
+  max-width: 980px;
+  color: var(--text);
+  line-height: 1.45;
+}
+.compare-plans-btn {
+  min-width: 240px;
+  border-color: #151a21;
+  color: #151a21;
+  border-radius: 14px;
+  padding: 12px 20px;
+}
+.compare-plans-btn:hover,
+.compare-plans-btn:focus-visible {
+  background: #151a21;
+  color: var(--white);
+  border-color: #151a21;
 }
 
 /* Enterprise form area */
