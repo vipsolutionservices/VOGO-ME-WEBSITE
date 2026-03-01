@@ -57,11 +57,10 @@ const offers = [
     icon: '📱',
     summary:
       'Platformă de aplicații mobile cu securitate JWT, autentificare socială, multi-language și publicare asistată în ecosistemele Apple și Google.',
-    // Mobile plugin details: concise 2-3 sentence description as requested by the client.
     details: [
-      'VOGO Get My Mobile Applications Plugin te ajută să lansezi rapid aplicații mobile moderne, cu control de brand, backend sigur și funcții eCommerce pregătite pentru utilizare reală.',
-      'Soluția include infrastructură pentru autentificare, administrare produse și comenzi, plus comunicare directă cu utilizatorii în aplicație.',
-      'Planurile comerciale sunt prezentate în secțiunea „Selectează planul potrivit”, poziționată imediat sub această zonă pentru o comparație clară și ușor de parcurs.'
+      'VOGO Get My Mobile Applications Plugin accelerează lansarea de aplicații mobile performante printr-un set complet de funcții pregătite pentru business: securitate JWT, autentificare Google/Gmail/Apple, comunicare în aplicație și arhitectură multi-language.',
+      'Pentru dezvoltare graduală, include opțiuni de publicare în Apple App Store și Google Play în ediția Essentials, iar pentru proiecte extinse se pot activa pachete separate precum push notifications și Agora calls.',
+      'Componenta de mobilitate poate fi adaptată și pentru scenarii de tip drive, cu comenzi inter-city, aeroport și intra-city, susținând o experiență modernă pentru utilizatori și echipe operaționale.'
     ]
   },
   {
