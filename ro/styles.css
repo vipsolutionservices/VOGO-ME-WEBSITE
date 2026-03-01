@@ -430,7 +430,9 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 /* Trust badges section */
 .trust-section { background: var(--vogo-green-soft); }
 .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+/* Badge container keeps both text pills and ISO visual cards aligned and wrapped. */
 .badges { display: flex; flex-wrap: wrap; gap: 12px; }
+/* Default badge style used for text-only compliance labels. */
 .badge {
   background: var(--white);
   color: var(--vogo-green-dark);
@@ -439,6 +441,31 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   padding: 10px 14px;
   font-weight: 700;
   font-size: .9rem;
+}
+/* ISO badge card style for image-based credibility marks from /img-general/iso. */
+.badge-iso-card {
+  margin: 0;
+  border-radius: 12px;
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+  width: 128px;
+  text-align: center;
+}
+/* ISO image scales consistently across all imported certification logos. */
+.badge-iso-card img {
+  width: 100%;
+  height: 76px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #d5e8e2;
+}
+/* Caption keeps the ISO code readable under each logo card. */
+.badge-iso-card figcaption {
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--vogo-green-dark);
 }
 
 /* Pricing/plan cards */
