@@ -252,6 +252,15 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   line-height: 1;
 }
 
+
+.offer-icon-bootstrap {
+  font-size: 1.15rem;
+}
+
+.offer-icon-bootstrap::before {
+  content: none !important;
+}
+
 /* Professional icon set for the first three cards using clean SVG line icons. */
 .offer-card[data-chip='SUPPORT'] .offer-icon-badge::before,
 .offer-icon[data-chip='SUPPORT']::before,
