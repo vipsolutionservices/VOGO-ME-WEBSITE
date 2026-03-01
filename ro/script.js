@@ -176,6 +176,7 @@ const offers = [
   }
 ];
 
+
 // FAQ entries in Romanian for better local relevance.
 const faqData = [
   ['De ce să aleg VOGO One și care este diferența față de varianta standard?', 'VOGO One grupează funcții avansate AI, suport prioritar și opțiuni enterprise într-un flux unificat.'],
@@ -382,55 +383,36 @@ function initSupportGalleryLightbox() {
 }
 
 /**
- * Renders cards in a compact product-tile style with icon, title and CTA button.
- * On click, the page scrolls to the corresponding detailed section below.
+ * Initializes offer cards that are authored directly in HTML.
+ * JavaScript keeps only behavior concerns: icon injection and card-to-detail navigation.
  */
-function renderOffers() {
-  offers.forEach((offer, index) => {
-    // Use anchor cards for external routes and button cards for local in-page navigation.
-    const card = document.createElement(offer.externalUrl ? 'a' : 'button');
-    card.className = 'offer-card';
+function initOfferCardsFromHtml() {
+  if (!cardsContainer) return;
 
-    if (offer.externalUrl) {
-      card.href = offer.externalUrl;
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
-    } else {
-      card.type = 'button';
-    }
-    // Keep content split by role: header row, full-width summary text, then bottom footer actions.
-    card.innerHTML = `
-      <div class="offer-card-top">
-        <div class="offer-icon-badge" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
-        <div class="offer-card-title-wrap">
-          <h3>${offer.title}</h3>
-        </div>
-      </div>
-      <p class="offer-card-summary">${offer.summary}</p>
-      <div class="offer-card-footer">
-        <span class="offer-bullet">${offer.chip}</span>
-        <span class="offer-more">Let's go</span>
-      </div>
-    `;
+  const cards = Array.from(cardsContainer.querySelectorAll('.offer-card'));
 
-    if (!offer.externalUrl) {
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.offer-card').forEach((el) => el.classList.remove('active'));
-        card.classList.add('active');
+  cards.forEach((card) => {
+    const chip = card.dataset.chip;
+    const iconNode = card.querySelector('[data-offer-icon]');
 
-        const targetSection = document.getElementById(`detail-${index + 1}`);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
+    // Inject icons from the existing chip map to keep visual consistency.
+    if (iconNode && chip) {
+      iconNode.innerHTML = getOfferIcon(chip);
     }
 
-    // Keep first card highlighted to indicate initial context.
-    if (index === 0) {
+    // Buttons are internal cards; anchors are external cards and keep default browser behavior.
+    if (card.tagName.toLowerCase() !== 'button') return;
+
+    card.addEventListener('click', () => {
+      cards.forEach((item) => item.classList.remove('active'));
       card.classList.add('active');
-    }
 
-    cardsContainer.appendChild(card);
+      const targetId = card.dataset.detailTarget;
+      const targetSection = targetId ? document.getElementById(targetId) : null;
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 }
 
@@ -477,7 +459,7 @@ function renderFaq() {
 
 renderDetailedSections();
 initSupportGalleryLightbox();
-renderOffers();
+initOfferCardsFromHtml();
 renderFaq();
 
 /**
