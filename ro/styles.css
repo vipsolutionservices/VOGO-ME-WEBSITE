@@ -124,7 +124,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 .hero-content .lead {
   margin: 0 auto;
-  font-size: clamp(1.04rem, 1.65vw, 1.05rem);
+  font-size: clamp(1.16rem, 1.95vw, 1.24rem);
   max-width: 93ch;
 }
 .hero-actions {
