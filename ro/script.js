@@ -177,6 +177,7 @@ function renderOffers() {
     const card = document.createElement('button');
     card.className = 'offer-card';
     card.type = 'button';
+    // Footer keeps the left bullet and right CTA aligned on the same bottom baseline.
     card.innerHTML = `
       <div class="offer-card-top">
         <div class="offer-icon-badge" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
@@ -185,7 +186,10 @@ function renderOffers() {
           <p>${offer.summary}</p>
         </div>
       </div>
-      <span class="offer-more">Let's go</span>
+      <div class="offer-card-footer">
+        <span class="offer-bullet">${offer.chip}</span>
+        <span class="offer-more">Let's go</span>
+      </div>
     `;
 
     card.addEventListener('click', () => {
