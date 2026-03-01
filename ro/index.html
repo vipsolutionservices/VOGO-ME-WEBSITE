@@ -68,7 +68,7 @@
   <meta name="twitter:image" content="https://vogo.me/img/products/vogo_wordpress_branc_control+center_1.png" />
 
   <!-- Performance hint: preloads first sub-hero slide for faster above-the-fold rendering. -->
-  <link rel="preload" as="image" href="../img/products/vogo_wordpress_branc_control+center_1.png" />
+  <link rel="preload" as="image" href="../img/products/carousel/vogo_wordpress_branc_control+center_1.png" />
 
   <link rel="stylesheet" href="styles.css" />
 
@@ -122,20 +122,13 @@ Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
       </div>
     </section>
 
-    <!-- Sub-hero carousel: three requested product visuals, auto-cycling and keyboard-friendly. -->
+    <!-- Sub-hero carousel: imaginile sunt încărcate dinamic din /img/products/carousel, auto-cycling și keyboard-friendly. -->
     <section class="section hero-carousel-section" aria-label="Carousel imagini VOGO WordPress">
       <div class="container">
         <div class="hero-carousel" role="region" aria-roledescription="carousel" aria-label="VOGO WordPress control center preview">
-          <div class="hero-carousel-track">
+          <div class="hero-carousel-track" data-carousel-folder="../img/products/carousel/" aria-live="polite">
             <figure class="hero-slide">
-              <img src="../img/products/vogo_wordpress_branc_control+center_1.png" alt="VOGO WordPress branch control center - ecran 1" loading="eager" decoding="async" />
-            </figure>
-            <figure class="hero-slide">
-              <img src="../img/products/vogo_wordpress_branc_control+center_2.png" alt="VOGO WordPress branch control center - ecran 2" loading="lazy" decoding="async" />
-            </figure>
-            <figure class="hero-slide">
-              <!-- Uses the real filename from /img so the third carousel image is always visible. -->
-              <img src="../img/products/vogo_wordpress_branc_control+center_ai_asistance.png" alt="VOGO WordPress branch control center - ecran 3" loading="lazy" decoding="async" />
+              <img src="../img/products/carousel/vogo_wordpress_branc_control+center_1.png" alt="VOGO WordPress branch control center - previzualizare" loading="eager" decoding="async" />
             </figure>
           </div>
         </div>
