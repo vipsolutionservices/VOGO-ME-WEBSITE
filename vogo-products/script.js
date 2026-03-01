@@ -234,3 +234,53 @@ function renderFaq() {
 renderDetailedSections();
 renderOffers();
 renderFaq();
+
+/**
+ * Hero carousel section logic.
+ * - Auto-rotates all sub-hero images.
+ * - Supports left/right keyboard navigation.
+ * - Pauses rotation while the user hovers the carousel.
+ */
+const heroCarouselTrack = document.querySelector('.hero-carousel-track');
+const heroCarouselSlides = heroCarouselTrack ? Array.from(heroCarouselTrack.children) : [];
+let heroCarouselIndex = 0;
+let heroCarouselTimer;
+
+/** Moves carousel to the requested slide index with loop wrapping. */
+function setHeroCarouselSlide(nextIndex) {
+  if (!heroCarouselTrack || heroCarouselSlides.length === 0) return;
+  heroCarouselIndex = (nextIndex + heroCarouselSlides.length) % heroCarouselSlides.length;
+  heroCarouselTrack.style.transform = `translateX(-${heroCarouselIndex * 100}%)`;
+}
+
+/** Starts/restarts the carousel autoplay interval. */
+function startHeroCarouselAutoplay() {
+  if (!heroCarouselTrack || heroCarouselSlides.length <= 1) return;
+  clearInterval(heroCarouselTimer);
+  heroCarouselTimer = setInterval(() => {
+    setHeroCarouselSlide(heroCarouselIndex + 1);
+  }, 4200);
+}
+
+/** Stops autoplay; used on hover to reduce UI motion while reading an image. */
+function stopHeroCarouselAutoplay() {
+  clearInterval(heroCarouselTimer);
+}
+
+if (heroCarouselTrack && heroCarouselSlides.length) {
+  startHeroCarouselAutoplay();
+
+  heroCarouselTrack.addEventListener('mouseenter', stopHeroCarouselAutoplay);
+  heroCarouselTrack.addEventListener('mouseleave', startHeroCarouselAutoplay);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+      setHeroCarouselSlide(heroCarouselIndex + 1);
+      startHeroCarouselAutoplay();
+    }
+    if (event.key === 'ArrowLeft') {
+      setHeroCarouselSlide(heroCarouselIndex - 1);
+      startHeroCarouselAutoplay();
+    }
+  });
+}

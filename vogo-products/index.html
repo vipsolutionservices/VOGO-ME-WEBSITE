@@ -2,6 +2,7 @@
 <!--
   File role: Main VOGO landing page in Romanian.
   Static HTML version using .html files only.
+  Update scope: SEO enhancement, hero refinements, and sub-hero image carousel.
 -->
 <html lang="ro">
 <head>
@@ -11,15 +12,39 @@
   <meta name="description" content="VOGO Enterprise România oferă soluții AI pentru suport clienți, aplicații mobile, migrare și integrare enterprise. Descoperă portofoliul VOGO și cere un demo personalizat." />
   <meta name="keywords" content="VOGO Enterprise, soluții AI România, aplicații mobile business, integrare enterprise, migrare aplicații, suport clienți AI" />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vogo.me/ro/vogo-products/" />
+
+  <!-- Open Graph metadata for richer previews and clearer SEO context. -->
   <meta property="og:locale" content="ro_RO" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise" />
   <meta property="og:description" content="Portofoliu VOGO cu soluții AI, servicii enterprise și aplicații mobile scalabile pentru companii din România." />
+  <meta property="og:url" content="https://vogo.me/ro/vogo-products/" />
   <meta property="og:site_name" content="VOGO" />
+
+  <!-- Twitter card metadata for social distribution consistency. -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VOGO Enterprise România | Soluții AI, aplicații mobile și integrare enterprise" />
+  <meta name="twitter:description" content="Portofoliu VOGO cu soluții AI, servicii enterprise și aplicații mobile scalabile pentru companii din România." />
+
+  <!-- Performance hint: preloads first sub-hero slide for faster above-the-fold rendering. -->
+  <link rel="preload" as="image" href="img/vogo_wordpress_branc_control+center_1.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Structured data: explicit organization context for search engines. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VOGO",
+    "url": "https://vogo.me",
+    "logo": "https://vogo.me/wp-content/uploads/2025/10/Logo-vogo.svg"
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -36,23 +61,39 @@
   </header>
 
   <main>
+    <!-- Hero section: switched to a centered composition with white background parity. -->
     <section class="hero section">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-content">
           <p class="eyebrow">VOGO • crafted in Europe</p>
           <h1>Încredere și inovație, construite pentru scalare</h1>
           <p class="lead">
             Soluții AI, mobile și enterprise gândite profesional: suport clienți, aplicații,
             integrare și automatizare pentru business-uri care vor rezultate reale.
           </p>
+          <div class="hero-actions" aria-label="Acțiuni principale">
+            <a class="btn btn-primary" href="#contact">Solicită demo</a>
+            <a class="btn btn-outline" href="#services">Descoperă serviciile</a>
+          </div>
         </div>
-        <div class="hero-card">
-          <h3>Siguranță & performanță</h3>
-          <ul>
-            <li>✅ Infrastructură scalabilă și securizată</li>
-            <li>✅ Arhitectură modulară pe plugin-uri</li>
-            <li>✅ Implementare rapidă și suport dedicat</li>
-          </ul>
+      </div>
+    </section>
+
+    <!-- Sub-hero carousel: three requested product visuals, auto-cycling and keyboard-friendly. -->
+    <section class="section hero-carousel-section" aria-label="Carousel imagini VOGO WordPress">
+      <div class="container">
+        <div class="hero-carousel" role="region" aria-roledescription="carousel" aria-label="VOGO WordPress control center preview">
+          <div class="hero-carousel-track">
+            <figure class="hero-slide">
+              <img src="img/vogo_wordpress_branc_control+center_1.png" alt="VOGO WordPress branch control center - ecran 1" loading="eager" decoding="async" />
+            </figure>
+            <figure class="hero-slide">
+              <img src="img/vogo_wordpress_branc_control+center_2.png" alt="VOGO WordPress branch control center - ecran 2" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="hero-slide">
+              <img src="img/vogo_wordpress_branc_control+center_3.png" alt="VOGO WordPress branch control center - ecran 3" loading="lazy" decoding="async" />
+            </figure>
+          </div>
         </div>
       </div>
     </section>
