@@ -243,9 +243,77 @@ renderFaq();
  * - Pauses rotation while the user hovers the carousel.
  */
 const heroCarouselTrack = document.querySelector('.hero-carousel-track');
-const heroCarouselSlides = heroCarouselTrack ? Array.from(heroCarouselTrack.children) : [];
+let heroCarouselSlides = heroCarouselTrack ? Array.from(heroCarouselTrack.children) : [];
 let heroCarouselIndex = 0;
 let heroCarouselTimer;
+
+/** Returns a readable alt text from an image file name. */
+function buildCarouselAltFromName(filename, index) {
+  const cleanName = filename.replace(/\.[a-z0-9]+$/i, '').replace(/[_+\-]+/g, ' ').trim();
+  return `VOGO carousel image ${index + 1}: ${cleanName}`;
+}
+
+/** Renders carousel slides from a dynamic list of image URLs. */
+function renderHeroCarouselSlides(imageUrls) {
+  if (!heroCarouselTrack || imageUrls.length === 0) return;
+
+  heroCarouselTrack.innerHTML = '';
+  imageUrls.forEach((imageUrl, index) => {
+    const figure = document.createElement('figure');
+    figure.className = 'hero-slide';
+
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = buildCarouselAltFromName(imageUrl.split('/').pop() || 'image', index);
+    image.loading = index === 0 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+
+    figure.appendChild(image);
+    heroCarouselTrack.appendChild(figure);
+  });
+
+  heroCarouselSlides = Array.from(heroCarouselTrack.children);
+  setHeroCarouselSlide(0);
+}
+
+/**
+ * Loads carousel images dynamically by reading the /img/products/carousel directory index.
+ * Falls back to the existing HTML slide if directory listing is disabled.
+ */
+async function loadHeroCarouselImages() {
+  if (!heroCarouselTrack) return;
+
+  const folderUrl = heroCarouselTrack.dataset.carouselFolder;
+  if (!folderUrl) return;
+
+  try {
+    const response = await fetch(folderUrl, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const html = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const folderAbsoluteUrl = new URL(folderUrl, window.location.href);
+    const imageUrls = Array.from(doc.querySelectorAll('a[href]'))
+      .map((link) => link.getAttribute('href'))
+      .filter((href) => Boolean(href) && /\.(png|jpe?g|webp|gif|svg)$/i.test(href))
+      .map((href) => new URL(href, folderAbsoluteUrl).toString())
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+
+    if (imageUrls.length > 0) {
+      renderHeroCarouselSlides(imageUrls);
+    }
+  } catch (error) {
+    // Fallback keeps first slide from HTML when directory indexing is unavailable.
+    console.warn('Hero carousel dynamic load fallback:', error);
+  }
+
+  heroCarouselSlides = Array.from(heroCarouselTrack.children);
+  if (heroCarouselSlides.length > 1) {
+    startHeroCarouselAutoplay();
+  }
+}
 
 /** Moves carousel to the requested slide index with loop wrapping. */
 function setHeroCarouselSlide(nextIndex) {
@@ -268,8 +336,8 @@ function stopHeroCarouselAutoplay() {
   clearInterval(heroCarouselTimer);
 }
 
-if (heroCarouselTrack && heroCarouselSlides.length) {
-  startHeroCarouselAutoplay();
+if (heroCarouselTrack) {
+  loadHeroCarouselImages();
 
   heroCarouselTrack.addEventListener('mouseenter', stopHeroCarouselAutoplay);
   heroCarouselTrack.addEventListener('mouseleave', startHeroCarouselAutoplay);
