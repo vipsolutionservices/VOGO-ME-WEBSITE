@@ -106,10 +106,31 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 .hero-actions {
   margin-top: 24px;
+  display: grid;
+  width: min(100%, 920px);
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+.hero-buttons {
+  grid-column: 2;
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
+}
+.made-in-europe-badge {
+  grid-column: 3;
+  justify-self: end;
+  width: clamp(98px, 11vw, 140px);
+  max-width: 100%;
+  opacity: 0.76;
+  filter: drop-shadow(0 8px 14px rgba(10, 18, 32, 0.16));
+  transform: rotate(4deg);
+  transition: transform .25s ease, opacity .25s ease;
+}
+.made-in-europe-badge:hover {
+  opacity: 0.9;
+  transform: rotate(2deg) translateY(-2px);
 }
 
 /* Sub-hero carousel: large product showcase directly under hero section. */
@@ -363,4 +384,14 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 @media (max-width: 680px) {
   .hero-content h1 { font-size: clamp(2rem, 11vw, 3rem); }
+  .hero-actions {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+  }
+  .hero-buttons,
+  .made-in-europe-badge {
+    grid-column: 1;
+    justify-self: center;
+  }
 }
