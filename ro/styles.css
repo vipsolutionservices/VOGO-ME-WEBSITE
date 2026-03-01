@@ -135,12 +135,12 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   max-width: 100%;
   opacity: 0.76;
   filter: drop-shadow(0 8px 14px rgba(10, 18, 32, 0.16));
-  transform: rotate(4deg);
+  transform: rotate(45deg) translateY(-20px);
   transition: transform .25s ease, opacity .25s ease;
 }
 .made-in-europe-badge:hover {
   opacity: 0.9;
-  transform: rotate(2deg) translateY(-2px);
+  transform: rotate(42deg) translateY(-22px);
 }
 
 /* Sub-hero carousel: large product showcase directly under hero section. */
