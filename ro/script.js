@@ -190,22 +190,6 @@ const cardsContainer = document.getElementById('offer-cards');
 const detailsStack = document.getElementById('details-stack');
 const faqList = document.getElementById('faq-list');
 
-// Icon set styled as line illustrations to match the monochrome VOGO-green look.
-const offerLineIcons = {
-  SUPPORT: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a8 8 0 0 0-8 8v3a2 2 0 0 0 2 2h1v-5H6a6 6 0 0 1 12 0h-1v5h1a2 2 0 0 0 2-2v-3a8 8 0 0 0-8-8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 16.5a3 3 0 0 0 6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
-  MOBILE: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M10 6h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>',
-  SERVICES: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 4.5a3.5 3.5 0 0 1 4.95 4.95l-2.02 2.02-4.95-4.95 2.02-2.02Z" stroke="currentColor" stroke-width="1.8"/><path d="m4 20 5.1-1.05 8.4-8.4-4.95-4.95-8.4 8.4L4 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
-  RETAIL: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Z" stroke="currentColor" stroke-width="1.8"/><path d="M7 9V6a5 5 0 1 1 10 0v3" stroke="currentColor" stroke-width="1.8"/><path d="M9 14h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
-  COMMERCE: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="19" r="1.5" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="19" r="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M4 5h2l2.2 9.2a1 1 0 0 0 .98.8H18a1 1 0 0 0 .98-.78L20 8H7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-  CARE: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4a6 6 0 0 0-6 6v2a2 2 0 0 0 2 2h1v-4H8a4 4 0 1 1 8 0h-1v4h1a2 2 0 0 0 2-2v-2a6 6 0 0 0-6-6Z" stroke="currentColor" stroke-width="1.8"/><path d="M10 17h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
-  CLOUD: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 18a4 4 0 1 1 .5-7.97A5.5 5.5 0 0 1 18 12a3.5 3.5 0 1 1 0 7H7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-  CUSTOM: '<svg class="offer-line-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.1 4.6L19 9.2l-3.5 3.5.8 4.8L12 15.9 7.7 17.5l.8-4.8L5 9.2l4.9-1.6L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M18.5 4.5v3M17 6h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
-};
-
-function getOfferIcon(chip) {
-  return offerLineIcons[chip] || offerLineIcons.CUSTOM;
-}
-
 /**
  * Creates stacked detailed sections once, each with an id target for smooth scrolling.
  * Visual parity note: detailed sections reuse the same icon/chip/button language as top cards
@@ -220,7 +204,7 @@ function renderDetailedSections() {
     section.innerHTML = `
       <div class="detail-section-head">
         <div class="detail-title-wrap">
-          <div class="offer-icon" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
+          <div class="offer-icon" data-chip="${offer.chip}" aria-hidden="true"></div>
           <h3>${offer.title}</h3>
         </div>
         <span class="offer-chip">${offer.chip}</span>
@@ -410,7 +394,7 @@ function initSupportGalleryLightbox() {
 
 /**
  * Initializes offer cards that are authored directly in HTML.
- * JavaScript keeps only behavior concerns: icon injection and card-to-detail navigation.
+ * JavaScript keeps only behavior concerns: active state and card-to-detail navigation.
  */
 function initOfferCardsFromHtml() {
   if (!cardsContainer) return;
@@ -418,14 +402,6 @@ function initOfferCardsFromHtml() {
   const cards = Array.from(cardsContainer.querySelectorAll('.offer-card'));
 
   cards.forEach((card) => {
-    const chip = card.dataset.chip;
-    const iconNode = card.querySelector('[data-offer-icon]');
-
-    // Inject icons from the existing chip map to keep visual consistency.
-    if (iconNode && chip) {
-      iconNode.innerHTML = getOfferIcon(chip);
-    }
-
     // Buttons are internal cards; anchors are external cards and keep default browser behavior.
     if (card.tagName.toLowerCase() !== 'button') return;
 

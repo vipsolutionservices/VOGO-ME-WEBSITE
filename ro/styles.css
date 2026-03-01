@@ -243,11 +243,31 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   font-size: 1.45rem;
   line-height: 1;
 }
-.offer-line-icon {
-  width: 24px;
-  height: 24px;
-  display: block;
+
+/* Icon glyph is now controlled purely by CSS based on each card's HTML data-chip value. */
+.offer-icon-badge::before,
+.offer-icon::before {
+  content: '✨';
+  font-size: 1.3rem;
+  line-height: 1;
 }
+
+.offer-card[data-chip='SUPPORT'] .offer-icon-badge::before,
+.offer-icon[data-chip='SUPPORT']::before { content: '🤖'; }
+.offer-card[data-chip='MOBILE'] .offer-icon-badge::before,
+.offer-icon[data-chip='MOBILE']::before { content: '📱'; }
+.offer-card[data-chip='SERVICES'] .offer-icon-badge::before,
+.offer-icon[data-chip='SERVICES']::before { content: '🛠️'; }
+.offer-card[data-chip='RETAIL'] .offer-icon-badge::before,
+.offer-icon[data-chip='RETAIL']::before { content: '🛍️'; }
+.offer-card[data-chip='COMMERCE'] .offer-icon-badge::before,
+.offer-icon[data-chip='COMMERCE']::before { content: '🛒'; }
+.offer-card[data-chip='CARE'] .offer-icon-badge::before,
+.offer-icon[data-chip='CARE']::before { content: '🎧'; }
+.offer-card[data-chip='CLOUD'] .offer-icon-badge::before,
+.offer-icon[data-chip='CLOUD']::before { content: '☁️'; }
+.offer-card[data-chip='CUSTOM'] .offer-icon-badge::before,
+.offer-icon[data-chip='CUSTOM']::before { content: '🔗'; }
 .offer-card h3 {
   /* Requested update: use a clear gray tone for card titles in the VOGO offers section. */
   color: #6b7280;
