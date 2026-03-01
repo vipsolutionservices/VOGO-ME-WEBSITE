@@ -65,9 +65,22 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 /* Header promo CTA override: requested white background with green text and border. */
 .promo-cta {
+  /* Match navigation typography for consistent visual hierarchy in the header. */
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--vogo-green);
   background: var(--white);
   border-color: var(--vogo-green);
+  /* Animate only motion/shadow to preserve the current color palette on hover. */
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.promo-cta:hover,
+.promo-cta:focus-visible {
+  /* Add a subtle interaction cue without changing button colors. */
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 123, 101, 0.2);
 }
 
 /* Hero section layout: centered, cleaner and visually aligned with the provided reference style. */
