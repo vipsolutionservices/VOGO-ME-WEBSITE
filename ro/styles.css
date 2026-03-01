@@ -196,6 +196,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   /* Keep content compact so the CTA sits closer to the text block. */
   justify-content: flex-start;
   gap: 18px;
+  text-decoration: none;
+  color: inherit;
 }
 .offer-card:hover,
 .offer-card.active {
