@@ -101,14 +101,25 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 
 /*
-  Keep both overview titles visually identical for consistency:
-  - same type family and weight
-  - explicit black text color as requested
+  Overview spacing tuning:
+  keep the products/services section closer to the carousel by reducing top spacing to half.
+*/
+#overview.section {
+  padding-top: 36px;
+}
+
+/*
+  Typography parity with the hero title:
+  - keep the same family/weight/style behavior as hero
+  - set size to 70% of the hero title scale for both overview headings
 */
 #overview > .container > h2,
 .details-stack-title {
   font-family: inherit;
   font-weight: 800;
+  font-style: normal;
+  font-size: clamp(1.05rem, 2.45vw, 3.045rem);
+  line-height: 1.05;
   letter-spacing: -0.02em;
   color: #000000;
 }
@@ -320,10 +331,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 
 
-.details-stack-title {
-  margin: 34px 0 16px;
-  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
-}
+.details-stack-title { margin: 34px 0 16px; }
 
 /* Detailed sections stack: large explanatory content shown one section under another */
 .details-stack {
