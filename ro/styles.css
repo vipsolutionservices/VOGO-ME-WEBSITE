@@ -99,6 +99,16 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
+
+/*
+  Keep the section title typography aligned with the hero headline family and rhythm.
+  This gives the "Products and Services by VOGO" heading the same visual DNA as hero text.
+*/
+#overview > .container > h2 {
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
 .hero-content .lead {
   margin: 0 auto;
   font-size: clamp(1.04rem, 1.65vw, 1.05rem);
@@ -170,7 +180,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* Keep content compact so the CTA sits closer to the text block. */
+  justify-content: flex-start;
   gap: 18px;
 }
 .offer-card:hover,
@@ -189,8 +200,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   width: 44px;
   height: 44px;
   border-radius: 6px;
-  background: #f1e4f9;
-  color: #d319d1;
+  /* Replace the old pink treatment with a transparent VOGO-green styled badge. */
+  background: rgba(15, 123, 101, 0.12);
+  color: var(--vogo-green-dark);
+  border: 1px solid rgba(15, 123, 101, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
   display: grid;
   place-items: center;
   font-size: 1.45rem;
@@ -212,13 +226,26 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e000db;
+  /* Mirror promo CTA behavior with brand-green default and interactive hover feedback. */
+  border: 1px solid var(--vogo-green);
   border-radius: 6px;
   padding: 9px 18px;
   font-weight: 700;
   font-size: .98rem;
-  color: #e000db;
-  background: #fff;
+  color: var(--vogo-green);
+  background: var(--white);
+  margin-top: -6px;
+  transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.offer-card:hover .offer-more,
+.offer-card:focus-visible .offer-more,
+.offer-card.active .offer-more {
+  color: var(--white);
+  background: var(--vogo-green);
+  border-color: var(--vogo-green);
+  box-shadow: 0 0 0 4px rgba(15, 123, 101, 0.18), 0 10px 22px rgba(15, 123, 101, 0.28);
+  transform: translateY(-1px);
 }
 .offer-chip {
   background: rgba(15, 123, 101, 0.14);
