@@ -831,20 +831,31 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   color: #173f35;
   font-weight: 600;
 }
-.agency-note-link {
-  color: var(--vogo-green-dark);
-  font-weight: 700;
-  text-decoration: underline;
-}
+.agency-note-contact,
 .agency-note-whatsapp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 180px;
-  border-radius: 999px;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.agency-note-contact {
+  background: var(--vogo-green);
+  border-color: var(--vogo-green);
+}
+
+.agency-note-contact:hover,
+.agency-note-contact:focus-visible {
+  background: var(--vogo-green-dark);
+  border-color: var(--vogo-green-dark);
+  color: #ffffff;
+}
+
+.agency-note-whatsapp {
   background: #25d366;
   border-color: #25d366;
-  color: #ffffff;
 }
 .agency-note-whatsapp:hover,
 .agency-note-whatsapp:focus-visible {
