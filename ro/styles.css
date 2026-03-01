@@ -96,7 +96,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   /* Requested visual update: keep carousel corners subtly rounded at exactly 3px. */
   border-radius: 3px;
   overflow: hidden;
-  background: #0b1018;
+  background: #23272f;
   box-shadow: 0 14px 42px rgba(10, 18, 32, 0.18);
 }
 .hero-carousel-track {
