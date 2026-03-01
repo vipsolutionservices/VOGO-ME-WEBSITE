@@ -254,27 +254,19 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   transition: text-decoration-color .2s ease;
 }
 
-/* Head row keeps title left and category tag top-right, similar to Company/Brand/Start chips. */
-.offer-card-head {
+
+/* Footer keeps bullet bottom-left and CTA bottom-right on one baseline. */
+.offer-card-footer {
+  margin-top: auto;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.offer-card-content {
-  min-width: 0;
-}
-
-.offer-card-head h3 {
-  margin: 0;
+  gap: 12px;
 }
 
 .offer-bullet {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
   border-radius: 999px;
   padding: 6px 10px;
   font: 700 10px/1 Inter, system-ui, Segoe UI, Roboto, sans-serif;

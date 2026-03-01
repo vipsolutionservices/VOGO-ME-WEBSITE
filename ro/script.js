@@ -177,7 +177,7 @@ function renderOffers() {
     const card = document.createElement('button');
     card.className = 'offer-card';
     card.type = 'button';
-    // The category tag is placed top-right, matching the visual pattern from home page cards.
+    // Footer row keeps the chip bottom-left and the CTA bottom-right on the same baseline.
     card.innerHTML = `
       <div class="offer-card-top">
         <div class="offer-icon-badge" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
@@ -189,7 +189,10 @@ function renderOffers() {
           <p>${offer.summary}</p>
         </div>
       </div>
-      <span class="offer-more">Let's go</span>
+      <div class="offer-card-footer">
+        <span class="offer-bullet">${offer.chip}</span>
+        <span class="offer-more">Let's go</span>
+      </div>
     `;
 
     card.addEventListener('click', () => {
