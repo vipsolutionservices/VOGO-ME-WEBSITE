@@ -63,11 +63,27 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .btn-outline { border-color: #cad0d9; background: var(--white); color: var(--text); }
 .btn-light { background: var(--white); color: #050608; }
 
-/* Header promo CTA override: requested white background with green text and border. */
+/* Header promo CTA: nav-like typography with compact size and vivid hover feedback. */
 .promo-cta {
+  /* Keep the same type family/weight as menu links, with a slightly smaller size. */
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
   color: var(--vogo-green);
   background: var(--white);
   border-color: var(--vogo-green);
+  /* Smoothly animate to the filled accent style inspired by the provided reference. */
+  transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.promo-cta:hover,
+.promo-cta:focus-visible {
+  /* Use VOGO green (instead of pink) for the highlighted hover state. */
+  color: var(--white);
+  background: var(--vogo-green);
+  border-color: var(--vogo-green);
+  box-shadow: 0 0 0 4px rgba(15, 123, 101, 0.18), 0 10px 22px rgba(15, 123, 101, 0.28);
+  transform: translateY(-1px);
 }
 
 /* Hero section layout: centered, cleaner and visually aligned with the provided reference style. */
