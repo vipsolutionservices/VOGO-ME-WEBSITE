@@ -602,7 +602,28 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   padding: 22px;
   position: relative;
 }
-.plan-card ul { margin: 12px 0 18px; padding-left: 20px; display: grid; gap: 8px; }
+/* Top-level feature list: keeps only the 3 required section bullets visible and spaced. */
+.plan-feature-groups {
+  margin: 12px 0 18px;
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+}
+/* Subsection bullets: compact, gray typography in two responsive columns like the provided model. */
+.plan-sublist {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: #6a7382;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  column-count: 2;
+  column-gap: 20px;
+}
+/* Avoid splitting single bullet text across columns for better readability. */
+.plan-sublist li {
+  break-inside: avoid;
+  margin-bottom: 4px;
+}
 .price { font-size: 2rem; font-weight: 800; margin: 10px 0; }
 .price span { font-size: .95rem; font-weight: 600; }
 .featured { border-color: var(--vogo-green); background: #effaf7; }
@@ -684,5 +705,13 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   .made-in-europe-badge {
     grid-column: 1;
     justify-self: center;
+  }
+}
+
+
+/* On small screens, sub-bullets fallback to one column to preserve legibility. */
+@media (max-width: 900px) {
+  .plan-sublist {
+    column-count: 1;
   }
 }
