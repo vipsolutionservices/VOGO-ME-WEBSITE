@@ -302,9 +302,14 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   font: 600 14px/1 Inter, system-ui, Segoe UI, Roboto, sans-serif;
   color: var(--vogo-green);
   background: transparent;
+  /* Keep CTA text clean: no underline in default state. */
   text-decoration: none;
   text-align: right;
-  transition: text-decoration-color .2s ease;
+  /* Move CTA up 5px so it visually aligns with the footer bullet chip. */
+  position: relative;
+  top: -5px;
+  /* Avoid hover-only text-decoration transitions because underline is disabled by request. */
+  transition: none;
 }
 
 
@@ -335,7 +340,8 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .offer-card.active .offer-more {
   color: var(--vogo-green);
   background: transparent;
-  text-decoration: underline;
+  /* Keep hover/focus/active appearance identical to default (no link underline effect). */
+  text-decoration: none;
 }
 .offer-chip {
   background: rgba(15, 123, 101, 0.14);
