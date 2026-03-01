@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="240" viewBox="0 0 560 240" role="img" aria-labelledby="title desc">
+  <title id="title">Made in Europe</title>
+  <desc id="desc">European Union style blue banner with yellow stars and text Made in Europe.</desc>
+  <rect width="560" height="240" fill="#0047bb"/>
+  <g fill="#ffcc00" transform="translate(120 120)">
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(0)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(30)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(60)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(90)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(120)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(150)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(180)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(210)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(240)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(270)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(300)"/>
+    <polygon points="0,-68 6,-50 25,-50 10,-38 16,-20 0,-31 -16,-20 -10,-38 -25,-50 -6,-50" transform="rotate(330)"/>
+  </g>
+  <rect x="290" y="28" width="4" height="184" fill="#ffffff" opacity="0.88"/>
+  <g fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="70">
+    <text x="320" y="105">MADE IN</text>
+    <text x="320" y="185">EUROPE</text>
+  </g>
+</svg>
