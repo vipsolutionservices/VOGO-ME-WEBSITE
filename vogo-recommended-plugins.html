@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOGO Recommended Plugins</title>
+  <meta name="description" content="Alphabetically organized list of recommended Elementor add-ons with instant search." />
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --text: #1b2030;
+      --muted: #5f6472;
+      --border: #d9dce4;
+      --primary: #d709be;
+      --primary-soft: #fff1fd;
+      --chip: #eef0f5;
+      --shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    .container {
+      width: min(1200px, 92vw);
+      margin: 40px auto 60px;
+    }
+
+    .header {
+      margin-bottom: 24px;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+    }
+
+    .header p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .search-wrap {
+      margin: 22px 0 26px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: linear-gradient(180deg, var(--bg) 78%, rgba(247, 248, 251, 0));
+      padding: 12px 0;
+    }
+
+    .search {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      padding: 14px 16px;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: var(--shadow);
+    }
+
+    .search:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-soft);
+    }
+
+    .result-count {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      padding: 16px;
+      min-height: 300px;
+    }
+
+    .card-head {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      object-fit: contain;
+      border: 1px solid #eceef3;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+
+    .author {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .description {
+      margin: 8px 0 12px;
+      color: #30384c;
+      flex: 1;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .coupon {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: #3c4456;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .coupon.is-empty {
+      visibility: hidden;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      border-radius: 8px;
+      padding: 6px 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .btn:hover {
+      background: var(--primary-soft);
+    }
+
+    .empty-state {
+      display: none;
+      margin-top: 10px;
+      color: var(--muted);
+      text-align: center;
+      padding: 18px;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>VOGO Recommended Plugins</h1>
+      <p>Recommended add-ons list organized alphabetically, with instant search.</p>
+    </header>
+
+    <section class="search-wrap" aria-label="Search section">
+      <input id="pluginSearch" class="search" type="search" placeholder="Search by plugin name, author, or description..." aria-label="Search plugins" />
+      <p id="resultCount" class="result-count">Showing 13 of 13 plugins</p>
+    </section>
+
+    <section id="pluginsGrid" class="grid" aria-label="Recommended plugins">
+      <article class="card" data-plugin="Draw Attention" data-author="N Squared" data-description="Easy to use drawing tool for creating interactive images (fully responsive image maps). Highlight sections of your images with clickable hotspots!">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/draw-attention.png" alt="Draw Attention logo" loading="lazy" />
+          <div>
+            <h2 class="title">Draw Attention</h2>
+            <p class="author">By N Squared</p>
+          </div>
+        </div>
+        <p class="description">Easy to use drawing tool for creating interactive images (fully responsive image maps). Highlight sections of your images with clickable hotspots!</p>
+        <div class="actions">
+          <span class="coupon is-empty" aria-hidden="true">No discount</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-draw-attention/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="EmbedPress" data-author="WPDeveloper" data-description="EmbedPress is the ultimate WordPress plugin to easily embed multimedia content from 150+ sources and to boost website engagement & interaction.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/embed-press.svg" alt="EmbedPress logo" loading="lazy" />
+          <div>
+            <h2 class="title">EmbedPress</h2>
+            <p class="author">By WPDeveloper</p>
+          </div>
+        </div>
+        <p class="description">EmbedPress is the ultimate WordPress plugin to easily embed multimedia content from 150+ sources and to boost website engagement &amp; interaction.</p>
+        <div class="actions">
+          <span class="coupon">20% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-embedpress/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="Essential Addons" data-author="WPDeveloper" data-description="Essential Addons is the most used Elementor addon with 2 million+ users offering an extensive elements library—100+ widgets & extensions, to uplift your web-building & designing experience with no coding expertise.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/essential-addons-logo.gif" alt="Essential Addons logo" loading="lazy" />
+          <div>
+            <h2 class="title">Essential Addons</h2>
+            <p class="author">By WPDeveloper</p>
+          </div>
+        </div>
+        <p class="description">Essential Addons is the most used Elementor addon with 2 million+ users offering an extensive elements library—100+ widgets &amp; extensions, to uplift your web-building &amp; designing experience with no coding expertise.</p>
+        <div class="actions">
+          <span class="coupon">20% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-wpdeveloper/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="Gravity Forms" data-author="Gravity Forms" data-description="Millions trust Gravity Forms for versatile forms—boost email lists, create quizzes, accept payments, and more!">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/gravity-forms.svg" alt="Gravity Forms logo" loading="lazy" />
+          <div>
+            <h2 class="title">Gravity Forms</h2>
+            <p class="author">By Gravity Forms</p>
+          </div>
+        </div>
+        <p class="description">Millions trust Gravity Forms for versatile forms—boost email lists, create quizzes, accept payments, and more!</p>
+        <div class="actions">
+          <span class="coupon">30% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-gravityforms/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="JetPlugins Add-ons" data-author="Crocoblock" data-description="Unlock dynamic widgets, e-commerce features, and a powerful filtering system for enhanced website capabilities.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/crocoblock.png" alt="JetPlugins Add-ons logo" loading="lazy" />
+          <div>
+            <h2 class="title">JetPlugins Add-ons</h2>
+            <p class="author">By Crocoblock</p>
+          </div>
+        </div>
+        <p class="description">Unlock dynamic widgets, e-commerce features, and a powerful filtering system for enhanced website capabilities.</p>
+        <div class="actions">
+          <span class="coupon">10% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-crocoblock/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="NotificationX" data-author="WPDeveloper" data-description="NotificationX is a leading WordPress FOMO & social proof marketing tool to create powerful notification alerts that boost site credibility and conversion.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/notification-x.svg" alt="NotificationX logo" loading="lazy" />
+          <div>
+            <h2 class="title">NotificationX</h2>
+            <p class="author">By WPDeveloper</p>
+          </div>
+        </div>
+        <p class="description">NotificationX is a leading WordPress FOMO &amp; social proof marketing tool to create powerful notification alerts that boost site credibility and conversion.</p>
+        <div class="actions">
+          <span class="coupon">20% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-notificationx/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="Profile Builder" data-author="Cozmoslabs" data-description="Create beautiful user registration forms, user profiles and member directories with the #1 user management tool for modern websites.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/profile-builder.svg" alt="Profile Builder logo" loading="lazy" />
+          <div>
+            <h2 class="title">Profile Builder</h2>
+            <p class="author">By Cozmoslabs</p>
+          </div>
+        </div>
+        <p class="description">Create beautiful user registration forms, user profiles and member directories with the #1 user management tool for modern websites.</p>
+        <div class="actions">
+          <span class="coupon">15% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-cozmoslabs-wordpress-profile-builder/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="The Events Calendar" data-author="Stellar WP" data-description="The Events Calendar is an essential plugin for seamless event management. Perfect for businesses, organizations & individuals hosting events of any scale.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/tec.png" alt="The Events Calendar logo" loading="lazy" />
+          <div>
+            <h2 class="title">The Events Calendar</h2>
+            <p class="author">By Stellar WP</p>
+          </div>
+        </div>
+        <p class="description">The Events Calendar is an essential plugin for seamless event management. Perfect for businesses, organizations &amp; individuals hosting events of any scale.</p>
+        <div class="actions">
+          <span class="coupon is-empty" aria-hidden="true">No discount</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-the-events-calendar/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="TranslatePress" data-author="Reflection Media SRL" data-description="TranslatePress is the easiest way to translate your WordPress site and go multilingual. It's a proven way to grow multilingual traffic and reach more people.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/translate-press.png" alt="TranslatePress logo" loading="lazy" />
+          <div>
+            <h2 class="title">TranslatePress</h2>
+            <p class="author">By Reflection Media SRL</p>
+          </div>
+        </div>
+        <p class="description">TranslatePress is the easiest way to translate your WordPress site and go multilingual. It's a proven way to grow multilingual traffic and reach more people.</p>
+        <div class="actions">
+          <span class="coupon">15% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-translatepress/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="Ultimate Addons" data-author="Brainstorm Force" data-description="Ultimate Addons for Elementor is a powerful plugin with advanced widgets, templates, and features for designing stunning websites using Elementor.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/uae.svg" alt="Ultimate Addons logo" loading="lazy" />
+          <div>
+            <h2 class="title">Ultimate Addons</h2>
+            <p class="author">By Brainstorm Force</p>
+          </div>
+        </div>
+        <p class="description">Ultimate Addons for Elementor is a powerful plugin with advanced widgets, templates, and features for designing stunning websites using Elementor.</p>
+        <div class="actions">
+          <span class="coupon">25% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-ultimate-elementor/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="Unlimited Elements" data-author="Unlimited Group" data-description="An all-in-one plugin that instantly gives you the most advanced tools to make better Elementor websites faster.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/unlimited-elements.gif" alt="Unlimited Elements logo" loading="lazy" />
+          <div>
+            <h2 class="title">Unlimited Elements</h2>
+            <p class="author">By Unlimited Group</p>
+          </div>
+        </div>
+        <p class="description">An all-in-one plugin that instantly gives you the most advanced tools to make better Elementor websites faster.</p>
+        <div class="actions">
+          <span class="coupon">20% Off</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-unlimited-elements/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="Weglot" data-author="Weglot" data-description="Weglot is one of the best WordPress multilingual plugins to translate and display your website in multiple languages.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/weglot.svg" alt="Weglot logo" loading="lazy" />
+          <div>
+            <h2 class="title">Weglot</h2>
+            <p class="author">By Weglot</p>
+          </div>
+        </div>
+        <p class="description">Weglot is one of the best WordPress multilingual plugins to translate and display your website in multiple languages.</p>
+        <div class="actions">
+          <span class="coupon is-empty" aria-hidden="true">No discount</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-weglot/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+
+      <article class="card" data-plugin="wpDataTables" data-author="TMS" data-description="Powerful data display and management tool. Works with Excel, CSV, Google Sheets, MySQL, JSON, MS SQL, and more, displays interactive tables and charts.">
+        <div class="card-head">
+          <img class="logo" src="https://assets.elementor.com/apps/v1/images/wpdatatableslogo.svg" alt="wpDataTables logo" loading="lazy" />
+          <div>
+            <h2 class="title">wpDataTables</h2>
+            <p class="author">By TMS</p>
+          </div>
+        </div>
+        <p class="description">Powerful data display and management tool. Works with Excel, CSV, Google Sheets, MySQL, JSON, MS SQL, and more, displays interactive tables and charts.</p>
+        <div class="actions">
+          <span class="coupon is-empty" aria-hidden="true">No discount</span>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-wpdatatables/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+        </div>
+      </article>
+    </section>
+
+    <p id="emptyState" class="empty-state">No plugins match your search.</p>
+  </main>
+
+  <script>
+    // Keep behavior isolated and explicit for easier maintenance.
+    (function initPluginsSearch() {
+      const searchInput = document.getElementById('pluginSearch');
+      const pluginsGrid = document.getElementById('pluginsGrid');
+      const resultCount = document.getElementById('resultCount');
+      const emptyState = document.getElementById('emptyState');
+      const cards = Array.from(pluginsGrid.querySelectorAll('.card'));
+      const totalCards = cards.length;
+
+      // Sort cards alphabetically by plugin name, case-insensitive.
+      cards
+        .sort((first, second) => first.dataset.plugin.localeCompare(second.dataset.plugin, undefined, { sensitivity: 'base' }))
+        .forEach((card) => pluginsGrid.appendChild(card));
+
+      function updateCount(visibleCount) {
+        resultCount.textContent = `Showing ${visibleCount} of ${totalCards} plugins`;
+      }
+
+      function filterPlugins() {
+        const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const searchableText = `${card.dataset.plugin} ${card.dataset.author} ${card.dataset.description}`.toLowerCase();
+          const isMatch = searchableText.includes(query);
+
+          card.style.display = isMatch ? 'flex' : 'none';
+          if (isMatch) visibleCount += 1;
+        });
+
+        updateCount(visibleCount);
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+
+      searchInput.addEventListener('input', filterPlugins);
+      updateCount(totalCards);
+    })();
+  </script>
+</body>
+</html>
