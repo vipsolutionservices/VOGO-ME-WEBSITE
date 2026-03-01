@@ -177,15 +177,19 @@ function renderOffers() {
     const card = document.createElement('button');
     card.className = 'offer-card';
     card.type = 'button';
+    // Keep content split by role: header row, full-width summary text, then bottom footer actions.
     card.innerHTML = `
       <div class="offer-card-top">
         <div class="offer-icon-badge" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
-        <div>
+        <div class="offer-card-title-wrap">
           <h3>${offer.title}</h3>
-          <p>${offer.summary}</p>
         </div>
       </div>
-      <span class="offer-more">Let's go</span>
+      <p class="offer-card-summary">${offer.summary}</p>
+      <div class="offer-card-footer">
+        <span class="offer-bullet">${offer.chip}</span>
+        <span class="offer-more">Let's go</span>
+      </div>
     `;
 
     card.addEventListener('click', () => {

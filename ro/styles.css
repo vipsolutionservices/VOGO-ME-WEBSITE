@@ -206,6 +206,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   align-items: start;
   gap: 14px;
 }
+
+/* Title wrapper isolates heading layout from the full-width summary block below. */
+.offer-card-title-wrap {
+  min-width: 0;
+}
 .offer-icon-badge {
   width: 44px;
   height: 44px;
@@ -236,6 +241,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   font-size: 1.03rem;
   line-height: 1.42;
 }
+
+/* Summary text spans card width while keeping exactly 10px horizontal breathing space. */
+.offer-card-summary {
+  margin: 0 10px;
+}
 .offer-more {
   align-self: flex-end;
   display: inline-flex;
@@ -252,6 +262,29 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   text-decoration: none;
   text-align: right;
   transition: text-decoration-color .2s ease;
+}
+
+
+/* Footer keeps bullet bottom-left and CTA bottom-right on one baseline. */
+.offer-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.offer-bullet {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font: 700 10px/1 Inter, system-ui, Segoe UI, Roboto, sans-serif;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(90deg, #065c3d, #0e7f4e);
+  white-space: nowrap;
 }
 
 .offer-card:hover .offer-more,
