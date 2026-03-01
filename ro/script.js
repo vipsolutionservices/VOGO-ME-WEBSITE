@@ -18,16 +18,37 @@ const offers = [
     icon: '🤖',
     summary:
       'Suport clienți multi-canal cu AI conversațional pentru voice, text și chat, plus automatizări inteligente pentru operațiuni rapide.',
-    details: [
-      'VOGO AI Customer Support Plugin este proiectat pentru companiile care vor să răspundă mai rapid, mai corect și mai personalizat fiecărui client, pe toate canalele digitale relevante.',
-      'Soluția combină chat, voice și text într-un flux unificat, oferă răspunsuri contextuale, poate escalada instant către operator uman și păstrează log-uri structurate pentru audit, training și optimizare continuă.',
-      'Este potrivită pentru ecommerce, servicii, SaaS, centre de suport și organizații care vor să reducă timpul de răspuns, să crească satisfacția clienților și să mențină standarde profesionale de calitate.'
-    ],
-    supportCarouselSets: [
-      ['../img/ai-chatbot/1.png'],
-      ['../img/ai-chatbot/2.png'],
-      ['../img/ai-chatbot/3.png', '../img/ai-chatbot/4.png', '../img/ai-chatbot/5.png'],
-      ['../img/ai-chatbot/6.png', '../img/ai-chatbot/7.png', '../img/ai-chatbot/8.png']
+    // Rich text is intentionally structured with paragraphs + lists only,
+    // so the detailed card stays visually consistent with existing CSS.
+    detailsHtml: `
+      <p><strong>VOGO AI Based Chatbot</strong> — inteligență artificială reală, integrată direct în ecosistemul tău digital.</p>
+      <p>VOGO AI Chatbot este un plugin avansat pentru WordPress / WooCommerce, creat pentru afaceri care vor mai mult decât un widget de chat: un asistent operațional capabil să înțeleagă contextul utilizatorului, să execute acțiuni reale prin API și să transfere conversația către operator uman când este necesar.</p>
+
+      <p><strong>Ce face diferit:</strong></p>
+      <ul>
+        <li><strong>AI multi-engine configurabil:</strong> OpenAI, Gemini, Croq, Rasa, Vask etc., cu reguli pe roluri (Basic, VIP, Support) și fallback pe primul engine disponibil.</li>
+        <li><strong>Acțiuni reale în contul utilizatorului:</strong> task-uri Agenda, Shopping List, adăugare evenimente, integrare WooCommerce (Faza C), transfer către operator uman.</li>
+        <li><strong>Securitate by design:</strong> autentificare JWT pe REST API, control pe roluri și autentificare obligatorie pentru acțiuni personale.</li>
+        <li><strong>Human Operator Mode:</strong> transfer automat către operator, thread dedicat, suport pentru text, imagini, fișiere, voce/video, unread badges și polling inteligent.</li>
+        <li><strong>WooCommerce ready:</strong> căutare produse, deschidere produs în aceeași pagină și integrare în fluxuri comerciale pentru conversie mai bună.</li>
+        <li><strong>UI modern:</strong> fundal transparent, checkbox-uri interactive, numerotare inteligentă, interfață minimalistă integrabilă în orice temă.</li>
+      </ul>
+
+      <p><strong>Arhitectură scalabilă pe faze:</strong> PoC Phase, B Phase (VIP + AI combinat + Agenda/Shopping), C Phase (WooCommerce + Human Operator), D Phase (Voice), E Phase (Final delivery review).</p>
+
+      <p><strong>Ideal pentru:</strong> magazine WooCommerce, marketplace-uri, proiecte SaaS, aplicații mobile conectate prin API și platforme care vor AI real, nu doar marketing AI.</p>
+
+      <p><strong>Concluzie:</strong> VOGO AI Chatbot transformă chatbotul dintr-un element conversațional într-un motor operațional AI — execută, înțelege, transferă și scalează în infrastructura digitală a afacerii tale.</p>
+    `,
+    supportGalleryImages: [
+      '../img/ai-chatbot/ai-chatbot1.png',
+      '../img/ai-chatbot/ai-chatbot2.png',
+      '../img/ai-chatbot/ai-chatbot3.png',
+      '../img/ai-chatbot/ai-chatbot4.png',
+      '../img/ai-chatbot/ai-chatbot5.png',
+      '../img/ai-chatbot/ai-chatbot6.png',
+      '../img/ai-chatbot/ai-chatbot7.png',
+      '../img/ai-chatbot/ai-chatbot8.png'
     ]
   },
   {
@@ -164,10 +185,7 @@ function renderDetailedSections() {
         </div>
         <span class="offer-chip">${offer.chip}</span>
       </div>
-      <div class="detail-section-content">
-        ${offer.details.map((paragraph) => `<p>${paragraph}</p>`).join('')}
-      </div>
-      ${buildSupportPluginCarousel(offer)}
+      ${buildOfferDetailLayout(offer, index)}
       <span class="offer-more detail-offer-more">Explore more <span aria-hidden="true">→</span></span>
     `;
 
@@ -176,44 +194,131 @@ function renderDetailedSections() {
 }
 
 /**
- * Builds the support plugin carousel requested for the AI plugin section only.
- * The lane is duplicated to create a smooth infinite loop moving left-to-right.
+ * Builds a two-column support layout (text + image preview) for the AI card only.
+ * Gallery opens in a popup either from thumbnail click or "Vezi imagini" action.
  */
-function buildSupportPluginCarousel(offer) {
-  if (!offer.supportCarouselSets || offer.supportCarouselSets.length === 0) {
-    return '';
+function buildOfferDetailLayout(offer, offerIndex) {
+  const detailsMarkup = offer.detailsHtml || offer.details.map((paragraph) => `<p>${paragraph}</p>`).join('');
+
+  if (!offer.supportGalleryImages || offer.supportGalleryImages.length === 0) {
+    return `<div class="detail-section-content">${detailsMarkup}</div>`;
   }
 
-  const singleSequenceMarkup = offer.supportCarouselSets
-    .map((set, setIndex) => {
-      const setTypeClass = set.length === 1 ? 'is-wide-set' : 'is-mobile-set';
-      const imagesMarkup = set
-        .map((imagePath, imageIndex) => {
-          const altText = `VOGO AI customer support preview ${setIndex + 1}.${imageIndex + 1}`;
-          return `<img src="${imagePath}" alt="${altText}" loading="lazy" decoding="async" />`;
-        })
-        .join('');
-
+  const previewImages = offer.supportGalleryImages
+    .slice(0, 3)
+    .map((imagePath, imageIndex) => {
+      const altText = `VOGO AI preview ${imageIndex + 1}`;
       return `
-        <article class="support-plugin-carousel__set ${setTypeClass}" aria-label="Set ${setIndex + 1}">
-          ${imagesMarkup}
-        </article>
+        <button class="support-gallery-thumb" type="button" data-gallery-index="${imageIndex}" aria-label="Open image ${imageIndex + 1}">
+          <img src="${imagePath}" alt="${altText}" loading="lazy" decoding="async" />
+        </button>
       `;
     })
     .join('');
 
+  const imagesPayload = encodeURIComponent(JSON.stringify(offer.supportGalleryImages));
+
   return `
-    <section class="support-plugin-carousel" aria-label="VOGO AI Customer Support Plugin gallery">
-      <div class="support-plugin-carousel__lane">
-        <div class="support-plugin-carousel__sequence">
-          ${singleSequenceMarkup}
-        </div>
-        <div class="support-plugin-carousel__sequence" aria-hidden="true">
-          ${singleSequenceMarkup}
-        </div>
-      </div>
-    </section>
+    <div class="support-detail-layout">
+      <div class="detail-section-content">${detailsMarkup}</div>
+      <aside class="support-gallery-column" aria-label="VOGO AI image preview">
+        <div class="support-gallery-grid">${previewImages}</div>
+        <button class="support-gallery-link" type="button" data-gallery-images="${imagesPayload}" data-gallery-index="0">
+          Vezi imagini
+        </button>
+      </aside>
+    </div>
   `;
+}
+
+/** Creates one reusable lightbox and wires open/close/next/prev interactions. */
+function initSupportGalleryLightbox() {
+  if (document.querySelector('.support-lightbox')) return;
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'support-lightbox';
+  lightbox.setAttribute('aria-hidden', 'true');
+  lightbox.innerHTML = `
+    <div class="support-lightbox__backdrop" data-lightbox-close="true"></div>
+    <div class="support-lightbox__dialog" role="dialog" aria-modal="true" aria-label="VOGO AI gallery">
+      <button class="support-lightbox__close" type="button" data-lightbox-close="true" aria-label="Close gallery">✕</button>
+      <button class="support-lightbox__nav" type="button" data-lightbox-nav="prev" aria-label="Previous image">‹</button>
+      <img class="support-lightbox__image" src="" alt="VOGO AI gallery image" />
+      <button class="support-lightbox__nav" type="button" data-lightbox-nav="next" aria-label="Next image">›</button>
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const imageNode = lightbox.querySelector('.support-lightbox__image');
+  let galleryImages = [];
+  let currentIndex = 0;
+
+  function renderCurrentImage() {
+    if (galleryImages.length === 0) return;
+    imageNode.src = galleryImages[currentIndex];
+  }
+
+  function openLightbox(images, startIndex) {
+    galleryImages = images;
+    currentIndex = startIndex;
+    renderCurrentImage();
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+
+  document.addEventListener('click', (event) => {
+    const directTrigger = event.target.closest('[data-gallery-images]');
+    const thumbTrigger = event.target.closest('.support-gallery-thumb');
+    const closeTarget = event.target.closest('[data-lightbox-close]');
+    const navTarget = event.target.closest('[data-lightbox-nav]');
+
+    if (directTrigger) {
+      const images = JSON.parse(decodeURIComponent(directTrigger.dataset.galleryImages));
+      const startIndex = Number(directTrigger.dataset.galleryIndex || 0);
+      openLightbox(images, startIndex);
+      return;
+    }
+
+    if (thumbTrigger) {
+      const layout = thumbTrigger.closest('.support-detail-layout');
+      const link = layout ? layout.querySelector('[data-gallery-images]') : null;
+      if (!link) return;
+      const images = JSON.parse(decodeURIComponent(link.dataset.galleryImages));
+      const startIndex = Number(thumbTrigger.dataset.galleryIndex || 0);
+      openLightbox(images, startIndex);
+      return;
+    }
+
+    if (closeTarget) {
+      closeLightbox();
+      return;
+    }
+
+    if (navTarget && galleryImages.length > 0) {
+      currentIndex = navTarget.dataset.lightboxNav === 'next'
+        ? (currentIndex + 1) % galleryImages.length
+        : (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      renderCurrentImage();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowRight' && galleryImages.length > 0) {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      renderCurrentImage();
+    }
+    if (event.key === 'ArrowLeft' && galleryImages.length > 0) {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      renderCurrentImage();
+    }
+  });
 }
 
 /**
@@ -301,6 +406,7 @@ function renderFaq() {
 }
 
 renderDetailedSections();
+initSupportGalleryLightbox();
 renderOffers();
 renderFaq();
 
