@@ -386,7 +386,6 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   color: #26303b;
 }
 
-
 /* Two-column support details layout: text on the left, image preview on the right. */
 .support-detail-layout {
   display: grid;
