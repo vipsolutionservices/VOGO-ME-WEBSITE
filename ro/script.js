@@ -177,18 +177,15 @@ function renderOffers() {
     const card = document.createElement('button');
     card.className = 'offer-card';
     card.type = 'button';
-    // Footer row keeps the chip bottom-left and the CTA bottom-right on the same baseline.
+    // Keep content split by role: header row, full-width summary text, then bottom footer actions.
     card.innerHTML = `
       <div class="offer-card-top">
         <div class="offer-icon-badge" aria-hidden="true">${getOfferIcon(offer.chip)}</div>
-        <div class="offer-card-content">
-          <div class="offer-card-head">
-            <h3>${offer.title}</h3>
-            <span class="offer-bullet">${offer.chip}</span>
-          </div>
-          <p>${offer.summary}</p>
+        <div class="offer-card-title-wrap">
+          <h3>${offer.title}</h3>
         </div>
       </div>
+      <p class="offer-card-summary">${offer.summary}</p>
       <div class="offer-card-footer">
         <span class="offer-bullet">${offer.chip}</span>
         <span class="offer-more">Let's go</span>

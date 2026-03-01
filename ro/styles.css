@@ -206,6 +206,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   align-items: start;
   gap: 14px;
 }
+
+/* Title wrapper isolates heading layout from the full-width summary block below. */
+.offer-card-title-wrap {
+  min-width: 0;
+}
 .offer-icon-badge {
   width: 44px;
   height: 44px;
@@ -235,6 +240,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   color: #212f4a;
   font-size: 1.03rem;
   line-height: 1.42;
+}
+
+/* Summary text spans card width while keeping exactly 10px horizontal breathing space. */
+.offer-card-summary {
+  margin: 0 10px;
 }
 .offer-more {
   align-self: flex-end;
