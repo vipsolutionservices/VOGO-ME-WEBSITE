@@ -191,27 +191,30 @@ const detailsStack = document.getElementById('details-stack');
 const faqList = document.getElementById('faq-list');
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const mainNav = document.getElementById('mainNav');
+const mobileMenuPanel = document.getElementById('mobileMenuPanel');
 
 function initMobileMenu() {
-  if (!mobileMenuToggle || !mainNav) return;
+  if (!mobileMenuToggle || !mainNav || !mobileMenuPanel) return;
+
+  const isMobileViewport = () => window.matchMedia('(max-width: 1000px)').matches;
 
   const setMenuState = (isOpen) => {
-    mainNav.classList.toggle('is-open', isOpen);
+    mobileMenuPanel.classList.toggle('is-open', isOpen);
     mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
     document.body.classList.toggle('mobile-nav-open', isOpen);
   };
 
   mobileMenuToggle.addEventListener('click', () => {
-    const isOpen = !mainNav.classList.contains('is-open');
+    const isOpen = !mobileMenuPanel.classList.contains('is-open');
     setMenuState(isOpen);
   });
 
   document.addEventListener('click', (event) => {
-    if (window.innerWidth > 680) return;
-    if (!mainNav.classList.contains('is-open')) return;
+    if (!isMobileViewport()) return;
+    if (!mobileMenuPanel.classList.contains('is-open')) return;
 
     const target = event.target;
-    if (target instanceof Node && (mainNav.contains(target) || mobileMenuToggle.contains(target))) {
+    if (target instanceof Node && (mobileMenuPanel.contains(target) || mobileMenuToggle.contains(target))) {
       return;
     }
 
@@ -226,13 +229,13 @@ function initMobileMenu() {
 
   mainNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      if (window.innerWidth > 680) return;
+      if (!isMobileViewport()) return;
       setMenuState(false);
     });
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 680) {
+    if (!isMobileViewport()) {
       setMenuState(false);
     }
   });
