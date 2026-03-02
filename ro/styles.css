@@ -91,7 +91,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 /* Hero section layout: centered, cleaner and visually aligned with the provided reference style. */
 .hero.section {
-  padding-top: 64px;
+  padding-top: 32px;
   /* Keep less empty room under the CTA row to match the requested tighter hero rhythm. */
   padding-bottom: 31px;
 }
@@ -981,7 +981,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     padding: 48px 0;
   }
   .hero.section {
-    padding-top: 42px;
+    padding-top: 21px;
     padding-bottom: 20px;
   }
   .hero-content .lead {
