@@ -58,6 +58,26 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 .main-nav { display: flex; gap: 26px; }
 .main-nav a { color: var(--text); text-decoration: none; font-weight: 500; }
+.mobile-menu-toggle {
+  display: none;
+  border: 1px solid #cbd5e1;
+  background: var(--white);
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  padding: 9px 8px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.mobile-menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #1f2937;
+  border-radius: 999px;
+}
 
 /* Reusable button styles */
 .btn { border: 1px solid transparent; padding: 11px 18px; border-radius: 12px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
@@ -997,9 +1017,39 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     width: 100%;
     text-align: center;
   }
-  .main-nav {
-    width: 100%;
+  .nav-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    row-gap: 8px;
+  }
+  .mobile-menu-toggle {
+    display: inline-flex;
+    order: 2;
+    justify-self: end;
+  }
+  .promo-cta {
     order: 3;
+  }
+  .main-nav {
+    display: none;
+    grid-column: 1 / -1;
+    order: 4;
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #dbe2ea;
+    border-radius: 10px;
+    padding: 10px 12px;
+    flex-direction: column;
+    gap: 8px;
+    overflow: visible;
+  }
+  .main-nav.is-open {
+    display: flex;
+  }
+  .main-nav a {
+    width: 100%;
+    padding: 6px 0;
   }
   .cards-grid {
     grid-template-columns: 1fr;
@@ -1077,12 +1127,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     display: inline;
   }
   .main-nav {
-    grid-column: 1 / -1;
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    overflow-x: visible;
-    padding-bottom: 4px;
+    padding: 8px 10px;
   }
   .hero-content h1 {
     font-size: clamp(1.7rem, 10vw, 2.25rem);
@@ -1097,6 +1142,12 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   .hero-carousel-section {
     padding-top: 0;
     padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 680px) {
+  .made-in-europe-badge {
+    width: clamp(180px, 52vw, 240px);
   }
 }
 
