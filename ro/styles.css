@@ -148,7 +148,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .made-in-europe-badge {
   grid-column: 3;
   justify-self: end;
-  width: clamp(79px, 8.86vw, 113px);
+width: clamp(130.75px, 15.075vw, 180.25px);
   max-width: 100%;
   opacity: 0.99;
 }
