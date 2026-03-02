@@ -968,3 +968,222 @@ ul .plan-group-brand + li.plan-group-backend {
 .plan-group + .plan-group {
   margin-top: 28px;
 }
+/* <!-- checkout specials --> */
+.checkout-page {
+  background: #f4f4f4;
+}
+
+.checkout-header {
+  border-bottom: 1px solid #e5e5e5;
+  background: #ffffff;
+}
+
+.checkout-header-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkout-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.checkout-brand {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.checkout-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #111111;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.back-link:hover {
+  color: #0f9d58;
+}
+
+.checkout-main {
+  text-align: center;
+  padding: 6px 0 40px;
+}
+
+.checkout-main h1 {
+  margin: 0 0 28px;
+  font-size: 66px;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+}
+
+.billing-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.billing-card-header {
+  margin: 0;
+  padding: 22px 28px;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.billing-option {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px;
+  border-bottom: 1px solid #e5e5e5;
+  cursor: pointer;
+}
+
+.billing-option:last-of-type {
+  border-bottom: 0;
+}
+
+.billing-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: #0f9d58;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.billing-option-label {
+  min-width: 90px;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.billing-option-price {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.billing-option-price span {
+  color: #5b5b5b;
+  font-weight: 600;
+}
+
+.badge-save {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 700;
+  color: #084e2b;
+  background: #dff5ea;
+  border-radius: 999px;
+  padding: 9px 18px;
+  line-height: 1;
+}
+
+.action-wrap {
+  margin-top: 34px;
+}
+
+.trust-note {
+  margin-top: 28px;
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.trust-note svg {
+  width: 20px;
+  height: 20px;
+  color: #0f9d58;
+  flex: 0 0 auto;
+}
+
+.fine-print {
+  margin-top: 10px;
+  color: #262626;
+  font-size: 13px;
+}
+
+@media (max-width: 960px) {
+  .checkout-brand { font-size: 22px; }
+  .checkout-main h1 { font-size: 44px; }
+  .billing-card-header,
+  .billing-option-label,
+  .billing-option-price,
+  .trust-note,
+  .fine-print,
+  .badge-save { font-size: 18px; }
+  .badge-save { padding: 8px 14px; }
+}
+
+@media (max-width: 640px) {
+  .checkout-wrapper { padding: 18px; }
+  .checkout-main h1 { font-size: 34px; }
+  .billing-option { gap: 12px; padding: 20px 18px; }
+  .billing-option-label,
+  .billing-option-price { font-size: 24px; }
+  .billing-option-label { min-width: 70px; }
+  .badge-save { font-size: 12px; padding: 7px 12px; }
+}
+
+/* checkout specials: thank you page */
+.thankyou-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top right, #dff4ee 0%, #f4f8fb 40%, #ffffff 100%);
+}
+
+.thankyou-wrap {
+  width: min(980px, 92vw);
+  margin: 0 auto;
+  padding: 88px 0;
+}
+
+.thankyou-card {
+  background: #ffffff;
+  border: 1px solid #d7dbe1;
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 22px 40px rgba(10, 18, 32, 0.09);
+  text-align: center;
+}
+
+.thankyou-card h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.thankyou-card .lead {
+  margin: 0 auto;
+}
+
+.thankyou-actions {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
