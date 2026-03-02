@@ -245,6 +245,8 @@
   </style>
 </head>
 <body>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
   <!-- Header branding section: VOGO logo and brand text only. -->
   <header class="checkout-header">
     <div class="checkout-header-inner">
@@ -288,7 +290,11 @@
       </section>
 
       <div class="action-wrap">
-        <a class="checkout-btn" href="#" aria-label="Continuă către checkout final">Continuă către checkout</a>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1T6KjcGzeoRSK6Uw3ryVFalY"
+          publishable-key="pk_live_51R2q3vGzeoRSK6UwrHystLcCJYQkUYHfAavK5vcdhWs8s5tKyVCSBrsACCtpOrMwlIP8tW6vF24wodv88GA5kPks00xKJD6Ng6"
+        >
+        </stripe-buy-button>
         <p class="fine-print" id="checkout-selection-note" aria-live="polite"></p>
         <p class="trust-note">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -310,26 +316,8 @@
     (function initCheckoutPackageFromQuery() {
       const params = new URLSearchParams(window.location.search);
       const packageCode = (params.get('package') || 'E100').toUpperCase();
-      const checkoutButton = document.querySelector('.checkout-btn');
       const checkoutSelectionNote = document.getElementById('checkout-selection-note');
       const billingCycleInputs = Array.from(document.querySelectorAll('input[name="billing-cycle"]'));
-
-      /**
-       * Map role: Stripe checkout destination per package + billing cycle.
-       * Use permanent Stripe payment links or server-created checkout session URLs.
-       */
-      const stripeCheckoutLinks = {
-        E100: {
-          '1y': 'https://buy.stripe.com/REPLACE_WITH_E100_1Y_LINK',
-          '2y': 'https://buy.stripe.com/REPLACE_WITH_E100_2Y_LINK',
-          '3y': 'https://buy.stripe.com/REPLACE_WITH_E100_3Y_LINK'
-        },
-        E1000: {
-          '1y': 'https://buy.stripe.com/REPLACE_WITH_E1000_1Y_LINK',
-          '2y': 'https://buy.stripe.com/REPLACE_WITH_E1000_2Y_LINK',
-          '3y': 'https://buy.stripe.com/REPLACE_WITH_E1000_3Y_LINK'
-        }
-      };
 
       const packageConfig = {
         E100: { label: 'Pachet E100', monthlyPrice: 7 },
@@ -348,41 +336,21 @@
       threeYearPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 36 luni</span>`;
 
       /**
-       * Keep checkout CTA synchronized with the currently selected billing cycle.
-       * If Stripe links are not configured yet, we block navigation and explain next step.
+       * Keep helper text synchronized with the currently selected billing cycle.
        */
-      function syncCheckoutButton() {
+      function syncCheckoutNote() {
         const selectedInput = billingCycleInputs.find((input) => input.checked);
         const selectedCycle = selectedInput ? selectedInput.id.replace('cycle-', '') : '1y';
-        const stripeUrl = stripeCheckoutLinks[packageCode]?.[selectedCycle];
         const yearsByCycle = { '1y': '1 an', '2y': '2 ani', '3y': '3 ani' };
 
-        if (!stripeUrl || stripeUrl.includes('REPLACE_WITH')) {
-          checkoutButton.href = '#';
-          checkoutButton.dataset.disabledCheckout = 'true';
-          checkoutSelectionNote.textContent = `Checkout Stripe pentru ${selectedPackage.label}, ${yearsByCycle[selectedCycle]} nu este configurat încă.`;
-          return;
-        }
-
-        checkoutButton.href = stripeUrl;
-        checkoutButton.dataset.disabledCheckout = 'false';
-        checkoutButton.target = '_blank';
-        checkoutButton.rel = 'noopener noreferrer';
-        checkoutSelectionNote.textContent = `Vei fi redirecționat către Stripe pentru ${selectedPackage.label}, ${yearsByCycle[selectedCycle]}.`;
+        checkoutSelectionNote.textContent = `Ai selectat ${selectedPackage.label}, ${yearsByCycle[selectedCycle]}. Checkout-ul Stripe este afișat mai jos.`;
       }
 
       billingCycleInputs.forEach((input) => {
-        input.addEventListener('change', syncCheckoutButton);
+        input.addEventListener('change', syncCheckoutNote);
       });
 
-      checkoutButton.addEventListener('click', (event) => {
-        if (checkoutButton.dataset.disabledCheckout === 'true') {
-          event.preventDefault();
-          window.alert('Link-ul Stripe pentru opțiunea selectată nu este configurat încă. Actualizează URL-urile din checkout.html.');
-        }
-      });
-
-      syncCheckoutButton();
+      syncCheckoutNote();
     })();
   </script>
 </body>
