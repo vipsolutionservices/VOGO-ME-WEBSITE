@@ -22,9 +22,10 @@ body {
   color: var(--text);
   background: var(--bg);
   line-height: 1.45;
+  overflow-x: hidden;
 }
 
-.container { width: min(1120px, 92vw); margin: 0 auto; }
+.container { width: min(1120px, calc(100vw - 32px)); margin: 0 auto; }
 .section { padding: 72px 0; }
 h1, h2, h3 { margin: 0 0 16px; line-height: 1.1; }
 h1 { font-size: clamp(2rem, 5vw, 4rem); }
@@ -942,6 +943,105 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   .made-in-europe-badge {
     grid-column: 1;
     justify-self: center;
+  }
+}
+
+@media (max-width: 680px) {
+  .section {
+    padding: 48px 0;
+  }
+  .hero.section {
+    padding-top: 42px;
+    padding-bottom: 20px;
+  }
+  .hero-content .lead {
+    font-size: 1rem;
+    max-width: 62ch;
+  }
+  .hero-buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .offer-card {
+    min-height: 0;
+    padding: 16px;
+    gap: 12px;
+  }
+  .offer-card h3 {
+    font-size: 1.1rem;
+  }
+  .offer-card p {
+    font-size: 0.96rem;
+  }
+  .offer-card-summary {
+    margin: 0;
+    text-align: left;
+  }
+  .offer-card-footer {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .offer-bullet {
+    white-space: normal;
+  }
+  .plans-grid {
+    gap: 14px;
+  }
+  .plan-card {
+    padding: 16px;
+  }
+  .plan-sublist {
+    font-size: 0.9rem;
+  }
+  .detail-section {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100vw - 24px);
+  }
+  .nav-wrap {
+    min-height: 64px;
+    gap: 12px;
+  }
+  .logo {
+    font-size: 1.2rem;
+  }
+  .logo-mark {
+    width: 28px;
+    height: 28px;
+  }
+  .promo-cta {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+    border-radius: 10px;
+    max-width: 74vw;
+    line-height: 1.25;
+  }
+  .hero-content h1 {
+    font-size: clamp(1.7rem, 10vw, 2.25rem);
+    line-height: 1.18;
+    margin-top: 18px;
+    margin-bottom: 16px;
+  }
+  .eyebrow {
+    letter-spacing: 0.06em;
+    font-size: 0.7rem;
+  }
+  .hero-carousel-section {
+    padding-top: 0;
+    padding-bottom: 16px;
   }
 }
 
