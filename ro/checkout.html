@@ -290,12 +290,12 @@
       </section>
 
       <div class="action-wrap">
+        <p class="fine-print" id="checkout-selection-note" aria-live="polite"></p>
         <stripe-buy-button
           buy-button-id="buy_btn_1T6KjcGzeoRSK6Uw3ryVFalY"
           publishable-key="pk_live_51R2q3vGzeoRSK6UwrHystLcCJYQkUYHfAavK5vcdhWs8s5tKyVCSBrsACCtpOrMwlIP8tW6vF24wodv88GA5kPks00xKJD6Ng6"
         >
         </stripe-buy-button>
-        <p class="fine-print" id="checkout-selection-note" aria-live="polite"></p>
         <p class="trust-note">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2L4 5V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V5L12 2Z" stroke="currentColor" stroke-width="2"/>
@@ -363,8 +363,8 @@
         nextButton.setAttribute('buy-button-id', buyButtonId);
         nextButton.setAttribute('publishable-key', stripePublishableKey);
 
-        // Keep Stripe card above helper text and trust notes.
-        actionWrap.insertBefore(nextButton, checkoutSelectionNote);
+        // Keep helper text above Stripe while preserving the remaining notes order.
+        actionWrap.insertBefore(nextButton, checkoutSelectionNote.nextSibling);
       }
 
       /**
