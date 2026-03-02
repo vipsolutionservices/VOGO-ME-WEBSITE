@@ -805,6 +805,18 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   border-radius: 14px;
   padding: 12px 20px;
 }
+
+.plans-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.plans-footer-actions .compare-plans-btn {
+  margin: 0;
+}
+
 .compare-plans-btn:hover,
 .compare-plans-btn:focus-visible {
   background: var(--vogo-green);
