@@ -318,6 +318,7 @@
       const packageCode = (params.get('package') || 'E100').toUpperCase();
       const checkoutSelectionNote = document.getElementById('checkout-selection-note');
       const billingCycleInputs = Array.from(document.querySelectorAll('input[name="billing-cycle"]'));
+      const actionWrap = document.querySelector('.action-wrap');
       const stripeBuyButton = document.querySelector('stripe-buy-button');
 
       const packageConfig = {
@@ -336,6 +337,7 @@
       const yearlyPriceElement = document.getElementById('price-1y');
       const twoYearPriceElement = document.getElementById('price-2y');
       const threeYearPriceElement = document.getElementById('price-3y');
+      const stripePublishableKey = stripeBuyButton ? stripeBuyButton.getAttribute('publishable-key') : '';
 
       titleElement.textContent = `${selectedPackage.label} • Opțiuni facturare`;
       yearlyPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 12 luni</span>`;
@@ -343,17 +345,38 @@
       threeYearPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 36 luni</span>`;
 
       /**
-       * Keep helper text synchronized with the currently selected billing cycle.
+       * Recreate Stripe Buy Button so Stripe reloads the correct product card.
+       * Updating only the attribute is not always enough after Stripe already rendered.
+       */
+      function renderStripeBuyButton(selectedCycle) {
+        const buyButtonId = stripeBuyButtonByCycle[selectedCycle];
+        if (!actionWrap || !buyButtonId || !stripePublishableKey) {
+          return;
+        }
+
+        const existingButton = actionWrap.querySelector('stripe-buy-button');
+        if (existingButton) {
+          existingButton.remove();
+        }
+
+        const nextButton = document.createElement('stripe-buy-button');
+        nextButton.setAttribute('buy-button-id', buyButtonId);
+        nextButton.setAttribute('publishable-key', stripePublishableKey);
+
+        // Keep Stripe card above helper text and trust notes.
+        actionWrap.insertBefore(nextButton, checkoutSelectionNote);
+      }
+
+      /**
+       * Keep helper text and Stripe card synchronized with the current billing cycle.
        */
       function syncCheckoutNote() {
         const selectedInput = billingCycleInputs.find((input) => input.checked);
         const selectedCycle = selectedInput ? selectedInput.id.replace('cycle-', '') : '1y';
         const yearsByCycle = { '1y': '1 an', '2y': '2 ani', '3y': '3 ani' };
 
-        // Keep the Stripe component in sync with the selected billing cycle.
-        if (stripeBuyButton && stripeBuyButtonByCycle[selectedCycle]) {
-          stripeBuyButton.setAttribute('buy-button-id', stripeBuyButtonByCycle[selectedCycle]);
-        }
+        // Keep the Stripe product card in sync with the selected billing cycle.
+        renderStripeBuyButton(selectedCycle);
 
         checkoutSelectionNote.textContent = `Ai selectat ${selectedPackage.label}, ${yearsByCycle[selectedCycle]}. Checkout-ul Stripe este afișat mai jos.`;
       }
