@@ -844,6 +844,15 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   color: #173f35;
   font-weight: 600;
 }
+.agency-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
 .agency-note-contact,
 .agency-note-whatsapp {
   display: inline-flex;
@@ -1057,6 +1066,16 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   }
   .agency-note {
     flex-direction: column;
+  }
+  .agency-buttons {
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  .agency-note-contact,
+  .agency-note-whatsapp {
+    min-width: 0;
+    flex: 1 1 0;
+    max-width: 170px;
   }
 }
 
