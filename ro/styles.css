@@ -39,6 +39,11 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 /* Header and nav area */
 .site-header { position: sticky; top: 0; z-index: 10; background: rgba(247,248,250,.95); backdrop-filter: blur(8px); border-bottom: 1px solid #eceff3; }
 .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 74px; }
+.header-cta-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
 .logo {
   font-weight: 800;
   font-size: 1.65rem;
@@ -107,6 +112,34 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 .promo-cta-mobile {
   display: none;
+}
+
+.climate-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid #cde4dc;
+  background: #f0faf6;
+  color: #0a4f41;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.climate-badge-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f4dd44 40%, #11b063 41%);
+}
+
+.climate-badge:hover,
+.climate-badge:focus-visible {
+  border-color: #0f7b65;
+  background: #e7f6ef;
 }
 
 /* Hero section layout: centered, cleaner and visually aligned with the provided reference style. */
@@ -977,6 +1010,13 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     flex: 0 0 auto;
     font-size: 0.95rem;
   }
+  .header-cta-group {
+    gap: 8px;
+  }
+  .climate-badge {
+    padding: 8px 10px;
+    font-size: 0.76rem;
+  }
 }
 
 @media (max-width: 680px) {
@@ -1120,6 +1160,20 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     line-height: 1.25;
     justify-self: end;
     text-align: center;
+  }
+  .header-cta-group {
+    grid-column: 2;
+    justify-self: end;
+    align-items: center;
+  }
+  .climate-badge {
+    padding: 8px 10px;
+    font-size: 0.74rem;
+    max-width: 168px;
+  }
+  .climate-badge-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .promo-cta-desktop {
     display: none;
