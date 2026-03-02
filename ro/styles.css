@@ -703,7 +703,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   flex: 1;
   margin: 16px 0 0;
   padding-left: 20px;
-  display: grid;
+
   /* Keep subsection flow compact so groups follow one another without large empty blocks. */
   gap: 8px;
 }
@@ -946,4 +946,13 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   .agency-note {
     flex-direction: column;
   }
+}
+
+
+ul .plan-group-brand + li.plan-group-backend {
+  margin-top: 24px !important;
+}
+
+.plan-group + .plan-group {
+  margin-top: 28px;
 }
