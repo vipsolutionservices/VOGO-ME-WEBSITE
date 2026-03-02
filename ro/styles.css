@@ -1123,6 +1123,21 @@ ul .plan-group-brand + li.plan-group-backend {
   flex: 0 0 auto;
 }
 
+
+.post-payment-help {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #d7dbe1;
+  border-radius: 12px;
+  background: #f7f9fc;
+}
+
+.post-payment-help p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #2f3a4a;
+}
+
 .fine-print {
   margin-top: 10px;
   color: #262626;

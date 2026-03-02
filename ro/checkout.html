@@ -74,6 +74,10 @@
           </svg>
           30-day money-back guarantee
         </p>
+        <div class="post-payment-help" aria-label="Post payment navigation">
+          <p>If payment is completed and this tab remains on Stripe, use this direct link to return in the VOGO setup flow:</p>
+          <a class="btn btn-outline" id="return-to-system" href="thankyou.html">Continue to download, instructions and contact pages</a>
+        </div>
         <p class="fine-print">*Discounted plans renew at list price.</p>
       </div>
     </main>
@@ -83,7 +87,9 @@
     (function initCheckout() {
       const params = new URLSearchParams(window.location.search);
       const packageCode = (params.get('package') || 'E100').toUpperCase();
+      const statusFromQuery = (params.get('status') || '').toLowerCase();
       const checkoutSelectionNote = document.getElementById('checkout-selection-note');
+      const returnToSystemLink = document.getElementById('return-to-system');
       const billingCycleInputs = Array.from(document.querySelectorAll('input[name="billing-cycle"]'));
       const actionWrap = document.querySelector('.action-wrap');
       const initialStripeBuyButton = document.querySelector('stripe-buy-button');
@@ -173,9 +179,20 @@
       sendCheckoutEvent('page_enter');
 
       // Requirement: send email for success/error statuses detected in URL.
-      const statusFromQuery = (params.get('status') || '').toLowerCase();
       if (statusFromQuery === 'success' || statusFromQuery === 'error') {
         sendCheckoutEvent('payment_result', { paymentStatus: statusFromQuery });
+      }
+
+      const thankYouUrl = `thankyou.html?package=${encodeURIComponent(packageCode)}`;
+      if (returnToSystemLink) {
+        returnToSystemLink.href = thankYouUrl;
+      }
+
+      // If Stripe redirects back with success status, route users to the post-payment hub page.
+      if (statusFromQuery === 'success') {
+        window.setTimeout(() => {
+          window.location.href = thankYouUrl;
+        }, 500);
       }
 
       // Best-effort Stripe postMessage signal watcher for payment completion/error.
