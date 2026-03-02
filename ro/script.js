@@ -189,6 +189,32 @@ const faqData = [
 const cardsContainer = document.getElementById('offer-cards');
 const detailsStack = document.getElementById('details-stack');
 const faqList = document.getElementById('faq-list');
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mainNav = document.getElementById('mainNav');
+
+function initMobileMenu() {
+  if (!mobileMenuToggle || !mainNav) return;
+
+  mobileMenuToggle.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('is-open');
+    mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  mainNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth > 680) return;
+      mainNav.classList.remove('is-open');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 680) {
+      mainNav.classList.remove('is-open');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 
 /**
  * Creates stacked detailed sections once, each with an id target for smooth scrolling.
@@ -463,6 +489,7 @@ renderDetailedSections();
 initSupportGalleryLightbox();
 initOfferCardsFromHtml();
 renderFaq();
+initMobileMenu();
 
 /**
  * Hero carousel section logic.

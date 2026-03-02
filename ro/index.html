@@ -34,6 +34,9 @@
   <!-- Performance hint: preloads first sub-hero slide for faster above-the-fold rendering. -->
   <link rel="preload" as="image" href="../img/products/carousel/vogo_wordpress_branc_control_center_1.png" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&display=swap" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="styles.css" />
 
@@ -68,17 +71,34 @@
         <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
         <span>VOGO</span>
       </div>
-      <nav class="main-nav">
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mainNav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
         <!-- Menu anchors mapped to the exact requested sections/cards for reliable in-page navigation. -->
         <a href="#overview">Produse</a>
         <a href="#support-services-card">Servicii</a>
         <a href="#products">Enterprise</a>
         <a href="#plans">Prețuri</a>
       </nav>
-      <a class="btn btn-primary promo-cta" href="#plans">
-        <span class="promo-cta-desktop">Obține acum reducerea – valabilă doar în perioada promo</span>
-        <span class="promo-cta-mobile">Obține acum reducerea</span>
-      </a>
+      <div class="header-cta-group">
+        <a
+          class="climate-badge"
+          href="https://climate.stripe.com/q51jM4"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="VOGO este Stripe Climate member"
+        >
+          <span class="climate-badge-dot" aria-hidden="true"></span>
+          <span class="climate-badge-text">Stripe Climate member</span>
+        </a>
+        <a class="btn btn-primary promo-cta" href="#plans">
+          <span class="promo-cta-desktop">Obține acum reducerea – valabilă doar în perioada promo</span>
+          <span class="promo-cta-mobile">Obține acum reducerea</span>
+        </a>
+      </div>
     </div>
   </header>
 
