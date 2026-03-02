@@ -1,291 +1,62 @@
 <!DOCTYPE html>
 <!--
-  File role: Checkout selection page for VOGO pricing plans.
-  This page reads the selected package code from URL query params and renders
-  the Romanian checkout UI with VOGO branding and green accent colors.
+  File role: Checkout page for VOGO pricing plans.
+  This version keeps copy in English and delegates styling to ro/styles.css.
 -->
-<html lang="ro">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VOGO Checkout | Selectează ciclul de facturare</title>
-  <style>
-    /**
-     * Section role: Base visual system for the checkout page.
-     * We keep all styles local to avoid impacting global site styling.
-     */
-    :root {
-      --vogo-green: #0f9d58;
-      --vogo-green-soft: #dff5ea;
-      --text-main: #111111;
-      --text-muted: #5b5b5b;
-      --bg-main: #f4f4f4;
-      --card-bg: #ffffff;
-      --line: #e5e5e5;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      color: var(--text-main);
-      background: var(--bg-main);
-    }
-
-    /**
-     * Section role: Top bar with VOGO logo and text (replaces Elementor branding).
-     */
-    .checkout-header {
-      border-bottom: 1px solid var(--line);
-      background: var(--card-bg);
-    }
-
-    .checkout-header-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .checkout-logo {
-      width: 30px;
-      height: 30px;
-      object-fit: contain;
-      border-radius: 50%;
-    }
-
-    .checkout-brand {
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-
-    .checkout-wrapper {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .back-link:hover {
-      color: var(--vogo-green);
-    }
-
-    /**
-     * Section role: Main checkout content block.
-     */
-    .checkout-main {
-      text-align: center;
-      padding: 6px 0 40px;
-    }
-
-    .checkout-main h1 {
-      margin: 0 0 28px;
-      font-size: 66px;
-      line-height: 1.06;
-      letter-spacing: -0.02em;
-    }
-
-    .billing-card {
-      max-width: 700px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      text-align: left;
-    }
-
-    .billing-card-header {
-      margin: 0;
-      padding: 22px 28px;
-      font-size: 22px;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      border-bottom: 1px solid var(--line);
-    }
-
-    /**
-     * Section role: Billing row styling with selectable radio controls.
-     */
-    .billing-option {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 28px;
-      border-bottom: 1px solid var(--line);
-      cursor: pointer;
-    }
-
-    .billing-option:last-of-type {
-      border-bottom: 0;
-    }
-
-    .billing-option input {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--vogo-green);
-      margin: 0;
-      flex: 0 0 auto;
-    }
-
-    .billing-option-label {
-      min-width: 90px;
-      font-size: 36px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .billing-option-price {
-      font-size: 36px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .billing-option-price span {
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .badge-save {
-      margin-left: auto;
-      font-size: 14px;
-      font-weight: 700;
-      color: #084e2b;
-      background: var(--vogo-green-soft);
-      border-radius: 999px;
-      padding: 9px 18px;
-      line-height: 1;
-    }
-
-    /**
-     * Section role: Primary checkout action and trust notes.
-     */
-    .action-wrap {
-      margin-top: 34px;
-    }
-
-    .checkout-btn {
-      display: inline-block;
-      border: 0;
-      background: #000;
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 12px;
-      padding: 16px 30px;
-    }
-
-    .checkout-btn:hover {
-      background: #202020;
-    }
-
-    .trust-note {
-      margin-top: 28px;
-      font-size: 17px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .trust-note svg {
-      width: 20px;
-      height: 20px;
-      color: var(--vogo-green);
-      flex: 0 0 auto;
-    }
-
-    .fine-print {
-      margin-top: 10px;
-      color: #262626;
-      font-size: 13px;
-    }
-
-    @media (max-width: 960px) {
-      .checkout-brand { font-size: 22px; }
-      .checkout-main h1 { font-size: 44px; }
-      .billing-card-header,
-      .billing-option-label,
-      .billing-option-price,
-      .trust-note,
-      .fine-print,
-      .badge-save,
-      .checkout-btn { font-size: 18px; }
-      .badge-save { padding: 8px 14px; }
-    }
-
-    @media (max-width: 640px) {
-      .checkout-wrapper { padding: 18px; }
-      .checkout-main h1 { font-size: 34px; }
-      .billing-option { gap: 12px; padding: 20px 18px; }
-      .billing-option-label,
-      .billing-option-price { font-size: 24px; }
-      .billing-option-label { min-width: 70px; }
-      .badge-save { font-size: 12px; padding: 7px 12px; }
-      .checkout-btn { width: 100%; max-width: 320px; }
-    }
-  </style>
-</head>
-<body>
+  <title>VOGO Checkout | Select billing cycle</title>
+  <link rel="stylesheet" href="styles.css" />
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-
+</head>
+<body class="checkout-page">
   <!-- Header branding section: VOGO logo and brand text only. -->
   <header class="checkout-header">
     <div class="checkout-header-inner">
-      <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="checkout-logo" />
+      <img src="../img-general/vogo-logo.png" alt="VOGO logo" class="checkout-logo" />
       <span class="checkout-brand">VOGO</span>
     </div>
   </header>
 
   <div class="checkout-wrapper">
-    <a class="back-link" href="index.html#plans" aria-label="Înapoi la zona de prețuri">
+    <a class="back-link" href="index.html#plans" aria-label="Back to pricing plans">
       <span aria-hidden="true">←</span>
-      Înapoi la prețuri
+      Back to pricing
     </a>
 
-    <!-- Main checkout interface section in Romanian. -->
     <main class="checkout-main">
-      <h1>Selectează ciclul de facturare</h1>
+      <h1>Select billing cycle</h1>
 
-      <section class="billing-card" aria-label="Opțiuni de ciclu de facturare">
-        <h2 class="billing-card-header" id="package-title">Opțiuni facturare pachet</h2>
+      <section class="billing-card" aria-label="Billing cycle options">
+        <h2 class="billing-card-header" id="package-title">Package billing options</h2>
 
         <label class="billing-option" for="cycle-1y">
           <input id="cycle-1y" type="radio" name="billing-cycle" checked />
-          <span class="billing-option-label">1 an</span>
-          <span class="billing-option-price" id="price-1y">€7 <span>x 12 luni</span></span>
+          <span class="billing-option-label">1 year</span>
+          <span class="billing-option-price" id="price-1y">€7 <span>x 12 months</span></span>
         </label>
 
         <label class="billing-option" for="cycle-2y">
           <input id="cycle-2y" type="radio" name="billing-cycle" />
-          <span class="billing-option-label">2 ani</span>
-          <span class="billing-option-price" id="price-2y">€7 <span>x 24 luni</span></span>
-          <span class="badge-save">Economisești 6%</span>
+          <span class="billing-option-label">2 years</span>
+          <span class="billing-option-price" id="price-2y">€7 <span>x 24 months</span></span>
+          <span class="badge-save">Save 6%</span>
         </label>
 
         <label class="billing-option" for="cycle-3y">
           <input id="cycle-3y" type="radio" name="billing-cycle" />
-          <span class="billing-option-label">3 ani</span>
-          <span class="billing-option-price" id="price-3y">€7 <span>x 36 luni</span></span>
-          <span class="badge-save">Economisești 10%</span>
+          <span class="billing-option-label">3 years</span>
+          <span class="billing-option-price" id="price-3y">€7 <span>x 36 months</span></span>
+          <span class="badge-save">Save 10%</span>
+        </label>
+
+        <label class="billing-option" for="cycle-test">
+          <input id="cycle-test" type="radio" name="billing-cycle" />
+          <span class="billing-option-label">Test</span>
+          <span class="billing-option-price">1 Euro <span>one-time test payment</span></span>
+          <span class="badge-save">Test payment</span>
         </label>
       </section>
 
@@ -301,53 +72,72 @@
             <path d="M12 2L4 5V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V5L12 2Z" stroke="currentColor" stroke-width="2"/>
             <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
           </svg>
-          Garanție de returnare a banilor în 30 de zile
+          30-day money-back guarantee
         </p>
-        <p class="fine-print">*Planurile cu discount se reînnoiesc la prețul de listă.</p>
+        <p class="fine-print">*Discounted plans renew at list price.</p>
       </div>
     </main>
   </div>
 
   <script>
-    /**
-     * Section role: Read package code from URL and map it to the correct monthly price.
-     * Accepted package codes: E100 (7 EUR) and E1000 (27 EUR).
-     */
-    (function initCheckoutPackageFromQuery() {
+    (function initCheckout() {
       const params = new URLSearchParams(window.location.search);
       const packageCode = (params.get('package') || 'E100').toUpperCase();
       const checkoutSelectionNote = document.getElementById('checkout-selection-note');
       const billingCycleInputs = Array.from(document.querySelectorAll('input[name="billing-cycle"]'));
       const actionWrap = document.querySelector('.action-wrap');
-      const stripeBuyButton = document.querySelector('stripe-buy-button');
+      const initialStripeBuyButton = document.querySelector('stripe-buy-button');
+      const stripePublishableKey = initialStripeBuyButton ? initialStripeBuyButton.getAttribute('publishable-key') : '';
 
       const packageConfig = {
-        E100: { label: 'Pachet E100', monthlyPrice: 7 },
-        E1000: { label: 'Pachet E1000', monthlyPrice: 27 }
+        E100: { label: 'E100 Package', monthlyPrice: 7 },
+        E1000: { label: 'E1000 Package', monthlyPrice: 27 }
       };
 
       const selectedPackage = packageConfig[packageCode] || packageConfig.E100;
-      // Stripe buy-button IDs by billing cycle. The 2-year and 3-year IDs are provided by the client.
       const stripeBuyButtonByCycle = {
         '1y': 'buy_btn_1T6KjcGzeoRSK6Uw3ryVFalY',
         '2y': 'buy_btn_1T6KybGzeoRSK6Uw2R3w5hno',
-        '3y': 'buy_btn_1T6L4EGzeoRSK6Uwak9gmJdo'
+        '3y': 'buy_btn_1T6L4EGzeoRSK6Uwak9gmJdo',
+        'test': 'buy_btn_1T6LUsGzeoRSK6Uwr3djroO9'
       };
+
       const titleElement = document.getElementById('package-title');
       const yearlyPriceElement = document.getElementById('price-1y');
       const twoYearPriceElement = document.getElementById('price-2y');
       const threeYearPriceElement = document.getElementById('price-3y');
-      const stripePublishableKey = stripeBuyButton ? stripeBuyButton.getAttribute('publishable-key') : '';
 
-      titleElement.textContent = `${selectedPackage.label} • Opțiuni facturare`;
-      yearlyPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 12 luni</span>`;
-      twoYearPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 24 luni</span>`;
-      threeYearPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 36 luni</span>`;
+      titleElement.textContent = `${selectedPackage.label} • Billing options`;
+      yearlyPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 12 months</span>`;
+      twoYearPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 24 months</span>`;
+      threeYearPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 36 months</span>`;
 
       /**
-       * Recreate Stripe Buy Button so Stripe reloads the correct product card.
-       * Updating only the attribute is not always enough after Stripe already rendered.
+       * Sends checkout event details to a WordPress AJAX endpoint that emails adrian@vogo.family.
+       * The endpoint is implemented in theme PHP for both authenticated and guest users.
        */
+      function sendCheckoutEvent(eventType, extra = {}) {
+        const endpoint = `${window.location.origin}/wp-admin/admin-ajax.php`;
+        const body = new URLSearchParams({
+          action: 'vogome_checkout_event',
+          event_type: eventType,
+          package_code: packageCode,
+          billing_cycle: extra.billingCycle || '',
+          payment_status: extra.paymentStatus || '',
+          checkout_url: window.location.href,
+          metadata: JSON.stringify(extra)
+        });
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body,
+          keepalive: true
+        }).catch(() => {
+          // Intentionally silent: analytics email should never block checkout UX.
+        });
+      }
+
       function renderStripeBuyButton(selectedCycle) {
         const buyButtonId = stripeBuyButtonByCycle[selectedCycle];
         if (!actionWrap || !buyButtonId || !stripePublishableKey) {
@@ -362,24 +152,46 @@
         const nextButton = document.createElement('stripe-buy-button');
         nextButton.setAttribute('buy-button-id', buyButtonId);
         nextButton.setAttribute('publishable-key', stripePublishableKey);
-
-        // Keep helper text above Stripe while preserving the remaining notes order.
         actionWrap.insertBefore(nextButton, checkoutSelectionNote.nextSibling);
       }
 
-      /**
-       * Keep helper text and Stripe card synchronized with the current billing cycle.
-       */
       function syncCheckoutNote() {
         const selectedInput = billingCycleInputs.find((input) => input.checked);
         const selectedCycle = selectedInput ? selectedInput.id.replace('cycle-', '') : '1y';
-        const yearsByCycle = { '1y': '1 an', '2y': '2 ani', '3y': '3 ani' };
+        const yearsByCycle = {
+          '1y': '1 year',
+          '2y': '2 years',
+          '3y': '3 years',
+          'test': 'Test 1 Euro'
+        };
 
-        // Keep the Stripe product card in sync with the selected billing cycle.
         renderStripeBuyButton(selectedCycle);
-
-        checkoutSelectionNote.textContent = `Ai selectat ${selectedPackage.label}, ${yearsByCycle[selectedCycle]}. Checkout-ul Stripe este afișat mai jos.`;
+        checkoutSelectionNote.textContent = `You selected ${selectedPackage.label}, ${yearsByCycle[selectedCycle]}. Stripe checkout is displayed below.`;
       }
+
+      // Requirement: send email when user enters checkout page.
+      sendCheckoutEvent('page_enter');
+
+      // Requirement: send email for success/error statuses detected in URL.
+      const statusFromQuery = (params.get('status') || '').toLowerCase();
+      if (statusFromQuery === 'success' || statusFromQuery === 'error') {
+        sendCheckoutEvent('payment_result', { paymentStatus: statusFromQuery });
+      }
+
+      // Best-effort Stripe postMessage signal watcher for payment completion/error.
+      window.addEventListener('message', (event) => {
+        if (!event || !event.data) {
+          return;
+        }
+
+        const payload = typeof event.data === 'string' ? event.data : JSON.stringify(event.data);
+        if (payload.includes('checkout.session.completed')) {
+          sendCheckoutEvent('payment_result', { paymentStatus: 'success', stripePayload: payload });
+        }
+        if (payload.includes('checkout.session.expired') || payload.includes('checkout.error')) {
+          sendCheckoutEvent('payment_result', { paymentStatus: 'error', stripePayload: payload });
+        }
+      });
 
       billingCycleInputs.forEach((input) => {
         input.addEventListener('change', syncCheckoutNote);

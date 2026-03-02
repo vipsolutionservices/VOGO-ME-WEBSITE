@@ -10,6 +10,7 @@ $vogome_inc_files = [
     '/inc/vogome_bbpress_pagination.php',
     '/inc/vogome_activate_plan.php',
     '/inc/vogome_pages_titles.php',
+    '/inc/vogome_checkout_events.php',
 ];
 
 foreach ($vogome_inc_files as $vogome_inc_file) {
