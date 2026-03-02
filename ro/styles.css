@@ -739,6 +739,12 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: var(--vogo-green-dark);
 }
 
+@media (max-width: 680px) {
+  .badges {
+    justify-content: center;
+  }
+}
+
 /* Pricing/plan cards */
 .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
 .plan-card {
