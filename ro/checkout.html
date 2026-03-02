@@ -318,6 +318,7 @@
       const packageCode = (params.get('package') || 'E100').toUpperCase();
       const checkoutSelectionNote = document.getElementById('checkout-selection-note');
       const billingCycleInputs = Array.from(document.querySelectorAll('input[name="billing-cycle"]'));
+      const stripeBuyButton = document.querySelector('stripe-buy-button');
 
       const packageConfig = {
         E100: { label: 'Pachet E100', monthlyPrice: 7 },
@@ -325,6 +326,12 @@
       };
 
       const selectedPackage = packageConfig[packageCode] || packageConfig.E100;
+      // Stripe buy-button IDs by billing cycle. The 2-year and 3-year IDs are provided by the client.
+      const stripeBuyButtonByCycle = {
+        '1y': 'buy_btn_1T6KjcGzeoRSK6Uw3ryVFalY',
+        '2y': 'buy_btn_1T6KybGzeoRSK6Uw2R3w5hno',
+        '3y': 'buy_btn_1T6L4EGzeoRSK6Uwak9gmJdo'
+      };
       const titleElement = document.getElementById('package-title');
       const yearlyPriceElement = document.getElementById('price-1y');
       const twoYearPriceElement = document.getElementById('price-2y');
@@ -342,6 +349,11 @@
         const selectedInput = billingCycleInputs.find((input) => input.checked);
         const selectedCycle = selectedInput ? selectedInput.id.replace('cycle-', '') : '1y';
         const yearsByCycle = { '1y': '1 an', '2y': '2 ani', '3y': '3 ani' };
+
+        // Keep the Stripe component in sync with the selected billing cycle.
+        if (stripeBuyButton && stripeBuyButtonByCycle[selectedCycle]) {
+          stripeBuyButton.setAttribute('buy-button-id', stripeBuyButtonByCycle[selectedCycle]);
+        }
 
         checkoutSelectionNote.textContent = `Ai selectat ${selectedPackage.label}, ${yearsByCycle[selectedCycle]}. Checkout-ul Stripe este afișat mai jos.`;
       }
