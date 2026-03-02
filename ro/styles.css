@@ -40,7 +40,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 74px; }
 .logo {
   font-weight: 800;
-  font-size: 1.4rem;
+  font-size: 1.65rem;
   letter-spacing: .04em;
   color: var(--vogo-green);
   display: inline-flex;
@@ -66,25 +66,26 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 
 /* Header promo CTA: nav-like typography with compact size and vivid hover feedback. */
 .promo-cta {
-  /* Keep the same type family/weight as menu links, with a slightly smaller size. */
   font-family: inherit;
   font-size: 0.92rem;
   font-weight: 500;
-  color: var(--vogo-green);
-  background: var(--white);
+  color: var(--white);
+  background: var(--vogo-green);
   border-color: var(--vogo-green);
-  /* Smoothly animate to the filled accent style inspired by the provided reference. */
-  transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  transition: none;
 }
 
 .promo-cta:hover,
 .promo-cta:focus-visible {
-  /* Use VOGO green (instead of pink) for the highlighted hover state. */
   color: var(--white);
   background: var(--vogo-green);
   border-color: var(--vogo-green);
-  box-shadow: 0 0 0 4px rgba(15, 123, 101, 0.18), 0 10px 22px rgba(15, 123, 101, 0.28);
-  transform: translateY(-1px);
+  box-shadow: none;
+  transform: none;
+}
+
+.promo-cta-mobile {
+  display: none;
 }
 
 /* Hero section layout: centered, cleaner and visually aligned with the provided reference style. */
@@ -938,7 +939,22 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   .plans-grid, .enterprise-grid, .hero-grid, .trust-grid, .faq-grid, .cta-grid, .footer-grid {
     grid-template-columns: 1fr;
   }
-  .main-nav { display: none; }
+  .main-nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .main-nav a {
+    flex: 0 0 auto;
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 680px) {
@@ -1022,10 +1038,13 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   }
   .nav-wrap {
     min-height: 64px;
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 0;
   }
   .logo {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   .logo-mark {
     width: 28px;
@@ -1037,6 +1056,18 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
     border-radius: 10px;
     max-width: 74vw;
     line-height: 1.25;
+  }
+  .promo-cta-desktop {
+    display: none;
+  }
+  .promo-cta-mobile {
+    display: inline;
+  }
+  .main-nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 4px;
   }
   .hero-content h1 {
     font-size: clamp(1.7rem, 10vw, 2.25rem);
