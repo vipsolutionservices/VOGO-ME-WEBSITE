@@ -172,7 +172,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   so both headings share the exact same visual weight and scale.
 */
 #overview > .container > h2 {
-  font-family: inherit;
+  font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: clamp(1.5rem, 2.0vw, 2.35rem);
@@ -301,12 +301,15 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   line-height: 1;
 }
 
-/* Icon glyph is now controlled purely by CSS based on each card's HTML data-chip value. */
+/* Icon glyphs: consistent Bootstrap icon font + VOGO green for reliable rendering. */
 .offer-icon-badge::before,
 .offer-icon::before {
-  content: '✨';
-  font-size: 1.3rem;
+  content: '\f4f5';
+  font-family: "bootstrap-icons";
+  font-size: 1.15rem;
   line-height: 1;
+  font-style: normal;
+  font-weight: 400;
 }
 
 
@@ -318,59 +321,31 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   content: none !important;
 }
 
-/* Professional icon set for the first three cards using clean SVG line icons. */
-.offer-card[data-chip='SUPPORT'] .offer-icon-badge::before,
-.offer-icon[data-chip='SUPPORT']::before,
-.offer-card[data-chip='MOBILE'] .offer-icon-badge::before,
-.offer-icon[data-chip='MOBILE']::before,
-.offer-card[data-chip='SERVICES'] .offer-icon-badge::before,
-.offer-icon[data-chip='SERVICES']::before {
-  content: '';
-  display: block;
-  width: 21px;
-  height: 21px;
-  background-color: currentColor;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-}
-
 .offer-card[data-chip='SUPPORT'] .offer-icon-badge::before,
 .offer-icon[data-chip='SUPPORT']::before {
-  /* Bot/chat icon for AI support. */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a9 9 0 0 0-9 9v7a2 2 0 0 0 2 2h2v2l3-2h2a9 9 0 1 0 0-18Zm-4 9a1.5 1.5 0 1 1 0 .001V11Zm8 0a1.5 1.5 0 1 1 0 .001V11Zm-8 5h8v-2H8v2Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 2a9 9 0 0 0-9 9v7a2 2 0 0 0 2 2h2v2l3-2h2a9 9 0 1 0 0-18Zm-4 9a1.5 1.5 0 1 1 0 .001V11Zm8 0a1.5 1.5 0 1 1 0 .001V11Zm-8 5h8v-2H8v2Z'/%3E%3C/svg%3E");
+  content: '\f268'; /* bi-chat-dots-fill */
 }
 .offer-card[data-chip='MOBILE'] .offer-icon-badge::before,
 .offer-icon[data-chip='MOBILE']::before {
-  /* Smartphone icon for mobile app development. */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7Zm5 18a1.25 1.25 0 1 1 0-2.5A1.25 1.25 0 0 1 12 20Zm-4-4V5h8v11H8Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7Zm5 18a1.25 1.25 0 1 1 0-2.5A1.25 1.25 0 0 1 12 20Zm-4-4V5h8v11H8Z'/%3E%3C/svg%3E");
+  content: '\f4e7'; /* bi-phone-fill */
 }
 .offer-card[data-chip='SERVICES'] .offer-icon-badge::before,
 .offer-icon[data-chip='SERVICES']::before {
-  /* Bootstrap icon: gear-wide-connected (embedded locally as SVG mask for reliability). */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z'/%3E%3C/svg%3E");
+  content: '\f3e5'; /* bi-gear-fill */
 }
 .offer-card[data-chip='RETAIL'] .offer-icon-badge::before,
-.offer-icon[data-chip='RETAIL']::before { content: '🛍️'; }
+.offer-icon[data-chip='RETAIL']::before { content: '\f291'; /* bi-bag-fill */ }
 .offer-card[data-chip='COMMERCE'] .offer-icon-badge::before,
-.offer-icon[data-chip='COMMERCE']::before { content: '🛒'; }
+.offer-icon[data-chip='COMMERCE']::before { content: '\f1cc'; /* bi-cart-fill */ }
 .offer-card[data-chip='CARE'] .offer-icon-badge::before,
-.offer-icon[data-chip='CARE']::before { content: '🎧'; }
+.offer-icon[data-chip='CARE']::before { content: '\f23e'; /* bi-headset */ }
 .offer-card[data-chip='CLOUD'] .offer-icon-badge::before,
-.offer-icon[data-chip='CLOUD']::before { content: '☁️'; }
+.offer-icon[data-chip='CLOUD']::before { content: '\f2b5'; /* bi-cloud-fill */ }
 .offer-card[data-chip='CUSTOM'] .offer-icon-badge::before,
-.offer-icon[data-chip='CUSTOM']::before { content: '🔗'; }
+.offer-icon[data-chip='CUSTOM']::before { content: '\f470'; /* bi-link-45deg */ }
 .offer-card h3 {
-  /* Requested update: use a clear gray tone for card titles in the VOGO offers section. */
-  color: #6b7280;
-  /* Sales-oriented heading stack: geometric sans fonts improve emphasis and visual punch. */
-  font-family: "Montserrat", "Avenir Next", "Segoe UI", Inter, Roboto, Arial, sans-serif;
+  color: #000000;
+  font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 1.28rem;
   margin: 0;
 }
