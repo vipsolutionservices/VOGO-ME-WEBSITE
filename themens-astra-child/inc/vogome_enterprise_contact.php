@@ -18,7 +18,7 @@ function vogo_enterprise_contact_submit()
     $company = sanitize_text_field($_POST['company'] ?? '');
     $project = sanitize_textarea_field($_POST['project'] ?? '');
 
-    if (!$name || !$company || !$phone || !$project || !is_email($email) || mb_strlen($project) < 20) {
+    if (!$name || !$company || !$phone || !$project || !is_email($email) || wp_strlen($project) < 20) {
         wp_send_json_error(['error' => 'validation_failed', 'error_message' => 'Te rugăm să completezi toate câmpurile obligatorii corect.'], 400);
     }
 

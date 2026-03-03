@@ -850,10 +850,11 @@ if (heroCarouselTrack) {
       return;
     }
 
-    const defaultAjaxUrl = window.location.protocol === 'file:'
-      ? 'https://vogo.me/wp-admin/admin-ajax.php'
-      : '/wp-admin/admin-ajax.php';
-    const ajaxUrl = (window.VOGO_CONTACT && window.VOGO_CONTACT.ajax_url) || defaultAjaxUrl;
+    const localizedAjaxUrl = (window.VOGO_CONTACT && window.VOGO_CONTACT.ajax_url) || '';
+    const canonicalAjaxUrl = 'https://vogo.me/wp-admin/admin-ajax.php';
+    const sameOriginAjaxUrl = `${window.location.origin}/wp-admin/admin-ajax.php`;
+    const defaultAjaxUrl = window.location.protocol === 'file:' ? canonicalAjaxUrl : sameOriginAjaxUrl;
+    const ajaxCandidates = Array.from(new Set([localizedAjaxUrl, defaultAjaxUrl, canonicalAjaxUrl].filter(Boolean)));
     const nonce = (window.VOGO_CONTACT && window.VOGO_CONTACT.nonce) || '';
     const payload = new URLSearchParams({
       action: 'vogo_enterprise_contact_submit',
@@ -867,15 +868,40 @@ if (heroCarouselTrack) {
 
     try {
       if (submitButton) submitButton.disabled = true;
-      const response = await fetch(ajaxUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: payload.toString(),
-        cache: 'no-store',
-        credentials: 'same-origin',
-      });
 
-      const json = await response.json().catch(() => null);
+      let response = null;
+      let responseText = '';
+      let json = null;
+
+      for (const ajaxUrl of ajaxCandidates) {
+        try {
+          response = await fetch(ajaxUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: payload.toString(),
+            cache: 'no-store',
+            credentials: 'same-origin',
+          });
+
+          responseText = await response.text();
+          try {
+            json = responseText ? JSON.parse(responseText) : null;
+          } catch (_) {
+            json = null;
+          }
+
+          if (response.ok || json?.success || json?.data?.error_message) break;
+        } catch (_) {
+          response = null;
+          responseText = '';
+          json = null;
+        }
+      }
+
+      if (!response) {
+        throw new Error('request_failed');
+      }
+
       if (response.ok && json?.success) {
         setStatus('Solicitarea a fost trimisă cu succes. Verifică emailul business pentru confirmare.', 'success');
         form.reset();
@@ -884,11 +910,16 @@ if (heroCarouselTrack) {
         return;
       }
 
+      const plainTextError = responseText
+        ? responseText.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
+        : '';
+
       const errorMessage =
         json?.data?.error_message ||
         json?.error ||
         json?.data ||
-        'Nu am putut trimite solicitarea acum. Te rugăm să încerci din nou.';
+        (plainTextError ? `Eroare server (${response.status}): ${plainTextError.slice(0, 220)}` : '') ||
+        `Nu am putut trimite solicitarea acum (cod ${response.status || 'necunoscut'}). Te rugăm să încerci din nou.`;
       setStatus(String(errorMessage), 'error');
       regenerateCaptcha();
     } catch (_) {
