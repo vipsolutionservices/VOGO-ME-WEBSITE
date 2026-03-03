@@ -513,6 +513,21 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: var(--vogo-green-dark);
   margin: 0;
 }
+
+.detail-section--support .detail-title-wrap h3 {
+  font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(1.5rem, 2.0vw, 2.35rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+.offer-chip--support {
+  background: var(--vogo-green);
+  color: var(--white);
+  border-radius: 5px;
+}
 .detail-offer-more {
   margin-top: 16px;
 }
@@ -593,26 +608,36 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 
 /* Modern showroom-style layout for support detail in "Alege solutia potrivita pentru afacerea ta". */
 .support-modern {
-  border: 1px solid rgba(15, 123, 101, 0.2);
+  border: 1px solid rgba(15, 123, 101, 0.35);
   border-radius: 14px;
   padding: 18px;
-  background: linear-gradient(155deg, #ffffff 0%, #eef8f4 100%);
+  background: var(--vogo-green);
+  color: var(--white);
 }
 .support-modern-eyebrow {
   margin: 0 0 6px;
   font-size: .72rem;
   letter-spacing: .14em;
   font-weight: 800;
-  color: #0f7b65;
+  color: var(--white);
+  background: var(--vogo-green);
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 10px;
 }
 .support-modern h4 {
   margin: 0 0 8px;
-  font-size: clamp(1.35rem, 2.2vw, 2rem);
-  line-height: 1.15;
-  color: #0b2c25;
+  font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(1.5rem, 2.0vw, 2.35rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #000000;
 }
 .support-modern-lead {
   margin: 0 0 12px;
+  color: #d1d5db;
 }
 .support-modern-tags {
   display: flex;
@@ -620,9 +645,9 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   gap: 8px;
 }
 .support-modern-tags span {
-  border: 1px solid rgba(15, 123, 101, 0.25);
-  background: rgba(15, 123, 101, 0.08);
-  color: #0f5f4f;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
   padding: 6px 10px;
   border-radius: 999px;
   font-size: .78rem;
@@ -744,6 +769,27 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   border-radius: 8px;
   padding: 10px 12px;
   cursor: pointer;
+}
+.support-buy-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--vogo-green);
+  background: var(--vogo-green);
+  color: var(--white);
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.support-buy-link:hover,
+.support-buy-link:focus-visible {
+  background: #ffffff;
+  color: var(--vogo-green);
+  border-color: var(--vogo-green);
+  text-decoration: none;
 }
 
 /* Lightweight image popup with keyboard and click navigation support. */
@@ -1169,7 +1215,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .page-backlink-section {
   padding-top: 18px;
   padding-bottom: 18px;
-  background: #f7fbf9;
+  background: rgba(255, 255, 255, 0.09);
 }
 .page-backlink {
   display: inline-flex;

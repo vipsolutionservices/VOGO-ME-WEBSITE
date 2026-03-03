@@ -16,6 +16,13 @@ const offers = [
     title: 'VOGO AI Customer Support Plugin',
     chip: 'SUPPORT',
     icon: '🤖',
+    hideDefaultCta: true,
+    sectionClass: 'detail-section--support',
+    chipClass: 'offer-chip--support',
+    buyNowLink: {
+      href: 'https://wa.me/40723313295?text=Solicit%20achizitia%20VOGO%20AI%20Chatbot.%20Ne%20intereseaza%20pentru%20...explicatiile%20clare%20ale%20nevoi%20si%20cerinte%20specifice.',
+      label: 'Cumpara acum'
+    },
     summary:
       'VOGO AI Chatbot este un plugin inteligent pentru WordPress / WooCommerce / Site-uri web care transformă conversațiile în acțiuni reale. Nu este doar un chatbot care răspunde la întrebări — este un asistent AI capabil să execute operațiuni direct în contul utilizatorului, să interacționeze cu WooCommerce și să transfere conversația către un operator uman atunci când este necesar.',
     // Rich text is intentionally structured with paragraphs + lists only,
@@ -288,7 +295,7 @@ function initMobileMenu() {
 function renderDetailedSections() {
   offers.forEach((offer, index) => {
     const section = document.createElement('article');
-    section.className = 'detail-section';
+    section.className = `detail-section${offer.sectionClass ? ` ${offer.sectionClass}` : ''}`;
     section.id = `detail-${index + 1}`;
 
     section.innerHTML = `
@@ -297,7 +304,7 @@ function renderDetailedSections() {
           <div class="offer-icon" data-chip="${offer.chip}" aria-hidden="true"></div>
           <h3>${offer.title}</h3>
         </div>
-        <span class="offer-chip">${offer.chip}</span>
+        <span class="offer-chip${offer.chipClass ? ` ${offer.chipClass}` : ""}">${offer.chip}</span>
       </div>
       ${buildOfferDetailLayout(offer, index)}
       ${buildDetailCtaMarkup(offer)}
@@ -309,6 +316,10 @@ function renderDetailedSections() {
 
 /** Builds per-section CTA links; uses a default label if a section has no custom links. */
 function buildDetailCtaMarkup(offer) {
+  if (offer.hideDefaultCta) {
+    return '';
+  }
+
   if (Array.isArray(offer.ctaLinks) && offer.ctaLinks.length > 0) {
     return `
       <div class="detail-cta-row" aria-label="Section links">
@@ -387,6 +398,9 @@ function buildOfferDetailLayout(offer, offerIndex) {
         <button class="support-gallery-link" type="button" data-gallery-images="${imagesPayload}" data-gallery-index="0">
           Vezi imagini
         </button>
+        ${offer.buyNowLink
+          ? `<a class="support-buy-link" href="${offer.buyNowLink.href}" target="_blank" rel="noopener noreferrer">${offer.buyNowLink.label}</a>`
+          : ''}
       </aside>
     </div>
   `;
