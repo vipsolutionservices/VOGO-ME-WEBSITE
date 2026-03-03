@@ -78,7 +78,7 @@ const offers = [
           <li><strong>Scalabil enterprise:</strong> potrivit pentru magazine, marketplace-uri și proiecte SaaS.</li>
         </ul>
       </section>
-    ``,
+    `,
     supportGalleryImages: [
       '../img/ai-chatbot/ai-chatbot1.png',
       '../img/ai-chatbot/ai-chatbot2.png',
