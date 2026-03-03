@@ -33,12 +33,12 @@ const offers = [
         <h4>Transformă chat-ul într-un canal real de vânzări, 24/7</h4>
         <p class="support-modern-lead">VOGO AI Customer Support Plugin oferă răspuns instant, recomandări de produse în context și transfer fluent către operator uman. Rezultatul: experiență mai bună pentru client și conversii mai mari pentru business.</p>
 
-        <div class="support-modern-tags" role="list" aria-label="Capabilități cheie">
-          <span role="listitem">WordPress + WooCommerce ready</span>
-          <span role="listitem">AI multi-engine cu fallback</span>
-          <span role="listitem">Human handoff fără context pierdut</span>
-          <span role="listitem">Acțiuni reale prin API securizat</span>
-        </div>
+        <ul class="support-modern-tags" aria-label="Capabilități cheie">
+          <li>WordPress + WooCommerce ready</li>
+          <li>AI multi-engine cu fallback</li>
+          <li>Human handoff fără context pierdut</li>
+          <li>Acțiuni reale prin API securizat</li>
+        </ul>
       </section>
 
       <section class="support-modern-process" aria-label="Cum funcționează">
