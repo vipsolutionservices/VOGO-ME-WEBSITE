@@ -875,7 +875,14 @@ if (heroCarouselTrack) {
         credentials: 'same-origin',
       });
 
-      const json = await response.json().catch(() => null);
+      const responseText = await response.text();
+      let json = null;
+      try {
+        json = responseText ? JSON.parse(responseText) : null;
+      } catch (_) {
+        json = null;
+      }
+
       if (response.ok && json?.success) {
         setStatus('Solicitarea a fost trimisă cu succes. Verifică emailul business pentru confirmare.', 'success');
         form.reset();
@@ -884,11 +891,16 @@ if (heroCarouselTrack) {
         return;
       }
 
+      const plainTextError = responseText
+        ? responseText.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
+        : '';
+
       const errorMessage =
         json?.data?.error_message ||
         json?.error ||
         json?.data ||
-        'Nu am putut trimite solicitarea acum. Te rugăm să încerci din nou.';
+        (plainTextError ? `Eroare server (${response.status}): ${plainTextError.slice(0, 220)}` : '') ||
+        `Nu am putut trimite solicitarea acum (cod ${response.status || 'necunoscut'}). Te rugăm să încerci din nou.`;
       setStatus(String(errorMessage), 'error');
       regenerateCaptcha();
     } catch (_) {
