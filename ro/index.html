@@ -701,54 +701,26 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
 Software aplicații mobile dezvoltate în Flutter, cu experiență nativă reală, fără compromisuri de User eXperience (UX) sau performanță. Backend WordPress/WooCommerce integrat prin pluginuri dedicate.
 Soluții de Inteligență Artificială pentru suport clienți, recomandări de produse și automatizări inteligente.
           </p>
-          <!-- /*here is scrolling destination for enterprise*/ -->
-          <a
-            id="enterprise-discuta-btn"
-            class="btn enterprise-whatsapp-btn"
-            href="https://wa.me/40723313296?text=Discutie%20despre%20solutie%20enterprise%20pentru%20...%3B%20Detalii%20%3A%20"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Discuta cu noi
-          </a>
-        </div>
-        <form class="enterprise-form" id="contact" novalidate>
-          <label for="enterprise-name">Nume
-            <input id="enterprise-name" name="name" type="text" placeholder="Nume" required />
-            <div id="enterprise-name-error" class="error" aria-live="polite"></div>
-          </label>
-          <label for="enterprise-email">Email business
-            <input id="enterprise-email" name="email" type="email" placeholder="email@companie.ro" required />
-            <div id="enterprise-email-error" class="error" aria-live="polite"></div>
-          </label>
-          <label for="enterprise-phone">Telefon
-            <input id="enterprise-phone" name="phone" type="tel" placeholder="+40..." required />
-            <div id="enterprise-phone-error" class="error" aria-live="polite"></div>
-          </label>
-          <label for="enterprise-company">Companie
-            <input id="enterprise-company" name="company" type="text" placeholder="Nume companie" required />
-            <div id="enterprise-company-error" class="error" aria-live="polite"></div>
-          </label>
-          <label for="enterprise-project">Descrie proiectul
-            <textarea id="enterprise-project" name="project" rows="4" placeholder="Spune-ne pe scurt ce vrei să construim." required></textarea>
-            <div id="enterprise-project-error" class="error" aria-live="polite"></div>
-          </label>
-
-          <div class="captcha" aria-label="Verificare captcha">
-            <label for="enterprise-captcha-input">Captcha</label>
-            <div class="cap-row">
-              <span id="enterprise-captcha-question" class="cap-q" aria-live="polite">0 + 0 = ?</span>
-              <input id="enterprise-captcha-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Răspuns" aria-describedby="enterprise-captcha-question" required />
-              <button id="enterprise-captcha-refresh" type="button" aria-label="Reîncarcă captcha" class="cap-refresh">↻</button>
-            </div>
-            <div id="enterprise-captcha-error" class="error" aria-live="polite"></div>
+          <!-- Enterprise action buttons are grouped to keep both CTAs aligned and readable. -->
+          <div class="enterprise-actions">
+            <!-- Scroll destination for the enterprise offer card CTA. -->
+            <a
+              id="enterprise-discuta-btn"
+              class="btn enterprise-whatsapp-btn"
+              href="https://wa.me/40723313296?text=Discutie%20despre%20solutie%20enterprise%20pentru%20...%3B%20Detalii%20%3A%20"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Discuta cu noi
+            </a>
+            <!-- Direct link to contact flow preselected as Client — Enterprise Request. -->
+            <a class="btn btn-primary" href="/ecomm-contact-request/?request=enterprise#request-field">Transmite solicitarea</a>
           </div>
-
-          <input type="text" id="enterprise-honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          <div id="enterprise-form-status" class="form-status" aria-live="polite"></div>
-
-          <button type="submit" class="btn btn-primary" id="enterprise-submit-btn">Transmite solicitarea</button>
-        </form>
+        </div>
+        <!-- Replaced form with static visual, as requested for enterprise section layout. -->
+        <div class="enterprise-visual" aria-hidden="true">
+          <img src="img/products/enterprise_solutions.png" alt="" loading="lazy" />
+        </div>
       </div>
     </section>
 
