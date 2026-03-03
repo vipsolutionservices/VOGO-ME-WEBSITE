@@ -8,6 +8,10 @@ add_action('wp_ajax_vogo_enterprise_contact_submit', 'vogo_enterprise_contact_su
 
 function vogo_enterprise_contact_submit()
 {
+    if (!empty($_POST['_ajax_nonce']) && !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_ajax_nonce'])), 'vogo_contact_nonce')) {
+        wp_send_json_error(['error' => 'invalid_nonce', 'error_message' => 'Sesiune expirată. Reîncarcă pagina și încearcă din nou.'], 403);
+    }
+
     $name    = sanitize_text_field($_POST['name'] ?? '');
     $email   = sanitize_email($_POST['email'] ?? '');
     $phone   = sanitize_text_field($_POST['phone'] ?? '');
@@ -15,7 +19,7 @@ function vogo_enterprise_contact_submit()
     $project = sanitize_textarea_field($_POST['project'] ?? '');
 
     if (!$name || !$company || !$phone || !$project || !is_email($email) || mb_strlen($project) < 20) {
-        wp_send_json_error(['error' => 'validation_failed'], 400);
+        wp_send_json_error(['error' => 'validation_failed', 'error_message' => 'Te rugăm să completezi toate câmpurile obligatorii corect.'], 400);
     }
 
     $subject = sprintf('Solicitare enterprise VOGO • %s', $company);
@@ -66,8 +70,8 @@ function vogo_enterprise_contact_submit()
     $business_sent = wp_mail($email, $subject, $message, $headers);
 
     if (!$internal_sent || !$business_sent) {
-        wp_send_json_error(['error' => 'mail_failed'], 500);
+        wp_send_json_error(['error' => 'mail_failed', 'error_message' => 'Eroare la trimiterea emailului. Te rugăm să încerci din nou.'], 500);
     }
 
-    wp_send_json_success(['ok' => true]);
+    wp_send_json_success(['ok' => true, 'message' => 'Email trimis cu succes.']);
 }

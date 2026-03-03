@@ -672,18 +672,23 @@ Soluții de Inteligență Artificială pentru suport clienți, recomandări de p
         <form class="enterprise-form" id="contact" novalidate>
           <label for="enterprise-name">Nume
             <input id="enterprise-name" name="name" type="text" placeholder="Nume" required />
+            <div id="enterprise-name-error" class="error" aria-live="polite"></div>
           </label>
           <label for="enterprise-email">Email business
             <input id="enterprise-email" name="email" type="email" placeholder="email@companie.ro" required />
+            <div id="enterprise-email-error" class="error" aria-live="polite"></div>
           </label>
           <label for="enterprise-phone">Telefon
             <input id="enterprise-phone" name="phone" type="tel" placeholder="+40..." required />
+            <div id="enterprise-phone-error" class="error" aria-live="polite"></div>
           </label>
           <label for="enterprise-company">Companie
             <input id="enterprise-company" name="company" type="text" placeholder="Nume companie" required />
+            <div id="enterprise-company-error" class="error" aria-live="polite"></div>
           </label>
           <label for="enterprise-project">Descrie proiectul
             <textarea id="enterprise-project" name="project" rows="4" placeholder="Spune-ne pe scurt ce vrei să construim." required></textarea>
+            <div id="enterprise-project-error" class="error" aria-live="polite"></div>
           </label>
 
           <div class="captcha" aria-label="Verificare captcha">
