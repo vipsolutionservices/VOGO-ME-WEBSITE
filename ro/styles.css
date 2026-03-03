@@ -220,9 +220,14 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   color: var(--text);
 }
 .hero-content .lead {
-  margin: 0 auto;
-  font-size: clamp(1.16rem, 1.95vw, 1.24rem);
-  max-width: 93ch;
+  margin: 0 auto 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(1.125rem, 1.55vw, 1.25rem);
+  line-height: 1.42;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #5a6678;
+  max-width: min(56ch, 100%);
 }
 .hero-actions {
   /* Halve the vertical gap above the CTA buttons for a denser above-the-fold layout. */
@@ -654,14 +659,14 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font-weight: 700;
 }
 .support-modern-process {
-  border-left: 2px solid #d8e8e2;
+  border-left: 2px solid rgba(255, 255, 255, 0.38);
   margin-left: 12px;
   padding-left: 16px;
 }
 .support-modern-process h5 {
   margin: 0 0 10px;
   font-size: 1.2rem;
-  color: #0b2c25;
+  color: #ffffff;
 }
 .support-modern-process ol {
   margin: 0;
@@ -683,15 +688,15 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #0f7b65;
-  box-shadow: 0 0 0 4px #eef8f4;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.18);
 }
 .support-modern-process li strong {
-  color: #173d34;
+  color: #ffffff;
 }
 .support-modern-process li span {
   font-size: .95rem;
-  color: #35544c;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.5;
 }
 .support-modern-grid {
@@ -700,10 +705,10 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   gap: 10px;
 }
 .support-modern-grid article {
-  border: 1px solid #dbe9e4;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 10px;
   padding: 10px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.08);
 }
 .support-modern-grid article p {
   margin: 0;
@@ -712,7 +717,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font-size: 1.35rem !important;
   line-height: 1.1 !important;
   font-weight: 800;
-  color: #0f7b65 !important;
+  color: #ffffff !important;
   margin-bottom: 5px !important;
 }
 .support-modern-points ul {
@@ -722,8 +727,8 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   gap: 8px;
 }
 .support-modern-points li {
-  border: 1px solid #e1efea;
-  background: #f7fbf9;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.09);
   border-radius: 9px;
   padding: 10px 12px;
 }
@@ -1325,8 +1330,9 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     padding-bottom: 20px;
   }
   .hero-content .lead {
-    font-size: 1rem;
-    max-width: 62ch;
+    font-size: 1.05rem;
+    line-height: 1.58;
+    max-width: 34ch;
   }
   .hero-buttons {
     width: 100%;
