@@ -526,6 +526,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font-size: clamp(1.5rem, 2.0vw, 2.35rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
+  color: #000000;
 }
 .offer-chip--support {
   background: var(--vogo-green);
@@ -637,11 +638,11 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font-size: clamp(1.5rem, 2.0vw, 2.35rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: var(--white);
+  color: #000000;
 }
 .support-modern-lead {
   margin: 0 0 12px;
-  color: rgba(255, 255, 255, 0.92);
+  color: #d1d5db;
 }
 .support-modern-tags {
   display: flex;
