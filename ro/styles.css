@@ -1219,13 +1219,14 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .enterprise-actions .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 180px;
-  min-height: 44px;
+  height: 56px;
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -1248,7 +1249,6 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 }
 
 .enterprise-whatsapp-btn {
-  margin-top: 18px;
   background: #25d366;
   border-color: #25d366;
   color: var(--white);
