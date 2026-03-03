@@ -229,7 +229,7 @@ Rezultat: tehnologie care se mulează pe business-ul tău, nu business-ul pe teh
             </p>
             <div class="offer-card-footer"><span class="offer-bullet">ENTERPRISE. FLEXIBLE.</span>
               <span class="offer-more">Comanda acum ></span></div>
-          </button>
+          </a>
           <!-- vogo flexible enterprise card END -->
 
           <!-- vogo bricolage card START -->
@@ -672,23 +672,42 @@ Soluții de Inteligență Artificială pentru suport clienți, recomandări de p
             Discuta cu noi
           </a>
         </div>
-        <form class="enterprise-form" id="contact">
-          <label>Nume
-            <input type="text" placeholder="Nume" />
+        <form class="enterprise-form" id="contact" novalidate>
+          <label for="enterprise-name">Nume
+            <input id="enterprise-name" name="name" type="text" placeholder="Nume" required />
+            <div id="enterprise-name-error" class="error" aria-live="polite"></div>
           </label>
-          <label>Email business
-            <input type="email" placeholder="email@companie.ro" />
+          <label for="enterprise-email">Email business
+            <input id="enterprise-email" name="email" type="email" placeholder="email@companie.ro" required />
+            <div id="enterprise-email-error" class="error" aria-live="polite"></div>
           </label>
-          <label>Telefon
-            <input type="tel" placeholder="+40..." />
+          <label for="enterprise-phone">Telefon
+            <input id="enterprise-phone" name="phone" type="tel" placeholder="+40..." required />
+            <div id="enterprise-phone-error" class="error" aria-live="polite"></div>
           </label>
-          <label>Companie
-            <input type="text" placeholder="Nume companie" />
+          <label for="enterprise-company">Companie
+            <input id="enterprise-company" name="company" type="text" placeholder="Nume companie" required />
+            <div id="enterprise-company-error" class="error" aria-live="polite"></div>
           </label>
-          <label>Descrie proiectul
-            <textarea rows="4" placeholder="Spune-ne pe scurt ce vrei să construim."></textarea>
+          <label for="enterprise-project">Descrie proiectul
+            <textarea id="enterprise-project" name="project" rows="4" placeholder="Spune-ne pe scurt ce vrei să construim." required></textarea>
+            <div id="enterprise-project-error" class="error" aria-live="polite"></div>
           </label>
-          <button type="button" class="btn btn-primary">Transmite solicitarea</button>
+
+          <div class="captcha" aria-label="Verificare captcha">
+            <label for="enterprise-captcha-input">Captcha</label>
+            <div class="cap-row">
+              <span id="enterprise-captcha-question" class="cap-q" aria-live="polite">0 + 0 = ?</span>
+              <input id="enterprise-captcha-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Răspuns" aria-describedby="enterprise-captcha-question" required />
+              <button id="enterprise-captcha-refresh" type="button" aria-label="Reîncarcă captcha" class="cap-refresh">↻</button>
+            </div>
+            <div id="enterprise-captcha-error" class="error" aria-live="polite"></div>
+          </div>
+
+          <input type="text" id="enterprise-honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div id="enterprise-form-status" class="form-status" aria-live="polite"></div>
+
+          <button type="submit" class="btn btn-primary" id="enterprise-submit-btn">Transmite solicitarea</button>
         </form>
       </div>
     </section>

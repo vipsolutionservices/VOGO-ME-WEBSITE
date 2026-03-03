@@ -1,0 +1,106 @@
+<section class="vogo-hero" style="
+/* --------- Config culori --------- */
+--vogo-green: #0e7f4e;     /* verde principal, mai închis */
+--vogo-green-2: #065c3d;   /* accent, mult mai închis */
+--vogo-deep: #031c14;      /* forest foarte închis */
+--white: #ffffff;
+
+/* --------- Background --------- */
+background: radial-gradient(80% 130% at 50% 0%,
+  var(--vogo-green-2) 0%,
+  var(--vogo-green) 48%,
+  var(--vogo-deep) 100%
+);
+
+  padding: 150px 24px 96px;
+  padding-top: calc(150px + env(safe-area-inset-top,0px));
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+">
+  <style>
+    /* Tipografie locală (doar pentru această secțiune) */
+    .vogo-hero * {
+      font-family: Inter, Poppins, Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .vogo-hero h1 {
+      margin: 0 0 12px;
+      font-weight: 0;
+      font-size: clamp(30px, 7.5vw, 70px);
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+      color: var(--white);
+    }
+    .vogo-hero h2 {
+      margin: 0 0 32px;
+      font-weight: 400;
+      font-size: clamp(18px, 2.2vw, 28px);
+      line-height: 1.4;
+      color: var(--white);
+      opacity: .95;
+    }
+
+    /* Grup butoane */
+    .vogo-hero .btns {
+      display: inline-flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Stil de bază butoane */
+    .vogo-hero .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+      transition: transform .08s ease-out, background-color .18s ease, color .18s ease, border-color .18s ease;
+      box-shadow: 0 6px 24px rgba(0,0,0,.18);
+      border: 2px solid transparent;
+      will-change: transform;
+    }
+    .vogo-hero .btn:active { transform: translateY(1px); }
+
+    /* Primar: VERDE -> hover ALB (reverse) */
+    .vogo-hero .btn--primary {
+      background: var(--vogo-green);
+      color: var(--white);
+      border-color: var(--vogo-green);
+    }
+    .vogo-hero .btn--primary:hover,
+    .vogo-hero .btn--primary:focus-visible {
+      background: var(--white);
+      color: var(--vogo-green);
+      border-color: var(--white);
+    }
+
+    /* Secundar: ALB -> hover VERDE (reverse) */
+    .vogo-hero .btn--secondary {
+      background: var(--white);
+      color: var(--vogo-green);
+      border-color: var(--white);
+    }
+    .vogo-hero .btn--secondary:hover,
+    .vogo-hero .btn--secondary:focus-visible {
+      background: var(--vogo-green);
+      color: var(--white);
+      border-color: var(--vogo-green);
+    }
+  </style>
+
+  <!-- Titlu 1 -->
+  <h1>Contact VOGO Technology</h1>
+
+  <!-- Titlu 2 -->
+  <h2>Tell us your goals — our team responds within 24 hours with next steps.</h2>
+
+  <!-- Butoane -->
+  <div class="btns">
+    <a class="btn btn--secondary" href="https://vogo.family" target="_blank" aria-label="Explore the Platform">Explore the Platform</a>    
+    <a class="btn btn--primary" href="https://vogo.me/partner-network/" aria-label="Partner Network">Partner Network</a>
+  </div>
+</section>
