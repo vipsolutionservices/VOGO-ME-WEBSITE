@@ -729,6 +729,34 @@ if (heroCarouselTrack) {
   const captchaErrorEl = document.getElementById('enterprise-captcha-error');
   const captchaRefreshEl = document.getElementById('enterprise-captcha-refresh');
 
+  const fields = {
+    name: {
+      input: document.getElementById('enterprise-name'),
+      error: document.getElementById('enterprise-name-error'),
+      requiredMessage: 'Numele este obligatoriu.',
+    },
+    email: {
+      input: document.getElementById('enterprise-email'),
+      error: document.getElementById('enterprise-email-error'),
+      requiredMessage: 'Emailul business este obligatoriu.',
+    },
+    phone: {
+      input: document.getElementById('enterprise-phone'),
+      error: document.getElementById('enterprise-phone-error'),
+      requiredMessage: 'Telefonul este obligatoriu.',
+    },
+    company: {
+      input: document.getElementById('enterprise-company'),
+      error: document.getElementById('enterprise-company-error'),
+      requiredMessage: 'Compania este obligatorie.',
+    },
+    project: {
+      input: document.getElementById('enterprise-project'),
+      error: document.getElementById('enterprise-project-error'),
+      requiredMessage: 'Descrierea proiectului este obligatorie.',
+    },
+  };
+
   let captchaAnswer = 0;
 
   function setStatus(message, type = '') {
@@ -736,6 +764,16 @@ if (heroCarouselTrack) {
     statusEl.textContent = message;
     statusEl.classList.remove('success', 'error');
     if (type) statusEl.classList.add(type);
+  }
+
+  function setFieldError(fieldDef, message) {
+    if (!fieldDef?.input) return;
+    if (message) {
+      fieldDef.input.setAttribute('aria-invalid', 'true');
+    } else {
+      fieldDef.input.removeAttribute('aria-invalid');
+    }
+    if (fieldDef.error) fieldDef.error.textContent = message;
   }
 
   function regenerateCaptcha() {
@@ -752,45 +790,45 @@ if (heroCarouselTrack) {
   }
 
   function validateForm() {
-    const emailEl = document.getElementById('enterprise-email');
-    const projectEl = document.getElementById('enterprise-project');
-    const requiredFields = [
-      document.getElementById('enterprise-name'),
-      emailEl,
-      document.getElementById('enterprise-phone'),
-      document.getElementById('enterprise-company'),
-      projectEl,
-    ];
-
     let valid = true;
-    requiredFields.forEach((field) => {
-      if (!field) return;
-      const value = (field.value || '').trim();
+
+    Object.values(fields).forEach((fieldDef) => {
+      if (!fieldDef?.input) return;
+      const value = (fieldDef.input.value || '').trim();
       if (!value) {
-        field.setAttribute('aria-invalid', 'true');
+        setFieldError(fieldDef, fieldDef.requiredMessage);
         valid = false;
       } else {
-        field.removeAttribute('aria-invalid');
+        setFieldError(fieldDef, '');
       }
     });
 
-    const emailValue = (emailEl?.value || '').trim();
+    const emailValue = (fields.email.input?.value || '').trim();
     const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
-    if (!emailIsValid) {
-      emailEl?.setAttribute('aria-invalid', 'true');
+    if (emailValue && !emailIsValid) {
+      setFieldError(fields.email, 'Adresa de email nu este validă.');
       valid = false;
     }
 
-    const projectText = (projectEl?.value || '').trim();
-    if (projectText.length < 20) {
-      projectEl?.setAttribute('aria-invalid', 'true');
-      setStatus('Te rugăm să completezi descrierea proiectului cu minim 20 de caractere.', 'error');
+    const phoneValue = (fields.phone.input?.value || '').trim();
+    if (phoneValue && !/^[0-9+()\-.\s]{6,}$/.test(phoneValue)) {
+      setFieldError(fields.phone, 'Numărul de telefon nu este valid.');
+      valid = false;
+    }
+
+    const projectText = (fields.project.input?.value || '').trim();
+    if (projectText && projectText.length < 20) {
+      setFieldError(fields.project, 'Descrierea proiectului trebuie să aibă minim 20 de caractere.');
       valid = false;
     }
 
     if (String(captchaInputEl?.value || '').trim() !== String(captchaAnswer)) {
       showCaptchaError('Captcha incorect. Încearcă din nou.');
       valid = false;
+    }
+
+    if (!valid) {
+      setStatus('Te rugăm să completezi corect toate câmpurile obligatorii.', 'error');
     }
 
     return valid;
@@ -812,14 +850,19 @@ if (heroCarouselTrack) {
       return;
     }
 
-    const ajaxUrl = `${window.location.origin}/wp-admin/admin-ajax.php`;
+    const defaultAjaxUrl = window.location.protocol === 'file:'
+      ? 'https://vogo.me/wp-admin/admin-ajax.php'
+      : '/wp-admin/admin-ajax.php';
+    const ajaxUrl = (window.VOGO_CONTACT && window.VOGO_CONTACT.ajax_url) || defaultAjaxUrl;
+    const nonce = (window.VOGO_CONTACT && window.VOGO_CONTACT.nonce) || '';
     const payload = new URLSearchParams({
       action: 'vogo_enterprise_contact_submit',
-      name: (document.getElementById('enterprise-name')?.value || '').trim(),
-      email: (document.getElementById('enterprise-email')?.value || '').trim(),
-      phone: (document.getElementById('enterprise-phone')?.value || '').trim(),
-      company: (document.getElementById('enterprise-company')?.value || '').trim(),
-      project: (document.getElementById('enterprise-project')?.value || '').trim(),
+      _ajax_nonce: nonce,
+      name: (fields.name.input?.value || '').trim(),
+      email: (fields.email.input?.value || '').trim(),
+      phone: (fields.phone.input?.value || '').trim(),
+      company: (fields.company.input?.value || '').trim(),
+      project: (fields.project.input?.value || '').trim(),
     });
 
     try {
@@ -837,10 +880,16 @@ if (heroCarouselTrack) {
         setStatus('Solicitarea a fost trimisă cu succes. Verifică emailul business pentru confirmare.', 'success');
         form.reset();
         regenerateCaptcha();
+        Object.values(fields).forEach((fieldDef) => setFieldError(fieldDef, ''));
         return;
       }
 
-      setStatus('Nu am putut trimite solicitarea acum. Te rugăm să încerci din nou.', 'error');
+      const errorMessage =
+        json?.data?.error_message ||
+        json?.error ||
+        json?.data ||
+        'Nu am putut trimite solicitarea acum. Te rugăm să încerci din nou.';
+      setStatus(String(errorMessage), 'error');
       regenerateCaptcha();
     } catch (_) {
       setStatus('Eroare de conexiune. Te rugăm să încerci din nou.', 'error');
