@@ -11,6 +11,7 @@ $vogome_inc_files = [
     '/inc/vogome_activate_plan.php',
     '/inc/vogome_pages_titles.php',
     '/inc/vogome_checkout_events.php',
+    '/inc/vogome_enterprise_contact.php',
 ];
 
 foreach ($vogome_inc_files as $vogome_inc_file) {

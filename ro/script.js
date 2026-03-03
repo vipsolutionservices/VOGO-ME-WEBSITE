@@ -711,3 +711,142 @@ if (heroCarouselTrack) {
     }
   });
 }
+
+/**
+ * Enterprise contact form (section #products):
+ * - validates required fields
+ * - validates local captcha
+ * - submits to WordPress AJAX to send branded email to internal + business email
+ */
+(function initEnterpriseContactForm() {
+  const form = document.getElementById('contact');
+  if (!form) return;
+
+  const submitButton = document.getElementById('enterprise-submit-btn');
+  const statusEl = document.getElementById('enterprise-form-status');
+  const captchaQuestionEl = document.getElementById('enterprise-captcha-question');
+  const captchaInputEl = document.getElementById('enterprise-captcha-input');
+  const captchaErrorEl = document.getElementById('enterprise-captcha-error');
+  const captchaRefreshEl = document.getElementById('enterprise-captcha-refresh');
+
+  let captchaAnswer = 0;
+
+  function setStatus(message, type = '') {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.classList.remove('success', 'error');
+    if (type) statusEl.classList.add(type);
+  }
+
+  function regenerateCaptcha() {
+    const a = 2 + Math.floor(Math.random() * 8);
+    const b = 1 + Math.floor(Math.random() * 9);
+    captchaAnswer = a + b;
+    if (captchaQuestionEl) captchaQuestionEl.textContent = `${a} + ${b} = ?`;
+    if (captchaInputEl) captchaInputEl.value = '';
+    if (captchaErrorEl) captchaErrorEl.textContent = '';
+  }
+
+  function showCaptchaError(message) {
+    if (captchaErrorEl) captchaErrorEl.textContent = message;
+  }
+
+  function validateForm() {
+    const emailEl = document.getElementById('enterprise-email');
+    const projectEl = document.getElementById('enterprise-project');
+    const requiredFields = [
+      document.getElementById('enterprise-name'),
+      emailEl,
+      document.getElementById('enterprise-phone'),
+      document.getElementById('enterprise-company'),
+      projectEl,
+    ];
+
+    let valid = true;
+    requiredFields.forEach((field) => {
+      if (!field) return;
+      const value = (field.value || '').trim();
+      if (!value) {
+        field.setAttribute('aria-invalid', 'true');
+        valid = false;
+      } else {
+        field.removeAttribute('aria-invalid');
+      }
+    });
+
+    const emailValue = (emailEl?.value || '').trim();
+    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+    if (!emailIsValid) {
+      emailEl?.setAttribute('aria-invalid', 'true');
+      valid = false;
+    }
+
+    const projectText = (projectEl?.value || '').trim();
+    if (projectText.length < 20) {
+      projectEl?.setAttribute('aria-invalid', 'true');
+      setStatus('Te rugăm să completezi descrierea proiectului cu minim 20 de caractere.', 'error');
+      valid = false;
+    }
+
+    if (String(captchaInputEl?.value || '').trim() !== String(captchaAnswer)) {
+      showCaptchaError('Captcha incorect. Încearcă din nou.');
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  captchaRefreshEl?.addEventListener('click', regenerateCaptcha);
+  regenerateCaptcha();
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    setStatus('');
+    showCaptchaError('');
+
+    if (!validateForm()) return;
+
+    const honeypot = document.getElementById('enterprise-honeypot');
+    if ((honeypot?.value || '').trim() !== '') {
+      setStatus('Formular invalid.', 'error');
+      return;
+    }
+
+    const ajaxUrl = `${window.location.origin}/wp-admin/admin-ajax.php`;
+    const payload = new URLSearchParams({
+      action: 'vogo_enterprise_contact_submit',
+      name: (document.getElementById('enterprise-name')?.value || '').trim(),
+      email: (document.getElementById('enterprise-email')?.value || '').trim(),
+      phone: (document.getElementById('enterprise-phone')?.value || '').trim(),
+      company: (document.getElementById('enterprise-company')?.value || '').trim(),
+      project: (document.getElementById('enterprise-project')?.value || '').trim(),
+    });
+
+    try {
+      if (submitButton) submitButton.disabled = true;
+      const response = await fetch(ajaxUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: payload.toString(),
+        cache: 'no-store',
+        credentials: 'same-origin',
+      });
+
+      const json = await response.json().catch(() => null);
+      if (response.ok && json?.success) {
+        setStatus('Solicitarea a fost trimisă cu succes. Verifică emailul business pentru confirmare.', 'success');
+        form.reset();
+        regenerateCaptcha();
+        return;
+      }
+
+      setStatus('Nu am putut trimite solicitarea acum. Te rugăm să încerci din nou.', 'error');
+      regenerateCaptcha();
+    } catch (_) {
+      setStatus('Eroare de conexiune. Te rugăm să încerci din nou.', 'error');
+      regenerateCaptcha();
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+})();
