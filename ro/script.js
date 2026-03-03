@@ -496,7 +496,7 @@ function initOfferCardsFromHtml() {
       const targetSection = targetId ? document.getElementById(targetId) : null;
       if (targetSection) {
         /*here is code for scrolling to enterpreise*/
-        if (targetId === 'enterprise-discuta-btn') {
+        if (targetId === 'enterprise-solution') {
           targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
