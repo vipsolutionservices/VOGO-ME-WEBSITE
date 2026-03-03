@@ -1153,6 +1153,19 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font: inherit;
 }
 
+.enterprise-whatsapp-btn {
+  margin-top: 18px;
+  background: var(--vogo-green);
+  color: var(--white);
+}
+.enterprise-whatsapp-btn:hover,
+.enterprise-whatsapp-btn:focus-visible {
+  background: var(--vogo-green-dark);
+  border-color: var(--vogo-green-dark);
+  color: var(--white);
+}
+
+
 /* FAQ accordion visuals */
 .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 30px; }
 .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
