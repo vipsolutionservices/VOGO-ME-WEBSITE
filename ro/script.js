@@ -456,6 +456,30 @@ function initOfferCardsFromHtml() {
     // Buttons are internal cards; anchors are external cards and keep default browser behavior.
     if (card.tagName.toLowerCase() !== 'button') return;
 
+    const quickActions = Array.from(card.querySelectorAll('[data-scroll-target]'));
+    quickActions.forEach((action) => {
+      const scrollToSection = () => {
+        const sectionId = action.getAttribute('data-scroll-target');
+        const section = sectionId ? document.getElementById(sectionId) : null;
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      action.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        scrollToSection();
+      });
+
+      action.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        event.stopPropagation();
+        scrollToSection();
+      });
+    });
+
     card.addEventListener('click', () => {
       cards.forEach((item) => item.classList.remove('active'));
       card.classList.add('active');
