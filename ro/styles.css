@@ -124,6 +124,17 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .btn-primary { background: var(--vogo-green); color: var(--white); }
 .btn-outline { border-color: #cad0d9; background: var(--white); color: var(--text); }
 .btn-light { background: var(--white); color: #050608; }
+.btn-reverse-green {
+  border-color: var(--vogo-green);
+  background: var(--white);
+  color: var(--vogo-green);
+}
+.btn-reverse-green:hover,
+.btn-reverse-green:focus-visible {
+  background: var(--vogo-green);
+  border-color: var(--vogo-green);
+  color: var(--white);
+}
 
 /* Header promo CTA: nav-like typography with compact size and vivid hover feedback. */
 .promo-cta {
