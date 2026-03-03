@@ -540,6 +540,14 @@ function initOfferCardsFromHtml() {
       const targetId = card.dataset.detailTarget;
       const targetSection = targetId ? document.getElementById(targetId) : null;
       if (targetSection) {
+        // Keep the Enterprise section slightly lower in viewport so title + content remain fully visible.
+        if (targetId === 'enterprise') {
+          const enterpriseViewportOffset = 84;
+          const enterpriseTop = window.scrollY + targetSection.getBoundingClientRect().top - enterpriseViewportOffset;
+          window.scrollTo({ top: Math.max(enterpriseTop, 0), behavior: 'smooth' });
+          return;
+        }
+
         targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
