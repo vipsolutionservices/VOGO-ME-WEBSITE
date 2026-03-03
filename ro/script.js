@@ -496,7 +496,7 @@ function initOfferCardsFromHtml() {
       const targetSection = targetId ? document.getElementById(targetId) : null;
       if (targetSection) {
         /*here is code for scrolling to enterpreise*/
-        if (targetId === 'enterprise-discuta-btn') {
+        if (targetId === 'enterprise-solution') {
           targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
@@ -811,11 +811,10 @@ if (heroCarouselTrack) {
       return;
     }
 
-    const localizedAjaxUrl = (window.VOGO_CONTACT && window.VOGO_CONTACT.ajax_url) || '';
-    const canonicalAjaxUrl = 'https://vogo.me/wp-admin/admin-ajax.php';
-    const sameOriginAjaxUrl = `${window.location.origin}/wp-admin/admin-ajax.php`;
-    const defaultAjaxUrl = window.location.protocol === 'file:' ? canonicalAjaxUrl : sameOriginAjaxUrl;
-    const ajaxCandidates = Array.from(new Set([localizedAjaxUrl, defaultAjaxUrl, canonicalAjaxUrl].filter(Boolean)));
+    const defaultAjaxUrl = window.location.protocol === 'file:'
+      ? 'https://vogo.me/wp-admin/admin-ajax.php'
+      : '/wp-admin/admin-ajax.php';
+    const ajaxUrl = (window.VOGO_CONTACT && window.VOGO_CONTACT.ajax_url) || defaultAjaxUrl;
     const nonce = (window.VOGO_CONTACT && window.VOGO_CONTACT.nonce) || '';
     const payload = new URLSearchParams({
       action: 'vogo_enterprise_contact_submit',
@@ -829,38 +828,20 @@ if (heroCarouselTrack) {
 
     try {
       if (submitButton) submitButton.disabled = true;
+      const response = await fetch(ajaxUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: payload.toString(),
+        cache: 'no-store',
+        credentials: 'same-origin',
+      });
 
-      let response = null;
-      let responseText = '';
+      const responseText = await response.text();
       let json = null;
-
-      for (const ajaxUrl of ajaxCandidates) {
-        try {
-          response = await fetch(ajaxUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: payload.toString(),
-            cache: 'no-store',
-            credentials: 'same-origin',
-          });
-
-          responseText = await response.text();
-          try {
-            json = responseText ? JSON.parse(responseText) : null;
-          } catch (_) {
-            json = null;
-          }
-
-          if (response.ok || json?.success || json?.data?.error_message) break;
-        } catch (_) {
-          response = null;
-          responseText = '';
-          json = null;
-        }
-      }
-
-      if (!response) {
-        throw new Error('request_failed');
+      try {
+        json = responseText ? JSON.parse(responseText) : null;
+      } catch (_) {
+        json = null;
       }
 
       if (response.ok && json?.success) {
