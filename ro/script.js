@@ -181,9 +181,10 @@ const faqList = document.getElementById('faq-list');
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const mainNav = document.getElementById('mainNav');
 const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
 
 function initMobileMenu() {
-  if (!mobileMenuToggle || !mainNav || !mobileMenuPanel) return;
+  if (!mobileMenuToggle || !mainNav || !mobileMenuPanel || !mobileMenuClose) return;
 
   const isMobileViewport = () => window.matchMedia('(max-width: 1000px)').matches;
 
@@ -196,6 +197,10 @@ function initMobileMenu() {
   mobileMenuToggle.addEventListener('click', () => {
     const isOpen = !mobileMenuPanel.classList.contains('is-open');
     setMenuState(isOpen);
+  });
+
+  mobileMenuClose.addEventListener('click', () => {
+    setMenuState(false);
   });
 
   document.addEventListener('click', (event) => {

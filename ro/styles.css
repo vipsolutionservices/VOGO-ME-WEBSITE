@@ -115,8 +115,25 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   font-size: 1.7rem;
   line-height: 1;
 }
-.mobile-menu-toggle i {
+.mobile-menu-toggle i,
+.mobile-menu-close i {
   pointer-events: none;
+}
+
+.mobile-menu-close {
+  display: none;
+  border: 1px solid #d5e2ea;
+  background: #ffffff;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #172033;
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 /* Reusable button styles */
@@ -1394,6 +1411,13 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   .mobile-menu-panel.is-open {
     display: flex;
   }
+  .mobile-menu-close {
+    display: inline-flex;
+    position: absolute;
+    top: 11px;
+    right: 14px;
+    z-index: 1;
+  }
   .main-nav {
     width: 100%;
     flex-direction: column;
@@ -1405,6 +1429,9 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     padding: 10px 12px;
     border-bottom: 1px solid #edf2f7;
     border-radius: 10px;
+  }
+  .main-nav a:first-child {
+    padding-right: 56px;
   }
   .main-nav a:last-child {
     border-bottom: 0;
