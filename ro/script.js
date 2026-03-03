@@ -495,12 +495,6 @@ function initOfferCardsFromHtml() {
       const targetId = card.dataset.detailTarget;
       const targetSection = targetId ? document.getElementById(targetId) : null;
       if (targetSection) {
-        /*here is code for scrolling to enterpreise*/
-        if (targetId === 'enterprise-discuta-btn') {
-          targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          return;
-        }
-
         targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
