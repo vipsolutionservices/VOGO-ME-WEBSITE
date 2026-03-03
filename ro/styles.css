@@ -189,6 +189,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 .hero-grid { display: grid; grid-template-columns: 1fr; justify-items: center; }
 .hero-content { text-align: center; width: 100%; }
+/* [SECȚIUNE: HERO] [SUBSECȚIUNE: HEADLINE] [TEXT: TITLU PRINCIPAL h1] */
 .hero-content h1 {
   font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: clamp(2.5rem, 3.5vw, 5.35rem);
@@ -219,7 +220,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   letter-spacing: -0.02em;
   color: var(--text);
 }
-/*sub-hero TEXT*/
+/* [SECȚIUNE: HERO] [SUBSECȚIUNE: SUB-HERO] [TEXT: PARAGRAF LEAD] */
 .hero-content .lead {
   margin: 0 auto 1.5rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -388,12 +389,14 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .offer-icon[data-chip='CLOUD']::before { content: '\f2b5'; /* bi-cloud-fill */ }
 .offer-card[data-chip='CUSTOM'] .offer-icon-badge::before,
 .offer-icon[data-chip='CUSTOM']::before { content: '\f470'; /* bi-link-45deg */ }
+/* [SECȚIUNE: OVERVIEW] [SUBSECȚIUNE: CARD PRODUS/SERVICIU] [TEXT: TITLU CARD h3] */
 .offer-card h3 {
   color: #000000;
   font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 1.28rem;
   margin: 0;
 }
+/* [SECȚIUNE: OVERVIEW] [SUBSECȚIUNE: CARD PRODUS/SERVICIU] [TEXT: DESCRIERE CARD p] */
 .offer-card p {
   margin: 0;
   /* Keep summary text lighter than the title to improve hierarchy and readability. */
@@ -409,6 +412,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   /* Requested update: justify paragraph content inside each card. */
   text-align: justify;
 }
+/* [SECȚIUNE: OVERVIEW] [SUBSECȚIUNE: CARD PRODUS/SERVICIU] [TEXT: CTA "Explore more"] */
 .offer-more {
   align-self: flex-end;
   display: inline-flex;
@@ -442,6 +446,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   gap: 12px;
 }
 
+/* [SECȚIUNE: OVERVIEW] [SUBSECȚIUNE: CARD PRODUS/SERVICIU] [TEXT: ETICHETĂ BULLET] */
 .offer-bullet {
   display: inline-flex;
   align-items: center;
@@ -515,6 +520,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   align-items: center;
   gap: 10px;
 }
+/* [SECȚIUNE: DETALII] [SUBSECȚIUNE: HEADER DETALIU] [TEXT: TITLU SECȚIUNE DETALIATĂ h3] */
 .detail-title-wrap h3 {
   color: var(--vogo-green-dark);
   margin: 0;
@@ -593,6 +599,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: grid;
   gap: 12px;
 }
+/* [SECȚIUNE: DETALII] [SUBSECȚIUNE: CONȚINUT DETALIU] [TEXT: PARAGRAF DESCRIPTIV p] */
 .detail-section-content p {
   margin: 0;
   font-size: 1.02rem;
@@ -606,6 +613,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: grid;
   gap: 8px;
 }
+/* [SECȚIUNE: DETALII] [SUBSECȚIUNE: CONȚINUT DETALIU] [TEXT: ELEMENT LISTĂ li] */
 .detail-section-content li {
   font-size: 1.01rem;
   line-height: 1.65;
@@ -631,6 +639,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: inline-block;
   padding: 5px 10px;
 }
+/* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: HEADER] [TEXT: TITLU BLOC h4] */
 .support-modern h4 {
   margin: 0 0 8px;
   font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -641,6 +650,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   letter-spacing: -0.02em;
   color: #000000;
 }
+/* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: HEADER] [TEXT: LEAD DESCRIPTIV] */
 .support-modern-lead {
   margin: 0 0 12px;
   color: #d1d5db;
@@ -664,6 +674,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   margin-left: 12px;
   padding-left: 16px;
 }
+/* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: PROCES] [TEXT: TITLU PROCES h5] */
 .support-modern-process h5 {
   margin: 0 0 10px;
   font-size: 1.2rem;
@@ -695,6 +706,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .support-modern-process li strong {
   color: #ffffff;
 }
+/* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: PROCES] [TEXT: DESCRIERE PAS span] */
 .support-modern-process li span {
   font-size: .95rem;
   color: rgba(255, 255, 255, 0.9);
@@ -714,6 +726,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .support-modern-grid article p {
   margin: 0;
 }
+/* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: KPI GRID] [TEXT: VALOARE METRICĂ] */
 .support-modern-metric {
   font-size: 1.35rem !important;
   line-height: 1.1 !important;
@@ -878,6 +891,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 /* Badge container keeps both text pills and ISO visual cards aligned and wrapped. */
 .badges { display: flex; flex-wrap: wrap; gap: 12px; }
 /* Default badge style used for text-only compliance labels. */
+/* [SECȚIUNE: TRUST] [SUBSECȚIUNE: BADGES] [TEXT: ETICHETĂ BADGE STANDARD] */
 .badge {
   background: var(--white);
   color: var(--vogo-green-dark);
@@ -912,6 +926,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   border: 1px solid #d5e8e2;
 }
 /* Caption keeps the ISO code readable under each logo card. */
+/* [SECȚIUNE: TRUST] [SUBSECȚIUNE: BADGES ISO] [TEXT: CAPTION CERTIFICARE] */
 .badge-iso-card figcaption {
   font-size: .78rem;
   font-weight: 700;
@@ -938,6 +953,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   position: relative;
 }
 /* Plan title hierarchy: increased size/weight for stronger visual scanning in pricing cards. */
+/* [SECȚIUNE: PRICING] [SUBSECȚIUNE: PLAN CARD] [TEXT: TITLU PLAN h3] */
 .plan-card h3 {
   font-size: clamp(1.72rem, 2.3vw, 2rem);
   line-height: 1.12;
@@ -1012,7 +1028,9 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: var(--vogo-green);
   font-weight: 700;
 }
+/* [SECȚIUNE: PRICING] [SUBSECȚIUNE: PLAN CARD] [TEXT: PREȚ PRINCIPAL] */
 .price { font-size: 2rem; font-weight: 800; margin: 10px 0; }
+/* [SECȚIUNE: PRICING] [SUBSECȚIUNE: PLAN CARD] [TEXT: SUFIX PREȚ (ex. /lună)] */
 .price span { font-size: .95rem; font-weight: 600; }
 /* Enterprise card visual parity: keep the same neutral background/border as the other plans. */
 .featured { border-color: var(--border); background: var(--white); }
@@ -1036,6 +1054,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   justify-items: center;
   gap: 22px;
 }
+/* [SECȚIUNE: PRICING] [SUBSECȚIUNE: FOOTER PLANURI] [TEXT: NOTĂ LEGALĂ/INFORMATIVĂ] */
 .plans-footer p {
   margin: 0;
   max-width: 980px;
@@ -1082,6 +1101,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   justify-content: center;
   gap: 12px;
 }
+/* [SECȚIUNE: PRICING] [SUBSECȚIUNE: AGENCY NOTE] [TEXT: MESAJ AJUTOR AGENȚII] */
 .agency-note p {
   margin: 0;
   color: #173f35;
@@ -1169,6 +1189,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 /* FAQ accordion visuals */
 .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 30px; }
 .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+/* [SECȚIUNE: FAQ] [SUBSECȚIUNE: ITEM ACORDEON] [TEXT: ÎNTREBARE FAQ] */
 .faq-question {
   width: 100%;
   background: transparent;
@@ -1180,6 +1201,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: flex;
   justify-content: space-between;
 }
+/* [SECȚIUNE: FAQ] [SUBSECȚIUNE: ITEM ACORDEON] [TEXT: RĂSPUNS FAQ] */
 .faq-answer { display: none; padding: 0 16px 16px; color: var(--muted); }
 .faq-item.open .faq-answer { display: block; }
 
@@ -1211,6 +1233,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   width: 100%;
   height: auto;
 }
+/* [SECȚIUNE: VOGO FAMILY BAND] [SUBSECȚIUNE: INTRO] [TEXT: KICKER] */
 .family-feature-kicker {
   margin: 0 0 8px;
   font-size: .78rem;
@@ -1219,11 +1242,13 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: #0f7b65;
   font-weight: 800;
 }
+/* [SECȚIUNE: VOGO FAMILY BAND] [SUBSECȚIUNE: CONȚINUT] [TEXT: TITLU h2] */
 .family-feature-content h2 {
   margin: 0 0 10px;
   color: #0b3f34;
   font-size: clamp(1.2rem, 2.2vw, 1.6rem);
 }
+/* [SECȚIUNE: VOGO FAMILY BAND] [SUBSECȚIUNE: CONȚINUT] [TEXT: PARAGRAF DESCRIPTIV] */
 .family-feature-content p {
   margin: 0 0 14px;
   color: #245149;
@@ -1565,6 +1590,7 @@ ul .plan-group-brand + li.plan-group-backend {
   padding: 6px 0 40px;
 }
 
+/* [SECȚIUNE: CHECKOUT] [SUBSECȚIUNE: HERO CHECKOUT] [TEXT: TITLU PAGINĂ h1] */
 .checkout-main h1 {
   margin: 0 0 28px;
   font-size: 66px;
@@ -1582,6 +1608,7 @@ ul .plan-group-brand + li.plan-group-backend {
   text-align: left;
 }
 
+/* [SECȚIUNE: CHECKOUT] [SUBSECȚIUNE: BILLING CARD] [TEXT: TITLU CARD FACTURARE] */
 .billing-card-header {
   margin: 0;
   padding: 22px 28px;
@@ -1612,6 +1639,7 @@ ul .plan-group-brand + li.plan-group-backend {
   flex: 0 0 auto;
 }
 
+/* [SECȚIUNE: CHECKOUT] [SUBSECȚIUNE: OPȚIUNI FACTURARE] [TEXT: ETICHETĂ PLAN] */
 .billing-option-label {
   min-width: 90px;
   font-size: 36px;
@@ -1619,6 +1647,7 @@ ul .plan-group-brand + li.plan-group-backend {
   letter-spacing: -0.02em;
 }
 
+/* [SECȚIUNE: CHECKOUT] [SUBSECȚIUNE: OPȚIUNI FACTURARE] [TEXT: PREȚ OPȚIUNE] */
 .billing-option-price {
   font-size: 36px;
   font-weight: 700;
@@ -1726,6 +1755,7 @@ ul .plan-group-brand + li.plan-group-backend {
   text-align: center;
 }
 
+/* [SECȚIUNE: THANK YOU] [SUBSECȚIUNE: CARD CONFIRMARE] [TEXT: TITLU CONFIRMARE h1] */
 .thankyou-card h1 {
   font-size: clamp(2rem, 4vw, 3.2rem);
 }
