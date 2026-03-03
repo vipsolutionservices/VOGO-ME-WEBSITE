@@ -222,7 +222,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .hero-content .lead {
   margin: 0 auto 1.5rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: clamp(1.125rem, 1.55vw, 1.25rem);
+  font-size: clamp(1.35rem, 1.86vw, 1.5rem);
   line-height: 1.42;
   font-weight: 400;
   letter-spacing: 0;
@@ -1329,7 +1329,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     padding-bottom: 20px;
   }
   .hero-content .lead {
-    font-size: 1.05rem;
+    font-size: 1.26rem;
     line-height: 1.58;
     max-width: 34ch;
   }
