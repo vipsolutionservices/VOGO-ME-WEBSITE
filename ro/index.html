@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-  File role: Main VOGO landing page in Romanian.
-  Static HTML version using .html files only.
-  Update scope: SEO enhancement, hero refinements, and sub-hero image carousel.
+/**
+ * File role: Main VOGO landing page in Romanian.
+ * This file defines structure, content sections, and in-page navigation targets.
+ * Static HTML version using .html files only.
+ */
 -->
 <html lang="ro">
 <head>
@@ -80,7 +82,7 @@
           <!-- Menu anchors mapped to the exact requested sections/cards for reliable in-page navigation. -->
           <a href="#overview">Produse</a>
           <a href="#support-services-card">Servicii</a>
-          <a href="#products">Enterprise</a>
+          <a href="#enterprise">Enterprise</a>
           <a href="#plans">Prețuri</a>
         </nav>
         <div class="header-cta-group">
@@ -215,7 +217,8 @@ fără compromisuri de performanță.
           <!-- vogo mobile app card END -->
 
           <!-- vogo flexible enterprise card START -->
-          <button class="offer-card" type="button" data-detail-target="detail-8" data-chip="CUSTOM">
+          <!-- Enterprise card uses JS-driven smooth scrolling to the Enterprise section (no direct anchor jump). -->
+          <button class="offer-card" type="button" data-detail-target="enterprise" data-chip="CUSTOM">
             <div class="offer-card-top">
               <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
               <div class="offer-card-title-wrap"><h3>VOGO Enterprise™ – Aplicatii mobile flexibile</h3></div>
@@ -642,11 +645,12 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
     </section>
 
 
-    <section id="products" class="section enterprise-section">
+    <!-- Enterprise section: target for smooth scroll from the Enterprise offer card. -->
+    <section id="enterprise" class="section enterprise-section">
       <div class="container enterprise-grid">
         <div>
           <p class="eyebrow">Soluții enterprise VOGO</p>
-          <h2>O soluție enterprise pentru ambiții mari</h2>
+          <h2 id="enterprise-solution">O soluție enterprise pentru ambiții mari</h2>
           <p>
             Construim, migrăm și integrăm aplicații mobile iOS și Android pentru companii
             care vor guvernanță, performanță și creștere accelerată: livrăm rapid soluții
