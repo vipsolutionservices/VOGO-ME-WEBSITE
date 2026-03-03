@@ -215,7 +215,8 @@ fără compromisuri de performanță.
           <!-- vogo mobile app card END -->
 
           <!-- vogo flexible enterprise card START -->
-          <button class="offer-card" type="button" data-detail-target="detail-8" data-chip="CUSTOM">
+          <!-- Entire card is now an anchor so the full card area scrolls to the dedicated enterprise section. -->
+          <a class="offer-card" href="#enterprise-solution" data-chip="CUSTOM" aria-label="Deschide secțiunea enterprise VOGO">
             <div class="offer-card-top">
               <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
               <div class="offer-card-title-wrap"><h3>VOGO Enterprise™ – Aplicatii mobile flexibile</h3></div>
@@ -225,8 +226,8 @@ Construim exact ce ai nevoie. VOGO Flexible Enterprise™ este dedicat companiil
 Rezultat: tehnologie care se mulează pe business-ul tău, nu business-ul pe tehnologie
             </p>
             <div class="offer-card-footer"><span class="offer-bullet">ENTERPRISE. FLEXIBLE.</span>
-              <a class="offer-more" href="#products" data-scroll-target="products">Comanda acum ></a></div>
-          </button>
+              <span class="offer-more">Comanda acum ></span></div>
+          </a>
           <!-- vogo flexible enterprise card END -->
 
           <!-- vogo bricolage card START -->
@@ -646,7 +647,7 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
       <div class="container enterprise-grid">
         <div>
           <p class="eyebrow">Soluții enterprise VOGO</p>
-          <h2>O soluție enterprise pentru ambiții mari</h2>
+          <h2 id="enterprise-solution">O soluție enterprise pentru ambiții mari</h2>
           <p>
             Construim, migrăm și integrăm aplicații mobile iOS și Android pentru companii
             care vor guvernanță, performanță și creștere accelerată: livrăm rapid soluții
