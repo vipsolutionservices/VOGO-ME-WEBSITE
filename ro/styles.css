@@ -673,14 +673,15 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: grid;
   gap: 8px;
 }
-.support-modern-tags li {
+.support-modern-tags span {
+  display: block;
   position: relative;
-  padding-left: 18px;
+  padding-left: 22px;
   color: #ffffff;
   font-size: .95rem;
   font-weight: 700;
 }
-.support-modern-tags li::before {
+.support-modern-tags span::before {
   content: '';
   position: absolute;
   left: 0;
@@ -690,6 +691,15 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   border-radius: 50%;
   background: #63d471;
   box-shadow: 0 0 0 3px rgba(99, 212, 113, 0.24);
+}
+.support-modern-tags span:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: calc(0.45em + 9px);
+  width: 2px;
+  height: calc(100% + 8px);
+  background: rgba(99, 212, 113, 0.55);
 }
 .support-modern-process {
   border-left: 2px solid rgba(255, 255, 255, 0.38);
