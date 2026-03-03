@@ -60,18 +60,34 @@ function vogo_enterprise_contact_submit()
     <?php
     $message = ob_get_clean();
 
+    $site_host = wp_parse_url(home_url(), PHP_URL_HOST);
+    $site_host = is_string($site_host) ? preg_replace('/^www\./i', '', $site_host) : '';
+    $fallback_from_email = $site_host ? 'wordpress@' . $site_host : 'wordpress@localhost';
+    $from_email = sanitize_email((string) get_option('admin_email')) ?: sanitize_email($fallback_from_email);
+    $from_name  = wp_specialchars_decode(get_bloginfo('name'), ENT_QUOTES);
+
     $headers = [
         'Content-Type: text/html; charset=UTF-8',
-        'From: VOGO <no-reply@vogo.me>',
+        'From: ' . $from_name . ' <' . $from_email . '>',
         'Reply-To: ' . $name . ' <' . $email . '>',
     ];
 
     $internal_sent = wp_mail('adrian@viptess.com', $subject, $message, $headers);
-    $business_sent = wp_mail($email, $subject, $message, $headers);
+    if (!$internal_sent) {
+        // Fallback: retry without custom headers when host mail policies reject From/Reply-To.
+        $internal_sent = wp_mail('adrian@viptess.com', $subject, wp_strip_all_tags($message));
+    }
 
-    if (!$internal_sent || !$business_sent) {
+    if (!$internal_sent) {
         wp_send_json_error(['error' => 'mail_failed', 'error_message' => 'Eroare la trimiterea emailului. Te rugăm să încerci din nou.'], 500);
     }
 
-    wp_send_json_success(['ok' => true, 'message' => 'Email trimis cu succes.']);
+    // Customer confirmation is best-effort and should not fail the lead capture flow.
+    $business_sent = wp_mail($email, $subject, $message, $headers);
+
+    wp_send_json_success([
+        'ok' => true,
+        'message' => 'Email trimis cu succes.',
+        'business_confirmation_sent' => (bool) $business_sent,
+    ]);
 }
