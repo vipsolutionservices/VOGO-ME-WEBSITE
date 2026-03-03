@@ -27,65 +27,8 @@ const offers = [
       'VOGO AI Chatbot este un plugin inteligent pentru WordPress / WooCommerce / Site-uri web care transformă conversațiile în acțiuni reale. Nu este doar un chatbot care răspunde la întrebări — este un asistent AI capabil să execute operațiuni direct în contul utilizatorului, să interacționeze cu WooCommerce și să transfere conversația către un operator uman atunci când este necesar.',
     // Rich text is intentionally structured with paragraphs + lists only,
     // so the detailed card stays visually consistent with existing CSS.
-    detailsHtml: `
-      <section class="support-modern" aria-label="VOGO AI Customer Support modern pitch">
-        <p class="support-modern-eyebrow">SUPORT INTELIGENT + SALES ASSIST</p>
-        <h4>Transformă chat-ul într-un canal real de vânzări, 24/7</h4>
-        <p class="support-modern-lead">VOGO AI Customer Support Plugin oferă răspuns instant, recomandări de produse în context și transfer fluent către operator uman. Rezultatul: experiență mai bună pentru client și conversii mai mari pentru business.</p>
+    detailsTemplateId: 'support-offer-details-template',
 
-        <div class="support-modern-tags" role="list" aria-label="Capabilități cheie">
-          <span role="listitem">WordPress + WooCommerce ready</span>
-          <span role="listitem">AI multi-engine cu fallback</span>
-          <span role="listitem">Human handoff fără context pierdut</span>
-          <span role="listitem">Acțiuni reale prin API securizat</span>
-        </div>
-      </section>
-
-      <section class="support-modern-process" aria-label="Cum funcționează">
-        <h5>Un flow simplu, prietenos și orientat pe vânzare</h5>
-        <ol>
-          <li>
-            <strong>Clientul întreabă, AI răspunde instant</strong>
-            <span>Asistentul oferă informații clare despre produse, prețuri, disponibilitate și livrare.</span>
-          </li>
-          <li>
-            <strong>AI recomandă produse relevante</strong>
-            <span>Upsell și cross-sell pe baza contextului conversației și a catalogului WooCommerce.</span>
-          </li>
-          <li>
-            <strong>Execuție acțiuni în cont</strong>
-            <span>Verificare comandă, task-uri personalizate și acțiuni API cu autentificare JWT.</span>
-          </li>
-          <li>
-            <strong>Escaladare la operator când e necesar</strong>
-            <span>Conversația continuă fără reset, cu istoric complet pentru agent.</span>
-          </li>
-        </ol>
-      </section>
-
-      <section class="support-modern-grid" aria-label="Beneficii business">
-        <article>
-          <p class="support-modern-metric">+42%</p>
-          <p>lead-uri calificate din conversații asistate AI.</p>
-        </article>
-        <article>
-          <p class="support-modern-metric">-35%</p>
-          <p>timp de răspuns în perioadele aglomerate.</p>
-        </article>
-        <article>
-          <p class="support-modern-metric">24/7</p>
-          <p>suport continuu, inclusiv în afara programului echipei.</p>
-        </article>
-      </section>
-
-      <section class="support-modern-points" aria-label="De ce merită">
-        <ul>
-          <li><strong>Mai mult decât chatbot:</strong> este un asistent operațional care execută, nu doar răspunde.</li>
-          <li><strong>Conversații cu impact comercial:</strong> fiecare interacțiune poate deveni comandă.</li>
-          <li><strong>Scalabil enterprise:</strong> potrivit pentru magazine, marketplace-uri și proiecte SaaS.</li>
-        </ul>
-      </section>
-    `,
     supportGalleryImages: [
       '../img/ai-chatbot/ai-chatbot1.png',
       '../img/ai-chatbot/ai-chatbot2.png',
@@ -343,8 +286,20 @@ function buildDetailCtaMarkup(offer) {
  * Builds a two-column support layout (text + image preview) for the AI card only.
  * Gallery opens in a popup either from thumbnail click or "Vezi imagini" action.
  */
+function resolveOfferDetailsMarkup(offer) {
+  if (offer.detailsTemplateId) {
+    const template = document.getElementById(offer.detailsTemplateId);
+    if (template && "content" in template) {
+      return template.innerHTML.trim();
+    }
+  }
+
+  if (offer.detailsHtml) return offer.detailsHtml;
+  return Array.isArray(offer.details) ? offer.details.map((paragraph) => `<p>${paragraph}</p>`).join('') : '';
+}
+
 function buildOfferDetailLayout(offer, offerIndex) {
-  const detailsMarkup = offer.detailsHtml || offer.details.map((paragraph) => `<p>${paragraph}</p>`).join('');
+  const detailsMarkup = resolveOfferDetailsMarkup(offer);
 
   if (!offer.supportGalleryImages || offer.supportGalleryImages.length === 0) {
     return `<div class="detail-section-content">${detailsMarkup}</div>`;
