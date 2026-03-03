@@ -512,7 +512,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .detail-section {
   scroll-margin-top: 96px;
   background: #ffffff;
-  border: 1px solid rgba(15, 123, 101, 0.22);
+  border: none;
   border-radius: 3px;
   padding: 24px;
 }
@@ -546,6 +546,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   letter-spacing: -0.02em;
   color: #000000;
 }
+
 .offer-chip--support {
   background: var(--vogo-green);
   color: var(--white);
@@ -659,7 +660,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font-size: clamp(1.5rem, 2.0vw, 2.35rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: #000000;
+  color: #ffffff;
 }
 /* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: HEADER] [TEXT: LEAD DESCRIPTIV] */
 .support-modern-lead {
@@ -773,10 +774,36 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   gap: 8px;
 }
 .support-modern-points li {
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.09);
-  border-radius: 9px;
-  padding: 10px 12px;
+  /* Timeline-style differentiators: no card borders, only linked green bullets. */
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0 0 0 24px;
+  position: relative;
+}
+
+/* Connected green bullet marker for each differentiator item. */
+.support-modern-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vogo-green);
+  box-shadow: 0 0 0 3px rgba(15, 123, 101, 0.2);
+}
+
+/* Vertical connector between bullet points for unified list flow. */
+.support-modern-points li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: calc(0.55em + 9px);
+  width: 2px;
+  height: calc(100% + 8px);
+  background: rgba(15, 123, 101, 0.6);
 }
 
 /* Two-column support details layout: text on the left, image preview on the right. */
@@ -789,7 +816,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .support-gallery-column {
   border: 1px solid rgba(15, 123, 101, 0.2);
   border-radius: 10px;
-  background: #f5fbf9;
+  background: #ffffff;
   padding: 12px;
   display: grid;
   gap: 10px;
