@@ -1220,6 +1220,15 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   gap: 12px;
   flex-wrap: wrap;
 }
+.enterprise-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  min-height: 44px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
 .enterprise-form {
   background: var(--white);
   border: 1px solid var(--border);
