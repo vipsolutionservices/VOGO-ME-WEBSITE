@@ -21,25 +21,64 @@ const offers = [
     // Rich text is intentionally structured with paragraphs + lists only,
     // so the detailed card stays visually consistent with existing CSS.
     detailsHtml: `
-      <p><strong>VOGO AI Based Chatbot</strong> — inteligență artificială reală, integrată direct în ecosistemul tău digital.</p>
-      <p>VOGO AI Chatbot este un plugin avansat pentru WordPress / WooCommerce, creat pentru afaceri care vor mai mult decât un widget de chat: un asistent operațional capabil să înțeleagă contextul utilizatorului, să execute acțiuni reale prin API și să transfere conversația către operator uman când este necesar.</p>
+      <section class="support-modern" aria-label="VOGO AI Customer Support modern pitch">
+        <p class="support-modern-eyebrow">SUPORT INTELIGENT + SALES ASSIST</p>
+        <h4>Transformă chat-ul într-un canal real de vânzări, 24/7</h4>
+        <p class="support-modern-lead">VOGO AI Customer Support Plugin oferă răspuns instant, recomandări de produse în context și transfer fluent către operator uman. Rezultatul: experiență mai bună pentru client și conversii mai mari pentru business.</p>
 
-      <p><strong>Ce face diferit:</strong></p>
-      <ul>
-        <li><strong>AI multi-engine configurabil:</strong> OpenAI, Gemini, Croq, Rasa, Vask etc., cu reguli pe roluri (Basic, VIP, Support) și fallback pe primul engine disponibil.</li>
-        <li><strong>Acțiuni reale în contul utilizatorului:</strong> task-uri Agenda, Shopping List, adăugare evenimente, integrare WooCommerce (Faza C), transfer către operator uman.</li>
-        <li><strong>Securitate by design:</strong> autentificare JWT pe REST API, control pe roluri și autentificare obligatorie pentru acțiuni personale.</li>
-        <li><strong>Human Operator Mode:</strong> transfer automat către operator, thread dedicat, suport pentru text, imagini, fișiere, voce/video, unread badges și polling inteligent.</li>
-        <li><strong>WooCommerce ready:</strong> căutare produse, deschidere produs în aceeași pagină și integrare în fluxuri comerciale pentru conversie mai bună.</li>
-        <li><strong>UI modern:</strong> fundal transparent, checkbox-uri interactive, numerotare inteligentă, interfață minimalistă integrabilă în orice temă.</li>
-      </ul>
+        <div class="support-modern-tags" role="list" aria-label="Capabilități cheie">
+          <span role="listitem">WordPress + WooCommerce ready</span>
+          <span role="listitem">AI multi-engine cu fallback</span>
+          <span role="listitem">Human handoff fără context pierdut</span>
+          <span role="listitem">Acțiuni reale prin API securizat</span>
+        </div>
+      </section>
 
-      <p><strong>Arhitectură scalabilă pe faze:</strong> PoC Phase, B Phase (VIP + AI combinat + Agenda/Shopping), C Phase (WooCommerce + Human Operator), D Phase (Voice), E Phase (Final delivery review).</p>
+      <section class="support-modern-process" aria-label="Cum funcționează">
+        <h5>Un flow simplu, prietenos și orientat pe vânzare</h5>
+        <ol>
+          <li>
+            <strong>Clientul întreabă, AI răspunde instant</strong>
+            <span>Asistentul oferă informații clare despre produse, prețuri, disponibilitate și livrare.</span>
+          </li>
+          <li>
+            <strong>AI recomandă produse relevante</strong>
+            <span>Upsell și cross-sell pe baza contextului conversației și a catalogului WooCommerce.</span>
+          </li>
+          <li>
+            <strong>Execuție acțiuni în cont</strong>
+            <span>Verificare comandă, task-uri personalizate și acțiuni API cu autentificare JWT.</span>
+          </li>
+          <li>
+            <strong>Escaladare la operator când e necesar</strong>
+            <span>Conversația continuă fără reset, cu istoric complet pentru agent.</span>
+          </li>
+        </ol>
+      </section>
 
-      <p><strong>Ideal pentru:</strong> magazine WooCommerce, marketplace-uri, proiecte SaaS, aplicații mobile conectate prin API și platforme care vor AI real, nu doar marketing AI.</p>
+      <section class="support-modern-grid" aria-label="Beneficii business">
+        <article>
+          <p class="support-modern-metric">+42%</p>
+          <p>lead-uri calificate din conversații asistate AI.</p>
+        </article>
+        <article>
+          <p class="support-modern-metric">-35%</p>
+          <p>timp de răspuns în perioadele aglomerate.</p>
+        </article>
+        <article>
+          <p class="support-modern-metric">24/7</p>
+          <p>suport continuu, inclusiv în afara programului echipei.</p>
+        </article>
+      </section>
 
-      <p><strong>Concluzie:</strong> VOGO AI Chatbot transformă chatbotul dintr-un element conversațional într-un motor operațional AI — execută, înțelege, transferă și scalează în infrastructura digitală a afacerii tale.</p>
-    `,
+      <section class="support-modern-points" aria-label="De ce merită">
+        <ul>
+          <li><strong>Mai mult decât chatbot:</strong> este un asistent operațional care execută, nu doar răspunde.</li>
+          <li><strong>Conversații cu impact comercial:</strong> fiecare interacțiune poate deveni comandă.</li>
+          <li><strong>Scalabil enterprise:</strong> potrivit pentru magazine, marketplace-uri și proiecte SaaS.</li>
+        </ul>
+      </section>
+    ``,
     supportGalleryImages: [
       '../img/ai-chatbot/ai-chatbot1.png',
       '../img/ai-chatbot/ai-chatbot2.png',
