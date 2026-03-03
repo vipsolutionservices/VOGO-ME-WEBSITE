@@ -656,18 +656,29 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: #d1d5db;
 }
 .support-modern-tags {
-  display: flex;
-  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
   gap: 8px;
 }
-.support-modern-tags span {
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.12);
+.support-modern-tags li {
+  position: relative;
+  padding-left: 18px;
   color: #ffffff;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: .78rem;
+  font-size: .95rem;
   font-weight: 700;
+}
+.support-modern-tags li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #63d471;
+  box-shadow: 0 0 0 3px rgba(99, 212, 113, 0.24);
 }
 .support-modern-process {
   border-left: 2px solid rgba(255, 255, 255, 0.38);
