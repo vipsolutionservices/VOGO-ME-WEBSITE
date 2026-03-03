@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-  File role: Main VOGO landing page in Romanian.
-  Static HTML version using .html files only.
-  Update scope: SEO enhancement, hero refinements, and sub-hero image carousel.
+/**
+ * File role: Main VOGO landing page in Romanian.
+ * This file defines structure, content sections, and in-page navigation targets.
+ * Static HTML version using .html files only.
+ */
 -->
 <html lang="ro">
 <head>
@@ -80,7 +82,7 @@
           <!-- Menu anchors mapped to the exact requested sections/cards for reliable in-page navigation. -->
           <a href="#overview">Produse</a>
           <a href="#support-services-card">Servicii</a>
-          <a href="#products">Enterprise</a>
+          <a href="#enterprise">Enterprise</a>
           <a href="#plans">Prețuri</a>
         </nav>
         <div class="header-cta-group">
@@ -215,7 +217,8 @@ fără compromisuri de performanță.
           <!-- vogo mobile app card END -->
 
           <!-- vogo flexible enterprise card START -->
-          <button class="offer-card" type="button" data-detail-target="detail-8" data-chip="CUSTOM">
+          <!-- Enterprise card uses JS-driven smooth scrolling to the Enterprise section (no direct anchor jump). -->
+          <button class="offer-card" type="button" data-detail-target="enterprise" data-chip="CUSTOM">
             <div class="offer-card-top">
               <div class="offer-icon-badge" data-offer-icon aria-hidden="true"></div>
               <div class="offer-card-title-wrap"><h3>VOGO Enterprise™ – Aplicatii mobile flexibile</h3></div>
@@ -225,8 +228,8 @@ Construim exact ce ai nevoie. VOGO Flexible Enterprise™ este dedicat companiil
 Rezultat: tehnologie care se mulează pe business-ul tău, nu business-ul pe tehnologie
             </p>
             <div class="offer-card-footer"><span class="offer-bullet">ENTERPRISE. FLEXIBLE.</span>
-              <a class="offer-more" href="#products" data-scroll-target="products">Comanda acum ></a></div>
-          </button>
+              <span class="offer-more">Comanda acum ></span></div>
+          </a>
           <!-- vogo flexible enterprise card END -->
 
           <!-- vogo bricolage card START -->
@@ -678,11 +681,12 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
     </section>
 
 
-    <section id="products" class="section enterprise-section">
+    <!-- Enterprise section: target for smooth scroll from the Enterprise offer card. -->
+    <section id="enterprise" class="section enterprise-section">
       <div class="container enterprise-grid">
         <div>
           <p class="eyebrow">Soluții enterprise VOGO</p>
-          <h2>O soluție enterprise pentru ambiții mari</h2>
+          <h2 id="enterprise-solution">O soluție enterprise pentru ambiții mari</h2>
           <p>
             Construim, migrăm și integrăm aplicații mobile iOS și Android pentru companii
             care vor guvernanță, performanță și creștere accelerată: livrăm rapid soluții
@@ -704,23 +708,42 @@ Soluții de Inteligență Artificială pentru suport clienți, recomandări de p
             Discuta cu noi
           </a>
         </div>
-        <form class="enterprise-form" id="contact">
-          <label>Nume
-            <input type="text" placeholder="Nume" />
+        <form class="enterprise-form" id="contact" novalidate>
+          <label for="enterprise-name">Nume
+            <input id="enterprise-name" name="name" type="text" placeholder="Nume" required />
+            <div id="enterprise-name-error" class="error" aria-live="polite"></div>
           </label>
-          <label>Email business
-            <input type="email" placeholder="email@companie.ro" />
+          <label for="enterprise-email">Email business
+            <input id="enterprise-email" name="email" type="email" placeholder="email@companie.ro" required />
+            <div id="enterprise-email-error" class="error" aria-live="polite"></div>
           </label>
-          <label>Telefon
-            <input type="tel" placeholder="+40..." />
+          <label for="enterprise-phone">Telefon
+            <input id="enterprise-phone" name="phone" type="tel" placeholder="+40..." required />
+            <div id="enterprise-phone-error" class="error" aria-live="polite"></div>
           </label>
-          <label>Companie
-            <input type="text" placeholder="Nume companie" />
+          <label for="enterprise-company">Companie
+            <input id="enterprise-company" name="company" type="text" placeholder="Nume companie" required />
+            <div id="enterprise-company-error" class="error" aria-live="polite"></div>
           </label>
-          <label>Descrie proiectul
-            <textarea rows="4" placeholder="Spune-ne pe scurt ce vrei să construim."></textarea>
+          <label for="enterprise-project">Descrie proiectul
+            <textarea id="enterprise-project" name="project" rows="4" placeholder="Spune-ne pe scurt ce vrei să construim." required></textarea>
+            <div id="enterprise-project-error" class="error" aria-live="polite"></div>
           </label>
-          <button type="button" class="btn btn-primary">Transmite solicitarea</button>
+
+          <div class="captcha" aria-label="Verificare captcha">
+            <label for="enterprise-captcha-input">Captcha</label>
+            <div class="cap-row">
+              <span id="enterprise-captcha-question" class="cap-q" aria-live="polite">0 + 0 = ?</span>
+              <input id="enterprise-captcha-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Răspuns" aria-describedby="enterprise-captcha-question" required />
+              <button id="enterprise-captcha-refresh" type="button" aria-label="Reîncarcă captcha" class="cap-refresh">↻</button>
+            </div>
+            <div id="enterprise-captcha-error" class="error" aria-live="polite"></div>
+          </div>
+
+          <input type="text" id="enterprise-honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div id="enterprise-form-status" class="form-status" aria-live="polite"></div>
+
+          <button type="submit" class="btn btn-primary" id="enterprise-submit-btn">Transmite solicitarea</button>
         </form>
       </div>
     </section>

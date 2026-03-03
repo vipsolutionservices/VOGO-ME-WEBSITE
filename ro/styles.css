@@ -124,6 +124,17 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .btn-primary { background: var(--vogo-green); color: var(--white); }
 .btn-outline { border-color: #cad0d9; background: var(--white); color: var(--text); }
 .btn-light { background: var(--white); color: #050608; }
+.btn-reverse-green {
+  border-color: var(--vogo-green);
+  background: var(--white);
+  color: var(--vogo-green);
+}
+.btn-reverse-green:hover,
+.btn-reverse-green:focus-visible {
+  background: var(--vogo-green);
+  border-color: var(--vogo-green);
+  color: var(--white);
+}
 
 /* Header promo CTA: nav-like typography with compact size and vivid hover feedback. */
 .promo-cta {
@@ -399,8 +410,8 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 /* [SECȚIUNE: OVERVIEW] [SUBSECȚIUNE: CARD PRODUS/SERVICIU] [TEXT: DESCRIERE CARD p] */
 .offer-card p {
   margin: 0;
-  /* Keep summary text lighter than the title to improve hierarchy and readability. */
-  color: #9ca3af;
+  /* Keep description text dark gray to improve contrast while preserving hierarchy. */
+  color: #4b5563;
   font-size: 1.03rem;
   /* Slightly tighter leading makes the paragraph block feel more compact. */
   line-height: 1.34;
@@ -1196,14 +1207,60 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 
 .enterprise-whatsapp-btn {
   margin-top: 18px;
-  background: var(--vogo-green);
+  background: #25d366;
+  border-color: #25d366;
   color: var(--white);
 }
 .enterprise-whatsapp-btn:hover,
 .enterprise-whatsapp-btn:focus-visible {
-  background: var(--vogo-green-dark);
-  border-color: var(--vogo-green-dark);
+  background: #1faa53;
+  border-color: #1faa53;
   color: var(--white);
+}
+
+.enterprise-form .error { color: #dc2626; font-size: 0.8rem; min-height: 1.1em; }
+.enterprise-form .form-status { font-size: 0.86rem; min-height: 1.2em; color: var(--muted); }
+.enterprise-form .form-status.success { color: #0f6d47; }
+.enterprise-form .form-status.error { color: #b42318; }
+.enterprise-form #enterprise-honeypot {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.enterprise-form .captcha { display: grid; gap: 6px; }
+.enterprise-form .cap-row { display: flex; gap: 10px; align-items: center; flex-wrap: nowrap; }
+.enterprise-form .cap-q {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  background: #e7f5ef;
+  padding: 8px 11px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-family: "Special Elite", monospace;
+  letter-spacing: .2px;
+  opacity: .65;
+}
+.enterprise-form #enterprise-captcha-input { flex: 1 1 auto; min-width: 0; }
+.enterprise-form .cap-refresh {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: #111827;
+  cursor: pointer;
+}
+.enterprise-form .cap-refresh:hover,
+.enterprise-form .cap-refresh:focus-visible {
+  background: #f8fafc;
+  border-color: #b7c3d0;
 }
 
 
