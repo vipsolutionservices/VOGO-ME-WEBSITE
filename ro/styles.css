@@ -221,7 +221,12 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 }
 .hero-content .lead {
   margin: 0 auto;
-  font-size: clamp(1.16rem, 1.95vw, 1.24rem);
+  font-family: "Nunito Sans", "Inter", "Avenir Next", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: clamp(1.15rem, 1.95vw, 1.28rem);
+  line-height: 1.72;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #556070;
   max-width: 93ch;
 }
 .hero-actions {
@@ -1220,7 +1225,8 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     padding-bottom: 20px;
   }
   .hero-content .lead {
-    font-size: 1rem;
+    font-size: 1.08rem;
+    line-height: 1.68;
     max-width: 62ch;
   }
   .hero-buttons {
