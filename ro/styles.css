@@ -591,6 +591,117 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: #26303b;
 }
 
+/* Modern showroom-style layout for support detail in "Alege solutia potrivita pentru afacerea ta". */
+.support-modern {
+  border: 1px solid rgba(15, 123, 101, 0.2);
+  border-radius: 14px;
+  padding: 18px;
+  background: linear-gradient(155deg, #ffffff 0%, #eef8f4 100%);
+}
+.support-modern-eyebrow {
+  margin: 0 0 6px;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  font-weight: 800;
+  color: #0f7b65;
+}
+.support-modern h4 {
+  margin: 0 0 8px;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.15;
+  color: #0b2c25;
+}
+.support-modern-lead {
+  margin: 0 0 12px;
+}
+.support-modern-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.support-modern-tags span {
+  border: 1px solid rgba(15, 123, 101, 0.25);
+  background: rgba(15, 123, 101, 0.08);
+  color: #0f5f4f;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+}
+.support-modern-process {
+  border-left: 2px solid #d8e8e2;
+  margin-left: 12px;
+  padding-left: 16px;
+}
+.support-modern-process h5 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #0b2c25;
+}
+.support-modern-process ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+.support-modern-process li {
+  display: grid;
+  gap: 4px;
+  position: relative;
+}
+.support-modern-process li::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: .35em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0f7b65;
+  box-shadow: 0 0 0 4px #eef8f4;
+}
+.support-modern-process li strong {
+  color: #173d34;
+}
+.support-modern-process li span {
+  font-size: .95rem;
+  color: #35544c;
+  line-height: 1.5;
+}
+.support-modern-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.support-modern-grid article {
+  border: 1px solid #dbe9e4;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+}
+.support-modern-grid article p {
+  margin: 0;
+}
+.support-modern-metric {
+  font-size: 1.35rem !important;
+  line-height: 1.1 !important;
+  font-weight: 800;
+  color: #0f7b65 !important;
+  margin-bottom: 5px !important;
+}
+.support-modern-points ul {
+  list-style: none;
+  padding-left: 0 !important;
+  display: grid;
+  gap: 8px;
+}
+.support-modern-points li {
+  border: 1px solid #e1efea;
+  background: #f7fbf9;
+  border-radius: 9px;
+  padding: 10px 12px;
+}
 
 /* Two-column support details layout: text on the left, image preview on the right. */
 .support-detail-layout {
@@ -686,6 +797,10 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 }
 @media (max-width: 900px) {
   .support-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .support-modern-grid {
     grid-template-columns: 1fr;
   }
 
