@@ -274,18 +274,18 @@
           --speed:55s;          /* viteza benzii (mai mare = mai lent) */
         }
 
-        .vogo-reel{padding:24px 0;background:linear-gradient(180deg,var(--bg1),var(--bg2))}
-        .vr-viewport{max-width:1400px;margin:0 auto;overflow:hidden;position:relative}
+        .vogo-reel{padding:24px 0;background-color:#eeeeee!important;background-image:none!important}
+        .vr-viewport{max-width:1400px;margin:0 auto;overflow:hidden;position:relative;background-color:#eeeeee}
 
         /* fade pe margini, ca la banda de logo-uri */
         .vr-viewport::before,.vr-viewport::after{
           content:"";position:absolute;top:0;bottom:0;width:min(10vw,140px);pointer-events:none;z-index:2
         }
-        .vr-viewport::before{left:0;background:linear-gradient(90deg,#fff,rgba(255,255,255,0))}
-        .vr-viewport::after{right:0;background:linear-gradient(270deg,#fff,rgba(255,255,255,0))}
+        .vr-viewport::before{left:0;background:linear-gradient(90deg,#eeeeee,rgba(238,238,238,0))}
+        .vr-viewport::after{right:0;background:linear-gradient(270deg,#eeeeee,rgba(238,238,238,0))}
         @media(prefers-color-scheme:dark){
-          .vr-viewport::before{background:linear-gradient(90deg,#f6faf8,rgba(246,250,248,0))}
-          .vr-viewport::after{background:linear-gradient(270deg,#f6faf8,rgba(246,250,248,0))}
+          .vr-viewport::before{background:linear-gradient(90deg,#eeeeee,rgba(238,238,238,0))}
+          .vr-viewport::after{background:linear-gradient(270deg,#eeeeee,rgba(238,238,238,0))}
         }
 
         /* bandă continuă, smooth */
