@@ -591,9 +591,12 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 
 /* Support detail section visually aligned with the chooser-style band, on a light gray canvas. */
 .detail-section--support {
-  background: #f2f4f5;
+  background: #f7f8fa;
   border-radius: 0;
   padding: clamp(28px, 4vw, 42px);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .detail-section--support .detail-section-head {
@@ -687,22 +690,20 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 
 /* Modern showroom-style layout for support detail in "Alege solutia potrivita pentru afacerea ta". */
 .support-modern {
-  border: 1px solid rgba(15, 123, 101, 0.35);
-  border-radius: 14px;
-  padding: 18px;
-  background: var(--vogo-green);
-  color: var(--white);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
 }
 .support-modern-eyebrow {
-  margin: 0 0 6px;
-  font-size: .72rem;
+  margin: 0 0 10px;
+  font-size: .78rem;
   letter-spacing: .14em;
   font-weight: 800;
-  color: var(--white);
-  background: var(--vogo-green);
-  border-radius: 5px;
+  color: var(--vogo-green-dark);
   display: inline-block;
-  padding: 5px 10px;
+  padding: 0;
 }
 /* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: HEADER] [TEXT: TITLU BLOC h4] */
 .support-modern h4 {
@@ -713,12 +714,12 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font-size: clamp(1.5rem, 2.0vw, 2.35rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: #0b1220;
 }
 /* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: HEADER] [TEXT: LEAD DESCRIPTIV] */
 .support-modern .support-modern-lead {
-  margin: 0 0 12px;
-  color: #ffffff;
+  margin: 0;
+  color: #1f2a37;
 }
 .support-modern-tags {
   margin: 0;
@@ -731,7 +732,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: block;
   position: relative;
   padding-left: 22px;
-  color: #ffffff;
+  color: #0f2a3b;
   font-size: .95rem;
   font-weight: 700;
 }
@@ -859,27 +860,40 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   background: rgba(15, 123, 101, 0.6);
 }
 
-/* Two-column support details layout: text on the left, image preview on the right. */
+/* Support details displayed as clean image + text showcase rows. */
 .support-detail-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
-  gap: 18px;
-  align-items: start;
+  gap: clamp(24px, 4vw, 40px);
 }
-.support-gallery-column {
-  border: 1px solid rgba(15, 123, 101, 0.2);
-  border-radius: 10px;
-  background: #ffffff;
-  padding: 12px;
+.support-detail-table-row {
   display: grid;
-  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(22px, 3vw, 44px);
+  align-items: center;
 }
-.support-gallery-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+.support-detail-cell {
+  min-width: 0;
+}
+.support-detail-cell--text {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+.support-detail-cell--image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.support-detail-cell--wide {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
 }
 .support-gallery-thumb {
+  width: min(100%, 620px);
+  margin: 0;
+  display: block;
   border: 0;
   padding: 0;
   background: transparent;
@@ -889,8 +903,25 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  border: 1px solid rgba(15, 123, 101, 0.15);
+  border-radius: 12px;
+  border: 0;
+  background: transparent;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+.support-gallery-thumb--wide {
+  width: min(100%, 980px);
+}
+.support-gallery-thumb--wide img {
+  max-height: none;
+  object-fit: contain;
+}
+.support-detail-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 .support-gallery-link {
   border: 1px solid rgba(15, 123, 101, 0.4);
@@ -898,7 +929,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: var(--vogo-green-dark);
   font-weight: 700;
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   cursor: pointer;
 }
 .support-buy-link {
@@ -973,7 +1004,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font-size: 1.2rem;
 }
 @media (max-width: 900px) {
-  .support-detail-layout {
+  .support-detail-table-row {
     grid-template-columns: 1fr;
   }
 
@@ -1012,6 +1043,15 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   margin: 0;
   max-width: 980px;
 }
+
+.support-details-section {
+  padding-top: 0;
+}
+
+.support-details-section .details-stack {
+  margin-top: 0;
+}
+
 
 /* Trust badges section */
 .trust-section { background: var(--vogo-green-soft); }
