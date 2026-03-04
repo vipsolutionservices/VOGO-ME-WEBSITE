@@ -323,8 +323,8 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   /* Requested visual update: keep carousel corners subtly rounded at exactly 3px. */
   border-radius: 3px;
   overflow: hidden;
-  background: #23272f;
-  box-shadow: 0 14px 42px rgba(10, 18, 32, 0.18);
+  background: #f2f2f2;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
 }
 .hero-carousel-track {
   display: flex;
