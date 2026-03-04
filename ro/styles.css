@@ -985,6 +985,22 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   }
 }
 
+
+/* Isolated full-width band used only for the solution chooser intro text block. */
+.solution-chooser-band-section {
+  background: var(--vogo-green-soft);
+  padding: clamp(34px, 5vw, 52px) 0;
+}
+
+.solution-chooser-band-section h2 {
+  margin-bottom: 10px;
+}
+
+.solution-chooser-band-section .section-intro {
+  margin: 0;
+  max-width: 980px;
+}
+
 /* Trust badges section */
 .trust-section { background: var(--vogo-green-soft); }
 .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
