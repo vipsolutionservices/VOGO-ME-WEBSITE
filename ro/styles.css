@@ -1490,10 +1490,13 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     box-shadow: 0 22px 44px rgba(15, 23, 42, 0.22);
     backdrop-filter: blur(8px);
     z-index: 40;
+    position: relative;
   }
   .mobile-menu-close {
     display: inline-flex;
-    align-self: flex-end;
+    position: absolute;
+    top: 14px;
+    right: 14px;
     border: 0;
     background: transparent;
     color: #1f2937;
@@ -1526,6 +1529,9 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     padding: 10px 12px;
     border-bottom: 1px solid #edf2f7;
     border-radius: 10px;
+  }
+  .main-nav a:first-child {
+    padding-right: 52px;
   }
   .main-nav a:last-child {
     border-bottom: 0;
