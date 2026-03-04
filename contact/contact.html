@@ -567,16 +567,30 @@ document.addEventListener('DOMContentLoaded', () => {
       await customElements.whenDefined('sl-select');
       ctry=document.querySelector('sl-select#country');
       city=document.querySelector('sl-select#city');
+      let countryValueMap = {};
+      let cityValueMap = {};
+      const normalizeOptionValue = (value='') => String(value).replace(/\s+/g, '_');
 
       function populateCountries(){
         const countries=Object.keys(MARKET_CITIES||{}).sort((a,b)=>a.localeCompare(b));
-        ctry.innerHTML = countries.map(c=>`<sl-option value="${c}">${c}</sl-option>`).join('');
+        countryValueMap = {};
+        ctry.innerHTML = countries.map(country=>{
+          const optionValue = normalizeOptionValue(country);
+          countryValueMap[optionValue] = country;
+          return `<sl-option value="${optionValue}">${country}</sl-option>`;
+        }).join('');
         ctry.disabled = countries.length===0;
         city.disabled = true; city.innerHTML=''; city.value='';
       }
       function populateCities(){
-        const list=MARKET_CITIES[ctry.value]||[];
-        city.innerHTML = list.map(x=>`<sl-option value="${x}">${x}</sl-option>`).join('');
+        const selectedCountry = countryValueMap[ctry.value] || ctry.value;
+        const list=MARKET_CITIES[selectedCountry]||[];
+        cityValueMap = {};
+        city.innerHTML = list.map(cityName=>{
+          const optionValue = normalizeOptionValue(cityName);
+          cityValueMap[optionValue] = cityName;
+          return `<sl-option value="${optionValue}">${cityName}</sl-option>`;
+        }).join('');
         city.disabled = list.length===0; city.value='';
       }
       ctry.addEventListener('sl-change',populateCities);
@@ -584,6 +598,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+      window._vogoGetSelectedCountry=function(){ return countryValueMap[ctry.value] || ctry.value || ''; };
+      window._vogoGetSelectedCity=function(){ return cityValueMap[city.value] || city.value || ''; };
       window._vogoResetCountryCity=function(){ ctry.value=''; city.value=''; city.disabled=true; city.innerHTML=''; };
     })();
 
@@ -642,8 +658,8 @@ syncInterest();
         requestLabel:reqSel.selectedOptions[0].textContent,
         email:document.getElementById('email').value.trim(),
         phone:document.getElementById('phone').value.trim(),
-        country:ctry?.value||'not selected',
-        city:city?.value||'not selected',
+        country:window._vogoGetSelectedCountry?.()||'not selected',
+        city:window._vogoGetSelectedCity?.()||'not selected',
         interest: document.getElementById('interestOK').value,                 // ← aici        
         details_html:getDetailsHTML(),
         details_text:getDetailsPlain(),
