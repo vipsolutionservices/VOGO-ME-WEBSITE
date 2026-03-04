@@ -567,15 +567,22 @@ document.addEventListener('DOMContentLoaded', () => {
       ctry=document.querySelector('sl-select#country');
       city=document.querySelector('sl-select#city');
 
+      const toOptionValue=(label)=>String(label||'').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+      const buildOptions=(labels)=>labels.map(label=>`<sl-option value="${toOptionValue(label)}" data-label="${label}">${label}</sl-option>`).join('');
+      function getSelectedLabel(selectEl){
+        return selectEl?.querySelector(`sl-option[value="${selectEl.value}"]`)?.getAttribute('data-label')||'';
+      }
+
       function populateCountries(){
         const countries=Object.keys(MARKET_CITIES||{}).sort((a,b)=>a.localeCompare(b));
-        ctry.innerHTML = countries.map(c=>`<sl-option value="${c}">${c}</sl-option>`).join('');
+        ctry.innerHTML = buildOptions(countries);
         ctry.disabled = countries.length===0;
         city.disabled = true; city.innerHTML=''; city.value='';
       }
       function populateCities(){
-        const list=MARKET_CITIES[ctry.value]||[];
-        city.innerHTML = list.map(x=>`<sl-option value="${x}">${x}</sl-option>`).join('');
+        const selectedCountry=getSelectedLabel(ctry);
+        const list=MARKET_CITIES[selectedCountry]||[];
+        city.innerHTML = buildOptions(list);
         city.disabled = list.length===0; city.value='';
       }
       ctry.addEventListener('sl-change',populateCities);
@@ -641,8 +648,8 @@ syncInterest();
         requestLabel:reqSel.selectedOptions[0].textContent,
         email:document.getElementById('email').value.trim(),
         phone:document.getElementById('phone').value.trim(),
-        country:ctry?.value||'not selected',
-        city:city?.value||'not selected',
+        country:getSelectedLabel(ctry)||'not selected',
+        city:getSelectedLabel(city)||'not selected',
         interest: document.getElementById('interestOK').value,                 // ← aici        
         details_html:getDetailsHTML(),
         details_text:getDetailsPlain(),
@@ -654,7 +661,7 @@ syncInterest();
         if(json&&json.success){
           toast.style.display='block';
           form.reset(); detailsEl.innerHTML=''; window._vogoResetCountryCity?.(); newCaptcha();
-          reqSel.selectedIndex=0; updateHelp();
+          reqSel.selectedIndex=0; updateHelpAndDetails();
           toast.scrollIntoView({behavior:'smooth',block:'center'});
         }else{
           alert((json&&(json.error||json.data||'Submission failed. Please try again.'))||'Submission failed. Please try again.'); newCaptcha();
