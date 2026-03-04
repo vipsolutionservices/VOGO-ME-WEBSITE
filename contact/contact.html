@@ -580,18 +580,26 @@ document.addEventListener('DOMContentLoaded', () => {
           return `<sl-option value="${optionValue}">${country}</sl-option>`;
         }).join('');
         ctry.disabled = countries.length===0;
-        city.disabled = true; city.innerHTML=''; city.value='';
+        city.disabled = true;
+        city.innerHTML='<sl-option value="">Select city</sl-option>';
+        city.value='';
       }
       function populateCities(){
         const selectedCountry = countryValueMap[ctry.value] || ctry.value;
         const list=MARKET_CITIES[selectedCountry]||[];
         cityValueMap = {};
+        if(list.length===0){
+          city.innerHTML='<sl-option value="">Select city</sl-option>';
+          city.disabled = true;
+          city.value='';
+          return;
+        }
         city.innerHTML = list.map(cityName=>{
           const optionValue = normalizeOptionValue(cityName);
           cityValueMap[optionValue] = cityName;
           return `<sl-option value="${optionValue}">${cityName}</sl-option>`;
         }).join('');
-        city.disabled = list.length===0; city.value='';
+        city.disabled = false; city.value='';
       }
       ctry.addEventListener('sl-change',populateCities);
       populateCountries();
@@ -600,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       window._vogoGetSelectedCountry=function(){ return countryValueMap[ctry.value] || ctry.value || ''; };
       window._vogoGetSelectedCity=function(){ return cityValueMap[city.value] || city.value || ''; };
-      window._vogoResetCountryCity=function(){ ctry.value=''; city.value=''; city.disabled=true; city.innerHTML=''; };
+      window._vogoResetCountryCity=function(){ ctry.value=''; city.value=''; city.disabled=true; city.innerHTML='<sl-option value="">Select city</sl-option>'; };
     })();
 
 // --- Interest sync -> hidden field
