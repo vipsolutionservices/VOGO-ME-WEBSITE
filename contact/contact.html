@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Contact VOGO for registration, partnerships, and commercial or technical discussions. Response in 24 hours." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
 
 
@@ -112,7 +115,7 @@
 
     :root{--bg:#f8fafc;--card:#fff;--ink:#0f172a;--muted:#64748b;--border:#e2e8f0;--vogo:#0f6d47;--vogo-soft:#e8f5ec;--shadow:0 8px 20px rgba(2,6,23,.06)}
     *{box-sizing:border-box}
-    body{margin:0;font-family:inherit;color:var(--ink);background:var(--bg)}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg)}
     .wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
     .grid{display:grid;grid-template-columns:1fr;gap:20px}
     @media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
@@ -132,9 +135,6 @@
     .btn{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:600;cursor:pointer}
     .btn[disabled]{opacity:.6;cursor:not-allowed}
     .btn-primary{background:var(--vogo);color:#fff}
-    .btn-loading{position:relative;color:transparent!important;pointer-events:none}
-    .btn-loading::after{content:"";position:absolute;top:50%;left:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border:2px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
     .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--ink)}
     .note{font-size:12px;color:var(--muted)}
     .error{color:#dc2626;font-size:12px;margin-top:6px}
@@ -161,7 +161,52 @@
     sl-select::part(form-control){width:100%}
     @media(max-width:420px){.cap-row{flex-wrap:wrap}}
 
+/* STEP 1.1 Inputs Email + Phone: same look as Request details */
+#contactForm input[type="email"],
+#contactForm input[type="tel"]{
+  height:48px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+  font:inherit;
+  color:var(--ink);
+  appearance:none;
+  -webkit-appearance:none;
+  outline:none;
+}
+#contactForm input[type="email"]:focus,
+#contactForm input[type="tel"]:focus{
+  border-color:var(--vogo);
+  outline:2px solid rgba(15,109,71,.15);
+}
 
+/* STEP 1.2 Request: same look as inputs */
+#contactForm select#requestType{
+  height:48px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+  font:inherit;
+  color:var(--ink);
+  line-height:1.4;
+  appearance:auto; /* păstrează săgeata nativă */
+}
+#contactForm select#requestType:focus{
+  border-color:var(--vogo);
+  outline:2px solid rgba(15,109,71,.15);
+}
+
+/* doar pentru dropdownul acesta */
+#requestType option {
+  padding-block: 6px;   /* spațiu vertical */
+  padding-inline: 10px; /* margini laterale */
+  line-height: 1.6;     /* înălțime rând mărită */
+}
+
+/* opțional: mărim puțin textul pentru lizibilitate */
+#requestType { font-size: 15px; }
 
 
   </style>
@@ -191,7 +236,7 @@
         <!-- request field meta-->
         <div  class="row">
           <label for="requestType">Request</label>
-          <select id="requestType" name="requestType" required aria-describedby="requestHelp requestErr"></select>
+          <select  style="font-weight:700" id="requestType" name="requestType" required aria-describedby="requestHelp requestErr"></select>
           <div id="requestHelp" class="help" role="note"></div>
           <div id="requestErr" class="error" aria-live="polite"></div>
         </div>
@@ -285,9 +330,9 @@
 
         <div class="qr-captcha" aria-label="Quick contacts">
           <div class="qr-wrap">
-            <figure><img src="/qr-codes/qr-vogo-me-website-2026.png" alt="VOGO website QR" loading="lazy" width="180" height="180" /></figure>
-            <figure><img src="/qr-codes/qr_vogo_phone.png" alt="WhatsApp contact QR" loading="lazy" width="180" height="180" /></figure>
-            <figure><img src="/img-general/euipo-circle.png" alt="EUIPO registered trademark" loading="lazy" width="180" height="180" /></figure>
+            <figure><img src="../qr-codes/qr-vogo-me-website-2026.png" alt="VOGO website QR" loading="lazy" width="180" height="180" /></figure>
+            <figure><img src="../qr-codes/qr_vogo_phone.png" alt="WhatsApp contact QR" loading="lazy" width="180" height="180" /></figure>
+            <figure><img src="../img-general/euipo-circle.png" alt="EUIPO registered trademark" loading="lazy" width="180" height="180" /></figure>
           </div>
         </div>
       </form>
@@ -519,8 +564,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Shoelace selects -> populate from inline MARKET_CITIES
     const countryValueToLabel=new Map();
     const cityValueToLabel=new Map();
-    let ctry=null;
-    let city=null;
     const toOptionValue=(label)=>String(label||'').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
     function getSelectedLabel(selectEl, valueMap){ return valueMap.get(selectEl?.value||'')||''; }
     function setSelectOptions(selectEl, labels, valueMap){
@@ -562,7 +605,6 @@ document.addEventListener('DOMContentLoaded', () => {
         city.disabled = list.length===0; city.value='';
       }
       ctry.addEventListener('sl-change',populateCities);
-      ctry.addEventListener('change',populateCities);
       populateCountries();
 
       window._vogoResetCountryCity=function(){ ctry.value=''; city.value=''; city.disabled=true; city.replaceChildren(); cityValueToLabel.clear(); };
@@ -611,11 +653,9 @@ syncInterest();
 
     // Submit
     const form=document.getElementById('contactForm'); const toast=document.getElementById('toast'); const submitBtn=document.getElementById('submitBtn');
-    const submitBtnLabel=submitBtn.textContent;
     form.addEventListener('submit',async e=>{
       e.preventDefault(); if(!validate()) return;
       submitBtn.disabled=true;
-      submitBtn.classList.add('btn-loading');
       const ajaxUrl=(window.VOGO_CONTACT&&VOGO_CONTACT.ajax_url)||'/wp-admin/admin-ajax.php';
       const nonce=(window.VOGO_CONTACT&&VOGO_CONTACT.nonce)||'';
       const payload={
@@ -644,7 +684,7 @@ syncInterest();
           alert((json&&(json.error||json.data||'Submission failed. Please try again.'))||'Submission failed. Please try again.'); newCaptcha();
         }
       }catch(_){ alert('Network error. Please try again.'); newCaptcha(); }
-      finally{ submitBtn.disabled=false; submitBtn.classList.remove('btn-loading'); submitBtn.textContent=submitBtnLabel; }
+      finally{ submitBtn.disabled=false; }
     });
   </script>
 </body>
