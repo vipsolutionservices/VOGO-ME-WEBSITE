@@ -565,8 +565,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Shoelace selects -> populate from inline MARKET_CITIES
     (async()=>{
       await customElements.whenDefined('sl-select');
-      ctry=document.querySelector('sl-select#country');
-      city=document.querySelector('sl-select#city');
+      ctry=document.querySelector('#contactForm sl-select#country');
+      city=document.querySelector('#contactForm sl-select#city');
       let countryValueMap = {};
       let cityValueMap = {};
       const normalizeOptionValue = (value='') => String(value).replace(/\s+/g, '_');
