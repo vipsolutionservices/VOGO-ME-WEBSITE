@@ -220,21 +220,13 @@
     <section class="hero">
       <h1>Contact VOGO</h1>
       <p class="lead">Connect for registration, partnerships, and commercial or technical discussions. Response in 24 hours.</p>
-      <div class="actions">
-        <!-- badge #meta xxx 
-        <a class="badge" href="?request=enterprise#request-field">Enterprise registration</a>
-        <a class="badge" href="?request=service#request-field">Service request</a>         
-        <a class="badge" href="?request=reseller#request-field">Become a VOGO Agent</a>
-        <a class="badge" href="?request=reseller#request-field">Registration</a>
-        <a class="badge" href="?request=presentation#request-field">Schedule a Call</a>
-        <a class="badge" href="?request=influencer#request-field">Accreditation as Influencer</a>
-        <a class="badge" href="?request=vendor_cert#request-field">Register as VOGO Premium Vendor</a>
-        -->
-        
-    <a class="badge" href="?request=store_owner#request-field">
-      Build My Mobile App
-    </a>        
-
+      <div class="actions" aria-label="Top predefined requests">
+        <a class="badge" href="?request=enterprise#request-field">Enterprise request</a>
+        <a class="badge" href="?request=build_migrate_integrate#request-field">Build • Migrate • Integrate</a>
+        <a class="badge" href="?request=ai_llm#request-field">AI &amp; LLM Assistant</a>
+        <a class="badge" href="?request=mobile_applications#request-field">Build My Mobile App</a>
+        <a class="badge" href="?request=retail_x_series#request-field">Retail X Series</a>
+        <a class="badge" href="?request=vogo_partner#request-field">Become a VOGO Partner</a>
       </div>
     </section>
 
@@ -479,6 +471,20 @@ const REQUESTS = [
   }
 ];
 
+const SALES_PRIORITY_REQUESTS = [
+  "enterprise",
+  "build_migrate_integrate",
+  "ai_llm",
+  "mobile_applications",
+  "retail_x_series",
+  "vogo_partner"
+];
+
+const ORDERED_REQUESTS = [
+  ...REQUESTS.filter(r => SALES_PRIORITY_REQUESTS.includes(r.value)),
+  ...REQUESTS.filter(r => !SALES_PRIORITY_REQUESTS.includes(r.value))
+];
+
 
 
 //pozitionare pe request
@@ -487,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const help = document.getElementById('requestHelp');
 
   // populează
-  sel.innerHTML = REQUESTS.map(r =>
+  sel.innerHTML = ORDERED_REQUESTS.map(r =>
     `<option value="${r.value}">${r.label}</option>`
   ).join('');
 
@@ -530,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ph.selected=true;
     reqSel.appendChild(ph);
 
-    REQUESTS.forEach(r=>{
+    ORDERED_REQUESTS.forEach(r=>{
       const o=document.createElement('option');
       o.value=r.value;
       o.textContent=r.label;
