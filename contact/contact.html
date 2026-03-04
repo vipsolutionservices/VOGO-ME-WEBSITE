@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- File purpose and role: VOGO contact request page with form validation and AJAX submit. -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -136,6 +137,22 @@
     .btn{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:600;cursor:pointer}
     .btn[disabled]{opacity:.6;cursor:not-allowed}
     .btn-primary{background:var(--vogo);color:#fff}
+    /** Submit loading animation shown while request is processed in background. */
+    .btn-primary.is-loading{position:relative;padding-left:42px}
+    .btn-primary.is-loading::before{
+      content:"";
+      position:absolute;
+      left:14px;
+      top:50%;
+      width:16px;
+      height:16px;
+      margin-top:-8px;
+      border:2px solid rgba(255,255,255,.45);
+      border-top-color:#fff;
+      border-radius:50%;
+      animation:vogo-spin .8s linear infinite;
+    }
+    @keyframes vogo-spin{to{transform:rotate(360deg)}}
     .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--ink)}
     .note{font-size:12px;color:var(--muted)}
     .error{color:#dc2626;font-size:12px;margin-top:6px}
@@ -630,9 +647,19 @@ syncInterest();
 
     // Submit
     const form=document.getElementById('contactForm'); const toast=document.getElementById('toast'); const submitBtn=document.getElementById('submitBtn');
+    const defaultSubmitLabel=submitBtn.textContent;
+
+    /** Section purpose and behavior: toggles submit button loading state during AJAX request. */
+    function setSubmitLoading(isLoading){
+      submitBtn.disabled=isLoading;
+      submitBtn.classList.toggle('is-loading',isLoading);
+      submitBtn.textContent=isLoading?'Submitting request...':defaultSubmitLabel;
+      submitBtn.setAttribute('aria-busy',isLoading?'true':'false');
+    }
+
     form.addEventListener('submit',async e=>{
       e.preventDefault(); if(!validate()) return;
-      submitBtn.disabled=true;
+      setSubmitLoading(true);
       const ajaxUrl=(window.VOGO_CONTACT&&VOGO_CONTACT.ajax_url)||'/wp-admin/admin-ajax.php';
       const nonce=(window.VOGO_CONTACT&&VOGO_CONTACT.nonce)||'';
       const payload={
@@ -661,7 +688,7 @@ syncInterest();
           alert((json&&(json.error||json.data||'Submission failed. Please try again.'))||'Submission failed. Please try again.'); newCaptcha();
         }
       }catch(_){ alert('Network error. Please try again.'); newCaptcha(); }
-      finally{ submitBtn.disabled=false; }
+      finally{ setSubmitLoading(false); }
     });
   </script>
 </body>
