@@ -26,6 +26,7 @@
   <meta name="twitter:title" content="VOGO Recommended Plugins | Elementor Add-ons Directory" />
   <meta name="twitter:description" content="Search VOGO's recommended Elementor plugins and discover trusted add-ons for modern WordPress websites." />
   <meta name="twitter:image" content="https://vogo.me/img-general/vogo-logo.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <style>
     :root {
       --bg: #ffffff;
@@ -193,25 +194,9 @@
     .actions {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 10px;
       margin-top: auto;
-    }
-
-    .coupon {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 0 10px;
-      border-radius: 999px;
-      background: var(--chip);
-      color: #3c4456;
-      font-size: 0.85rem;
-      white-space: nowrap;
-    }
-
-    .coupon.is-empty {
-      visibility: hidden;
     }
 
     .btn {
@@ -369,6 +354,113 @@
     .vf-legal a { color: #d7e2df; text-decoration: none; }
     .vf-legal a:hover, .vf-legal a:focus-visible { color: #9ee8d7; }
 
+
+    @media (max-width: 1000px) {
+      .site-header {
+        padding: 10px 0 12px;
+        background: #ebeff3;
+      }
+
+      .nav-wrap {
+        grid-template-columns: auto 1fr auto;
+        display: grid;
+        gap: 14px;
+        min-height: 72px;
+        background: #ffffff;
+        border: 1px solid #dde6ed;
+        padding: 10px 14px;
+      }
+
+      .mobile-menu-toggle {
+        display: inline-flex;
+        border: 1px solid #d5e2ea;
+        background: #ffffff;
+        border-radius: 12px;
+        width: 46px;
+        height: 46px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .mobile-top-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-size: 0.78rem;
+      }
+
+      .mobile-menu-panel {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid #dbe3ea;
+        border-radius: 5px;
+        padding: 16px 12px 12px;
+        box-shadow: 0 18px 34px rgba(15, 23, 42, 0.14);
+        z-index: 40;
+      }
+
+      .mobile-menu-panel.is-open {
+        display: flex;
+      }
+
+      .mobile-menu-close {
+        display: inline-flex;
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        border: 0;
+        background: transparent;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .main-nav {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .main-nav a {
+        width: 100%;
+        padding: 12px;
+        border-bottom: 1px solid #e6edf2;
+      }
+
+      .header-cta-group {
+        width: 100%;
+        display: grid;
+        gap: 8px;
+      }
+
+      .header-cta-group .promo-cta,
+      .header-cta-group .climate-badge {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .promo-cta-desktop {
+        display: none;
+      }
+
+      .promo-cta-mobile {
+        display: inline;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -376,25 +468,25 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="logo" href="ro/index.html" aria-label="VOGO - mergi la începutul paginii index">
-        <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
+        <img src="img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
         <span>VOGO</span>
       </a>
-      <a class="btn btn-primary promo-cta mobile-top-cta" href="#plans">Obține acum reducerea</a>
+      <a class="btn btn-primary promo-cta mobile-top-cta" href="ro/index.html#plans">Obține acum reducerea</a>
       <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenuPanel">
-        <span aria-hidden="true">☰</span>
+        <i class="bi bi-list" aria-hidden="true"></i>
       </button>
       <div class="mobile-menu-panel" id="mobileMenuPanel">
         <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Închide meniul">
-          <span aria-hidden="true">✕</span>
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
         </button>
         <nav class="main-nav" id="mainNav">
-          <a href="#overview">Produse</a>
-          <a href="#support-services-card">Servicii</a>
-          <a href="#enterprise">Enterprise</a>
-          <a href="#plans">Prețuri</a>
+          <a href="ro/index.html#overview">Produse</a>
+          <a href="ro/index.html#support-services-card">Servicii</a>
+          <a href="ro/index.html#enterprise">Enterprise</a>
+          <a href="ro/index.html#plans">Prețuri</a>
         </nav>
         <div class="header-cta-group">
-          <a class="btn btn-primary promo-cta" href="#plans">
+          <a class="btn btn-primary promo-cta" href="ro/index.html#plans">
             <span class="promo-cta-desktop">Obține acum reducerea – valabilă doar în perioada promo</span>
             <span class="promo-cta-mobile">Obține acum reducerea</span>
           </a>
@@ -432,7 +524,6 @@
         </div>
         <p class="description">Easy to use drawing tool for creating interactive images (fully responsive image maps). Highlight sections of your images with clickable hotspots!</p>
         <div class="actions">
-          <span class="coupon is-empty" aria-hidden="true">No discount</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-draw-attention/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -447,7 +538,6 @@
         </div>
         <p class="description">EmbedPress is the ultimate WordPress plugin to easily embed multimedia content from 150+ sources and to boost website engagement &amp; interaction.</p>
         <div class="actions">
-          <span class="coupon">20% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-embedpress/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -462,7 +552,6 @@
         </div>
         <p class="description">Essential Addons is the most used Elementor addon with 2 million+ users offering an extensive elements library—100+ widgets &amp; extensions, to uplift your web-building &amp; designing experience with no coding expertise.</p>
         <div class="actions">
-          <span class="coupon">20% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-wpdeveloper/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -477,7 +566,6 @@
         </div>
         <p class="description">Millions trust Gravity Forms for versatile forms—boost email lists, create quizzes, accept payments, and more!</p>
         <div class="actions">
-          <span class="coupon">30% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-gravityforms/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -492,7 +580,6 @@
         </div>
         <p class="description">Unlock dynamic widgets, e-commerce features, and a powerful filtering system for enhanced website capabilities.</p>
         <div class="actions">
-          <span class="coupon">10% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-crocoblock/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -507,7 +594,6 @@
         </div>
         <p class="description">NotificationX is a leading WordPress FOMO &amp; social proof marketing tool to create powerful notification alerts that boost site credibility and conversion.</p>
         <div class="actions">
-          <span class="coupon">20% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-notificationx/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -522,7 +608,6 @@
         </div>
         <p class="description">Create beautiful user registration forms, user profiles and member directories with the #1 user management tool for modern websites.</p>
         <div class="actions">
-          <span class="coupon">15% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-cozmoslabs-wordpress-profile-builder/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -537,7 +622,6 @@
         </div>
         <p class="description">The Events Calendar is an essential plugin for seamless event management. Perfect for businesses, organizations &amp; individuals hosting events of any scale.</p>
         <div class="actions">
-          <span class="coupon is-empty" aria-hidden="true">No discount</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-the-events-calendar/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -552,7 +636,6 @@
         </div>
         <p class="description">TranslatePress is the easiest way to translate your WordPress site and go multilingual. It's a proven way to grow multilingual traffic and reach more people.</p>
         <div class="actions">
-          <span class="coupon">15% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-translatepress/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -567,7 +650,6 @@
         </div>
         <p class="description">Ultimate Addons for Elementor is a powerful plugin with advanced widgets, templates, and features for designing stunning websites using Elementor.</p>
         <div class="actions">
-          <span class="coupon">25% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-ultimate-elementor/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -582,7 +664,6 @@
         </div>
         <p class="description">An all-in-one plugin that instantly gives you the most advanced tools to make better Elementor websites faster.</p>
         <div class="actions">
-          <span class="coupon">20% Off</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-unlimited-elements/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -597,7 +678,6 @@
         </div>
         <p class="description">Weglot is one of the best WordPress multilingual plugins to translate and display your website in multiple languages.</p>
         <div class="actions">
-          <span class="coupon is-empty" aria-hidden="true">No discount</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-weglot/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -612,7 +692,6 @@
         </div>
         <p class="description">Powerful data display and management tool. Works with Excel, CSV, Google Sheets, MySQL, JSON, MS SQL, and more, displays interactive tables and charts.</p>
         <div class="actions">
-          <span class="coupon is-empty" aria-hidden="true">No discount</span>
           <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-wpdatatables/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
@@ -627,7 +706,7 @@
       <div class="vf-grid">
         <div class="vf-col">
           <div class="logo">
-            <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="lazy" decoding="async" />
+            <img src="img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="lazy" decoding="async" />
             <span>VOGO</span>
           </div>
           <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
