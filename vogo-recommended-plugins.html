@@ -33,8 +33,8 @@
       --text: #1b2030;
       --muted: #5f6472;
       --border: #d9dce4;
-      --primary: #d709be;
-      --primary-soft: #fff1fd;
+      --primary: #0f7b65;
+      --primary-soft: rgba(15, 123, 101, 0.12);
       --chip: #eef0f5;
       --shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
     }
@@ -309,23 +309,101 @@
       display: grid;
       gap: 8px;
     }
+
+    .mobile-top-cta,
+    .mobile-menu-toggle,
+    .mobile-menu-close,
+    .promo-cta-mobile {
+      display: none;
+    }
+
+    .header-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .climate-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #0f7b65;
+      border: 1px solid #0f7b65;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .climate-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0f7b65;
+    }
+
+    .vf-wrap { display: grid; gap: 18px; }
+    .vf-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 24px; }
+    .vf-col h4 { margin: 0 0 10px; color: #f2f8f6; }
+    .vf-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .vf-col a { color: #d7e2df; text-decoration: none; }
+    .vf-col a:hover, .vf-col a:focus-visible { color: #9ee8d7; }
+    .vf-line { height: 1px; background: rgba(215, 226, 223, 0.2); }
+    .vf-bottom { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; justify-content: space-between; }
+    .vf-social { display: inline-flex; gap: 10px; }
+    .vf-social a {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid #d7e2df;
+      color: #d7e2df;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: .88rem;
+    }
+    .vf-social a:hover, .vf-social a:focus-visible { border-color: #9ee8d7; color: #9ee8d7; }
+    .vf-legal { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: .88rem; color: #c2d0cd; }
+    .vf-legal a { color: #d7e2df; text-decoration: none; }
+    .vf-legal a:hover, .vf-legal a:focus-visible { color: #9ee8d7; }
+
   </style>
 </head>
 <body>
   <!-- /** Header section: exact shared header structure used in ro/index.html. */ -->
   <header class="site-header">
     <div class="container nav-wrap">
-      <div class="logo">
+      <a class="logo" href="ro/index.html" aria-label="VOGO - mergi la începutul paginii index">
         <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
         <span>VOGO</span>
+      </a>
+      <a class="btn btn-primary promo-cta mobile-top-cta" href="#plans">Obține acum reducerea</a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenuPanel">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Închide meniul">
+          <span aria-hidden="true">✕</span>
+        </button>
+        <nav class="main-nav" id="mainNav">
+          <a href="#overview">Produse</a>
+          <a href="#support-services-card">Servicii</a>
+          <a href="#enterprise">Enterprise</a>
+          <a href="#plans">Prețuri</a>
+        </nav>
+        <div class="header-cta-group">
+          <a class="btn btn-primary promo-cta" href="#plans">
+            <span class="promo-cta-desktop">Obține acum reducerea – valabilă doar în perioada promo</span>
+            <span class="promo-cta-mobile">Obține acum reducerea</span>
+          </a>
+          <a class="climate-badge" href="https://climate.stripe.com/q51jM4" target="_blank" rel="noopener noreferrer" aria-label="VOGO este Stripe Climate member">
+            <span class="climate-badge-dot" aria-hidden="true"></span>
+            <span class="climate-badge-text">Stripe Climate member</span>
+          </a>
+        </div>
       </div>
-      <nav class="main-nav">
-        <a href="#overview">Produse</a>
-        <a href="#services">Servicii</a>
-        <a href="#products">Products</a>
-        <a href="#plans">Prețuri</a>
-      </nav>
-      <a class="btn btn-primary promo-cta" href="#contact">Obține acum reducerea – valabilă doar în perioada promo</a>
     </div>
   </header>
 
@@ -355,7 +433,7 @@
         <p class="description">Easy to use drawing tool for creating interactive images (fully responsive image maps). Highlight sections of your images with clickable hotspots!</p>
         <div class="actions">
           <span class="coupon is-empty" aria-hidden="true">No discount</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-draw-attention/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-draw-attention/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -370,7 +448,7 @@
         <p class="description">EmbedPress is the ultimate WordPress plugin to easily embed multimedia content from 150+ sources and to boost website engagement &amp; interaction.</p>
         <div class="actions">
           <span class="coupon">20% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-embedpress/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-embedpress/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -385,7 +463,7 @@
         <p class="description">Essential Addons is the most used Elementor addon with 2 million+ users offering an extensive elements library—100+ widgets &amp; extensions, to uplift your web-building &amp; designing experience with no coding expertise.</p>
         <div class="actions">
           <span class="coupon">20% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-wpdeveloper/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-wpdeveloper/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -400,7 +478,7 @@
         <p class="description">Millions trust Gravity Forms for versatile forms—boost email lists, create quizzes, accept payments, and more!</p>
         <div class="actions">
           <span class="coupon">30% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-gravityforms/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-gravityforms/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -415,7 +493,7 @@
         <p class="description">Unlock dynamic widgets, e-commerce features, and a powerful filtering system for enhanced website capabilities.</p>
         <div class="actions">
           <span class="coupon">10% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-crocoblock/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-crocoblock/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -430,7 +508,7 @@
         <p class="description">NotificationX is a leading WordPress FOMO &amp; social proof marketing tool to create powerful notification alerts that boost site credibility and conversion.</p>
         <div class="actions">
           <span class="coupon">20% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-notificationx/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-notificationx/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -445,7 +523,7 @@
         <p class="description">Create beautiful user registration forms, user profiles and member directories with the #1 user management tool for modern websites.</p>
         <div class="actions">
           <span class="coupon">15% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-cozmoslabs-wordpress-profile-builder/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-cozmoslabs-wordpress-profile-builder/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -460,7 +538,7 @@
         <p class="description">The Events Calendar is an essential plugin for seamless event management. Perfect for businesses, organizations &amp; individuals hosting events of any scale.</p>
         <div class="actions">
           <span class="coupon is-empty" aria-hidden="true">No discount</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-the-events-calendar/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-the-events-calendar/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -475,7 +553,7 @@
         <p class="description">TranslatePress is the easiest way to translate your WordPress site and go multilingual. It's a proven way to grow multilingual traffic and reach more people.</p>
         <div class="actions">
           <span class="coupon">15% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-translatepress/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-translatepress/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -490,7 +568,7 @@
         <p class="description">Ultimate Addons for Elementor is a powerful plugin with advanced widgets, templates, and features for designing stunning websites using Elementor.</p>
         <div class="actions">
           <span class="coupon">25% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-ultimate-elementor/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-ultimate-elementor/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -505,7 +583,7 @@
         <p class="description">An all-in-one plugin that instantly gives you the most advanced tools to make better Elementor websites faster.</p>
         <div class="actions">
           <span class="coupon">20% Off</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-unlimited-elements/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-unlimited-elements/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -520,7 +598,7 @@
         <p class="description">Weglot is one of the best WordPress multilingual plugins to translate and display your website in multiple languages.</p>
         <div class="actions">
           <span class="coupon is-empty" aria-hidden="true">No discount</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-weglot/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-weglot/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
 
@@ -535,7 +613,7 @@
         <p class="description">Powerful data display and management tool. Works with Excel, CSV, Google Sheets, MySQL, JSON, MS SQL, and more, displays interactive tables and charts.</p>
         <div class="actions">
           <span class="coupon is-empty" aria-hidden="true">No discount</span>
-          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-wpdatatables/" target="_blank" rel="noopener noreferrer">Let's Go</a>
+          <a class="btn" href="https://go.elementor.com/wp-dash-apps-go-to-wpdatatables/" target="_blank" rel="noopener noreferrer">Open plugin</a>
         </div>
       </article>
     </section>
@@ -544,22 +622,50 @@
   </main>
 
   <!-- /** Footer section: exact shared footer structure used in ro/index.html. */ -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="logo">
-          <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="lazy" decoding="async" />
-          <span>VOGO</span>
+  <footer class="site-footer vogo-footer">
+    <div class="container vf-wrap">
+      <div class="vf-grid">
+        <div class="vf-col">
+          <div class="logo">
+            <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="lazy" decoding="async" />
+            <span>VOGO</span>
+          </div>
+          <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
         </div>
-        <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
+        <div class="vf-col">
+          <h4>Applications</h4>
+          <ul>
+            <li><a href="https://vogo.me/ecommerce-mobile-app-white-label/" target="_blank" rel="noopener noreferrer">VOGO Client App</a></li>
+            <li><a href="https://vogo.me/ecommerce-mobile-app-white-label/" target="_blank" rel="noopener noreferrer">VOGO Vendor App</a></li>
+            <li><a href="https://vogo.me/ecommerce-mobile-app-white-label/" target="_blank" rel="noopener noreferrer">VOGO Videoconferencing</a></li>
+            <li><a href="https://vogo.me/ecommerce-mobile-app-white-label/" target="_blank" rel="noopener noreferrer">Live Streaming</a></li>
+            <li><a href="https://vogo.me/ecomm-contact-request/?request=reseller#request-field" target="_blank" rel="noopener noreferrer">Local Producer Applications</a></li>
+          </ul>
+        </div>
+        <div class="vf-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://vogo.me/ecommerce-mobile-app-white-label/" target="_blank" rel="noopener noreferrer">About / Overview</a></li>
+            <li><a href="https://vogo.me/partner-network/" target="_blank" rel="noopener noreferrer">Partner Network</a></li>
+            <li><a href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer">Contact Us</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h4>Companie</h4>
-        <ul><li>Despre noi</li><li>Contact</li><li>Cariere</li></ul>
-      </div>
-      <div id="services">
-        <h4>Servicii</h4>
-        <ul><li>Build</li><li>Migrate</li><li>Integrate</li></ul>
+      <div class="vf-line"></div>
+      <div class="vf-bottom">
+        <div class="vf-social">
+          <a title="LinkedIn" href="https://www.linkedin.com/company/vogo-global" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
+          <a title="YouTube" href="https://www.youtube.com/@vogo-global" aria-label="YouTube" target="_blank" rel="noopener noreferrer">▶</a>
+          <a title="Facebook" href="https://www.facebook.com/vogo.global" aria-label="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+          <a title="Instagram" href="https://www.instagram.com/vogo.global" aria-label="Instagram" target="_blank" rel="noopener noreferrer">◎</a>
+        </div>
+        <div class="vf-legal">© 2026 VOGO®
+          <a href="https://vogo.me/terms-conditions/" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>
+          <a href="https://vogo.me/privacy-gdpr/" target="_blank" rel="noopener noreferrer">Privacy &amp; GDPR</a>
+          <a href="https://vogo.me/cookies/" target="_blank" rel="noopener noreferrer">Cookies</a>
+          <a href="https://vogo.me/security-compliance/" target="_blank" rel="noopener noreferrer">Security &amp; Compliance</a>
+          <a href="https://vogo.me/page-sitemap.xml/" target="_blank" rel="noopener noreferrer">Sitemap</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -604,6 +710,22 @@
 
       searchInput.addEventListener('input', filterPlugins);
       updateCount(totalCards);
+    })();
+
+
+    (function initMobileMenu() {
+      const menuToggle = document.getElementById('mobileMenuToggle');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuPanel = document.getElementById('mobileMenuPanel');
+      if (!menuToggle || !menuClose || !menuPanel) return;
+
+      function setMenuState(isOpen) {
+        menuPanel.classList.toggle('is-open', isOpen);
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      menuToggle.addEventListener('click', () => setMenuState(true));
+      menuClose.addEventListener('click', () => setMenuState(false));
     })();
   </script>
 </body>
