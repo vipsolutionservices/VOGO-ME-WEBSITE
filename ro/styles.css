@@ -118,6 +118,9 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
 .mobile-menu-toggle i {
   pointer-events: none;
 }
+.mobile-menu-close {
+  display: none;
+}
 
 /* Reusable button styles */
 .btn { border: 1px solid transparent; padding: 11px 18px; border-radius: 12px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
@@ -1487,6 +1490,27 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     box-shadow: 0 22px 44px rgba(15, 23, 42, 0.22);
     backdrop-filter: blur(8px);
     z-index: 40;
+  }
+  .mobile-menu-close {
+    display: inline-flex;
+    align-self: flex-end;
+    border: 0;
+    background: transparent;
+    color: #1f2937;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .mobile-menu-close:hover,
+  .mobile-menu-close:focus-visible {
+    background: #eef3f8;
+  }
+  .mobile-menu-close i {
+    pointer-events: none;
   }
   .mobile-menu-panel.is-open {
     display: flex;

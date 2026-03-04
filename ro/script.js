@@ -67,6 +67,7 @@ const cardsContainer = document.getElementById('offer-cards');
 const detailsStack = document.getElementById('details-stack');
 const faqList = document.getElementById('faq-list');
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
 const mainNav = document.getElementById('mainNav');
 const mobileMenuPanel = document.getElementById('mobileMenuPanel');
 
@@ -85,6 +86,12 @@ function initMobileMenu() {
     const isOpen = !mobileMenuPanel.classList.contains('is-open');
     setMenuState(isOpen);
   });
+
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', () => {
+      setMenuState(false);
+    });
+  }
 
   document.addEventListener('click', (event) => {
     if (!isMobileViewport()) return;
