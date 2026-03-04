@@ -395,6 +395,85 @@ testate pentru compatibilitate, performanță și integrare perfectă în ecosis
     </section>
 
 
+    <section class="vogo-reel">
+      <style>
+        :root{
+          --bg1:#fbfcfd; --bg2:#f6faf8;
+          --border:#d7dee3;     /* thin border vizibil */
+          --speed:55s;          /* viteza benzii (mai mare = mai lent) */
+        }
+
+        .vogo-reel{padding:24px 0;background:linear-gradient(180deg,var(--bg1),var(--bg2))}
+        .vr-viewport{max-width:1400px;margin:0 auto;overflow:hidden;position:relative}
+
+        /* fade pe margini, ca la banda de logo-uri */
+        .vr-viewport::before,.vr-viewport::after{
+          content:"";position:absolute;top:0;bottom:0;width:min(10vw,140px);pointer-events:none;z-index:2
+        }
+        .vr-viewport::before{left:0;background:linear-gradient(90deg,#fff,rgba(255,255,255,0))}
+        .vr-viewport::after{right:0;background:linear-gradient(270deg,#fff,rgba(255,255,255,0))}
+        @media(prefers-color-scheme:dark){
+          .vr-viewport::before{background:linear-gradient(90deg,#f6faf8,rgba(246,250,248,0))}
+          .vr-viewport::after{background:linear-gradient(270deg,#f6faf8,rgba(246,250,248,0))}
+        }
+
+        /* bandă continuă, smooth */
+        .vr-track{
+          display:flex;gap:16px;width:max-content;
+          animation:vr-marquee var(--speed) linear infinite;
+          will-change:transform;
+        }
+        @keyframes vr-marquee{
+          from{transform:translateX(0)}
+          to  {transform:translateX(-50%)} /* set duplicat pentru loop perfect */
+        }
+
+        /* item = card curat (fără “butoane” de telefon) + imagine */
+        .vr-item{flex:0 0 auto;max-width:min(86vw,520px)}
+        .vr-card{
+          padding:6px;                   /* mic spațiu ca să se vadă border-ul */
+          border:1px solid var(--border);
+          border-radius:18px;
+          background:#fff;               /* border vizibil pe fundal deschis */
+          /* fără shadow, fără notch/butoane */
+          display:flex;align-items:center;justify-content:center;
+        }
+        .vr-card img{
+          height:clamp(240px,42vh,500px); /* dimensiunea de “dinainte” */
+          width:auto;object-fit:contain;display:block;
+        }
+
+        @media (max-width:780px){
+          .vr-item{width:80vw}
+          .vr-card img{height:60vh;max-height:480px}
+        }
+      </style>
+
+      <div class="vr-viewport">
+        <div class="vr-track">
+          <!-- set 1 -->
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0017.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0003.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0006.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0007.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0008.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0009.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0010.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0014.jpg" alt=""></div></figure>
+
+          <!-- set 2 (duplicat pentru loop “seamless”) -->
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0017.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0003.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0006.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0007.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0008.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0009.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0010.jpg" alt=""></div></figure>
+          <figure class="vr-item"><div class="vr-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0014.jpg" alt=""></div></figure>
+        </div>
+      </div>
+    </section>
+
     <section id="plans" class="section">
       <div class="container">
         <h2>Selectează planul potrivit</h2>
