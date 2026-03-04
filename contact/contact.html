@@ -586,6 +586,12 @@ document.addEventListener('DOMContentLoaded', () => {
       ctry=document.querySelector('sl-select#country');
       city=document.querySelector('sl-select#city');
 
+      const toOptionValue=(label)=>String(label||'').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+      const buildOptions=(labels)=>labels.map(label=>`<sl-option value="${toOptionValue(label)}" data-label="${label}">${label}</sl-option>`).join('');
+      function getSelectedLabel(selectEl){
+        return selectEl?.querySelector(`sl-option[value="${selectEl.value}"]`)?.getAttribute('data-label')||'';
+      }
+
       function populateCountries(){
         const countries=Object.keys(MARKET_CITIES||{}).sort((a,b)=>a.localeCompare(b));
         setSelectOptions(ctry, countries, countryValueToLabel);
