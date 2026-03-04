@@ -9,171 +9,59 @@
 
 /**
  * Portfolio data source used in both the summary cards and the detailed sections.
- * Each item includes an icon and a category chip for stronger visual scanning.
+ * Content is authored directly in HTML and parsed here.
  */
-const offers = [
-  {
-    title: 'VOGO AI Customer Support Plugin',
-    chip: 'SUPPORT',
-    icon: '🤖',
-    hideDefaultCta: true,
-    sectionClass: 'detail-section--support',
-    chipClass: 'offer-chip--support',
-    buyNowLink: {
-      href: 'https://wa.me/40723313295?text=Solicit%20achizitia%20VOGO%20AI%20Chatbot.%20Ne%20intereseaza%20pentru%20...explicatiile%20clare%20ale%20nevoi%20si%20cerinte%20specifice.',
-      label: 'Cumpara acum'
-    },
-    summary:
-      'VOGO AI Chatbot este un plugin inteligent pentru WordPress / WooCommerce / Site-uri web care transformă conversațiile în acțiuni reale. Nu este doar un chatbot care răspunde la întrebări — este un asistent AI capabil să execute operațiuni direct în contul utilizatorului, să interacționeze cu WooCommerce și să transfere conversația către un operator uman atunci când este necesar.',
-    // Rich text is intentionally structured with paragraphs + lists only,
-    // so the detailed card stays visually consistent with existing CSS.
-    detailsTemplateId: 'support-offer-details-template',
+function parseOffersFromHtml() {
+  const offerNodes = Array.from(document.querySelectorAll('#offers-data .offer-data-item'));
 
-    supportGalleryImages: [
-      '../img/ai-chatbot/ai-chatbot1.png',
-      '../img/ai-chatbot/ai-chatbot2.png',
-      '../img/ai-chatbot/ai-chatbot3.png',
-      '../img/ai-chatbot/ai-chatbot4.png',
-      '../img/ai-chatbot/ai-chatbot5.png',
-      '../img/ai-chatbot/ai-chatbot6.png',
-      '../img/ai-chatbot/ai-chatbot7.png',
-      '../img/ai-chatbot/ai-chatbot8.png'
-    ]
-  },
-  {
-    title: 'VOGO Get My Mobile Applications Plugin',
-    chip: 'MOBILE',
-    icon: '📱',
-    summary:
-      'Platformă de aplicații mobile cu securitate JWT, autentificare socială, multi-language și publicare asistată în ecosistemele Apple și Google.',
-    details: [
-      'VOGO Get My Mobile Applications Plugin accelerează lansarea de aplicații mobile performante printr-un set complet de funcții pregătite pentru business: securitate JWT, autentificare Google/Gmail/Apple, comunicare în aplicație și arhitectură multi-language.',
-      'Pentru dezvoltare graduală, include opțiuni de publicare în Apple App Store și Google Play în ediția Essentials, iar pentru proiecte extinse se pot activa pachete separate precum push notifications și Agora calls.',
-      'Componenta de mobilitate poate fi adaptată și pentru scenarii de tip drive, cu comenzi inter-city, aeroport și intra-city, susținând o experiență modernă pentru utilizatori și echipe operaționale.'
-    ]
-  },
-  {
-    title: 'VOGO Services: Build • Migrate • Integrate',
-    chip: 'SERVICES',
-    icon: '🛠️',
-    summary:
-      'Servicii enterprise cap-coadă pentru dezvoltare de produs nou, migrare sigură și integrare avansată de module AI în aplicații existente.',
-    // Service description uses a dedicated two-column bullet layout focused on WordPress integrations.
-    detailsHtml: `
-      <p><strong>Nu aveți încă un website pe WordPress?</strong> Nicio problemă. VOGO livrează integrare profesionistă prin pluginuri WordPress, cu instrumente moderne și procese clare de implementare.</p>
-      <div class="services-columns" role="list" aria-label="VOGO Build Migrate Integrate services">
-        <ul>
-          <li><strong>Build smart:</strong> construim website-uri WordPress / WooCommerce de la zero, cu structură pregătită pentru creștere și mentenanță ușoară.</li>
-          <li><strong>Upgrade profesional:</strong> dacă site-ul actual nu mai performează, refacem experiența completă cu design modern și fluxuri comerciale optimizate.</li>
-          <li><strong>Integrare prin feed-uri:</strong> conectăm rapid catalogul prin XML feed, CSV feed și import Excel cu mapare controlată pe câmpuri.</li>
-          <li><strong>Servicii web & API:</strong> activăm conectări sigure prin REST API și servicii web pentru sincronizare automată între sisteme.</li>
-        </ul>
-        <ul>
-          <li><strong>Migrare fără stres:</strong> mutăm proiectele existente către WordPress, WooCommerce sau Shopify cu plan etapizat și risc minim.</li>
-          <li><strong>Pluginuri WordPress dedicate:</strong> folosim pluginuri stabile pentru import, sincronizare stoc, actualizare prețuri și management produse.</li>
-          <li><strong>Automatizare operațională:</strong> integrăm procese de update periodic pentru produse, comenzi și conținut, fără intervenții manuale repetitive.</li>
-          <li><strong>Suport expert VOGO:</strong> primești consultanță tehnică, implementare cap-coadă și ghidaj continuu pentru evoluția platformei tale.</li>
-        </ul>
-      </div>
-    `,
-    ctaLinks: [
-      {
-        label: 'Discută acum cu un consultant',
-        href: 'https://wa.me/40723313296',
-        // Render this CTA as a filled button to match the requested Git-like style.
-        asButton: true
-      },
-      {
-        label: 'Contact us',
-        href: 'https://vogo.me/ecomm-contact-request/',
-        // Render this CTA as a filled button to match the requested Git-like style.
-        asButton: true
-      }
-    ]
-  },
-  {
-    title: 'VOGO Bricolage M Series',
-    chip: 'RETAIL',
-    icon: '🏬',
-    summary:
-      'Soluție AI specializată pentru magazine de bricolaj, cu asistent conversațional, ghidare în magazin și recomandări tehnice pentru produse.',
-    details: [
-      'VOGO Bricolage M Series este un plugin AI pre-antrenat pentru retailul de bricolaj, optimizat pentru a oferi răspunsuri rapide și corecte în interacțiuni online și în spațiul fizic al magazinului.',
-      'Asistentul poate indica poziționarea produselor pe raft, poate interpreta întrebări tehnice și poate recomanda produse complementare pe baza contextului transmis de client.',
-      'Soluția oferă informații clare despre denumire, raion, descriere, materiale și instrucțiuni, inclusiv conținut video acolo unde este relevant, pentru o experiență completă de cumpărare.'
-    ]
-  },
-  {
-    title: 'VOGO Retail X Series',
-    chip: 'COMMERCE',
-    icon: '🛒',
-    summary:
-      'Asistent AI pentru food retail și magazine generale, cu recomandări personalizate, căutare rapidă și suport în timp real pentru clienți.',
-    details: [
-      'VOGO Retail X Series ajută magazinele food retail și comercianții generali să transforme experiența clientului prin interacțiuni rapide, clare și relevante.',
-      'Sistemul optimizează căutarea produselor, propune recomandări personalizate și răspunde în timp real la întrebări frecvente despre stoc, alternative sau caracteristici.',
-      'Rezultatul este un flux de cumpărare mai simplu, conversii mai bune și un nivel crescut de încredere în comunicarea dintre brand și client.'
-    ]
-  },
-  {
-    title: 'VOGO Support Services',
-    chip: 'CARE',
-    icon: '🎧',
-    summary:
-      'Suport tehnic continuu, mentenanță proactivă și SLA-uri clare pentru stabilitate operațională și predictibilitate în livrare.',
-    details: [
-      'VOGO Support Services oferă continuitate operațională prin monitorizare, mentenanță și intervenții rapide atunci când apar incidente sau nevoi de optimizare.',
-      'Serviciul include procese clare de comunicare, SLA-uri definite și prioritizare profesională a ticketelor, astfel încât echipele interne să poată planifica eficient activitățile critice.',
-      'Abordarea este orientată spre prevenție și performanță constantă, nu doar spre rezolvarea punctuală a problemelor tehnice.'
-    ]
-  },
-  {
-    title: 'VOGO Storage Services',
-    chip: 'CLOUD',
-    icon: '☁️',
-    summary:
-      'Servicii de storage scalabile, cu backup, securizare și administrare adaptată volumului de date și nivelului de trafic al afacerii.',
-    details: [
-      'VOGO Storage Services furnizează infrastructură de stocare adaptată pentru aplicații enterprise, platforme comerciale și proiecte cu cerințe dinamice de date.',
-      'Serviciul acoperă backup recurent, politici de securitate și scalare progresivă, astfel încât sistemele să rămână disponibile și performante în perioade de încărcare ridicată.',
-      'Prin planificare corectă a resurselor, companiile obțin control mai bun asupra costurilor și asupra rezilienței infrastructurii digitale.'
-    ]
-  },
-  {
-    title: 'Enterprise Projects',
-    chip: 'CUSTOM',
-    icon: '🚀',
-    summary:
-      'Proiecte enterprise personalizate, cu arhitectură custom, roadmap etapizat și integrare cu sisteme interne pentru ROI măsurabil.',
-    details: [
-      'Pentru inițiative complexe, VOGO livrează proiecte enterprise custom, pornind de la audit funcțional și tehnic, până la implementare și validare în producție.',
-      'Arhitectura este construită pe nevoi reale de business, cu roadmap clar pe etape, milestone-uri măsurabile și integrare controlată cu ecosistemele interne existente.',
-      'Obiectivul final este obținerea unui ROI clar, susținut de stabilitate tehnică, eficiență operațională și capacitate de scalare pe termen lung.'
-    ]
-  },
-  {
-    title: 'Pluginuri recomandate',
-    chip: 'CUSTOM',
-    icon: '🔗',
-    summary:
-      'Descoperă selecția VOGO de pluginuri recomandate pentru performanță, integrare rapidă și extindere eficientă a funcționalităților.',
-    // External route card: opens the recommended plugins page in a new browser tab.
-    externalUrl: '../vogo-recommended-plugins.html',
-    details: [
-      'Accesează pagina VOGO Recommended pentru lista curată de pluginuri validate, cu focus pe fiabilitate, compatibilitate și rezultate practice.'
-    ]
-  }
-];
+  return offerNodes.map((node) => {
+    const summaryNode = node.querySelector('.offer-summary');
+    const detailsNodes = Array.from(node.querySelectorAll('.offer-details > p'));
+    const detailsHtmlNode = node.querySelector('.offer-details-html');
+    const buyNowNode = node.querySelector('.offer-buy-now-link');
+    const ctaNodes = Array.from(node.querySelectorAll('.offer-cta-links .offer-cta-link'));
+    const supportImageNodes = Array.from(node.querySelectorAll('.offer-support-gallery-images img'));
 
+    return {
+      title: node.dataset.title || '',
+      chip: node.dataset.chip || '',
+      icon: node.dataset.icon || '',
+      ...(node.dataset.hideDefaultCta !== undefined ? { hideDefaultCta: node.dataset.hideDefaultCta === 'true' } : {}),
+      ...(node.dataset.sectionClass ? { sectionClass: node.dataset.sectionClass } : {}),
+      ...(node.dataset.chipClass ? { chipClass: node.dataset.chipClass } : {}),
+      ...(node.dataset.detailsTemplateId ? { detailsTemplateId: node.dataset.detailsTemplateId } : {}),
+      ...(node.dataset.externalUrl ? { externalUrl: node.dataset.externalUrl } : {}),
+      summary: summaryNode ? summaryNode.textContent.trim() : '',
+      ...(detailsNodes.length > 0 ? { details: detailsNodes.map((paragraph) => paragraph.textContent.trim()) } : {}),
+      ...(detailsHtmlNode ? { detailsHtml: detailsHtmlNode.innerHTML.trim() } : {}),
+      ...(buyNowNode ? { buyNowLink: { href: buyNowNode.getAttribute('href') || '', label: buyNowNode.textContent.trim() } } : {}),
+      ...(ctaNodes.length > 0
+        ? {
+            ctaLinks: ctaNodes.map((ctaNode) => ({
+              label: ctaNode.textContent.trim(),
+              href: ctaNode.getAttribute('href') || '',
+              asButton: ctaNode.dataset.asButton === 'true'
+            }))
+          }
+        : {}),
+      ...(supportImageNodes.length > 0
+        ? { supportGalleryImages: supportImageNodes.map((imageNode) => imageNode.getAttribute('src') || '') }
+        : {})
+    };
+  });
+}
 
-// FAQ entries in Romanian for better local relevance.
-const faqData = [
-  ['De ce să aleg VOGO One și care este diferența față de varianta standard?', 'VOGO One grupează funcții avansate AI, suport prioritar și opțiuni enterprise într-un flux unificat.'],
-  ['Cum funcționează pachetele modulare (push notifications / agora calls)?', 'Sunt activate separat pentru a permite cost optim și scalare doar când ai nevoie.'],
-  ['Ce se întâmplă dacă am nevoie de funcții suplimentare?', 'Putem extinde proiectul în pachete enterprise personalizate, în funcție de roadmap-ul tău.'],
-  ['Puteți migra aplicația mea existentă?', 'Da. Avem servicii dedicate de audit, migrare și integrare progresivă.'],
-  ['Aveți suport pentru companii cu mai multe echipe?', 'Da, inclusiv guvernanță de acces, monitorizare și suport dedicat.']
-];
+function parseFaqFromHtml() {
+  const faqNodes = Array.from(document.querySelectorAll('#faq-data .faq-data-item'));
+  return faqNodes.map((faqNode) => {
+    const questionNode = faqNode.querySelector('h3');
+    const answerNode = faqNode.querySelector('p');
+    return [questionNode ? questionNode.textContent.trim() : '', answerNode ? answerNode.textContent.trim() : ''];
+  });
+}
+
+const offers = parseOffersFromHtml();
+const faqData = parseFaqFromHtml();
 
 const cardsContainer = document.getElementById('offer-cards');
 const detailsStack = document.getElementById('details-stack');
