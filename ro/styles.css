@@ -1045,6 +1045,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .solution-chooser-band-section .section-intro {
   margin: 0;
   max-width: 980px;
+  text-align: justify;
 }
 
 .solution-chooser-actions {
