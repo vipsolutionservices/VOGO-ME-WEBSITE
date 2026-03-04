@@ -1438,9 +1438,36 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   gap: 6px;
 }
 
-.site-footer { background: #030807; color: #d7e2df; padding: 36px 0 54px; }
+.site-footer { background: #030807; color: #d7e2df; padding: 36px 0 28px; }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 20px; }
 .footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+
+.vf-wrap { display: grid; gap: 18px; }
+.vf-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 24px; }
+.vf-col h4 { margin: 0 0 10px; color: #f2f8f6; }
+.vf-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.vf-col a { color: #d7e2df; text-decoration: none; }
+.vf-col a:hover, .vf-col a:focus-visible { color: #9ee8d7; }
+.vf-line { height: 1px; background: rgba(215, 226, 223, 0.2); }
+.vf-bottom { display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; justify-content: space-between; }
+.vf-social { display: inline-flex; gap: 10px; }
+.vf-social a {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(215, 226, 223, 0.35);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #d7e2df;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: .88rem;
+}
+.vf-social a:hover, .vf-social a:focus-visible { border-color: #9ee8d7; color: #9ee8d7; }
+.vf-legal { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: .88rem; color: #c2d0cd; }
+.vf-legal a { color: #d7e2df; text-decoration: none; }
+.vf-legal a:hover, .vf-legal a:focus-visible { color: #9ee8d7; }
 
 /* Responsive behavior for smaller devices */
 @media (max-width: 1000px) {
@@ -1454,7 +1481,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .offer-chip { font-size: .68rem; }
-  .plans-grid, .enterprise-grid, .hero-grid, .trust-grid, .faq-grid, .cta-grid, .footer-grid {
+  .plans-grid, .enterprise-grid, .hero-grid, .trust-grid, .faq-grid, .cta-grid, .footer-grid, .vf-grid {
     grid-template-columns: 1fr;
   }
   .enterprise-hero-panel {
