@@ -215,6 +215,7 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   color: #314055;
   margin: 0 0 14px;
   max-width: 72ch;
+  text-align: justify;
 }
 .partner-network-summary-cta {
   background: linear-gradient(180deg, #f4fbf8 0%, #ffffff 100%);
