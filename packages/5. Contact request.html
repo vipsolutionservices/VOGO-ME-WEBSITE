@@ -496,6 +496,25 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHelp();
 
     // Shoelace selects -> populate from inline MARKET_CITIES
+    const countryValueToLabel=new Map();
+    const cityValueToLabel=new Map();
+    const toOptionValue=(label)=>String(label||'').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    function getSelectedLabel(selectEl, valueMap){ return valueMap.get(selectEl?.value||'')||''; }
+    function setSelectOptions(selectEl, labels, valueMap){
+      valueMap.clear();
+      selectEl.replaceChildren();
+      labels.forEach((label,index)=>{
+        const baseValue=toOptionValue(label)||`item-${index+1}`;
+        let value=baseValue, suffix=2;
+        while(valueMap.has(value)){ value=`${baseValue}-${suffix++}`; }
+        const opt=document.createElement('sl-option');
+        opt.value=value;
+        opt.textContent=label;
+        valueMap.set(value,label);
+        selectEl.append(opt);
+      });
+    }
+
     (async()=>{
       await customElements.whenDefined('sl-select');
       ctry=document.querySelector('sl-select#country');
@@ -509,22 +528,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       function populateCountries(){
         const countries=Object.keys(MARKET_CITIES||{}).sort((a,b)=>a.localeCompare(b));
-        ctry.innerHTML = buildOptions(countries);
+        setSelectOptions(ctry, countries, countryValueToLabel);
         ctry.disabled = countries.length===0;
-        city.disabled = true; city.innerHTML=''; city.value='';
+        city.disabled = true; city.replaceChildren(); city.value=''; cityValueToLabel.clear();
       }
       function populateCities(){
-        const selectedCountry=getSelectedLabel(ctry);
+        const selectedCountry=getSelectedLabel(ctry, countryValueToLabel);
         const list=MARKET_CITIES[selectedCountry]||[];
-        city.innerHTML = buildOptions(list);
+        setSelectOptions(city, list, cityValueToLabel);
         city.disabled = list.length===0; city.value='';
       }
       ctry.addEventListener('sl-change',populateCities);
       populateCountries();
 
-
-
-      window._vogoResetCountryCity=function(){ ctry.value=''; city.value=''; city.disabled=true; city.innerHTML=''; };
+      window._vogoResetCountryCity=function(){ ctry.value=''; city.value=''; city.disabled=true; city.replaceChildren(); cityValueToLabel.clear(); };
     })();
 
 // --- Interest sync -> hidden field
@@ -583,8 +600,8 @@ syncInterest();
         requestLabel:reqSel.selectedOptions[0].textContent,
         email:document.getElementById('email').value.trim(),
         phone:document.getElementById('phone').value.trim(),
-        country:getSelectedLabel(ctry)||'not selected',
-        city:getSelectedLabel(city)||'not selected',
+        country:getSelectedLabel(ctry,countryValueToLabel)||'not selected',
+        city:getSelectedLabel(city,cityValueToLabel)||'not selected',
         interest: document.getElementById('interestOK').value,                 // ← aici        
         details_html:getDetailsHTML(),
         details_text:getDetailsPlain(),
