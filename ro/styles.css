@@ -454,7 +454,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   margin: 0;
   /* Keep description text dark gray to improve contrast while preserving hierarchy. */
   color: #4b5563;
-  font-size: 1.03rem;
+  font-size: 0.777rem;
   /* Slightly tighter leading makes the paragraph block feel more compact. */
   line-height: 1.34;
 }
