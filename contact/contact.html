@@ -436,9 +436,10 @@ const SALES_PRIORITY_REQUESTS = [
   "vogo_partner"
 ];
 
-const ORDERED_REQUESTS = [...REQUESTS].sort((a, b) =>
-  a.label.localeCompare(b.label, 'en', { sensitivity: 'base' })
-);
+const ORDERED_REQUESTS = [
+  ...REQUESTS.filter(r => SALES_PRIORITY_REQUESTS.includes(r.value)),
+  ...REQUESTS.filter(r => !SALES_PRIORITY_REQUESTS.includes(r.value))
+];
 
 
 
