@@ -387,64 +387,95 @@
 
 // Populate request types //requestmeta #meta xxx
 const REQUESTS = [
-
-{
-  value: "store_owner",
-  label: "Build My Mobile App",
-  info: "Describe your online store and what you want to achieve with a native mobile app. Please include whether you already have a WordPress/WooCommerce site, the main features you need, your expected timeline and budget range, and any existing integrations. This helps us propose the best mobile app setup for your business."
-}
-,
-{
-  value: "service",
-  label: "Service Request",
-  info: "Tell us your needs and we’ll bring the best solution for them. In Request details, include: type of service required (implementation, customization, integration, or support), business goals and current challenges, expected outcomes, timeline and budget range, and any specific systems or tools you already use. The more context you provide, the more precisely our team can tailor your solution."
-}
-,
-{
-  value: "enterprise",
-  label: "Client — Enterprise Request",
-  info: "Submit your enterprise onboarding or expansion request. Our enterprise team provides tailored implementation and licensing solutions for complex environments. In Request details, include: company domain and industry, subscription type requested, required initial setup (modules, integrations, hosting), main functional requirements, critical success factors, number of users or entities needing licenses, and required services (training, customization, ongoing support)."
-}
-,  
   {
-    value: "technical_info",
-    label: "Request technical information",
-    info: "Discover the platform’s architecture, deployment options, and security standards. Learn how VOGO ensures reliability, scalability, and full data protection. In Request details, include: deployment model (Cloud/On-Prem), data residency, required integrations (ERP/CRM/POS), SSO/IdP, user counts & roles, SLAs, compliance needs."
+    value: "ai_llm",
+    label: "AI & LLM",
+    info: "VOGO AI Sales & Support Intelligent Assistant Plugin for advanced customer assistance and workflow automation. In Request details, include: website platform (WordPress/WooCommerce/other), target use cases (sales/support), required automations, preferred AI behavior, language coverage, monthly traffic, and go-live timeline.",
+    prefill: "Requested product: AI & LLM\nUse case: \nCurrent platform (WordPress/WooCommerce/other): \nRequired AI automations: \nIntegrations needed: \nTimeline & budget: "
   },
   {
-    value: "commercial_info",
-    label: "Request commercial information",
-    info: "Get tailored pricing, package comparisons, and onboarding guidance. Find the best plan to launch or scale your business with VOGO. In Request details, include: company size, main use cases, expected order/traffic volume, number of locations, budget range, decision timeline."
+    value: "mobile_applications",
+    label: "Mobile Applications",
+    info: "VOGO Mobile Applications Creator – iOS & Android for native commerce apps connected to WooCommerce. In Request details, include: current website URL, required mobile features, push notifications needs, app branding scope, integrations, and expected launch period.",
+    prefill: "Requested product: Mobile Applications\nWebsite URL: \nTarget platforms (iOS / Android): \nRequired app features: \nIntegrations needed: \nTimeline & budget: "
   },
   {
-    value: "presentation",
-    label: "Request a presentation",
-    info: "Book a personalized demo with our team. Explore how VOGO fits your operations and experience its capabilities live. In Request details, include: audience and goals, focus areas/modules of interest, preferred language/time zone, 2–3 time slots."
+    value: "enterprise",
+    label: "Enterprise request",
+    info: "VOGO Enterprise™ for flexible enterprise-grade implementations with custom architecture and integrations. In Request details, include: company profile, business processes to cover, required modules, integration landscape (ERP/CRM/POS), security/compliance constraints, and rollout phases.",
+    prefill: "Requested product: Enterprise request\nCompany / industry: \nBusiness goals: \nRequired modules / flows: \nIntegrations (ERP/CRM/POS/API): \nTimeline & budget: "
+  },
+  {
+    value: "bricolage_m_series",
+    label: "Bricolage Retail Industry - VOGO Bricolage M series",
+    info: "VOGO Bricolage M Series™ – AI Omnichannel solution for bricolage retail with conversational guidance and in-store digital support. In Request details, include: store model, product catalog size, customer journey needs, omnichannel requirements, and required operational integrations.",
+    prefill: "Requested product: Bricolage Retail Industry - VOGO Bricolage M series\nRetail format (online / offline / omnichannel): \nCatalog size: \nCustomer journey needs: \nIntegrations required: \nTimeline & budget: "
+  },
+  {
+    value: "retail_x_series",
+    label: "Retail Industry - VOGO Retail X Series",
+    info: "VOGO Retail X Series™ for food and general retail, focused on conversion growth with contextual AI recommendations. In Request details, include: retail segment, number of locations, average basket strategy, campaign goals, and data sources available for personalization.",
+    prefill: "Requested product: Retail Industry - VOGO Retail X Series\nRetail segment: \nLocations / channels: \nSales goals: \nPersonalization data available: \nTimeline & budget: "
+  },
+  {
+    value: "support_services",
+    label: "VOGO Support Services",
+    info: "VOGO Support Services™ for technical stability, proactive monitoring, security checks, and rapid incident response. In Request details, include: current platform setup, existing issues, support coverage hours, SLA expectations, and maintenance priorities.",
+    prefill: "Requested product: VOGO Support Services\nCurrent platform setup: \nCurrent issues / pain points: \nSupport scope needed: \nSLA expectations: \nTimeline & budget: "
+  },
+  {
+    value: "storage_services",
+    label: "VOGO Storage Services",
+    info: "VOGO Storage Services™ for secure, scalable cloud infrastructure optimized for WooCommerce, mobile apps, and AI workloads. In Request details, include: current hosting setup, performance constraints, security/compliance requirements, expected load, and migration expectations.",
+    prefill: "Requested product: VOGO Storage Services\nCurrent hosting setup: \nPerformance / uptime goals: \nSecurity & compliance requirements: \nExpected traffic/load: \nTimeline & budget: "
+  },
+  {
+    value: "build_migrate_integrate",
+    label: "VOGO Services: Build • Migrate • Integrate",
+    info: "End-to-end implementation services for building, migrating, and integrating digital commerce systems. In Request details, include: project type (build/migrate/integrate), existing systems, migration complexity, critical integrations, and delivery milestones.",
+    prefill: "Requested product: VOGO Services: Build • Migrate • Integrate\nProject type (build / migrate / integrate): \nExisting systems: \nRequired integrations: \nMilestones / deadlines: \nBudget range: "
+  },
+  {
+    value: "recommended_plugins",
+    label: "Recommended Plugins",
+    info: "VOGO Recommended Plugins – validated extension stack for stability, security, and performance. In Request details, include: current plugin stack, known conflicts, performance goals, security concerns, and requested audit depth.",
+    prefill: "Requested product: Recommended Plugins\nCurrent plugin stack: \nKnown issues/conflicts: \nPerformance goals: \nSecurity concerns: \nRequested audit scope: "
+  },
+  {
+    value: "vogo_partner",
+    label: "Become a VOGO Partner",
+    info: "Apply to join the VOGO Partner Network as reseller, consultant, ambassador, or technology partner. In Request details, include: partnership model, target market, current portfolio, team capabilities, and expected collaboration scope.",
+    prefill: "Requested option: Become a VOGO Partner\nPartnership model: \nTarget market / industries: \nCurrent portfolio & capabilities: \nTeam size / regions covered: \nExpected collaboration scope: "
   },
   {
     value: "reseller",
     label: "Become a VOGO Agent",
-    info: "Join our partner network and expand your portfolio with VOGO solutions. Access exclusive discounts, marketing materials, and continuous support. In Request details, include: target markets and industries, current solutions portfolio, sales model, certifications, territory coverage, expected pipeline."
+    info: "Join our partner network and expand your portfolio with VOGO solutions. Access exclusive discounts, marketing materials, and continuous support. In Request details, include: target markets and industries, current solutions portfolio, sales model, certifications, territory coverage, expected pipeline.",
+    prefill: "Requested option: Become a VOGO Agent\nTarget markets: \nCurrent portfolio: \nSales model: \nCoverage region: \nExpected pipeline: "
   },
   {
     value: "consultant",
     label: "Become a certified consultant",
-    info: "Get certified to implement and optimize VOGO for clients. Boost your credibility, gain new projects, and grow your consulting practice. In Request details, include: tech stack expertise, relevant certifications, 2–3 project examples, regions served, availability."
+    info: "Get certified to implement and optimize VOGO for clients. Boost your credibility, gain new projects, and grow your consulting practice. In Request details, include: tech stack expertise, relevant certifications, 2–3 project examples, regions served, availability.",
+    prefill: "Requested option: Become a certified consultant\nTech stack expertise: \nRelevant certifications: \nProject examples: \nRegions served: \nAvailability: "
   },
   {
     value: "influencer",
     label: "Become an accredited influencer",
-    info: "Collaborate with VOGO to share insights, tutorials, or success stories. Earn recognition and benefits for promoting digital transformation. In Request details, include: audience size and demographics, primary channels, content formats, sample links, collaboration concept."
+    info: "Collaborate with VOGO to share insights, tutorials, or success stories. Earn recognition and benefits for promoting digital transformation. In Request details, include: audience size and demographics, primary channels, content formats, sample links, collaboration concept.",
+    prefill: "Requested option: Become an accredited influencer\nAudience size & profile: \nPrimary channels: \nContent formats: \nSample links: \nCollaboration concept: "
   },
   {
     value: "ambassador",
     label: "Become a VOGO ambassador",
-    info: "Represent VOGO in your community. Build connections, co-create content, and help inspire innovation across industries. In Request details, include: community reach, events/networks, proposed initiatives, KPIs you track, time commitment."
+    info: "Represent VOGO in your community. Build connections, co-create content, and help inspire innovation across industries. In Request details, include: community reach, events/networks, proposed initiatives, KPIs you track, time commitment.",
+    prefill: "Requested option: Become a VOGO ambassador\nCommunity reach: \nEvents / networks: \nProposed initiatives: \nKPIs tracked: \nTime commitment: "
   },
   {
     value: "vendor_cert",
     label: "VOGO vendor certification",
-    info: "Apply to become a certified VOGO Premium Vendor. Gain visibility, verified credibility, and access to enterprise-level opportunities. In Request details, include: product/service category, key capabilities, compliance and quality standards, delivery regions, client references, SLAs."
+    info: "Apply to become a certified VOGO Premium Vendor. Gain visibility, verified credibility, and access to enterprise-level opportunities. In Request details, include: product/service category, key capabilities, compliance and quality standards, delivery regions, client references, SLAs.",
+    prefill: "Requested option: VOGO vendor certification\nCategory: \nKey capabilities: \nCompliance standards: \nDelivery regions: \nClient references / SLAs: "
   }
 ];
 
@@ -489,11 +520,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const reqSel=document.getElementById('requestType');
     const reqHelp=document.getElementById('requestHelp');
     const reqErr=document.getElementById('requestErr');
-    const ph=document.createElement('option'); ph.value=""; ph.textContent="Select a request type"; ph.disabled=true; ph.selected=true; reqSel.appendChild(ph);
-    REQUESTS.forEach(r=>{ const o=document.createElement('option'); o.value=r.value; o.textContent=r.label; o.dataset.info=r.info; reqSel.appendChild(o); });
-    function updateHelp(){ reqHelp.textContent=reqSel.selectedOptions[0]?.dataset.info||"" }
-    reqSel.addEventListener('change',()=>{ updateHelp(); reqErr.textContent=''; reqSel.removeAttribute('aria-invalid'); });
-    updateHelp();
+    const detailsEl=document.getElementById('details');
+
+    reqSel.innerHTML='';
+    const ph=document.createElement('option');
+    ph.value="";
+    ph.textContent="Select a request type";
+    ph.disabled=true;
+    ph.selected=true;
+    reqSel.appendChild(ph);
+
+    REQUESTS.forEach(r=>{
+      const o=document.createElement('option');
+      o.value=r.value;
+      o.textContent=r.label;
+      o.dataset.info=r.info||'';
+      o.dataset.prefill=r.prefill||'';
+      reqSel.appendChild(o);
+    });
+
+    function updateHelpAndDetails(){
+      const selected=reqSel.selectedOptions[0];
+      reqHelp.textContent=selected?.dataset.info||"";
+      if(selected?.dataset.prefill){
+        detailsEl.innerText=selected.dataset.prefill;
+      }
+    }
+
+    reqSel.addEventListener('change',()=>{
+      updateHelpAndDetails();
+      reqErr.textContent='';
+      reqSel.removeAttribute('aria-invalid');
+    });
+
+    updateHelpAndDetails();
 
     // Shoelace selects -> populate from inline MARKET_CITIES
     (async()=>{
@@ -537,7 +597,6 @@ syncInterest();
     ['click','focus'].forEach(ev=>waLink.addEventListener(ev,()=>{ waLink.href=buildWaText(); }));
 
     // RTE helpers
-    const detailsEl=document.getElementById('details');
     function getDetailsHTML(){ return detailsEl.innerHTML.trim() }
     function getDetailsPlain(){ const t=document.createElement('div'); t.innerHTML=getDetailsHTML(); return (t.textContent||'').replace(/\s+/g,' ').trim() }
 
