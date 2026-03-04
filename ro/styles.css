@@ -985,6 +985,16 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   }
 }
 
+
+/* Solution chooser section now uses a full-width background band, matching trust/certifications. */
+.solution-chooser-section {
+  background: var(--vogo-green-soft);
+}
+
+.solution-chooser-section .section-intro {
+  margin-bottom: 0;
+}
+
 /* Trust badges section */
 .trust-section { background: var(--vogo-green-soft); }
 .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
