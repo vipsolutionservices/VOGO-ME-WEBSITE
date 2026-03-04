@@ -144,6 +144,96 @@
       </div>
     </section>
 
+<section class="vogo-logos" style="
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  --row-height:30px;
+  --gap:80px;
+  --speed:60s;              /* <<< mult mai lung: vezi 20-30 icons inainte de reset */
+  --fade-w:120px;
+  background:#fff; border-top:1px solid rgba(0,0,0,.06); border-bottom:1px solid rgba(0,0,0,.06);
+  padding:15px 0; position:relative; overflow:hidden; user-select:none;
+">
+  <style>
+    .vogo-logos .track{
+      display:flex; gap:var(--gap); align-items:center; will-change:transform;
+      min-width:max-content;                    /* <<< important: pista are latimea continutului */
+      animation:vogo-marquee var(--speed,120s) linear infinite;
+    }
+    .vogo-logos .track > a{
+      display:flex; align-items:center; justify-content:center; height:var(--row-height);
+      flex:0 0 auto;
+    }
+    .vogo-logos img{
+      max-height:100%;
+      max-width:var(--maxw,320px);
+      width:auto; height:auto; object-fit:contain;
+      filter:grayscale(100%) saturate(0) contrast(95%);
+      opacity:.9; transition:filter .2s, opacity .2s, transform .2s;
+    }
+    .vogo-logos a:hover img{ filter:none; opacity:1; transform:scale(1.03); }
+
+    .vogo-logos::before,.vogo-logos::after{
+      content:""; position:absolute; top:0; bottom:0; width:var(--fade-w); pointer-events:none;
+      background:linear-gradient(to right,#fff,rgba(255,255,255,0)); z-index:2;
+    }
+    .vogo-logos::after{ right:0; transform:scaleX(-1); } .vogo-logos::before{ left:0; }
+
+    .vogo-logos:hover .track{ animation-play-state:paused; }
+
+    /* animatie pe GPU + fallback durata */
+    @keyframes vogo-marquee { 
+      from { transform:translate3d(0,0,0) } 
+      to   { transform:translate3d(-100%,0,0) } 
+    }
+
+    @media (max-width:767px){
+      .vogo-logos{ --row-height:48px; --gap:36px; --fade-w:64px; --speed:90s; }
+    }
+  </style>
+
+  <div class="wrap" style="white-space:nowrap;">
+    <div class="track">
+      <!-- lasă aici exact lista ta de <a><img loading="eager"> ... fără modificări -->
+      <!-- … toate logo-urile tale … -->
+
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Logo_Google_Analytics.svg.png" alt="Google Analytics"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Stripe_Logo_revised_2016.svg.png" alt="Stripe"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/PayPal.svg.png" alt="PayPal"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Apple_Pay_logo.svg.png" alt="Apple Pay"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Google_Pay_Logo.svg.png" alt="Google Pay"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Twilio-SMS.png" alt="Twilio SMS"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/green-square-social-media-logo_197792-2919.avif" alt="Social Media Suite" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Logo_of_YouTube_2015-2017.svg.png" alt="YouTube" style="--maxw: 280px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Microsoft_Dynamics_365_Logo_2021–present.svg.png" alt="Microsoft Dynamics 365" style="--maxw: 360px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Cloudflare_Logo.svg.png" alt="Cloudflare" style="--maxw: 300px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Shippo.png" alt="Shippo" style="--maxw: 240px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/ShipStation.png" alt="ShipStation" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Easyship-logo-scaled.png" alt="Easyship" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/DHL-Emblem-scaled.png" alt="DHL" style="--maxw: 300px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/UPS.jpg" alt="UPS" style="--maxw: 220px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Fedex-logo-scaled.png" alt="FedEx" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/appledeveloper-light.svg" alt="Apple Developer" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/ssl.jpg" alt="SSL" style="--maxw: 200px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/social-media-login.png" alt="Social Login" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Google_Maps_Logo.svg.png" alt="Google Maps" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/OpenAI_Logo.svg.png" alt="OpenAI" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Google-Gemini-Logo-scaled.png" alt="Google Gemini" style="--maxw: 280px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Python_logo_and_wordmark.svg.png" alt="Python" style="--maxw: 280px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Groq_logo.svg.png" alt="Groq" style="--maxw: 240px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/png-transparent-woocommerce-logo-landscape-tech-companies.png" alt="WooCommerce" style="--maxw: 320px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/rest-api.png" alt="REST API" style="--maxw: 240px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/SAP_2011_logo.svg" alt="SAP" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Oracle_logo.svg.png" alt="Oracle" style="--maxw: 260px"></a>
+      <a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/Salesforce.com_logo.svg.png" alt="Salesforce" style="--maxw: 300px"></a>
+<a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/GitHub_logo_2013.webp" alt="SAP" style="--maxw: 260px"></a>
+<a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/oauth_2_rexpondo_otrs_n.webp" alt="SAP" style="--maxw: 260px"></a>
+<a href="#"><img loading="eager" decoding="async" src="https://vogo.me/wp-content/uploads/2025/10/OpenID-Connect.png" alt="SAP" style="--maxw: 260px"></a>        
+    </div>
+  </div>
+</section>
+
     <!-- Sub-hero carousel: imaginile sunt încărcate dinamic din /img/products/carousel, auto-cycling și keyboard-friendly. -->
     <section class="section hero-carousel-section" aria-label="Carousel imagini VOGO WordPress">
       <div class="container">
