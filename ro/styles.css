@@ -1224,7 +1224,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr);
   gap: 18px;
   padding: 22px;
-  border-radius: 24px;
+  border-radius: 5px;
   border: 1px solid #cbe8de;
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(8px);
@@ -1248,7 +1248,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: inline-flex;
   align-items: center;
   border: 1px solid #c0ddd4;
-  border-radius: 999px;
+  border-radius: 5px;
   padding: 7px 12px;
   font-size: 0.82rem;
   font-weight: 600;
@@ -1260,7 +1260,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   gap: 10px;
 }
 .stat-card {
-  border-radius: 16px;
+  border-radius: 5px;
   border: 1px solid #d3e8e0;
   background: linear-gradient(160deg, #ffffff 0%, #effaf6 100%);
   padding: 14px;
@@ -1285,7 +1285,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .enterprise-offer-card {
   background: #ffffff;
   border: 1px solid #dce9e4;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 20px;
   box-shadow: 0 12px 24px rgba(16, 63, 52, 0.07);
 }
@@ -1308,7 +1308,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
 .enterprise-visual {
   background: linear-gradient(145deg, #ffffff 0%, #eff8f5 100%);
   border: 1px solid #dce9e4;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 16px;
   display: flex;
   align-items: center;
@@ -1319,7 +1319,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 14px;
+  border-radius: 5px;
 }
 .enterprise-actions {
   display: flex;
@@ -1333,7 +1333,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   justify-content: center;
   min-width: 220px;
   min-height: 56px;
-  border-radius: 12px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 .enterprise-cta-note {
