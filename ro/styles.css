@@ -465,7 +465,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   font-family: var(--aw-font-heading), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.98rem;
   font-weight: 400;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.00em;
   /* Requested update: justify paragraph content inside each card. */
   text-align: justify;
 }
