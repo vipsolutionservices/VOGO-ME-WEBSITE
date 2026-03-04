@@ -200,58 +200,71 @@ function buildOfferDetailLayout(offer, offerIndex) {
     return `<div class="detail-section-content">${detailsMarkup}</div>`;
   }
 
-  // Keep a deterministic layout for the support card:
-  // - right column uses ai-chatbot5 + ai-chatbot7
-  // - left column (under text) shows ai-chatbot2
+  // Present the support area as clean image + text showcase blocks (similar to reference attachments).
   const preferredImageNames = {
-    leftBottom: 'ai-chatbot2.png',
-    rightColumn: ['ai-chatbot5.png', 'ai-chatbot7.png']
+    row1Right: 'ai-chatbot5.png',
+    row2Left: 'ai-chatbot7.png',
+    row3Wide: 'ai-chatbot2.png'
   };
 
   const findImagePath = (fileName) => offer.supportGalleryImages.find((path) => path.endsWith(fileName));
-  const leftBottomImage = findImagePath(preferredImageNames.leftBottom);
-  const rightColumnImages = preferredImageNames.rightColumn
-    .map(findImagePath)
-    .filter(Boolean);
+  const row1RightImage = findImagePath(preferredImageNames.row1Right);
+  const row2LeftImage = findImagePath(preferredImageNames.row2Left);
+  const row3WideImage = findImagePath(preferredImageNames.row3Wide);
 
-  const leftBottomMarkup = leftBottomImage
-    ? `
-      <button class="support-gallery-thumb support-gallery-thumb--left" type="button" data-gallery-index="${offer.supportGalleryImages.indexOf(leftBottomImage)}" aria-label="Open image ${preferredImageNames.leftBottom}">
-        <img src="${leftBottomImage}" alt="VOGO AI preview - left section" loading="lazy" decoding="async" />
-      </button>
-    `
-    : '';
+  const detailsTextBlock = document.createElement('div');
+  detailsTextBlock.innerHTML = detailsMarkup;
 
-  const rightColumnMarkup = rightColumnImages
-    .map((imagePath) => {
-      const galleryIndex = offer.supportGalleryImages.indexOf(imagePath);
-      const imageName = imagePath.split('/').pop();
+  const topSection = detailsTextBlock.querySelector('.support-modern');
+  const detailsSection = detailsTextBlock.querySelector('.support-modern-points');
 
-      return `
-        <button class="support-gallery-thumb" type="button" data-gallery-index="${galleryIndex}" aria-label="Open image ${imageName}">
-          <img src="${imagePath}" alt="VOGO AI preview - right section" loading="lazy" decoding="async" />
-        </button>
-      `;
-    })
-    .join('');
+  const primaryTextMarkup = topSection ? topSection.outerHTML : detailsMarkup;
+  const secondaryTextMarkup = detailsSection ? detailsSection.outerHTML : '';
 
   const imagesPayload = encodeURIComponent(JSON.stringify(offer.supportGalleryImages));
 
+  const row1RightMarkup = row1RightImage
+    ? `<button class="support-gallery-thumb support-gallery-thumb--row1" type="button" data-gallery-index="${offer.supportGalleryImages.indexOf(row1RightImage)}" aria-label="Open image ${preferredImageNames.row1Right}">
+        <img src="${row1RightImage}" alt="VOGO AI preview - imagine principală" loading="lazy" decoding="async" />
+      </button>`
+    : '';
+
+  const row2LeftMarkup = row2LeftImage
+    ? `<button class="support-gallery-thumb support-gallery-thumb--row2" type="button" data-gallery-index="${offer.supportGalleryImages.indexOf(row2LeftImage)}" aria-label="Open image ${preferredImageNames.row2Left}">
+        <img src="${row2LeftImage}" alt="VOGO AI preview - imagine secundară" loading="lazy" decoding="async" />
+      </button>`
+    : '';
+
+  const row3WideMarkup = row3WideImage
+    ? `<button class="support-gallery-thumb support-gallery-thumb--wide" type="button" data-gallery-index="${offer.supportGalleryImages.indexOf(row3WideImage)}" aria-label="Open image ${preferredImageNames.row3Wide}">
+        <img src="${row3WideImage}" alt="VOGO AI preview - imagine panoramică" loading="lazy" decoding="async" />
+      </button>`
+    : '';
+
   return `
-    <div class="support-detail-layout">
-      <div class="detail-section-content">
-        ${detailsMarkup}
-        ${leftBottomMarkup}
+    <div class="support-detail-layout support-detail-table-layout">
+      <div class="support-detail-table-row support-detail-table-row--1">
+        <div class="support-detail-cell support-detail-cell--text">${primaryTextMarkup}</div>
+        <div class="support-detail-cell support-detail-cell--image">${row1RightMarkup}</div>
       </div>
-      <aside class="support-gallery-column" aria-label="VOGO AI image preview">
-        <div class="support-gallery-grid">${rightColumnMarkup}</div>
-        <button class="support-gallery-link" type="button" data-gallery-images="${imagesPayload}" data-gallery-index="0">
-          Vezi imagini
-        </button>
-        ${offer.buyNowLink
-          ? `<a class="support-buy-link" href="${offer.buyNowLink.href}" target="_blank" rel="noopener noreferrer">${offer.buyNowLink.label}</a>`
-          : ''}
-      </aside>
+
+      <div class="support-detail-table-row support-detail-table-row--2">
+        <div class="support-detail-cell support-detail-cell--image">${row2LeftMarkup}</div>
+        <div class="support-detail-cell support-detail-cell--text">${secondaryTextMarkup}</div>
+      </div>
+
+      <div class="support-detail-table-row support-detail-table-row--3">
+        <div class="support-detail-cell support-detail-cell--wide">${row3WideMarkup}</div>
+      </div>
+
+      <div class="support-detail-table-row support-detail-table-row--4">
+        <div class="support-detail-actions" aria-label="Acțiuni support">
+          <button class="support-gallery-link" type="button" data-gallery-images="${imagesPayload}" data-gallery-index="0">Vezi imagini</button>
+          ${offer.buyNowLink
+            ? `<a class="support-buy-link" href="${offer.buyNowLink.href}" target="_blank" rel="noopener noreferrer">${offer.buyNowLink.label}</a>`
+            : ''}
+        </div>
+      </div>
     </div>
   `;
 }
