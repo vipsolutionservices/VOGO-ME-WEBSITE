@@ -589,6 +589,17 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: #000000;
 }
 
+/* Support detail section visually aligned with the chooser-style band, on a light gray canvas. */
+.detail-section--support {
+  background: #f2f4f5;
+  border-radius: 0;
+  padding: clamp(28px, 4vw, 42px);
+}
+
+.detail-section--support .detail-section-head {
+  margin-bottom: 18px;
+}
+
 .offer-chip--support {
   background: var(--vogo-green);
   color: var(--white);
