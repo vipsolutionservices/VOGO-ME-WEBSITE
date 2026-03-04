@@ -660,7 +660,7 @@ syncInterest();
         }else{
           alert((json&&(json.error||json.data||'Submission failed. Please try again.'))||'Submission failed. Please try again.'); newCaptcha();
         }
-      }catch(_){ alert('Network error. Please try again.'); newCaptcha(); }
+      }catch(err){ console.error('Submit error:', err); alert('Network error. Please try again.'); newCaptcha(); }
       finally{ submitBtn.disabled=false; }
     });
   </script>
