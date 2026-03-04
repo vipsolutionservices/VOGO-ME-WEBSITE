@@ -136,6 +136,10 @@
     .btn{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:600;cursor:pointer}
     .btn[disabled]{opacity:.6;cursor:not-allowed}
     .btn-primary{background:var(--vogo);color:#fff}
+    .btn-loading{display:inline-flex;align-items:center;gap:8px}
+    .btn-spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;display:none;animation:btn-spin .8s linear infinite}
+    .btn.is-loading .btn-spinner{display:inline-block}
+    @keyframes btn-spin{to{transform:rotate(360deg)}}
     .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--ink)}
     .note{font-size:12px;color:var(--muted)}
     .error{color:#dc2626;font-size:12px;margin-top:6px}
@@ -321,7 +325,7 @@
 
 
 <div class="actions" style="margin-top:10px; padding-left:100px">
-  <button id="submitBtn" type="submit" class="btn btn-primary">Submit request</button>
+  <button id="submitBtn" type="submit" class="btn btn-primary btn-loading"><span class="btn-spinner" aria-hidden="true"></span><span id="submitBtnLabel">Submit request</span></button>
   <a class="btn btn-ghost" id="waLink" href="https://wa.me/40742203383" target="_blank" rel="noopener">Contact us on WhatsApp</a>
 </div>
 
@@ -629,10 +633,14 @@ syncInterest();
     }
 
     // Submit
-    const form=document.getElementById('contactForm'); const toast=document.getElementById('toast'); const submitBtn=document.getElementById('submitBtn');
+    const form=document.getElementById('contactForm'); const toast=document.getElementById('toast'); const submitBtn=document.getElementById('submitBtn'); const submitBtnLabel=document.getElementById('submitBtnLabel');
+    const submitDefaultText='Submit request';
+    const submitLoadingText='Submiting request';
     form.addEventListener('submit',async e=>{
       e.preventDefault(); if(!validate()) return;
       submitBtn.disabled=true;
+      submitBtn.classList.add('is-loading');
+      submitBtnLabel.textContent=submitLoadingText;
       const ajaxUrl=(window.VOGO_CONTACT&&VOGO_CONTACT.ajax_url)||'/wp-admin/admin-ajax.php';
       const nonce=(window.VOGO_CONTACT&&VOGO_CONTACT.nonce)||'';
       const payload={
@@ -661,7 +669,7 @@ syncInterest();
           alert((json&&(json.error||json.data||'Submission failed. Please try again.'))||'Submission failed. Please try again.'); newCaptcha();
         }
       }catch(err){ console.error('Submit error:', err); alert('Network error. Please try again.'); newCaptcha(); }
-      finally{ submitBtn.disabled=false; }
+      finally{ submitBtn.disabled=false; submitBtn.classList.remove('is-loading'); submitBtnLabel.textContent=submitDefaultText; }
     });
   </script>
 </body>
