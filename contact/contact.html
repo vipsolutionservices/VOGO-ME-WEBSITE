@@ -683,46 +683,48 @@ syncInterest();
     form.addEventListener('submit',async e=>{
       e.preventDefault(); if(!validate()) return;
       setSubmitLoading(true);
-      const ajaxUrl=(window.VOGO_CONTACT&&VOGO_CONTACT.ajax_url)||'/wp-admin/admin-ajax.php';
-      const nonce=(window.VOGO_CONTACT&&VOGO_CONTACT.nonce)||'';
-      const payload={
-        action:'vogo_contact_submit',
-        _ajax_nonce:nonce,
-        requestValue:reqSel.value,
-        requestLabel:reqSel.selectedOptions[0].textContent,
-        email:document.getElementById('email').value.trim(),
-        phone:document.getElementById('phone').value.trim(),
-        country:window._vogoGetSelectedCountry?.()||'not selected',
-        city:window._vogoGetSelectedCity?.()||'not selected',
-        interest: document.getElementById('interestOK').value,                 // ← aici        
-        details_html:getDetailsHTML(),
-        details_text:getDetailsPlain(),
-        ts:Date.now()
-      };
-      let res;
       try{
-        res=await fetch(ajaxUrl,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(payload).toString(),credentials:'same-origin',cache:'no-store'});
-      }catch(_){
-        alert('Network error. Please try again.');
-        newCaptcha();
+        const ajaxUrl=(window.VOGO_CONTACT&&VOGO_CONTACT.ajax_url)||'/wp-admin/admin-ajax.php';
+        const nonce=(window.VOGO_CONTACT&&VOGO_CONTACT.nonce)||'';
+        const payload={
+          action:'vogo_contact_submit',
+          _ajax_nonce:nonce,
+          requestValue:reqSel.value,
+          requestLabel:reqSel.selectedOptions[0]?.textContent||'',
+          email:document.getElementById('email').value.trim(),
+          phone:document.getElementById('phone').value.trim(),
+          country:window._vogoGetSelectedCountry?.()||'not selected',
+          city:window._vogoGetSelectedCity?.()||'not selected',
+          interest: document.getElementById('interestOK').value,                 // ← aici        
+          details_html:getDetailsHTML(),
+          details_text:getDetailsPlain(),
+          ts:Date.now()
+        };
+
+        let res;
+        try{
+          res=await fetch(ajaxUrl,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(payload).toString(),credentials:'same-origin',cache:'no-store'});
+        }catch(_){
+          alert('Network error. Please try again.');
+          newCaptcha();
+          return;
+        }
+
+        let json=null;
+        try{ json=await res.json(); }catch(_){ }
+
+        if(json&&json.success){
+          toast.style.display='block';
+          form.reset(); detailsEl.innerHTML=''; window._vogoResetCountryCity?.(); newCaptcha();
+          reqSel.selectedIndex=0; updateHelpAndDetails();
+          if(toast.scrollIntoView){ toast.scrollIntoView({behavior:'smooth',block:'center'}); }
+        }else{
+          alert((json&&(json.error||json.data||'Submission failed. Please try again.'))||'Submission failed. Please try again.');
+          newCaptcha();
+        }
+      }finally{
         setSubmitLoading(false);
-        return;
       }
-
-      let json=null;
-      try{ json=await res.json(); }catch(_){ }
-
-      if(json&&json.success){
-        toast.style.display='block';
-        form.reset(); detailsEl.innerHTML=''; window._vogoResetCountryCity?.(); newCaptcha();
-        if(reqSel.options.length){ reqSel.selectedIndex=0; }
-        updateHelpAndDetails();
-        if(toast.scrollIntoView){ toast.scrollIntoView({behavior:'smooth',block:'center'}); }
-      }else{
-        alert((json&&(json.error||json.data||'Submission failed. Please try again.'))||'Submission failed. Please try again.');
-        newCaptcha();
-      }
-      setSubmitLoading(false);
     });
   </script>
 </body>
