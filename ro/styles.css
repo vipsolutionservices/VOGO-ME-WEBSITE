@@ -666,7 +666,7 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: #ffffff;
 }
 /* [SECȚIUNE: SUPPORT MODERN] [SUBSECȚIUNE: HEADER] [TEXT: LEAD DESCRIPTIV] */
-.support-modern-lead {
+.support-modern .support-modern-lead {
   margin: 0 0 12px;
   color: #ffffff;
 }
