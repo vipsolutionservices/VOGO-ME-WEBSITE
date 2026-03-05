@@ -8,7 +8,100 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You | VOGO</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --vogo-green: #0f7b65;
+      --vogo-green-dark: #0a4f41;
+      --text: #111317;
+      --muted: #4d5562;
+      --white: #ffffff;
+      --border: #d7dbe1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      padding: 11px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--vogo-green);
+      color: var(--white);
+    }
+
+    .btn-outline {
+      border-color: #cad0d9;
+      background: var(--white);
+      color: var(--text);
+    }
+
+    .lead {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .eyebrow {
+      color: var(--vogo-green-dark);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+    }
+
+    .thankyou-page {
+      min-height: 100vh;
+      background: radial-gradient(circle at top right, #dff4ee 0%, #f4f8fb 40%, #ffffff 100%);
+    }
+
+    .thankyou-wrap {
+      width: min(980px, 92vw);
+      margin: 0 auto;
+      padding: 88px 0;
+    }
+
+    .thankyou-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: 0 22px 40px rgba(10, 18, 32, 0.09);
+      text-align: center;
+    }
+
+    .thankyou-card h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin: 0 0 16px;
+      line-height: 1.1;
+    }
+
+    .thankyou-card .lead {
+      margin: 0 auto;
+    }
+
+    .thankyou-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+  </style>
 </head>
 <body class="thankyou-page">
   <main class="thankyou-wrap">
