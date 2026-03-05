@@ -13,6 +13,7 @@ $vogome_inc_files = [
     '/inc/vogome_checkout_events.php',
     '/inc/vogome_enterprise_contact.php',
     '/inc/vogome_payment_success.php',
+    '/inc/vogome_geo_redirect.php',
 ];
 
 foreach ($vogome_inc_files as $vogome_inc_file) {
