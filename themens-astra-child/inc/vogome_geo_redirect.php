@@ -4,6 +4,39 @@
  */
 
 /**
+ * Resolve visitor country code from validated server sources.
+ *
+ * @return string Two-letter country code or empty string.
+ */
+function vogome_get_request_country_code() {
+    $server_country_headers = [
+        'HTTP_CF_IPCOUNTRY',
+        'HTTP_GEOIP_COUNTRY_CODE',
+        'GEOIP_COUNTRY_CODE',
+        'MM_COUNTRY_CODE',
+        'HTTP_X_COUNTRY_CODE',
+        'HTTP_X_APPENGINE_COUNTRY',
+    ];
+
+    foreach ($server_country_headers as $header_key) {
+        if (!empty($_SERVER[$header_key])) {
+            return strtoupper(trim((string) $_SERVER[$header_key]));
+        }
+    }
+
+    if (class_exists('WC_Geolocation')) {
+        $customer_ip = WC_Geolocation::get_ip_address();
+        $geolocation = WC_Geolocation::geolocate_ip($customer_ip, true, false);
+
+        if (!empty($geolocation['country'])) {
+            return strtoupper(trim((string) $geolocation['country']));
+        }
+    }
+
+    return '';
+}
+
+/**
  * Redirect root requests from Romanian IPs to /ro.
  */
 function vogome_redirect_romanian_traffic_to_ro() {
@@ -18,17 +51,11 @@ function vogome_redirect_romanian_traffic_to_ro() {
         return;
     }
 
-    $country_sources = [
-        isset($_SERVER['HTTP_CF_IPCOUNTRY']) ? $_SERVER['HTTP_CF_IPCOUNTRY'] : '',
-        isset($_SERVER['GEOIP_COUNTRY_CODE']) ? $_SERVER['GEOIP_COUNTRY_CODE'] : '',
-        isset($_SERVER['HTTP_X_COUNTRY_CODE']) ? $_SERVER['HTTP_X_COUNTRY_CODE'] : '',
-    ];
-
-    foreach ($country_sources as $country_code) {
-        if (strtoupper(trim((string) $country_code)) === 'RO') {
-            wp_safe_redirect(home_url('/ro/'), 302);
-            exit;
-        }
+    if (vogome_get_request_country_code() !== 'RO') {
+        return;
     }
+
+    wp_safe_redirect(home_url('/ro/'), 302);
+    exit;
 }
 add_action('template_redirect', 'vogome_redirect_romanian_traffic_to_ro');
