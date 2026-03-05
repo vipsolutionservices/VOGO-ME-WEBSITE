@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+  File role: Post-checkout thank-you page in English.
+  Includes clear actions for plugin download, instructions, WhatsApp support, and contact form.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | VOGO</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="thankyou-page">
+  <main class="thankyou-wrap">
+    <section class="thankyou-card">
+      <p class="eyebrow">Payment received</p>
+      <h1>Thank you for your purchase!</h1>
+      <p class="lead">Your order is being prepared. Use the quick actions below to install and activate your plugin smoothly.</p>
+
+      <div class="thankyou-actions">
+        <a class="btn btn-primary" id="download-plugin-whatsapp" target="_blank" rel="noopener">Download plugin</a>
+        <a class="btn btn-outline" id="view-instructions-whatsapp" target="_blank" rel="noopener">View instructions</a>
+        <a class="btn btn-outline" id="whatsapp-contact" target="_blank" rel="noopener">Contact us on WhatsApp</a>
+        <a class="btn btn-outline" href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener">Contact us</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function initThankYouPage() {
+      const downloadPluginButton = document.getElementById('download-plugin-whatsapp');
+      const viewInstructionsButton = document.getElementById('view-instructions-whatsapp');
+      const whatsappButton = document.getElementById('whatsapp-contact');
+      const standardWhatsappNumber = '40742203383';
+
+      const downloadPluginMessage = 'We request download link for paid plugin for company <>';
+      const viewInstructionsMessage = 'We requestinstall istructions for company for company <>';
+
+      if (downloadPluginButton) {
+        downloadPluginButton.href = `https://wa.me/${standardWhatsappNumber}?text=${encodeURIComponent(downloadPluginMessage)}`;
+      }
+
+      if (viewInstructionsButton) {
+        viewInstructionsButton.href = `https://wa.me/${standardWhatsappNumber}?text=${encodeURIComponent(viewInstructionsMessage)}`;
+      }
+
+      // Build code format requested by client: 19770905 + YYYYMMDDHHmm.
+      const now = new Date();
+      const pad = (value) => String(value).padStart(2, '0');
+      const dynamicCode = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}`;
+      const activationCode = `19770905${dynamicCode}`;
+      const whatsappMessage = `Question for activating plugin ${activationCode}`;
+      const whatsappUrl = `https://wa.me/40723313296?text=${encodeURIComponent(whatsappMessage)}`;
+
+      if (whatsappButton) {
+        whatsappButton.href = whatsappUrl;
+      }
+    })();
+  </script>
+</body>
+</html>
