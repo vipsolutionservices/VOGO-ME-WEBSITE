@@ -1,0 +1,38 @@
+<!--
+  Reusable SEO/common head fragment for /ro pages.
+  Keep only values that are truly global across all Romanian pages.
+  Page-specific tags (title, description, canonical, og:url, etc.) must stay in each page file.
+-->
+<!--
+  Robots directives are shared globally to keep crawlers focused on indexable pages.
+  Extended directives improve snippet and image preview quality in Google results.
+-->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+<!-- Language/region defaults used by social crawlers and search engines. -->
+<meta property="og:locale" content="ro_RO" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="VOGO" />
+
+<!-- Twitter baseline card type reused by all Romanian pages. -->
+<meta name="twitter:card" content="summary_large_image" />
+
+<!--
+  Reusable keyword cluster for target queries.
+  Includes both WooCommerce spellings to capture typo-based searches as requested.
+-->
+<meta
+  name="keywords"
+  content="aplicatii mobile, aplicatie mobila, ai plugin, wordpress, woocommerce, wocommerce, solutii AI, dezvoltare aplicatii mobile, plugin wordpress"
+/>
+
+<!-- Minor technical SEO defaults for cleaner crawling signals. -->
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Performance hints for faster font loading and improved Core Web Vitals. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

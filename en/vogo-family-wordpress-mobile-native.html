@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f7b65" />
+  <title>VOGO Family – WordPress către aplicații mobile native Flutter | Studiu comparativ complet</title>
+  <meta name="description" content="Studiu comparativ complet VOGO Family: WordPress și WooCommerce ca backend scalabil pentru aplicații native iOS/Android în Flutter. Ghid pentru business-uri, agenții și eCommerce orientat pe conversie și SEO." />
+  <meta name="keywords" content="WordPress aplicatie mobila, WooCommerce Flutter, mobile-first architecture, aplicatii native iOS Android, VOGO Family, agentii WordPress, ecommerce mobile, wordpress to app" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <link rel="canonical" href="https://vogo.me/ro/vogo-family-wordpress-mobile-native/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="ro_RO" />
+  <meta property="og:site_name" content="VOGO" />
+  <meta property="og:title" content="VOGO Family – Studiu comparativ WordPress → aplicații mobile native" />
+  <meta property="og:description" content="Perspectivă neutră și de expert pentru ecosistemele WordPress Plugin Library & Flutter Templates. Architecture mobile-first pentru creștere și vânzări." />
+  <meta property="og:url" content="https://vogo.me/ro/vogo-family-wordpress-mobile-native/" />
+  <meta property="og:image" content="https://vogo.me/img/products/carousel/mobile_set_1.png" />
+  <meta property="article:section" content="Mobile Commerce" />
+  <meta property="article:tag" content="WordPress" />
+  <meta property="article:tag" content="Flutter" />
+  <meta property="article:tag" content="WooCommerce" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VOGO Family – WordPress către aplicații mobile native Flutter" />
+  <meta name="twitter:description" content="Studiu complet pentru business-uri, agenții și freelanceri care vor aplicații native reale, nu wrappers." />
+  <meta name="twitter:image" content="https://vogo.me/img/products/carousel/mobile_set_1.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "VOGO Family – Studiu comparativ asupra strategiilor moderne WordPress către aplicații mobile",
+    "description": "Analiză neutră și practică privind cele mai folosite abordări WordPress-to-mobile și avantajele unei arhitecturi unificate mobile-first.",
+    "inLanguage": "ro",
+    "mainEntityOfPage": "https://vogo.me/ro/vogo-family-wordpress-mobile-native/",
+    "author": {
+      "@type": "Organization",
+      "name": "VOGO"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VOGO",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vogo.me/wp-content/uploads/2025/10/Logo-vogo.svg"
+      }
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "VOGO Family generează automat aplicația mobilă din site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nu. VOGO Family pregătește WordPress și WooCommerce ca backend mobile-first, iar aplicațiile native Flutter consumă API-uri optimizate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Este o soluție WebView sau wrapper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nu. Arhitectura este orientată spre aplicații native reale iOS și Android, fără randare browser în interiorul aplicației."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Pentru cine este potrivită această abordare?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pentru business-uri eCommerce, agenții și echipe care urmăresc scalabilitate, performanță și control strategic pe termen lung."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html" aria-label="VOGO - mergi la începutul paginii index">
+        <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
+        <span>VOGO</span>
+      </a>
+      <a class="btn btn-primary promo-cta mobile-top-cta" href="#cta-final">Schedule a discussion</a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenuPanel">
+        <i class="bi bi-list" aria-hidden="true"></i>
+      </button>
+      <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <nav class="main-nav" id="mainNav">
+          <a href="#context">Context</a>
+          <a href="#abordari">Comparativ</a>
+          <a href="#vogo-family">Architecture</a>
+          <a href="#agency">Agencies</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <div class="header-cta-group">
+          <a class="btn btn-primary promo-cta" href="index.html#plans">
+            <span class="promo-cta-desktop">Vezi planurile disponibile acum</span>
+            <span class="promo-cta-mobile">Vezi planurile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section page-backlink-section" aria-label="Back to the VOGO home page">
+      <div class="container">
+        <a class="btn btn-outline page-backlink" href="index.html" rel="internal">← Back to the VOGO home page</a>
+      </div>
+    </section>
+
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">VOGO FAMILY • WORDPRESS • FLUTTER • MOBILE-FIRST COMMERCE</p>
+          <h1>VOGO Family – Studiu comparativ complet: WordPress către aplicații mobile native</h1>
+          <p>
+            O perspectivă neutră, de expert, pentru ecosistemele <strong>WordPress Plugin Library</strong> și <strong>Flutter Templates</strong>.
+            Această pagină este construită pentru două audiențe clare: <strong>agenții</strong> care livrează proiecte comerciale
+            și <strong>business-uri finale</strong> care vor să crească vânzările prin experiențe mobile native, nu prin shortcut-uri.
+          </p>
+          <p>
+            VOGO Family propune o schimbare de paradigmă: nu conversie superficială de site, ci arhitectură unificată de produs,
+            în care WordPress + WooCommerce devin backend scalabil, iar Flutter livrează aplicații iOS/Android performante.
+          </p>
+          <div class="hero-actions" aria-label="Acțiuni principale">
+            <div class="hero-buttons">
+              <a class="btn btn-primary" href="https://wa.me/40723313296?text=Buna%21%20Vreau%20sa%20vorbim%20despre%20VOGO%20Family." target="_blank" rel="noopener noreferrer">Talk to us</a>
+              <a class="btn btn-outline" href="https://vogo.family/" target="_blank" rel="noopener noreferrer">Vezi demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="context" class="section">
+      <div class="container">
+        <h2>Why “WordPress to mobile app” is no longer optional</h2>
+        <p>
+          În ultimii ani, WordPress a evoluat dintr-un simplu CMS într-un backend complet pentru comerț digital, conținut,
+          comunități și servicii. În paralel, comportamentul utilizatorilor s-a mutat decisiv spre mobile.
+          Așteptarea standard nu mai este „site responsive”, ci <strong>aplicație mobilă rapidă, coerentă și nativă</strong>.
+        </p>
+        <p>
+          Provocarea reală pentru decidenți nu mai este: <em>„Putem face o aplicație?”</em>
+          ci: <em>„Cum construim un canal mobil scalabil, performant și sigur, fără să ne fragmentăm infrastructura?”</em>
+        </p>
+        <p>
+          În acest studiu comparativ analizăm abordările dominante din piață și evidențiem modelul arhitectural care oferă
+          continuitate de la MVP la enterprise, fără rescrieri costisitoare.
+        </p>
+      </div>
+    </section>
+
+    <section id="abordari" class="section faq-section">
+      <div class="container">
+        <h2>Cele trei abordări dominante din piață (analiză obiectivă)</h2>
+        <div class="details-stack">
+          <article class="detail-section">
+            <div class="detail-section-head"><h3>1) Soluții website-centric conversion (wrapper / container / PWA)</h3></div>
+            <p>
+              Experiența mobilă este, de regulă, o oglindire a website-ului. Implementarea este rapidă,
+              iar costul inițial poate fi atractiv pentru proiecte pilot.
+            </p>
+            <ul>
+              <li><strong>Avantaje:</strong> lansare foarte rapidă, buget inițial redus, util pentru testare.</li>
+              <li><strong>Limitări:</strong> UX limitat la capabilitățile browserului, performanță dependentă de site, acces nativ redus.</li>
+              <li><strong>Potrivit pentru:</strong> MVP, proof-of-concept, proiecte cu orizont scurt.</li>
+            </ul>
+          </article>
+
+          <article class="detail-section">
+            <div class="detail-section-head"><h3>2) Platform-managed app builders (no-code / managed)</h3></div>
+            <p>
+              Aplicații native generate pe baza datelor WordPress, cu control ridicat deținut de platforma furnizorului.
+              Este atractiv pentru echipe non-tehnice care prioritizează simplitatea de operare.
+            </p>
+            <ul>
+              <li><strong>Avantaje:</strong> time-to-market bun, onboarding simplu, fără echipă mobilă internă la început.</li>
+              <li><strong>Limitări:</strong> extensibilitate redusă, dependență de vendor, flexibilitate tehnică limitată.</li>
+              <li><strong>Potrivit pentru:</strong> lansări rapide standardizate, proiecte fără cerințe complexe de custom logic.</li>
+            </ul>
+          </article>
+
+          <article class="detail-section">
+            <div class="detail-section-head"><h3>3) API-driven mobile frontends (WordPress ca data source)</h3></div>
+            <p>
+              WordPress devine sursă de date, iar aplicația mobilă consumă API-uri. Rezultatul este o separare mai curată
+              între backend și frontend, cu experiențe native superioare.
+            </p>
+            <ul>
+              <li><strong>Avantaje:</strong> UX mai bun, performanță ridicată, control mai mare asupra produsului mobil.</li>
+              <li><strong>Limitări:</strong> API-uri adesea incomplete, logică fragmentată, costuri mai mari de integrare și mentenanță.</li>
+              <li><strong>Potrivit pentru:</strong> echipe tehnice și proiecte cu cerințe de calitate ridicată.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Piesa lipsă în majoritatea implementărilor: arhitectura unificată de produs</h2>
+        <p>
+          Multe soluții rezolvă viteza de lansare, dar nu rezolvă consistența de produs. Când business-ul crește,
+          apar blocaje de performanță, date duplicate și procese greu de extins.
+        </p>
+        <p>În practică, companiile care urmăresc creșterea reală au nevoie de:</p>
+        <ul>
+          <li>un singur backend de adevăr pentru web și mobile;</li>
+          <li>aplicații mobile native reale, nu ambalaje;</li>
+          <li>securitate și performanță by design;</li>
+          <li>evoluție de la MVP la enterprise fără rescriere completă.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="vogo-family" class="section enterprise-section">
+      <div class="container enterprise-grid">
+        <div>
+          <p class="eyebrow">VOGO FAMILY • PRODUCT-FIRST • ARCHITECTURE-DRIVEN</p>
+          <h2>Platformă mobile-first pentru creștere reală: WordPress + WooCommerce + aplicații native</h2>
+          <p>
+            VOGO Family este construit pentru companii care vor <strong>vânzări mai mari pe mobil</strong>, nu doar o aplicație „de bifat”.
+            Păstrezi WordPress și WooCommerce ca motor de business, iar pe mobil livrezi experiențe native rapide, stabile și orientate pe conversie.
+          </p>
+          <p>
+            Rezultatul: un singur backend, costuri mai predictibile și un roadmap clar de la MVP la scalare regională sau internațională.
+          </p>
+
+          <h3>Ce primești concret</h3>
+          <ul>
+            <li>Architecture unificată web + mobile, fără duplicare de logică.</li>
+            <li>API-uri optimizate pentru performanță și checkout rapid pe mobil.</li>
+            <li>Aplicații native Flutter (iOS/Android), fără WebView și fără compromisuri UX.</li>
+            <li>Bază solidă pentru retenție: notificări, recurență, cont client, loializare.</li>
+          </ul>
+        </div>
+
+        <div class="detail-section">
+          <h3>De ce este o alegere comercială mai bună</h3>
+          <ul>
+            <li>Crește rata de conversie pe mobil prin experiență nativă și fluxuri simplificate.</li>
+            <li>Scade costul total pe termen lung printr-un stack coerent și ușor de extins.</li>
+            <li>Elimini blocajele specifice soluțiilor wrapper sau platformelor închise.</li>
+            <li>Pregătești business-ul pentru campanii, sezonalitate și volume mari de trafic.</li>
+          </ul>
+          <p>
+            Vrei să vezi ce variantă se potrivește exact modelului tău de business?
+            <a href="https://wa.me/40723313296?text=Buna%21%20Vreau%20o%20discutie%20despre%20VOGO%20Family%20pentru%20business-ul%20meu." target="_blank" rel="noopener noreferrer">Discută pe WhatsApp</a>
+            sau
+            <a href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer">trimite cererea prin formular</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Comparative snapshot (business view)</h2>
+        <div class="detail-section">
+          <p><strong>Website-centric (wrapper/PWA):</strong> lansare rapidă, dar retenție și conversie limitate când business-ul crește.</p>
+          <p><strong>Platform-managed:</strong> operare simplă, însă depinzi de reguli externe și ai personalizare restrânsă.</p>
+          <p><strong>API-driven clasic:</strong> flexibil tehnic, dar poate deveni costisitor fără un model clar de produs.</p>
+          <p><strong>VOGO Family (unified mobile-first):</strong> echilibru între viteză, control comercial, SEO content și scalare.</p>
+          <p><strong>Concluzie business:</strong> viteza te ajută să lansezi. Arhitectura potrivită te ajută să vinzi constant.</p>
+          <p>
+            Pentru estimare rapidă și plan de implementare:
+            <a href="https://wa.me/40723313296?text=Salut%2C%20vreau%20o%20estimare%20rapida%20pentru%20aplicatia%20mobila." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            ·
+            <a href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer">formular de contact</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="agency" class="section">
+      <div class="container">
+        <h2>Pentru agenții și freelanceri: de ce această abordare vinde mai bine</h2>
+        <div class="cards-grid">
+          <article class="detail-section">
+            <h3>1) Pachete vandabile clar: audit → MVP → growth</h3>
+            <ul>
+              <li>Prezinți clientului un traseu simplu, ușor de bugetat.</li>
+              <li>Crești marja prin servicii recurente: mentenanță, optimizare, release management.</li>
+              <li>Reduci riscul de proiect printr-un backend cunoscut (WordPress/WooCommerce).</li>
+            </ul>
+          </article>
+
+          <article class="detail-section">
+            <h3>2) Diferențiere reală în pitch-ul comercial</h3>
+            <ul>
+              <li>Propui aplicații native, nu replici de website.</li>
+              <li>Ai argumente solide pentru performanță, retenție și conversie mobilă.</li>
+              <li>Poți livra white-label pentru mai mulți clienți, pe un framework repetabil.</li>
+            </ul>
+          </article>
+
+          <article class="detail-section">
+            <h3>3) Timp mai mic până la venit recurent</h3>
+            <ul>
+              <li>Onboarding mai rapid al clienților existenți WooCommerce.</li>
+              <li>Upsell natural pe automatizări, analytics și campanii mobile.</li>
+              <li>Roadmap pe termen lung, fără rebuild complet la fiecare etapă.</li>
+            </ul>
+            <p>
+              Vrei să discutăm un model de parteneriat?
+              <a href="https://wa.me/40723313296?text=Buna%21%20Vreau%20detalii%20despre%20parteneriatul%20VOGO%20Family." target="_blank" rel="noopener noreferrer">Scrie-ne pe WhatsApp</a>
+              sau
+              <a href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer">completează formularul</a>.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section enterprise-section">
+      <div class="container enterprise-grid">
+        <div class="detail-section">
+          <h3>WordPress.org listing – descriere optimizată (variantă scurtă)</h3>
+          <p>
+            VOGO Family este o platformă mobile-first care transformă WordPress și WooCommerce într-un backend scalabil
+            pentru aplicații native iOS și Android. Soluția este construită pentru performanță, control și creștere pe termen lung,
+            fără WebView wrappers și fără lock-in pe platforme închise.
+          </p>
+          <ul>
+            <li>Aplicații native reale (Flutter), pregătite pentru App Store / Google Play.</li>
+            <li>API layer custom pentru mobile performance și securitate.</li>
+            <li>Logică unificată pentru web + mobile + extensii viitoare.</li>
+            <li>Architecture modulară pentru ecommerce, subscriptions și servicii.</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <h3>Flutter marketplace pitch – versiune compactă</h3>
+          <p>
+            VOGO Family este un sistem comercial-ready pentru Flutter, care folosește WordPress și WooCommerce ca backend scalabil.
+            Permite lansarea de aplicații native reale, cu control total pe UI/UX și extensibilitate orientată pe proiecte client.
+          </p>
+          <ul>
+            <li>Nu este wrapper, nu este no-code toy, nu este demo one-purpose.</li>
+            <li>Separare clară backend/frontend pentru mentenanță sănătoasă.</li>
+            <li>Potrivit pentru agenții, freelanceri și produse comerciale serioase.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Use-cases demonstrative (text-only)</h2>
+        <div class="details-stack">
+          <article class="detail-section">
+            <h3>Retail D2C cu focus pe repeat purchase</h3>
+            <p>
+              Brandul păstrează WooCommerce ca sursă de adevăr și lansează aplicația pentru comenzi recurente,
+              promoții segmentate și experiență de checkout mai rapidă. Efectul urmărit: creștere conversie și AOV pe mobil.
+            </p>
+          </article>
+          <article class="detail-section">
+            <h3>Business cu abonamente și membership</h3>
+            <p>
+              Accesul, plățile și conținutul premium rămân sincronizate între web și aplicație, reducând fricțiunea de suport
+              și îmbunătățind retenția lunară.
+            </p>
+          </article>
+          <article class="detail-section">
+            <h3>Servicii locale care scalează multi-oraș</h3>
+            <p>
+              Pornire rapidă pe MVP, apoi extindere pe zone, fluxuri și integrări fără rescriere completă a aplicației.
+              Arhitectura permite lansări iterabile și control pe costuri.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Appendix tehnic pentru dezvoltatori (rezumat practic)</h2>
+        <div class="details-stack">
+          <article class="detail-section">
+            <h3>Stack și separare responsabilități</h3>
+            <ul>
+              <li>WordPress/WooCommerce pentru administrare business, catalog, comenzi, clienți.</li>
+              <li>Layer API dedicat pentru aplicație (endpoint-uri curate, payload-uri reduse).</li>
+              <li>Flutter pentru UI nativ și fluxuri orientate pe viteză de utilizare.</li>
+            </ul>
+          </article>
+          <article class="detail-section">
+            <h3>Securitate și operare</h3>
+            <ul>
+              <li>Autentificare token/JWT, permisiuni pe roluri și validări server-side.</li>
+              <li>Limitare endpoint-uri sensibile și monitorizare trafic API.</li>
+              <li>Versionare endpoint-uri pentru update-uri controlate în aplicații.</li>
+            </ul>
+          </article>
+          <article class="detail-section">
+            <h3>SEO + Sales alignment</h3>
+            <ul>
+              <li>Conținut SEO pe site pentru achiziție organică și educare lead-uri.</li>
+              <li>Aplicația optimizează conversia și retenția, nu înlocuiește strategia web.</li>
+              <li>Datele unificate permit decizii comerciale mai rapide.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <h2>FAQ orientat pe decizie (business + agenții)</h2>
+        <div class="details-stack">
+          <article class="detail-section">
+            <h3>În cât timp putem lansa prima versiune?</h3>
+            <p>
+              În funcție de complexitate, MVP-ul poate fi lansat rapid, apoi extins etapizat. Scopul este timp mic până la piață,
+              fără a sacrifica baza tehnică pentru scalare.
+            </p>
+          </article>
+          <article class="detail-section">
+            <h3>Trebuie să refacem website-ul existent?</h3>
+            <p>
+              Nu. În majoritatea cazurilor păstrăm WordPress/WooCommerce și construim stratul mobile-first peste infrastructura existentă.
+            </p>
+          </article>
+          <article class="detail-section">
+            <h3>Este potrivit și pentru agenții cu clienți multipli?</h3>
+            <p>
+              Da. Modelul este gândit pentru standardizare, white-label și venit recurent din suport + optimizare.
+            </p>
+          </article>
+          <article class="detail-section">
+            <h3>Cum începem discuția comercială?</h3>
+            <p>
+              Trimite un mesaj rapid pe
+              <a href="https://wa.me/40723313296?text=Salut%2C%20vreau%20o%20discutie%20despre%20VOGO%20Family." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              sau completează formularul de contact:
+              <a href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer">vogo.me/ecomm-contact-request/</a>.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section" id="cta-final">
+      <div class="container cta-grid">
+        <h2>Vrei varianta potrivită pentru proiectul tău?</h2>
+        <div>
+          <p>
+            Putem livra rapid materiale dedicate: PR scurt (600–700 cuvinte), descriere optimizată WordPress.org,
+            pitch pentru marketplace-uri Flutter, card description 100–150 cuvinte, bullets orientate pe eCommerce,
+            bullets pentru agenții/freelancers, format Q&A comparativ, plus appendix tehnic extins.
+          </p>
+          <p>
+            Dacă urmărești vânzări recurente și retenție pe mobil, următorul pas este o discuție de arhitectură aplicată pe business-ul tău.
+          </p>
+          <a href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer" class="btn btn-light">Complete the contact form</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-backlink-section" aria-label="Navigare către pagina principală VOGO">
+      <div class="container">
+        <a class="btn btn-outline page-backlink" href="index.html" rel="internal">← Back to VOGO index</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo">
+          <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="lazy" decoding="async" />
+          <span>VOGO</span>
+        </div>
+        <p>Platforme inteligente pentru suport, retail și mobile applications.</p>
+      </div>
+      <div>
+        <h4>Companie</h4>
+        <ul><li>Despre noi</li><li>Contact</li><li>Cariere</li></ul>
+      </div>
+      <div id="services-footer">
+        <h4>Servicii</h4>
+        <ul><li>Build</li><li>Migrate</li><li>Integrate</li></ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+    const mainNav = document.getElementById('mainNav');
+
+    if (mobileMenuToggle && mobileMenuPanel && mainNav) {
+      const setMenuState = (isOpen) => {
+        mobileMenuPanel.classList.toggle('is-open', isOpen);
+        mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+        document.body.classList.toggle('mobile-nav-open', isOpen);
+      };
+
+      mobileMenuToggle.addEventListener('click', () => {
+        setMenuState(!mobileMenuPanel.classList.contains('is-open'));
+      });
+
+      mainNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenuState(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMenuState(false);
+      });
+    }
+  </script>
+</body>
+</html>

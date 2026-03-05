@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--
+  File role: Checkout page for VOGO pricing plans.
+  This version keeps copy in English and delegates styling to ro/styles.css.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOGO Checkout | Select billing cycle</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+</head>
+<body class="checkout-page">
+  <!-- Header branding section: VOGO logo and brand text only. -->
+  <header class="checkout-header">
+    <div class="checkout-header-inner">
+      <img src="../img-general/vogo-logo.png" alt="VOGO logo" class="checkout-logo" />
+      <span class="checkout-brand">VOGO</span>
+    </div>
+  </header>
+
+  <div class="checkout-wrapper">
+    <a class="back-link" href="index.html#plans" aria-label="Back to pricing plans">
+      <span aria-hidden="true">←</span>
+      Back to pricing
+    </a>
+
+    <main class="checkout-main">
+      <h1>Select billing cycle</h1>
+
+      <section class="billing-card" aria-label="Billing cycle options">
+        <h2 class="billing-card-header" id="package-title">Package billing options</h2>
+
+        <label class="billing-option" for="cycle-1y">
+          <input id="cycle-1y" type="radio" name="billing-cycle" checked />
+          <span class="billing-option-label">1 year</span>
+          <span class="billing-option-price" id="price-1y">€7 <span>x 12 months</span></span>
+        </label>
+
+        <label class="billing-option" for="cycle-2y">
+          <input id="cycle-2y" type="radio" name="billing-cycle" />
+          <span class="billing-option-label">2 years</span>
+          <span class="billing-option-price" id="price-2y">€7 <span>x 24 months</span></span>
+          <span class="badge-save">Save 5%</span>
+        </label>
+
+        <label class="billing-option" for="cycle-3y">
+          <input id="cycle-3y" type="radio" name="billing-cycle" />
+          <span class="billing-option-label">3 years</span>
+          <span class="billing-option-price" id="price-3y">€7 <span>x 36 months</span></span>
+          <span class="badge-save">Save 10%</span>
+        </label>
+
+        <label class="billing-option" for="cycle-test">
+          <input id="cycle-test" type="radio" name="billing-cycle" />
+          <span class="billing-option-label">Test</span>
+          <span class="billing-option-price">1 Euro <span>one-time test payment</span></span>
+          <span class="badge-save">Test payment</span>
+        </label>
+      </section>
+
+      <div class="action-wrap">
+        <p class="fine-print" id="checkout-selection-note" aria-live="polite"></p>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1T6KjcGzeoRSK6Uw3ryVFalY"
+          publishable-key="pk_live_51R2q3vGzeoRSK6UwrHystLcCJYQkUYHfAavK5vcdhWs8s5tKyVCSBrsACCtpOrMwlIP8tW6vF24wodv88GA5kPks00xKJD6Ng6"
+        >
+        </stripe-buy-button>
+        <p class="trust-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4 5V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V5L12 2Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          30-day money-back guarantee
+        </p>
+        <div class="post-payment-help" aria-label="Post payment navigation">
+          <p>If payment is completed and this tab remains on Stripe, use this direct link to return in the VOGO setup flow:</p>
+          <a class="btn btn-outline" id="return-to-system" href="thankyou.html">Continue to download, instructions and contact pages</a>
+        </div>
+        <p class="fine-print">*Discounted plans renew at list price.</p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function initCheckout() {
+      const params = new URLSearchParams(window.location.search);
+      const packageCode = (params.get('package') || 'E100').toUpperCase();
+      const statusFromQuery = (params.get('status') || '').toLowerCase();
+      const checkoutSelectionNote = document.getElementById('checkout-selection-note');
+      const returnToSystemLink = document.getElementById('return-to-system');
+      const billingCycleInputs = Array.from(document.querySelectorAll('input[name="billing-cycle"]'));
+      const actionWrap = document.querySelector('.action-wrap');
+      const initialStripeBuyButton = document.querySelector('stripe-buy-button');
+      const stripePublishableKey = initialStripeBuyButton ? initialStripeBuyButton.getAttribute('publishable-key') : '';
+
+      const packageConfig = {
+        E100: { label: 'E100 Package', monthlyPrice: 7 },
+        E1000: { label: 'E1000 Package', monthlyPrice: 27 }
+      };
+
+      const selectedPackage = packageConfig[packageCode] || packageConfig.E100;
+      const stripeBuyButtonByCycle = {
+        '1y': 'buy_btn_1T6KjcGzeoRSK6Uw3ryVFalY',
+        '2y': 'buy_btn_1T6KybGzeoRSK6Uw2R3w5hno',
+        '3y': 'buy_btn_1T6L4EGzeoRSK6Uwak9gmJdo',
+        'test': 'buy_btn_1T6LUsGzeoRSK6Uwr3djroO9'
+      };
+
+      const titleElement = document.getElementById('package-title');
+      const yearlyPriceElement = document.getElementById('price-1y');
+      const twoYearPriceElement = document.getElementById('price-2y');
+      const threeYearPriceElement = document.getElementById('price-3y');
+
+      titleElement.textContent = `${selectedPackage.label} • Billing options`;
+      yearlyPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 12 months</span>`;
+      twoYearPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 24 months</span>`;
+      threeYearPriceElement.innerHTML = `€${selectedPackage.monthlyPrice} <span>x 36 months</span>`;
+
+      /**
+       * Sends checkout event details to a WordPress AJAX endpoint that emails adrian@vogo.family.
+       * The endpoint is implemented in theme PHP for both authenticated and guest users.
+       */
+      function sendCheckoutEvent(eventType, extra = {}) {
+        const endpoint = `${window.location.origin}/wp-admin/admin-ajax.php`;
+        const body = new URLSearchParams({
+          action: 'vogome_checkout_event',
+          event_type: eventType,
+          package_code: packageCode,
+          billing_cycle: extra.billingCycle || '',
+          payment_status: extra.paymentStatus || '',
+          checkout_url: window.location.href,
+          metadata: JSON.stringify(extra)
+        });
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body,
+          keepalive: true
+        }).catch(() => {
+          // Intentionally silent: analytics email should never block checkout UX.
+        });
+      }
+
+      function renderStripeBuyButton(selectedCycle) {
+        const buyButtonId = stripeBuyButtonByCycle[selectedCycle];
+        if (!actionWrap || !buyButtonId || !stripePublishableKey) {
+          return;
+        }
+
+        const existingButton = actionWrap.querySelector('stripe-buy-button');
+        if (existingButton) {
+          existingButton.remove();
+        }
+
+        const nextButton = document.createElement('stripe-buy-button');
+        nextButton.setAttribute('buy-button-id', buyButtonId);
+        nextButton.setAttribute('publishable-key', stripePublishableKey);
+        actionWrap.insertBefore(nextButton, checkoutSelectionNote.nextSibling);
+      }
+
+      function syncCheckoutNote() {
+        const selectedInput = billingCycleInputs.find((input) => input.checked);
+        const selectedCycle = selectedInput ? selectedInput.id.replace('cycle-', '') : '1y';
+        const yearsByCycle = {
+          '1y': '1 year',
+          '2y': '2 years',
+          '3y': '3 years',
+          'test': 'Test 1 Euro'
+        };
+
+        renderStripeBuyButton(selectedCycle);
+        checkoutSelectionNote.textContent = `You selected ${selectedPackage.label}, ${yearsByCycle[selectedCycle]}. Stripe checkout is displayed below.`;
+      }
+
+      // Requirement: send email when user enters checkout page.
+      sendCheckoutEvent('page_enter');
+
+      // Requirement: send email for success/error statuses detected in URL.
+      if (statusFromQuery === 'success' || statusFromQuery === 'error') {
+        sendCheckoutEvent('payment_result', { paymentStatus: statusFromQuery });
+      }
+
+      const thankYouUrl = `thankyou.html?package=${encodeURIComponent(packageCode)}`;
+      if (returnToSystemLink) {
+        returnToSystemLink.href = thankYouUrl;
+      }
+
+      // If Stripe redirects back with success status, route users to the post-payment hub page.
+      if (statusFromQuery === 'success') {
+        window.setTimeout(() => {
+          window.location.href = thankYouUrl;
+        }, 500);
+      }
+
+      // Best-effort Stripe postMessage signal watcher for payment completion/error.
+      window.addEventListener('message', (event) => {
+        if (!event || !event.data) {
+          return;
+        }
+
+        const payload = typeof event.data === 'string' ? event.data : JSON.stringify(event.data);
+        if (payload.includes('checkout.session.completed')) {
+          sendCheckoutEvent('payment_result', { paymentStatus: 'success', stripePayload: payload });
+        }
+        if (payload.includes('checkout.session.expired') || payload.includes('checkout.error')) {
+          sendCheckoutEvent('payment_result', { paymentStatus: 'error', stripePayload: payload });
+        }
+      });
+
+      billingCycleInputs.forEach((input) => {
+        input.addEventListener('change', syncCheckoutNote);
+      });
+
+      syncCheckoutNote();
+    })();
+  </script>
+</body>
+</html>
