@@ -47,7 +47,27 @@ function vogome_redirect_romanian_traffic_to_ro() {
     $request_uri = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '';
     $request_path = parse_url($request_uri, PHP_URL_PATH);
 
-    if (!is_string($request_path) || ($request_path !== '/' && $request_path !== '')) {
+    if (!is_string($request_path)) {
+        return;
+    }
+
+    $normalized_request_path = untrailingslashit($request_path);
+    if ($normalized_request_path === '') {
+        $normalized_request_path = '/';
+    }
+
+    $home_path = wp_parse_url(home_url('/'), PHP_URL_PATH);
+    $home_path = is_string($home_path) ? untrailingslashit($home_path) : '/';
+    if ($home_path === '') {
+        $home_path = '/';
+    }
+
+    $home_index_path = untrailingslashit($home_path . '/index.php');
+    if ($home_index_path === '') {
+        $home_index_path = '/index.php';
+    }
+
+    if ($normalized_request_path !== $home_path && $normalized_request_path !== $home_index_path) {
         return;
     }
 
