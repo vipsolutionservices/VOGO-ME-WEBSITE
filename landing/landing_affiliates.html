@@ -177,11 +177,46 @@
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
+      gap: 42px;
+      margin-top: 46px;
     }
-    .benefit h3 { font-size: 22px; }
-    .benefit p { font-size: 16px; margin-top: 8px; }
+    .benefit h3 {
+      font-size: 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      line-height: 1.2;
+      color: #02034f;
+      margin: 0;
+    }
+    .benefit-icon {
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      background: #3d4bff;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1;
+      flex: 0 0 31px;
+      margin-top: 2px;
+    }
+    .benefit-title {
+      display: inline-block;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.15;
+    }
+    .benefit p {
+      font-size: 16px;
+      margin-top: 8px;
+      line-height: 1.45;
+      color: #27385f;
+      max-width: none;
+    }
 
     /** Section purpose and behavior: Testimonial cards for affiliate social proof. */
     .testimonials h2 {
@@ -392,16 +427,16 @@
       </div>
       <div class="benefits-grid">
         <div class="benefit">
-          <h3>✔ Earn 25% for every referred sale</h3>
-          <p>Receive 25% commission for each qualified referred sale and grow your earnings with performance milestones.</p>
+          <h3><span class="benefit-icon">✓</span><span class="benefit-title">Earn 25% for every referred sale</span></h3>
+          <p>We offer a standard 25% commission on every sale you refer with special bonuses for high performing affiliates.</p>
         </div>
         <div class="benefit">
-          <h3>✔ After 10 sales → Get 40% Commission</h3>
-          <p>After the first 10 verified sales, your future qualified sales can reach 40% commission.</p>
+          <h3><span class="benefit-icon">✓</span><span class="benefit-title">After 10 sales → Get 40% Commission</span></h3>
+          <p>It's important for us to compensate our best partners. Once you reach 10 unique sales, we <strong>DOUBLE</strong> your commission structure to 40% for all future sales.</p>
         </div>
         <div class="benefit">
-          <h3>✔ Just $50 minimum Payout</h3>
-          <p>Withdraw your earnings after the minimum payout threshold is reached, with support from the VOGO team.</p>
+          <h3><span class="benefit-icon">✓</span><span class="benefit-title">Just $50 minimum Payout</span></h3>
+          <p>Payouts are automated via PayPal or can be agreed in any other convenient way for you, through support contact.</p>
         </div>
       </div>
     </section>
