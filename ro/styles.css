@@ -99,6 +99,17 @@ h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); }
   align-items: center;
   gap: 10px;
 }
+/* Header trust badge sizing and transparency for desktop menu placement. */
+.menu-made-in-europe-link {
+  display: inline-flex;
+  align-items: center;
+}
+.menu-made-in-europe-badge {
+  width: 86px;
+  height: auto;
+  opacity: 0.7;
+  display: block;
+}
 .mobile-menu-toggle {
   display: none;
   border: 1px solid #d5e2ea;
@@ -299,6 +310,12 @@ letter-spacing: -.05em;
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+/* Keep Stripe Climate outline tightly wrapped to its text in hero actions. */
+.hero-actions > .climate-badge {
+  grid-column: 3;
+  justify-self: start;
+  width: fit-content;
 }
 .made-in-europe-badge {
   grid-column: 3;
@@ -1712,7 +1729,8 @@ width: clamp(130.75px, 15.075vw, 180.25px);
     gap: 8px;
   }
   .header-cta-group .promo-cta,
-  .header-cta-group .climate-badge {
+  .header-cta-group .climate-badge,
+  .header-cta-group .menu-made-in-europe-link {
     width: 100%;
     justify-content: center;
     text-align: center;
@@ -1725,6 +1743,9 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   .header-cta-group .climate-badge {
     min-height: 36px;
     font-size: 0.95rem;
+  }
+  .menu-made-in-europe-badge {
+    width: 110px;
   }
 }
 
