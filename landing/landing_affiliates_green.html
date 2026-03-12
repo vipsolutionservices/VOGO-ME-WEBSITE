@@ -147,6 +147,67 @@
 
     .section-alt { background: #f2f2f2; }
 
+    /** Section purpose and behavior: Horizontal auto-scroll image gallery shown before the earnings section. */
+    .affiliate-reel {
+      padding: 18px 0 8px;
+      background: #f5f5f5;
+    }
+    .affiliate-reel-viewport {
+      max-width: 1400px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      padding: 0 22px;
+    }
+    .affiliate-reel-viewport::before,
+    .affiliate-reel-viewport::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: min(10vw, 120px);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .affiliate-reel-viewport::before {
+      left: 22px;
+      background: linear-gradient(90deg, #f5f5f5, rgba(245, 245, 245, 0));
+    }
+    .affiliate-reel-viewport::after {
+      right: 22px;
+      background: linear-gradient(270deg, #f5f5f5, rgba(245, 245, 245, 0));
+    }
+    .affiliate-reel-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: affiliate-reel-marquee 55s linear infinite;
+      will-change: transform;
+    }
+    @keyframes affiliate-reel-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .affiliate-reel-item {
+      flex: 0 0 auto;
+      max-width: min(86vw, 520px);
+    }
+    .affiliate-reel-card {
+      padding: 6px;
+      border: 1px solid #d7dee3;
+      border-radius: 18px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .affiliate-reel-card img {
+      height: clamp(240px, 42vh, 500px);
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
     .stats-card {
       position: relative;
       background: linear-gradient(180deg, #0c542d, #0c542d);
@@ -501,6 +562,11 @@
     @media (max-width: 768px) {
       body { overflow-x: hidden; }
       .hero-actions { justify-content: center; }
+      .affiliate-reel-item { width: 80vw; }
+      .affiliate-reel-card img {
+        height: 60vh;
+        max-height: 480px;
+      }
       .chatbot-widget {
         right: 12px;
         left: 12px;
@@ -540,6 +606,30 @@
       </div>
       <div class="hero-visual">
         <img src="../img/landing/high-angle-hands-holding-smartphone-scaled.jpg" alt="VOGO affiliate partners collaborating" />
+      </div>
+    </section>
+
+    <section class="affiliate-reel" aria-label="Affiliate image gallery">
+      <div class="affiliate-reel-viewport">
+        <div class="affiliate-reel-track">
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0017.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0003.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0006.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0007.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0008.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0009.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0010.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0014.jpg" alt="VOGO mobile preview" /></div></figure>
+
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0017.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0003.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0006.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0007.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0008.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0009.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0010.jpg" alt="VOGO mobile preview" /></div></figure>
+          <figure class="affiliate-reel-item"><div class="affiliate-reel-card"><img src="https://vogo.me/wp-content/uploads/2025/10/IMG-20251014-WA0014.jpg" alt="VOGO mobile preview" /></div></figure>
+        </div>
       </div>
     </section>
 
