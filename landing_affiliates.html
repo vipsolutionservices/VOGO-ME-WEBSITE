@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- File purpose and role: Affiliate landing page with hero, benefits, process, FAQ, and fixed chatbot widget. -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOGO Affiliate Program</title>
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --text: #090909;
+      --blue: #3d4bff;
+      --purple: #6d4df5;
+      --navy: #05045a;
+      --light-purple: #d6d9f9;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: #1f2b4d;
+      line-height: 1.35;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 70px 48px;
+    }
+
+    /** Section purpose and behavior: Shared two-column layout used across hero/content sections. */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    h1, h2, h3 { margin: 0; color: var(--text); }
+    h1 { font-size: 72px; font-weight: 700; letter-spacing: -1px; }
+    h2 { font-size: 60px; font-weight: 700; }
+    .lead {
+      margin-top: 22px;
+      font-size: 33px;
+      color: #001b6b;
+      font-weight: 700;
+    }
+    p {
+      font-size: 26px;
+      margin: 24px 0 0;
+      color: #29385f;
+      max-width: 760px;
+    }
+    .btn {
+      margin-top: 52px;
+      background: linear-gradient(90deg, var(--blue), #3959e3);
+      color: #fff;
+      border: 0;
+      border-radius: 40px;
+      padding: 20px 44px;
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    /** Section purpose and behavior: Decorative image blocks to mirror the reference visual style. */
+    .hero-visual {
+      position: relative;
+      min-height: 540px;
+      background: var(--light-purple);
+      border-radius: 0 0 120px 0;
+      overflow: hidden;
+      padding: 32px;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 40px;
+      min-height: 470px;
+    }
+
+    .section-alt { background: #f2f2f2; }
+
+    .stats-card {
+      position: relative;
+      background: linear-gradient(180deg, #5f57ff, #7267f6);
+      border-radius: 34px;
+      min-height: 420px;
+      padding: 34px;
+    }
+    .panel {
+      background: #fff;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(20, 24, 70, 0.15);
+      margin-top: 48px;
+      min-height: 236px;
+    }
+    .chip-row { display: flex; gap: 16px; margin-top: 16px; }
+    .chip {
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .chip.blue { background: #2bb2da; }
+    .chip.purple { background: #7a4df3; }
+
+    .chat-preview {
+      position: absolute;
+      right: -60px;
+      bottom: -20px;
+      width: 440px;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
+    }
+    .chat-preview .head {
+      background: linear-gradient(90deg, #5a34e3, #3654e9);
+      color: #fff;
+      padding: 16px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .chat-preview .body { padding: 16px; color: #333; font-size: 18px; }
+    .chat-preview .cta {
+      margin: 16px;
+      text-align: center;
+      background: #1673d4;
+      color: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      font-weight: 700;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 44px;
+      text-align: center;
+      margin-top: 36px;
+    }
+    .step h3 { font-size: 52px; margin: 14px 0 8px; }
+    .step p { font-size: 20px; margin: 0 auto; max-width: 320px; }
+    .icon {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(160deg, #8f6fff, #c7bcff);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    .benefits-wrap { background: #fff; }
+    .benefits-head {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 120px 0;
+      padding: 100px 20px;
+      text-align: center;
+    }
+    .benefits-head h2, .benefits-head p { color: #fff; margin: 0; }
+    .benefits-head p { margin-top: 18px; font-size: 24px; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 62px;
+    }
+    .benefit h3 { font-size: 22px; }
+    .benefit p { font-size: 17px; margin-top: 10px; }
+
+    .cta-dark {
+      background: var(--navy);
+      color: #fff;
+      padding: 80px 0;
+      margin-top: 56px;
+    }
+    .cta-dark h2, .cta-dark p { color: #fff; }
+    .cta-dark p { font-size: 24px; }
+
+    .faq h2 { text-align: center; color: var(--navy); font-size: 58px; }
+    .faq-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #d9d9d9;
+      padding: 24px 8px;
+      font-size: 22px;
+      color: #27385f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /** Section purpose and behavior: Floating fixed chatbot similar to provided screenshot position. */
+    .chatbot-fixed {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      background: linear-gradient(90deg, #6e5ef7, #4b45e4);
+      color: #fff;
+      border-radius: 40px;
+      padding: 14px 28px;
+      font-size: 36px;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(30, 42, 120, 0.35);
+      z-index: 999;
+    }
+
+    @media (max-width: 1024px) {
+      h1 { font-size: 44px; }
+      h2, .faq h2 { font-size: 38px; }
+      .lead { font-size: 24px; }
+      p { font-size: 20px; }
+      .btn { font-size: 22px; }
+      .two-col, .steps, .benefits-grid, .faq-grid { grid-template-columns: 1fr; }
+      .chat-preview { position: static; margin-top: 20px; width: 100%; }
+      .chatbot-fixed { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="container two-col">
+      <div>
+        <h1>WordPressIT affiliate program</h1>
+        <div class="lead">Earn $$$ promoting our world-class WordPress Products</div>
+        <p>
+          Are you a fan of WordPressIT? Join our affiliate program today and start earning thousands in commissions for promoting us
+          through your website, blog, email, and social media channels.
+          <strong>Commissions are recurring for life.</strong>
+        </p>
+        <a class="btn" href="#">JOIN NOW</a>
+      </div>
+      <div class="hero-visual">
+        <img src="img/landing/inspired-youth.jpg" alt="Affiliate partners collaborating" />
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="container two-col">
+        <div>
+          <h2>Get Paid!</h2>
+          <h2 style="color:#7a56f7;">Recurring 25% - 40%</h2>
+          <h2>Commissions Forever</h2>
+          <p>
+            Join our thriving affiliate program and get all you need to become a highly paid partner.
+            As long as memberships are active → You get paid monthly like a clock.
+          </p>
+          <a class="btn" href="#">Start Earning Now</a>
+        </div>
+        <div class="stats-card">
+          <div class="panel">
+            <div style="font-size:28px;font-weight:700;color:#8a8a8a;">Affiliates</div>
+            <div class="chip-row">
+              <div class="chip blue">Referrals<br/>11,287</div>
+              <div class="chip purple">Earnings<br/>$37,766.95</div>
+            </div>
+          </div>
+          <div class="chat-preview">
+            <div class="head">WordPressIT &amp; WPWorld</div>
+            <div class="body">Hi there WordPress Hero 👋<br/>How can I help you?</div>
+            <div class="cta">Talk to us!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <p style="text-align:center;max-width:none;margin-top:0;">Use our marketing and sales materials to get started in minutes.<br/>Follow 3 simple steps and start earning.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="icon">1</div>
+          <h3>JOIN</h3>
+          <p><span style="color:#7a56f7;font-weight:700;">Create your account</span> to claim your unique link.</p>
+        </div>
+        <div class="step">
+          <div class="icon">2</div>
+          <h3>REFER CLIENTS</h3>
+          <p>Use your unique link or a banner to refer clients.</p>
+        </div>
+        <div class="step">
+          <div class="icon">3</div>
+          <h3>EARN</h3>
+          <p>Earn between <strong style="color:#7a56f7;">25% to 40%</strong> on individual sales or recurring commissions.</p>
+        </div>
+      </div>
+      <div style="text-align:center;"><a class="btn" href="#">Start Earning Now</a></div>
+    </section>
+
+    <section class="benefits-wrap container">
+      <div class="benefits-head">
+        <h2>Program benefits</h2>
+        <p>Here are just a few perks of joining WordPressIT’s affiliate program...</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit">
+          <h3>✔ Earn 25% for every referred sale</h3>
+          <p>We offer a standard 25% commission on every sale you refer with special bonuses for high performing affiliates.</p>
+        </div>
+        <div class="benefit">
+          <h3>✔ After 10 sales → Get 40% Commission</h3>
+          <p>Once you reach 10 unique sales, we double your commission structure to 40% for future sales.</p>
+        </div>
+        <div class="benefit">
+          <h3>✔ Just $50 minimum Payout</h3>
+          <p>Payouts are automated via PayPal or can be agreed in any other convenient way via support contact.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-dark">
+      <div class="container two-col" style="align-items:flex-start;">
+        <img src="img/landing/mobile store.png" alt="Visual promotion example" style="width:100%;border-radius:14px;" />
+        <div>
+          <h2>Let's Start Earning Together!</h2>
+          <p>1. Join our affiliate referral program</p>
+          <p>2. Promote WordPressIT on your website, blog, social media, or emails. <strong>Make sure to use your unique link!</strong></p>
+          <p>3. Get paid! You’ll earn commission when your referrals purchase any product or sign up for memberships – <strong>up to 40% for life</strong>.</p>
+          <a class="btn" href="#" style="background:#36e6d3;color:#06124c;">JOIN NOW</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item"><span>When can I get paid?</span><span>⌄</span></div>
+        <div class="faq-item"><span>How do I check my statistics to see how I am doing?</span><span>⌄</span></div>
+        <div class="faq-item"><span>How much can I make?</span><span>⌄</span></div>
+        <div class="faq-item"><span>What if I need help or advice?</span><span>⌄</span></div>
+        <div class="faq-item"><span>How long do tracking cookies last?</span><span>⌄</span></div>
+        <div class="faq-item"><span>What if I have other questions?</span><span>⌄</span></div>
+        <div class="faq-item"><span>Do you have a free trial?</span><span>⌄</span></div>
+        <div class="faq-item"><span>Can I evaluate WordPress before / after becoming an affiliate?</span><span>⌄</span></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="chatbot-fixed">💬 We're here to help!</div>
+</body>
+</html>
