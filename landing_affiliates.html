@@ -25,44 +25,44 @@
     }
 
     .container {
-      max-width: 1320px;
+      max-width: 1220px;
       margin: 0 auto;
-      padding: 70px 48px;
+      padding: 56px 42px;
     }
 
     /** Section purpose and behavior: Shared two-column layout used across hero/content sections. */
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 44px;
+      gap: 36px;
       align-items: center;
     }
 
     h1, h2, h3 { margin: 0; color: var(--text); }
-    h1 { font-size: 72px; font-weight: 700; letter-spacing: -1px; }
-    h2 { font-size: 60px; font-weight: 700; }
+    h1 { font-size: 56px; font-weight: 700; letter-spacing: -0.6px; }
+    h2 { font-size: 46px; font-weight: 700; }
     .lead {
-      margin-top: 22px;
-      font-size: 33px;
+      margin-top: 18px;
+      font-size: 20px;
       color: #001b6b;
       font-weight: 700;
     }
     p {
-      font-size: 26px;
-      margin: 24px 0 0;
+      font-size: 18px;
+      margin: 18px 0 0;
       color: #29385f;
-      max-width: 760px;
+      max-width: 690px;
     }
     .btn {
-      margin-top: 52px;
+      margin-top: 34px;
       background: linear-gradient(90deg, var(--blue), #3959e3);
       color: #fff;
       border: 0;
       border-radius: 40px;
-      padding: 20px 44px;
-      font-size: 38px;
+      padding: 14px 34px;
+      font-size: 24px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.7px;
       cursor: pointer;
       display: inline-block;
       text-decoration: none;
@@ -71,18 +71,18 @@
     /** Section purpose and behavior: Decorative image blocks to mirror the reference visual style. */
     .hero-visual {
       position: relative;
-      min-height: 540px;
+      min-height: 430px;
       background: var(--light-purple);
-      border-radius: 0 0 120px 0;
+      border-radius: 0 0 90px 0;
       overflow: hidden;
-      padding: 32px;
+      padding: 28px;
     }
     .hero-visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 40px;
-      min-height: 470px;
+      border-radius: 28px;
+      min-height: 374px;
     }
 
     .section-alt { background: #f2f2f2; }
@@ -91,33 +91,33 @@
       position: relative;
       background: linear-gradient(180deg, #5f57ff, #7267f6);
       border-radius: 34px;
-      min-height: 420px;
-      padding: 34px;
+      min-height: 360px;
+      padding: 28px;
     }
     .panel {
       background: #fff;
       border-radius: 24px;
-      padding: 24px;
+      padding: 20px;
       box-shadow: 0 8px 22px rgba(20, 24, 70, 0.15);
-      margin-top: 48px;
-      min-height: 236px;
+      margin-top: 26px;
+      min-height: 196px;
     }
-    .chip-row { display: flex; gap: 16px; margin-top: 16px; }
+    .chip-row { display: flex; gap: 12px; margin-top: 12px; }
     .chip {
       color: #fff;
-      padding: 14px 18px;
+      padding: 10px 14px;
       border-radius: 12px;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 14px;
     }
     .chip.blue { background: #2bb2da; }
     .chip.purple { background: #7a4df3; }
 
     .chat-preview {
       position: absolute;
-      right: -60px;
-      bottom: -20px;
-      width: 440px;
+      right: -40px;
+      bottom: -14px;
+      width: 320px;
       background: #fff;
       border-radius: 16px;
       overflow: hidden;
@@ -126,40 +126,41 @@
     .chat-preview .head {
       background: linear-gradient(90deg, #5a34e3, #3654e9);
       color: #fff;
-      padding: 16px;
-      font-size: 20px;
+      padding: 12px;
+      font-size: 16px;
       font-weight: 700;
     }
-    .chat-preview .body { padding: 16px; color: #333; font-size: 18px; }
+    .chat-preview .body { padding: 12px; color: #333; font-size: 14px; }
     .chat-preview .cta {
-      margin: 16px;
+      margin: 12px;
       text-align: center;
       background: #1673d4;
       color: #fff;
       border-radius: 12px;
-      padding: 12px;
+      padding: 10px;
       font-weight: 700;
+      font-size: 14px;
     }
 
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 44px;
+      gap: 34px;
       text-align: center;
-      margin-top: 36px;
+      margin-top: 24px;
     }
-    .step h3 { font-size: 52px; margin: 14px 0 8px; }
-    .step p { font-size: 20px; margin: 0 auto; max-width: 320px; }
+    .step h3 { font-size: 32px; margin: 12px 0 8px; }
+    .step p { font-size: 16px; margin: 0 auto; max-width: 320px; }
     .icon {
-      width: 90px;
-      height: 90px;
+      width: 72px;
+      height: 72px;
       margin: 0 auto;
       border-radius: 50%;
       background: linear-gradient(160deg, #8f6fff, #c7bcff);
       display: grid;
       place-items: center;
       color: #fff;
-      font-size: 40px;
+      font-size: 30px;
       font-weight: 700;
     }
 
@@ -167,34 +168,84 @@
     .benefits-head {
       background: var(--navy);
       color: #fff;
-      border-radius: 120px 0;
-      padding: 100px 20px;
+      border-radius: 90px 0;
+      padding: 70px 20px;
       text-align: center;
     }
     .benefits-head h2, .benefits-head p { color: #fff; margin: 0; }
-    .benefits-head p { margin-top: 18px; font-size: 24px; }
+    .benefits-head p { margin-top: 14px; font-size: 18px; }
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-top: 62px;
+      gap: 24px;
+      margin-top: 40px;
     }
     .benefit h3 { font-size: 22px; }
-    .benefit p { font-size: 17px; margin-top: 10px; }
+    .benefit p { font-size: 16px; margin-top: 8px; }
+
+    /** Section purpose and behavior: Testimonial cards for affiliate social proof. */
+    .testimonials h2 {
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+    .testimonials .sub {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 760px;
+    }
+    .testimonials-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 18px rgba(20, 24, 70, 0.08);
+    }
+    .testimonial-head {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .testimonial-head img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .testimonial-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1f2b4d;
+    }
+    .testimonial-role {
+      font-size: 14px;
+      color: #57668a;
+    }
+    .testimonial-text {
+      font-size: 16px;
+      margin: 0;
+      max-width: none;
+    }
 
     .cta-dark {
       background: var(--navy);
       color: #fff;
-      padding: 80px 0;
-      margin-top: 56px;
+      padding: 64px 0;
+      margin-top: 44px;
     }
     .cta-dark h2, .cta-dark p { color: #fff; }
-    .cta-dark p { font-size: 24px; }
+    .cta-dark p { font-size: 18px; }
 
     /** Section purpose and behavior: FAQ accordion layout styled to match the reference model. */
-    .faq h2 { text-align: center; color: var(--navy); font-size: 58px; }
+    .faq h2 { text-align: center; color: var(--navy); font-size: 42px; }
     .faq-grid {
-      margin-top: 40px;
+      margin-top: 24px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0 24px;
@@ -208,28 +259,28 @@
       border: 0;
       background: transparent;
       color: #27385f;
-      font-size: 46px;
+      font-size: 25px;
       font-weight: 700;
       text-align: left;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 0;
+      padding: 18px 0;
       cursor: pointer;
     }
     .faq-icon {
-      font-size: 42px;
+      font-size: 28px;
       color: #687285;
       margin-left: 18px;
       transition: transform 0.2s ease;
     }
     .faq-answer {
       margin: 0;
-      font-size: 40px;
+      font-size: 18px;
       color: #27385f;
       max-width: none;
       display: none;
-      padding: 0 0 24px;
+      padding: 0 0 18px;
     }
     .faq-item.is-open .faq-answer {
       display: block;
@@ -247,19 +298,19 @@
       color: #fff;
       border-radius: 40px;
       padding: 14px 28px;
-      font-size: 36px;
+      font-size: 23px;
       font-weight: 700;
       box-shadow: 0 10px 24px rgba(30, 42, 120, 0.35);
       z-index: 999;
     }
 
     @media (max-width: 1024px) {
-      h1 { font-size: 44px; }
-      h2, .faq h2 { font-size: 38px; }
-      .lead { font-size: 24px; }
-      p { font-size: 20px; }
+      h1 { font-size: 40px; }
+      h2, .faq h2, .testimonials h2 { font-size: 34px; }
+      .lead { font-size: 19px; }
+      p { font-size: 17px; }
       .btn { font-size: 22px; }
-      .two-col, .steps, .benefits-grid, .faq-grid { grid-template-columns: 1fr; }
+      .two-col, .steps, .benefits-grid, .faq-grid, .testimonials-grid { grid-template-columns: 1fr; }
       .faq-question { font-size: 22px; }
       .faq-icon { font-size: 24px; }
       .faq-answer { font-size: 20px; }
@@ -272,17 +323,17 @@
   <main>
     <section class="container two-col">
       <div>
-        <h1>WordPressIT affiliate program</h1>
-        <div class="lead">Earn $$$ promoting our world-class WordPress Products</div>
+        <h1>VOGO affiliate program</h1>
+        <div class="lead">Earn recurring revenue by promoting VOGO digital solutions</div>
         <p>
-          Are you a fan of WordPressIT? Join our affiliate program today and start earning thousands in commissions for promoting us
-          through your website, blog, email, and social media channels.
-          <strong>Commissions are recurring for life.</strong>
+          Join the VOGO affiliate program and promote our WordPress, WooCommerce and mobile app ecosystem
+          through your website, blog, email, and social channels.
+          <strong>Earn recurring commissions for active subscriptions.</strong>
         </p>
         <a class="btn" href="#">JOIN NOW</a>
       </div>
       <div class="hero-visual">
-        <img src="img/landing/inspired-youth.jpg" alt="Affiliate partners collaborating" />
+        <img src="img/landing/high-angle-hands-holding-smartphone.jpg" alt="VOGO affiliate partners collaborating" />
       </div>
     </section>
 
@@ -292,23 +343,20 @@
           <h2>Get Paid!</h2>
           <h2 style="color:#7a56f7;">Recurring 25% - 40%</h2>
           <h2>Commissions Forever</h2>
-          <p>
-            Join our thriving affiliate program and get all you need to become a highly paid partner.
-            As long as memberships are active → You get paid monthly like a clock.
-          </p>
+          <p>Join VOGO and receive clear partner materials, referral tracking, and recurring monthly payouts while client subscriptions stay active.</p>
           <a class="btn" href="#">Start Earning Now</a>
         </div>
         <div class="stats-card">
           <div class="panel">
-            <div style="font-size:28px;font-weight:700;color:#8a8a8a;">Affiliates</div>
+            <div style="font-size:22px;font-weight:700;color:#8a8a8a;">VOGO Affiliates</div>
             <div class="chip-row">
-              <div class="chip blue">Referrals<br/>11,287</div>
-              <div class="chip purple">Earnings<br/>$37,766.95</div>
+              <div class="chip blue">Referrals<br/>12,430</div>
+              <div class="chip purple">Earnings<br/>$48,290.10</div>
             </div>
           </div>
           <div class="chat-preview">
-            <div class="head">WordPressIT &amp; WPWorld</div>
-            <div class="body">Hi there WordPress Hero 👋<br/>How can I help you?</div>
+            <div class="head">VOGO Affiliate Team</div>
+            <div class="body">Hi partner 👋<br/>Need support for campaigns and tracking?</div>
             <div class="cta">Talk to us!</div>
           </div>
         </div>
@@ -316,22 +364,22 @@
     </section>
 
     <section class="container">
-      <p style="text-align:center;max-width:none;margin-top:0;">Use our marketing and sales materials to get started in minutes.<br/>Follow 3 simple steps and start earning.</p>
+      <p style="text-align:center;max-width:none;margin-top:0;">Use VOGO affiliate assets to launch fast.<br/>Follow 3 simple steps and start earning.</p>
       <div class="steps">
         <div class="step">
           <div class="icon">1</div>
           <h3>JOIN</h3>
-          <p><span style="color:#7a56f7;font-weight:700;">Create your account</span> to claim your unique link.</p>
+          <p><span style="color:#7a56f7;font-weight:700;">Create your account</span> and claim your unique VOGO referral link.</p>
         </div>
         <div class="step">
           <div class="icon">2</div>
           <h3>REFER CLIENTS</h3>
-          <p>Use your unique link or a banner to refer clients.</p>
+          <p>Share your link with audiences interested in VOGO services and mobile commerce solutions.</p>
         </div>
         <div class="step">
           <div class="icon">3</div>
           <h3>EARN</h3>
-          <p>Earn between <strong style="color:#7a56f7;">25% to 40%</strong> on individual sales or recurring commissions.</p>
+          <p>Earn between <strong style="color:#7a56f7;">25% to 40%</strong> on qualified sales and recurring plans.</p>
         </div>
       </div>
       <div style="text-align:center;"><a class="btn" href="#">Start Earning Now</a></div>
@@ -340,31 +388,68 @@
     <section class="benefits-wrap container">
       <div class="benefits-head">
         <h2>Program benefits</h2>
-        <p>Here are just a few perks of joining WordPressIT’s affiliate program...</p>
+        <p>Here are a few advantages of joining VOGO’s affiliate program.</p>
       </div>
       <div class="benefits-grid">
         <div class="benefit">
           <h3>✔ Earn 25% for every referred sale</h3>
-          <p>We offer a standard 25% commission on every sale you refer with special bonuses for high performing affiliates.</p>
+          <p>Receive 25% commission for each qualified referred sale and grow your earnings with performance milestones.</p>
         </div>
         <div class="benefit">
           <h3>✔ After 10 sales → Get 40% Commission</h3>
-          <p>Once you reach 10 unique sales, we double your commission structure to 40% for future sales.</p>
+          <p>After the first 10 verified sales, your future qualified sales can reach 40% commission.</p>
         </div>
         <div class="benefit">
           <h3>✔ Just $50 minimum Payout</h3>
-          <p>Payouts are automated via PayPal or can be agreed in any other convenient way via support contact.</p>
+          <p>Withdraw your earnings after the minimum payout threshold is reached, with support from the VOGO team.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="container testimonials">
+      <h2>Affiliate testimonials</h2>
+      <p class="sub">Real feedback from partners who promote VOGO services and receive recurring commissions.</p>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <div class="testimonial-head">
+            <img src="img/landing/testimonial_woman_retail.png" alt="VOGO affiliate testimonial - eCommerce consultant" />
+            <div>
+              <div class="testimonial-name">Elena M.</div>
+              <div class="testimonial-role">eCommerce consultant</div>
+            </div>
+          </div>
+          <p class="testimonial-text">“VOGO gave me clear promo resources and a simple referral flow. I started seeing recurring commissions from monthly subscriptions within the first campaigns.”</p>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-head">
+            <img src="img/landing/testimonial_man_restaurant.png" alt="VOGO affiliate testimonial - agency owner" />
+            <div>
+              <div class="testimonial-name">Andrei P.</div>
+              <div class="testimonial-role">digital agency owner</div>
+            </div>
+          </div>
+          <p class="testimonial-text">“Our clients needed WordPress, WooCommerce and mobile app support in one place. Promoting VOGO made our recommendations easier and more profitable.”</p>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-head">
+            <img src="img/landing/testimonial 3.jpg" alt="VOGO affiliate testimonial - growth marketer" />
+            <div>
+              <div class="testimonial-name">Radu C.</div>
+              <div class="testimonial-role">growth marketer</div>
+            </div>
+          </div>
+          <p class="testimonial-text">“The VOGO team responds fast, tracking is transparent, and payouts are predictable. It is one of the most stable affiliate programs in my portfolio.”</p>
+        </article>
       </div>
     </section>
 
     <section class="cta-dark">
       <div class="container two-col" style="align-items:flex-start;">
-        <img src="img/landing/mobile store.png" alt="Visual promotion example" style="width:100%;border-radius:14px;" />
+        <img src="img/landing/close-up-hands-holding-device.jpg" alt="VOGO mobile commerce promotion" style="width:100%;border-radius:14px;" />
         <div>
           <h2>Let's Start Earning Together!</h2>
           <p>1. Join our affiliate referral program</p>
-          <p>2. Promote WordPressIT on your website, blog, social media, or emails. <strong>Make sure to use your unique link!</strong></p>
+          <p>2. Promote VOGO on your website, blog, social media, or emails. <strong>Make sure to use your unique link!</strong></p>
           <p>3. Get paid! You’ll earn commission when your referrals purchase any product or sign up for memberships – <strong>up to 40% for life</strong>.</p>
           <a class="btn" href="#" style="background:#36e6d3;color:#06124c;">JOIN NOW</a>
         </div>
