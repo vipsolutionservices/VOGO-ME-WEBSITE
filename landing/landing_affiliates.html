@@ -324,11 +324,80 @@
       transform: rotate(180deg);
     }
 
-    /** Section purpose and behavior: Floating fixed chatbot similar to provided screenshot position. */
-    .chatbot-fixed {
+    /** Section purpose and behavior: Floating chatbot launcher and expandable panel matching the provided model. */
+    .chatbot-widget {
       position: fixed;
       right: 24px;
       bottom: 24px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .chatbot-panel {
+      width: min(450px, calc(100vw - 48px));
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 18px 34px rgba(15, 22, 70, 0.3);
+      display: none;
+    }
+    .chatbot-widget.is-open .chatbot-panel {
+      display: block;
+    }
+
+    .chatbot-panel-head {
+      background: linear-gradient(90deg, #5a34e3, #3654e9);
+      color: #fff;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .chatbot-title {
+      font-size: 36px;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .chatbot-close {
+      border: 0;
+      background: transparent;
+      color: #c9bcff;
+      font-size: 34px;
+      font-weight: 700;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .chatbot-panel-body {
+      padding: 24px;
+      text-align: center;
+      font-size: 28px;
+      color: #202536;
+      font-weight: 500;
+    }
+
+    .chatbot-panel-cta {
+      display: block;
+      margin: 8px 24px 24px;
+      text-align: center;
+      background: #1673d4;
+      color: #fff;
+      border-radius: 12px;
+      padding: 14px;
+      text-decoration: none;
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    .chatbot-fixed {
+      border: 0;
       background: linear-gradient(90deg, #6e5ef7, #4b45e4);
       color: #fff;
       border-radius: 40px;
@@ -336,7 +405,7 @@
       font-size: 23px;
       font-weight: 700;
       box-shadow: 0 10px 24px rgba(30, 42, 120, 0.35);
-      z-index: 999;
+      cursor: pointer;
     }
 
     @media (max-width: 1024px) {
@@ -350,6 +419,10 @@
       .faq-icon { font-size: 24px; }
       .faq-answer { font-size: 20px; }
       .chat-preview { position: static; margin-top: 20px; width: 100%; }
+      .chatbot-panel-body { font-size: 22px; }
+      .chatbot-panel-cta { font-size: 28px; }
+      .chatbot-title { font-size: 30px; }
+      .chatbot-close { font-size: 30px; }
       .chatbot-fixed { font-size: 22px; }
     }
   </style>
@@ -554,7 +627,17 @@
     </section>
   </main>
 
-  <div class="chatbot-fixed">💬 We're here to help!</div>
+  <div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-panel" id="chatbotPanel" aria-hidden="true">
+      <div class="chatbot-panel-head">
+        <h3 class="chatbot-title">WorldPressIT &amp; WPWorld</h3>
+        <button class="chatbot-close" id="chatbotClose" aria-label="Close chat" type="button">×</button>
+      </div>
+      <div class="chatbot-panel-body">Hi there WordPress Hero 👋<br/>How can I help you?</div>
+      <a class="chatbot-panel-cta" href="#">Talk to us!</a>
+    </div>
+    <button class="chatbot-fixed" id="chatbotToggle" type="button" aria-expanded="false" aria-controls="chatbotPanel">💬 We're here to help!</button>
+  </div>
 
   <script>
     /** Section purpose and behavior: Toggle FAQ answers and keep visual state in sync with the icon. */
@@ -564,6 +647,26 @@
         const isOpen = faqItem.classList.toggle('is-open');
         button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
+    });
+
+    /** Section purpose and behavior: Open and close the fixed chatbot panel from the launcher button. */
+    const chatbotWidget = document.getElementById('chatbotWidget');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotPanel = document.getElementById('chatbotPanel');
+
+    const setChatbotState = (isOpen) => {
+      chatbotWidget.classList.toggle('is-open', isOpen);
+      chatbotToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      chatbotPanel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    };
+
+    chatbotToggle.addEventListener('click', () => {
+      setChatbotState(!chatbotWidget.classList.contains('is-open'));
+    });
+
+    chatbotClose.addEventListener('click', () => {
+      setChatbotState(false);
     });
   </script>
 </body>
