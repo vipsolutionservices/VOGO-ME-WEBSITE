@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <!-- File purpose and role: Landing pages index with quick access links, titles, and descriptions for the landing folder. -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOGO Landing Pages Index</title>
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --text: #090909;
+      --vogo-green: #0e7f4e;
+      --blue: #3d4bff;
+      --navy: #05045a;
+      --light-purple: #b9e4cf;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: #1f2b4d;
+      line-height: 1.35;
+    }
+
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 56px 42px;
+    }
+
+    /** Section purpose and behavior: Intro block following the same visual tone as the affiliate green landing. */
+    .hero {
+      background: var(--light-purple);
+      border-radius: 0 0 90px 0;
+      padding: 46px 40px;
+    }
+
+    h1, h2, h3 { margin: 0; color: var(--text); }
+    h1 { font-size: 54px; font-weight: 700; letter-spacing: -0.6px; }
+
+    .lead {
+      margin-top: 16px;
+      font-size: 20px;
+      color: #001b6b;
+      font-weight: 700;
+      max-width: 840px;
+    }
+
+    .index-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(20, 24, 70, 0.12);
+      border: 1px solid #e7ecf4;
+    }
+
+    .card h3 {
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .card p {
+      margin: 12px 0 0;
+      font-size: 17px;
+      color: #29385f;
+    }
+
+    .link {
+      margin-top: 20px;
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(90deg, var(--blue), #3959e3);
+      color: #fff;
+      border-radius: 40px;
+      padding: 10px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .path {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #5e6a85;
+      word-break: break-all;
+    }
+
+    @media (max-width: 900px) {
+      .container { padding: 28px 16px; }
+      .hero { padding: 28px 20px; border-radius: 24px; }
+      h1 { font-size: 38px; }
+      .lead { font-size: 18px; }
+      .index-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1>Landing pages – opis / cuprins</h1>
+      <p class="lead">Listă centralizată cu paginile disponibile în folderul landing, fiecare cu titlu, descriere și link direct.</p>
+    </section>
+
+    <!-- Section purpose and behavior: Cards list with direct links to each landing HTML page. -->
+    <section class="index-grid" aria-label="Lista pagini landing">
+      <article class="card">
+        <h3>VOGO Affiliate Program (Green)</h3>
+        <p>Affiliate landing page with hero, benefits, process, FAQ, and fixed chatbot widget.</p>
+        <a class="link" href="landing_affiliates_green.html">Deschide pagina</a>
+        <div class="path">landing/landing_affiliates_green.html</div>
+      </article>
+
+      <article class="card">
+        <h3>VOGO Affiliate Program (Original)</h3>
+        <p>Affiliate landing page with hero, benefits, process, FAQ, and fixed chatbot widget.</p>
+        <a class="link" href="landing_affiliates_original.html">Deschide pagina</a>
+        <div class="path">landing/landing_affiliates_original.html</div>
+      </article>
+
+      <article class="card">
+        <h3>VOGO AI Visibility - Landing Green</h3>
+        <p>The Fast AI-Powered Mobile Applications and Automation Platform, cu secțiuni pentru flux, beneficii, planuri și FAQ.</p>
+        <a class="link" href="landing_green.html">Deschide pagina</a>
+        <div class="path">landing/landing_green.html</div>
+      </article>
+
+      <article class="card">
+        <h3>VOGO Landing România | AI, aplicații mobile iOS & Android, WooCommerce</h3>
+        <p>VOGO oferă aplicații mobile native iOS & Android, automatizări AI și integrare WooCommerce pentru companii care vor creștere rapidă și experiențe digitale moderne.</p>
+        <a class="link" href="landing_clients.html">Deschide pagina</a>
+        <div class="path">landing/landing_clients.html</div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
