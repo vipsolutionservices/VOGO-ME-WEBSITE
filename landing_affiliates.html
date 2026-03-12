@@ -191,6 +191,7 @@
     .cta-dark h2, .cta-dark p { color: #fff; }
     .cta-dark p { font-size: 24px; }
 
+    /** Section purpose and behavior: FAQ accordion layout styled to match the reference model. */
     .faq h2 { text-align: center; color: var(--navy); font-size: 58px; }
     .faq-grid {
       margin-top: 40px;
@@ -200,12 +201,41 @@
     }
     .faq-item {
       border-bottom: 1px solid #d9d9d9;
-      padding: 24px 8px;
-      font-size: 22px;
+      padding: 0 8px;
+    }
+    .faq-question {
+      width: 100%;
+      border: 0;
+      background: transparent;
       color: #27385f;
+      font-size: 46px;
+      font-weight: 700;
+      text-align: left;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 24px 0;
+      cursor: pointer;
+    }
+    .faq-icon {
+      font-size: 42px;
+      color: #687285;
+      margin-left: 18px;
+      transition: transform 0.2s ease;
+    }
+    .faq-answer {
+      margin: 0;
+      font-size: 40px;
+      color: #27385f;
+      max-width: none;
+      display: none;
+      padding: 0 0 24px;
+    }
+    .faq-item.is-open .faq-answer {
+      display: block;
+    }
+    .faq-item.is-open .faq-icon {
+      transform: rotate(180deg);
     }
 
     /** Section purpose and behavior: Floating fixed chatbot similar to provided screenshot position. */
@@ -230,6 +260,9 @@
       p { font-size: 20px; }
       .btn { font-size: 22px; }
       .two-col, .steps, .benefits-grid, .faq-grid { grid-template-columns: 1fr; }
+      .faq-question { font-size: 22px; }
+      .faq-icon { font-size: 24px; }
+      .faq-answer { font-size: 20px; }
       .chat-preview { position: static; margin-top: 20px; width: 100%; }
       .chatbot-fixed { font-size: 22px; }
     }
@@ -342,41 +375,76 @@
       <h2>Frequently Asked Questions</h2>
       <div class="faq-grid">
         <div class="faq-item">
-          <strong>When can I get paid?</strong>
-          <p>Payouts are available after you reach the minimum payout threshold of $50.</p>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>When can I get paid?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">Payouts are available after you reach the minimum payout threshold of $50.</p>
         </div>
         <div class="faq-item">
-          <strong>How do I check my statistics to see how I am doing?</strong>
-          <p>You can check your affiliate statistics in your affiliate dashboard after joining the program.</p>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How do I check my statistics to see how I am doing?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">You can check your affiliate statistics in your affiliate dashboard after joining the program.</p>
         </div>
         <div class="faq-item">
-          <strong>How much can I make?</strong>
-          <p>You earn 25% per referred sale, and after 10 unique sales your commission increases to 40% for future sales.</p>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How much can I make?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">You earn 25% per referred sale, and after 10 unique sales your commission increases to 40% for future sales.</p>
         </div>
         <div class="faq-item">
-          <strong>What if I need help or advice?</strong>
-          <p>You can contact support and we will assist you with setup, promotion, and affiliate questions.</p>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>What if I need help or advice?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">You can contact support and we will assist you with setup, promotion, and affiliate questions.</p>
         </div>
         <div class="faq-item">
-          <strong>How long do tracking cookies last?</strong>
-          <p>Please contact support to confirm the current tracking cookie duration for the affiliate program.</p>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How long do tracking cookies last?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">Please contact support to confirm the current tracking cookie duration for the affiliate program.</p>
         </div>
         <div class="faq-item">
-          <strong>What if I have other questions?</strong>
-          <p>If you have additional questions, contact support and our team will help you.</p>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>What if I have other questions?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">If you have additional questions, contact support and our team will help you.</p>
         </div>
         <div class="faq-item">
-          <strong>Do you have a free trial?</strong>
-          <p>Please contact support to confirm the latest availability of any free trial options.</p>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Do you have a free trial?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">Please contact support to confirm the latest availability of any free trial options.</p>
         </div>
         <div class="faq-item">
-          <strong>Can I evaluate WordPress before / after becoming an affiliate?</strong>
-          <p>Yes, you can contact support to discuss evaluation options before or after joining the affiliate program.</p>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Can I evaluate WordPress before / after becoming an affiliate?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">Yes, you can contact support to discuss evaluation options before or after joining the affiliate program.</p>
         </div>
       </div>
     </section>
   </main>
 
   <div class="chatbot-fixed">💬 We're here to help!</div>
+
+  <script>
+    /** Section purpose and behavior: Toggle FAQ answers and keep visual state in sync with the icon. */
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const faqItem = button.closest('.faq-item');
+        const isOpen = faqItem.classList.toggle('is-open');
+        button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+  </script>
 </body>
 </html>
