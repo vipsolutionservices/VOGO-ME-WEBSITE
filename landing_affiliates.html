@@ -13,6 +13,8 @@
       --purple: #6d4df5;
       --navy: #05045a;
       --light-purple: #d6d9f9;
+      --vogo-green: #36e6d3;
+      --vogo-green-dark: #1ac8b7;
     }
 
     * { box-sizing: border-box; }
@@ -47,6 +49,26 @@
       color: #001b6b;
       font-weight: 700;
     }
+    .brand-strip {
+      margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(54, 230, 211, 0.16);
+      border: 1px solid rgba(26, 200, 183, 0.45);
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.45px;
+      text-transform: uppercase;
+    }
+    .brand-strip img {
+      width: 86px;
+      height: auto;
+      display: block;
+    }
     p {
       font-size: 18px;
       margin: 18px 0 0;
@@ -55,7 +77,7 @@
     }
     .btn {
       margin-top: 34px;
-      background: linear-gradient(90deg, var(--blue), #3959e3);
+      background: linear-gradient(90deg, var(--blue), var(--vogo-green-dark));
       color: #fff;
       border: 0;
       border-radius: 40px;
@@ -294,7 +316,7 @@
       position: fixed;
       right: 24px;
       bottom: 24px;
-      background: linear-gradient(90deg, #6e5ef7, #4b45e4);
+      background: linear-gradient(90deg, var(--vogo-green-dark), #45a8e4);
       color: #fff;
       border-radius: 40px;
       padding: 14px 28px;
@@ -323,6 +345,10 @@
   <main>
     <section class="container two-col">
       <div>
+        <div class="brand-strip">
+          <img src="img-general/vogo-logo.png" alt="VOGO logo" />
+          Affiliate Network
+        </div>
         <h1>VOGO affiliate program</h1>
         <div class="lead">Earn recurring revenue by promoting VOGO digital solutions</div>
         <p>
