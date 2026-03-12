@@ -40,6 +40,15 @@
       padding: 56px 42px;
     }
 
+    /** Section purpose and behavior: Full-width hero title row, separated from the two-column content area. */
+    .hero-title-row {
+      padding-bottom: 18px;
+    }
+
+    .hero-title-row h1 {
+      max-width: 100%;
+    }
+
     /** Section purpose and behavior: Shared two-column layout used across hero/content sections. */
     .two-col {
       display: grid;
@@ -497,9 +506,19 @@
       .chatbot-fixed { font-size: 18px; }
     }
 
-    /** Section purpose and behavior: Mobile-only refinements to prevent horizontal swipe and keep hero buttons centered. */
+    /** Section purpose and behavior: Mobile-only refinements to prevent horizontal swipe and place hero image above text content. */
     @media (max-width: 768px) {
       body { overflow-x: hidden; }
+      .hero-layout {
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-visual {
+        order: 1;
+      }
+      .hero-content {
+        order: 2;
+      }
       .hero-actions { justify-content: center; }
       .chatbot-widget {
         right: 12px;
@@ -516,9 +535,13 @@
 </head>
 <body>
   <main>
-    <section class="container two-col">
-      <div>
-        <h1>VOGO Partner program</h1>
+    <!-- Section purpose and behavior: Hero title rendered full-width above content while preserving original text styling. -->
+    <section class="container hero-title-row">
+      <h1>VOGO Partner program</h1>
+    </section>
+
+    <section class="container two-col hero-layout">
+      <div class="hero-content">
         <div class="lead">Câștigă venituri recurente promovând soluțiile digitale VOGO</div>
         <div class="hero-copy">
           <p>Alătură-te programului de parteneriat VOGO și promovează ecosistemul nostru complet de soluții digitale: WordPress, WooCommerce, aplicații mobile iOS & Android și tehnologii AI.</p>
