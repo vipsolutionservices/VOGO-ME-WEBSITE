@@ -466,6 +466,22 @@
       .chatbot-close { font-size: 30px; }
       .chatbot-fixed { font-size: 18px; }
     }
+
+    /** Section purpose and behavior: Mobile-only refinements to prevent horizontal swipe and keep hero buttons centered. */
+    @media (max-width: 768px) {
+      body { overflow-x: hidden; }
+      .hero-actions { justify-content: center; }
+      .chatbot-widget {
+        right: 12px;
+        left: 12px;
+        align-items: center;
+      }
+      .chatbot-panel { width: 100%; }
+      .chatbot-fixed {
+        width: min(100%, 320px);
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
