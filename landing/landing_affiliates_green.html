@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- File purpose and role: Affiliate landing page with hero, benefits, process, FAQ, and fixed chatbot widget. -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOGO Affiliate Program</title>
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --text: #090909;
+      --blue: #3d4bff;
+      --purple: #6d4df5;
+      --navy: #05045a;
+      --light-purple: #d6d9f9;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: #1f2b4d;
+      line-height: 1.35;
+    }
+
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 56px 42px;
+    }
+
+    /** Section purpose and behavior: Shared two-column layout used across hero/content sections. */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    h1, h2, h3 { margin: 0; color: var(--text); }
+    h1 { font-size: 56px; font-weight: 700; letter-spacing: -0.6px; }
+    h2 { font-size: 46px; font-weight: 700; }
+    .lead {
+      margin-top: 18px;
+      font-size: 20px;
+      color: #001b6b;
+      font-weight: 700;
+    }
+    p {
+      font-size: 18px;
+      margin: 18px 0 0;
+      color: #29385f;
+      max-width: 690px;
+    }
+    .btn {
+      margin-top: 34px;
+      background: linear-gradient(90deg, var(--blue), #3959e3);
+      color: #fff;
+      border: 0;
+      border-radius: 40px;
+      padding: 14px 34px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.7px;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    /** Section purpose and behavior: Decorative image blocks to mirror the reference visual style. */
+    .hero-visual {
+      position: relative;
+      min-height: 430px;
+      background: var(--light-purple);
+      border-radius: 0 0 90px 0;
+      overflow: hidden;
+      padding: 28px;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 28px;
+      min-height: 374px;
+    }
+
+    .section-alt { background: #f2f2f2; }
+
+    .stats-card {
+      position: relative;
+      background: linear-gradient(180deg, #5f57ff, #7267f6);
+      border-radius: 34px;
+      min-height: 360px;
+      padding: 28px;
+    }
+    .panel {
+      background: #fff;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 8px 22px rgba(20, 24, 70, 0.15);
+      margin-top: 26px;
+      min-height: 196px;
+    }
+    .chip-row { display: flex; gap: 12px; margin-top: 12px; }
+    .chip {
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .chip.blue { background: #2bb2da; }
+    .chip.purple { background: #7a4df3; }
+
+    .chat-preview {
+      position: absolute;
+      right: -40px;
+      bottom: -14px;
+      width: 320px;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
+    }
+    .chat-preview .head {
+      background: linear-gradient(90deg, #5a34e3, #3654e9);
+      color: #fff;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .chat-preview .body { padding: 12px; color: #333; font-size: 14px; }
+    .chat-preview .cta {
+      margin: 12px;
+      text-align: center;
+      background: #1673d4;
+      color: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px;
+      text-align: center;
+      margin-top: 24px;
+    }
+    .step h3 { font-size: 32px; margin: 12px 0 8px; }
+    .step p { font-size: 16px; margin: 0 auto; max-width: 320px; }
+    .icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(160deg, #8f6fff, #c7bcff);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .benefits-wrap { background: #fff; }
+    .benefits-head {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 90px 0;
+      padding: 70px 20px;
+      text-align: center;
+    }
+    .benefits-head h2, .benefits-head p { color: #fff; margin: 0; }
+    .benefits-head p { margin-top: 14px; font-size: 18px; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .benefit h3 { font-size: 22px; }
+    .benefit p { font-size: 16px; margin-top: 8px; }
+
+    /** Section purpose and behavior: Testimonial cards for affiliate social proof. */
+    .testimonials h2 {
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+    .testimonials .sub {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 760px;
+    }
+    .testimonials-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 18px rgba(20, 24, 70, 0.08);
+    }
+    .testimonial-head {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .testimonial-head img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .testimonial-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1f2b4d;
+    }
+    .testimonial-role {
+      font-size: 14px;
+      color: #57668a;
+    }
+    .testimonial-text {
+      font-size: 16px;
+      margin: 0;
+      max-width: none;
+    }
+
+    .cta-dark {
+      background: var(--navy);
+      color: #fff;
+      padding: 64px 0;
+      margin-top: 44px;
+    }
+    .cta-dark h2, .cta-dark p { color: #fff; }
+    .cta-dark p { font-size: 18px; }
+
+    /** Section purpose and behavior: FAQ accordion layout styled to match the reference model. */
+    .faq h2 { text-align: center; color: var(--navy); font-size: 42px; }
+    .faq-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #d9d9d9;
+      padding: 0 8px;
+    }
+    .faq-question {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #27385f;
+      font-size: 25px;
+      font-weight: 700;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      cursor: pointer;
+    }
+    .faq-icon {
+      font-size: 28px;
+      color: #687285;
+      margin-left: 18px;
+      transition: transform 0.2s ease;
+    }
+    .faq-answer {
+      margin: 0;
+      font-size: 18px;
+      color: #27385f;
+      max-width: none;
+      display: none;
+      padding: 0 0 18px;
+    }
+    .faq-item.is-open .faq-answer {
+      display: block;
+    }
+    .faq-item.is-open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    /** Section purpose and behavior: Floating fixed chatbot similar to provided screenshot position. */
+    .chatbot-fixed {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      background: linear-gradient(90deg, #6e5ef7, #4b45e4);
+      color: #fff;
+      border-radius: 40px;
+      padding: 14px 28px;
+      font-size: 23px;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(30, 42, 120, 0.35);
+      z-index: 999;
+    }
+
+    @media (max-width: 1024px) {
+      h1 { font-size: 40px; }
+      h2, .faq h2, .testimonials h2 { font-size: 34px; }
+      .lead { font-size: 19px; }
+      p { font-size: 17px; }
+      .btn { font-size: 22px; }
+      .two-col, .steps, .benefits-grid, .faq-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .faq-question { font-size: 22px; }
+      .faq-icon { font-size: 24px; }
+      .faq-answer { font-size: 20px; }
+      .chat-preview { position: static; margin-top: 20px; width: 100%; }
+      .chatbot-fixed { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="container two-col">
+      <div>
+        <h1>VOGO affiliate program</h1>
+        <div class="lead">Earn recurring revenue by promoting VOGO digital solutions</div>
+        <p>
+          Join the VOGO affiliate program and promote our WordPress, WooCommerce and mobile app ecosystem
+          through your website, blog, email, and social channels.
+          <strong>Earn recurring commissions for active subscriptions.</strong>
+        </p>
+        <a class="btn" href="#">JOIN NOW</a>
+      </div>
+      <div class="hero-visual">
+        <img src="img/landing/high-angle-hands-holding-smartphone.jpg" alt="VOGO affiliate partners collaborating" />
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="container two-col">
+        <div>
+          <h2>Get Paid!</h2>
+          <h2 style="color:#7a56f7;">Recurring 25% - 40%</h2>
+          <h2>Commissions Forever</h2>
+          <p>Join VOGO and receive clear partner materials, referral tracking, and recurring monthly payouts while client subscriptions stay active.</p>
+          <a class="btn" href="#">Start Earning Now</a>
+        </div>
+        <div class="stats-card">
+          <div class="panel">
+            <div style="font-size:22px;font-weight:700;color:#8a8a8a;">VOGO Affiliates</div>
+            <div class="chip-row">
+              <div class="chip blue">Referrals<br/>12,430</div>
+              <div class="chip purple">Earnings<br/>$48,290.10</div>
+            </div>
+          </div>
+          <div class="chat-preview">
+            <div class="head">VOGO Affiliate Team</div>
+            <div class="body">Hi partner 👋<br/>Need support for campaigns and tracking?</div>
+            <div class="cta">Talk to us!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <p style="text-align:center;max-width:none;margin-top:0;">Use VOGO affiliate assets to launch fast.<br/>Follow 3 simple steps and start earning.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="icon">1</div>
+          <h3>JOIN</h3>
+          <p><span style="color:#7a56f7;font-weight:700;">Create your account</span> and claim your unique VOGO referral link.</p>
+        </div>
+        <div class="step">
+          <div class="icon">2</div>
+          <h3>REFER CLIENTS</h3>
+          <p>Share your link with audiences interested in VOGO services and mobile commerce solutions.</p>
+        </div>
+        <div class="step">
+          <div class="icon">3</div>
+          <h3>EARN</h3>
+          <p>Earn between <strong style="color:#7a56f7;">25% to 40%</strong> on qualified sales and recurring plans.</p>
+        </div>
+      </div>
+      <div style="text-align:center;"><a class="btn" href="#">Start Earning Now</a></div>
+    </section>
+
+    <section class="benefits-wrap container">
+      <div class="benefits-head">
+        <h2>Program benefits</h2>
+        <p>Here are a few advantages of joining VOGO’s affiliate program.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit">
+          <h3>✔ Earn 25% for every referred sale</h3>
+          <p>Receive 25% commission for each qualified referred sale and grow your earnings with performance milestones.</p>
+        </div>
+        <div class="benefit">
+          <h3>✔ After 10 sales → Get 40% Commission</h3>
+          <p>After the first 10 verified sales, your future qualified sales can reach 40% commission.</p>
+        </div>
+        <div class="benefit">
+          <h3>✔ Just $50 minimum Payout</h3>
+          <p>Withdraw your earnings after the minimum payout threshold is reached, with support from the VOGO team.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container testimonials">
+      <h2>Affiliate testimonials</h2>
+      <p class="sub">Real feedback from partners who promote VOGO services and receive recurring commissions.</p>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <div class="testimonial-head">
+            <img src="img/landing/testimonial_woman_retail.png" alt="VOGO affiliate testimonial - eCommerce consultant" />
+            <div>
+              <div class="testimonial-name">Elena M.</div>
+              <div class="testimonial-role">eCommerce consultant</div>
+            </div>
+          </div>
+          <p class="testimonial-text">“VOGO gave me clear promo resources and a simple referral flow. I started seeing recurring commissions from monthly subscriptions within the first campaigns.”</p>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-head">
+            <img src="img/landing/testimonial_man_restaurant.png" alt="VOGO affiliate testimonial - agency owner" />
+            <div>
+              <div class="testimonial-name">Andrei P.</div>
+              <div class="testimonial-role">digital agency owner</div>
+            </div>
+          </div>
+          <p class="testimonial-text">“Our clients needed WordPress, WooCommerce and mobile app support in one place. Promoting VOGO made our recommendations easier and more profitable.”</p>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-head">
+            <img src="img/landing/testimonial 3.jpg" alt="VOGO affiliate testimonial - growth marketer" />
+            <div>
+              <div class="testimonial-name">Radu C.</div>
+              <div class="testimonial-role">growth marketer</div>
+            </div>
+          </div>
+          <p class="testimonial-text">“The VOGO team responds fast, tracking is transparent, and payouts are predictable. It is one of the most stable affiliate programs in my portfolio.”</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-dark">
+      <div class="container two-col" style="align-items:flex-start;">
+        <img src="img/landing/close-up-hands-holding-device.jpg" alt="VOGO mobile commerce promotion" style="width:100%;border-radius:14px;" />
+        <div>
+          <h2>Let's Start Earning Together!</h2>
+          <p>1. Join our affiliate referral program</p>
+          <p>2. Promote VOGO on your website, blog, social media, or emails. <strong>Make sure to use your unique link!</strong></p>
+          <p>3. Get paid! You’ll earn commission when your referrals purchase any product or sign up for memberships – <strong>up to 40% for life</strong>.</p>
+          <a class="btn" href="#" style="background:#36e6d3;color:#06124c;">JOIN NOW</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>When can I get paid?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">Payouts are available after you reach the minimum payout threshold of $50.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How do I check my statistics to see how I am doing?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">You can check your affiliate statistics in your affiliate dashboard after joining the program.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How much can I make?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">You earn 25% per referred sale, and after 10 unique sales your commission increases to 40% for future sales.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>What if I need help or advice?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">You can contact support and we will assist you with setup, promotion, and affiliate questions.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How long do tracking cookies last?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">Please contact support to confirm the current tracking cookie duration for the affiliate program.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>What if I have other questions?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">If you have additional questions, contact support and our team will help you.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Do you have a free trial?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">Please contact support to confirm the latest availability of any free trial options.</p>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Can I evaluate WordPress before / after becoming an affiliate?</span>
+            <span class="faq-icon">⌄</span>
+          </button>
+          <p class="faq-answer">Yes, you can contact support to discuss evaluation options before or after joining the affiliate program.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="chatbot-fixed">💬 We're here to help!</div>
+
+  <script>
+    /** Section purpose and behavior: Toggle FAQ answers and keep visual state in sync with the icon. */
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const faqItem = button.closest('.faq-item');
+        const isOpen = faqItem.classList.toggle('is-open');
+        button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+  </script>
+</body>
+</html>
