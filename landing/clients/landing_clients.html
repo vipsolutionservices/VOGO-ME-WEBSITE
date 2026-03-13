@@ -298,24 +298,59 @@
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 34px;
-      text-align: center;
+      gap: 24px;
       margin-top: 24px;
     }
-    .step h3 { font-size: 32px; margin: 12px 0 8px; }
-    .step p { font-size: 16px; margin: 0 auto; max-width: 320px; }
-    .icon {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto;
-      border-radius: 50%;
-      background: linear-gradient(160deg, #0c542d, #0c542d);
+    .step {
       display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 30px;
+      grid-template-columns: 180px 1fr;
+      border: 1px solid #c7ccd4;
+      background: #e9edf2;
+      overflow: hidden;
+    }
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 96px;
       font-weight: 700;
+      color: #02034f;
+      line-height: 1;
+    }
+    .step-content {
+      padding: 34px 36px;
+      background: #4f86e8;
+      color: #fff;
+    }
+    .step-content h3 {
+      color: #fff;
+      font-size: 40px;
+      margin: 0 0 16px;
+      line-height: 1;
+    }
+    .step-content p {
+      color: #fff;
+      margin: 0;
+      max-width: 100%;
+    }
+    .step-content p + p { margin-top: 10px; }
+
+    .step:nth-child(even) {
+      grid-template-columns: 1fr 180px;
+    }
+    .step:nth-child(even) .step-number {
+      order: 2;
+      background: #4f86e8;
+      color: #fff;
+    }
+    .step:nth-child(even) .step-content {
+      order: 1;
+      background: #e9edf2;
+      color: #02034f;
+    }
+    .step:nth-child(even) .step-content h3,
+    .step:nth-child(even) .step-content p {
+      color: #02034f;
     }
 
     .benefits-wrap { background: #fff; }
@@ -678,6 +713,32 @@
       p { font-size: 17px; }
       .btn { font-size: 22px; }
       .two-col, .steps, .benefits-grid, .faq-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .step {
+        grid-template-columns: 1fr;
+      }
+      .step:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+      .step-number,
+      .step:nth-child(even) .step-number {
+        order: 1;
+        min-height: 140px;
+        font-size: 72px;
+        background: #e9edf2;
+        color: #02034f;
+      }
+      .step-content,
+      .step:nth-child(even) .step-content {
+        order: 2;
+        padding: 26px 24px;
+        background: #4f86e8;
+      }
+      .step-content h3,
+      .step-content p,
+      .step:nth-child(even) .step-content h3,
+      .step:nth-child(even) .step-content p {
+        color: #fff;
+      }
       .faq-question { font-size: 17px; }
       .faq-icon { font-size: 24px; }
       .faq-answer { font-size: 20px; }
@@ -827,21 +888,29 @@
 Urmează 3 pași simpli și lansează creșterea.</p>
       <div class="steps">
         <div class="step">
-          <div class="icon">1</div>
-          <h3>CONTACT</h3>
-          <p><a href="https://vogo.family/register/" target="_blank" rel="noopener noreferrer" style="color:#0c542d;font-weight:700;text-decoration:underline;">Creează-ți contul</a>
-             și spune-ne obiectivele tale de business. Apoi <a href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Client%20Sales%20Landing#request-field" target="_blank" rel="noopener noreferrer" style="color:#0c542d;font-weight:700;text-decoration:underline;">contactează</a> echipa VOGO pentru planul de implementare.</p>
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>CONTACT</h3>
+            <p><a href="https://vogo.family/register/" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline;">Creează-ți contul</a>
+               și spune-ne obiectivele tale de business.</p>
+            <p>Apoi <a href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Client%20Sales%20Landing#request-field" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;text-decoration:underline;">contactează</a> echipa VOGO pentru planul de implementare.</p>
+          </div>
         </div>
         <div class="step">
-          <div class="icon">2</div>
-          <h3>IMPLEMENTARE</h3>
-          <p>Configurăm soluția potrivită pentru site, aplicații mobile și fluxuri comerciale, astfel încât să livrezi o experiență unitară pe toate canalele.</p>
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>IMPLEMENTARE</h3>
+            <p>Configurăm soluția potrivită pentru site, aplicații mobile și fluxuri comerciale.</p>
+            <p>Astfel livrezi o experiență unitară pe toate canalele.</p>
+          </div>
         </div>
         <div class="step">
-          <div class="icon">3</div>
-          <h3>SCALEAZĂ</h3>
-          <p>Crești vânzările cu <strong style="color:#0c542d;">optimizare continuă</strong>
-            bazată pe date, automatizări și suport dedicat pentru rezultate comerciale stabile.</p>
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>SCALEAZĂ</h3>
+            <p>Crești vânzările cu <strong style="color:#fff;">optimizare continuă</strong> bazată pe date și automatizări.</p>
+            <p>Ai suport dedicat pentru rezultate comerciale stabile.</p>
+          </div>
         </div>
       </div>
       <div style="text-align:center;"><a class="btn" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Client%20Sales%20Landing#request-field">Solicită consultanță</a></div>
