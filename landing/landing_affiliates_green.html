@@ -610,6 +610,39 @@
       cursor: pointer;
     }
 
+
+    /** Section purpose and behavior: Top green utility band with quick links matching the main Romanian site header. */
+    .top-links-band {
+      border-bottom: 1px solid rgba(95, 200, 150, 0.2);
+      background: linear-gradient(180deg, #093b2d, #06261d);
+      padding: 14px 20px;
+      text-align: center;
+    }
+
+    .top-links-band nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .top-links-band a {
+      color: #d9f1e7;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .top-links-band a:hover {
+      text-decoration: underline;
+    }
+
+    .top-links-separator {
+      color: #8fb8a7;
+      font-size: 1rem;
+    }
+
     footer {
       border-top: 1px solid rgba(95, 200, 150, 0.2);
       background: linear-gradient(180deg, #093b2d, #06261d);
@@ -673,6 +706,18 @@
   </style>
 </head>
 <body>
+  <div class="top-links-band" aria-label="Navigare rapidă">
+    <nav>
+      <a href="#plans">Prețuri</a>
+      <span class="top-links-separator">|</span>
+      <a href="#enterprise">Enterprise</a>
+      <span class="top-links-separator">|</span>
+      <a href="#overview">Produse</a>
+      <span class="top-links-separator">|</span>
+      <a href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer">Contact</a>
+    </nav>
+  </div>
+
   <main>
     <!-- Section purpose and behavior: Hero title rendered full-width above content while preserving original text styling. -->
     <section class="container hero-title-row">
