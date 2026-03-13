@@ -607,9 +607,219 @@
         text-align: center;
       }
     }
+
+
+    /** Section purpose and behavior: Header copied from ro/index.html (logo to "Obține acum") for consistent top navigation. */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(248, 251, 253, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #e3ebf1;
+    }
+
+    .site-header .container.nav-wrap {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 28px;
+      min-height: 78px;
+      position: relative;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.9rem;
+      letter-spacing: .04em;
+      color: var(--vogo-green);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .mobile-menu-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .main-nav a {
+      color: #1f2937;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 4px;
+      border-bottom: 2px solid transparent;
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      color: var(--vogo-green);
+      border-bottom-color: var(--vogo-green);
+    }
+
+    .header-cta-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-made-in-europe-link {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .menu-made-in-europe-badge {
+      width: 86px;
+      height: auto;
+      opacity: 0.7;
+      display: block;
+    }
+
+    .site-header .btn {
+      border: 1px solid transparent;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .site-header .btn-primary {
+      background: var(--vogo-green);
+      color: #fff;
+    }
+
+    .promo-cta {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #0f7b65 0%, #0a5f4f 100%);
+      border-color: #0b6a57;
+      box-shadow: 0 10px 20px rgba(15, 123, 101, 0.24);
+      padding: 10px 14px;
+      margin-top: 0;
+    }
+
+    .promo-cta:hover,
+    .promo-cta:focus-visible {
+      color: #fff;
+      border-color: #0b6a57;
+      box-shadow: 0 14px 28px rgba(15, 123, 101, 0.28);
+      transform: translateY(-1px);
+    }
+
+    .mobile-top-cta,
+    .mobile-menu-toggle,
+    .mobile-menu-close,
+    .promo-cta-mobile {
+      display: none;
+    }
+
+    .climate-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid #d4e6df;
+      background: #fff;
+      color: #0a4f41;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .climate-badge:hover,
+    .climate-badge:focus-visible {
+      border-color: #0f7b65;
+      background: #f2faf7;
+    }
+
+    @media (max-width: 1024px) {
+      .site-header .container.nav-wrap {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px 0;
+      }
+
+      .mobile-menu-panel {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .main-nav {
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+    }
+
   </style>
 </head>
 <body>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="../ro/index.html" aria-label="VOGO - mergi la începutul paginii index">
+        <img src="../img-general/vogo-logo.png" alt="Logo VOGO" class="logo-mark" loading="eager" decoding="async" />
+        <span>VOGO</span>
+      </a>
+      <a class="btn btn-primary promo-cta mobile-top-cta" href="#plans">Obține acum reducerea</a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenuPanel">
+        <i class="bi bi-list" aria-hidden="true"></i>
+      </button>
+      <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Închide meniul">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+        <nav class="main-nav" id="mainNav">
+          <a href="#overview">Produse</a>
+          <a href="#support-services-card">Servicii</a>
+          <a href="#enterprise">Enterprise</a>
+          <a href="#plans">Prețuri</a>
+        </nav>
+        <div class="header-cta-group">
+          <a class="menu-made-in-europe-link" href="https://euipo.europa.eu/eSearch/#details/trademarks/019103505" target="_blank" rel="noopener noreferrer" aria-label="Made in Europe">
+            <img
+              class="menu-made-in-europe-badge"
+              src="../img-general/made_in_europe.png"
+              alt="Made in Europe"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a class="climate-badge" href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer">Contact</a>
+          <a class="btn btn-primary promo-cta" href="#plans">
+            <span class="promo-cta-desktop">Obține acum</span>
+            <span class="promo-cta-mobile">Obține acum</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <main>
     <!-- Section purpose and behavior: Hero title rendered full-width above content while preserving original text styling. -->
     <section class="container hero-title-row">
