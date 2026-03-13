@@ -54,7 +54,7 @@
       background: #f3f3f3;
       border-radius: 12px;
       padding: 16px 18px;
-      margin-bottom: 18px;
+      margin-top: 16px;
       border: 1px solid #e4e4e4;
     }
 
@@ -178,7 +178,7 @@
     /** Section purpose and behavior: Short lead form displayed in hero right column. */
     .hero-visual {
       position: relative;
-      background: linear-gradient(180deg, #8f3a93, #963f97);
+      background: var(--vogo-green);
       border-radius: 12px;
       padding: 24px;
       color: #fff;
@@ -800,12 +800,6 @@
   <main>
     <!-- Section purpose and behavior: Hero title rendered full-width above content while preserving original text styling. -->
     <section class="container hero-title-row">
-      <div class="hero-short-testimonials" aria-label="Testimoniale scurte">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <p>„Am scăpat definitiv de infecțiile urinare recurente” – Dana</p>
-        <p>„Digestie ușoară și confort intim absolut!” – Nicoleta</p>
-        <p>„Rezultate vizibile în doar 2 săptămâni!” – Sara</p>
-      </div>
       <h1>VOGO Partner program</h1>
     </section>
 
@@ -831,17 +825,23 @@
         </div>
       </div>
       <div class="hero-visual">
-        <h2 class="hero-form-title">Infecții urogenitale recurente?</h2>
-        <p class="hero-form-subtitle">5 schimbări simple ce le poți face în alimentația ta.</p>
+        <h2 class="hero-form-title">Vrei să devii partener VOGO?</h2>
+        <p class="hero-form-subtitle">Completează formularul și te contactăm pentru activare.</p>
         <form class="hero-form" method="post" action="#">
           <div class="hero-form-row">
             <input type="text" name="prenume" placeholder="Prenume" aria-label="Prenume" required />
             <input type="text" name="nume" placeholder="Nume" aria-label="Nume" required />
           </div>
           <input type="email" name="email" placeholder="Email" aria-label="Email" required />
-          <button type="submit">Descarcă ghidul</button>
+          <button type="submit">Solicită contact</button>
         </form>
-        <p class="hero-form-note">Primești instant materialul pe email + conținut bonus.</p>
+        <p class="hero-form-note">Primești pe email pașii de înscriere în programul de afiliere VOGO.</p>
+        <div class="hero-short-testimonials" aria-label="Testimoniale scurte">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <p>„Echipa VOGO ne-a ajutat să pornim rapid campaniile de afiliere.” – Elena</p>
+          <p>„Tracking clar, plăți recurente și suport prompt pentru parteneri.” – Andrei</p>
+          <p>„Program bine structurat și ușor de recomandat clienților.” – Radu</p>
+        </div>
       </div>
     </section>
 
