@@ -686,7 +686,7 @@
           <p>Alătură-te programului de parteneriat VOGO și promovează ecosistemul nostru complet de soluții digitale: WordPress, WooCommerce, aplicații mobile iOS & Android și tehnologii AI.</p>
           <p>Recomandă produsele VOGO pe site-ul tău, blog, newsletter sau rețele sociale și obține comisioane recurente pentru fiecare abonament activ. <a href="https://www.vogo.me" target="_blank" rel="noopener noreferrer">[read more]</a></p>
           <ul class="hero-points">
-            <li>✔ Transforma rapid site-ul wordpress / woo commerce in <b>aplicatie mobila nativa iOS & Android </b>, cu ajutorul VOGO Wordpress plugin</li>
+            <li style="color: var(--blue); font-weight: 700;">✔ Transforma rapid site-ul wordpress / woo commerce in aplicatie mobila nativa iOS & Android , cu ajutorul VOGO Wordpress plugin</li>
             <li>✔ Soluții complete pentru aplicații mobile <b>native </b> și e-commerce</li>
             <li>✔ Aplicații mobile reale, dezvoltate in Flutter cu servicii web, nu simple ambalaje sau WebView.</li>
             <li>✔ Soluții de Inteligență Artificială (AI & LLM), Asistent inteligent pentru vanzari in magazinul on-line</li>
@@ -748,7 +748,7 @@
           <div class="chat-preview">
             <div class="head">VOGO Affiliate Team</div>
             <div class="body">Hi partner 👋<br/>Need support for campaigns and tracking?</div>
-            <div class="cta">Vorbeste cu noi!</div>
+            <div class="cta" id="affiliateChatPreviewCta">Vorbeste cu noi!</div>
           </div>
         </div>
       </div>
@@ -1010,6 +1010,7 @@ Urmează 3 pași simpli și începe să câștigi.</p>
     const chatbotToggle = document.getElementById('chatbotToggle');
     const chatbotClose = document.getElementById('chatbotClose');
     const chatbotPanel = document.getElementById('chatbotPanel');
+    const affiliateChatPreviewCta = document.getElementById('affiliateChatPreviewCta');
 
     const setChatbotState = (isOpen) => {
       chatbotWidget.classList.toggle('is-open', isOpen);
@@ -1023,6 +1024,11 @@ Urmează 3 pași simpli și începe să câștigi.</p>
 
     chatbotClose.addEventListener('click', () => {
       setChatbotState(false);
+    });
+
+    /** Section purpose and behavior: Trigger the fixed chatbot button when clicking the chat preview call-to-action text. */
+    affiliateChatPreviewCta.addEventListener('click', () => {
+      chatbotToggle.click();
     });
   </script>
 </body>
