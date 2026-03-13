@@ -49,7 +49,7 @@ final class VOGO_FAQ_Chat {
       echo '<input type="text" style="width:100%" name="'.self::OPT.'[title]" value="'.esc_attr($v?:'VOGO Assistant').'" />';
     });
     $this->add_field('cta','Fallback CTA', function($v){
-      echo '<input type="text" style="width:100%" name="'.self::OPT.'[cta]" value="'.esc_attr($v?:'Contact sales at sales@vogo.me or +40 742 203 383.').'" />';
+      echo '<input type="text" style="width:100%" name="'.self::OPT.'[cta]" value="'.esc_attr($v?:'Contact sales at sales@vogo.me or +40 723 313 296.').'" />';
     });
     $this->add_field('greeting','Initial Greeting', function($v){
       $def='Salut — sunt asistentul VOGO. Alege o opțiune: 1) Devino distribuitor 2) Consultant autorizat 3) Ambasador VOGO 4) Reseller 5) Reprezentanță pe teritoriu 6) Altă întrebare';

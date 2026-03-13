@@ -329,7 +329,7 @@
 
 <div class="actions" style="margin-top:10px; padding-left:100px">
   <button id="submitBtn" type="submit" class="btn btn-primary">Submit request</button>
-  <a class="btn btn-ghost" id="waLink" href="https://wa.me/40742203383" target="_blank" rel="noopener">Contact us on WhatsApp</a>
+  <a class="btn btn-ghost" id="waLink" href="https://wa.me/40723313296" target="_blank" rel="noopener">Contact us on WhatsApp</a>
 </div>
 
 
@@ -370,7 +370,7 @@
         <p class="reps">
           <span><strong>Email:</strong> <a href="mailto:info@vogo.family">info@vogo.family</a></span>
           <span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/107941562" target="_blank" rel="noopener">linkedin.com/vogo-company</a></span>
-          <span><strong>WhatsApp:</strong> <a href="https://wa.me/40742203383" target="_blank" rel="noopener">+40 742 203 383</a></span>
+          <span><strong>WhatsApp:</strong> <a href="https://wa.me/40723313296" target="_blank" rel="noopener">+40 723 313 296</a></span>
         </p>
         <div class="euipo-card" style="margin-top:20px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center">
           <a href="https://euipo.europa.eu/eSearch/#details/trademarks/019103505" target="_blank" rel="noopener">
@@ -557,7 +557,7 @@ syncInterest();
 
     // WhatsApp deeplink
     const waLink=document.getElementById('waLink');
-    function buildWaText(){ const req=reqSel.selectedOptions[0]?.textContent||'General inquiry'; const email=document.getElementById('email').value||''; return 'https://wa.me/40742203383?text='+encodeURIComponent(`Hello VOGO, I'd like to discuss: ${req}. My email: ${email}`) }
+    function buildWaText(){ const req=reqSel.selectedOptions[0]?.textContent||'General inquiry'; const email=document.getElementById('email').value||''; return 'https://wa.me/40723313296?text='+encodeURIComponent(`Hello VOGO, I'd like to discuss: ${req}. My email: ${email}`) }
     ['click','focus'].forEach(ev=>waLink.addEventListener(ev,()=>{ waLink.href=buildWaText(); }));
 
     // RTE helpers
