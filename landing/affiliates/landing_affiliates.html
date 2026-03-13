@@ -175,6 +175,30 @@
       border: 2px solid var(--vogo-green);
     }
 
+    /** Section purpose and behavior: Quick links to Google Play and Apple Store shown near the resources action. */
+    .store-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .store-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d7d7d7;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .store-link img {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
     /** Section purpose and behavior: Short lead form displayed in hero right column. */
     .hero-visual {
       position: relative;
@@ -841,6 +865,14 @@
           <a class="btn btn-talk" href="https://wa.me/70723313296?text=Hello%20VOGO%20team%2C%20I%20want%20to%20join%20the%20affiliate%20program." target="_blank" rel="noopener noreferrer">Discută cu noi</a>
           <a class="btn btn-reverse" href="https://www.vogo.family" target="_blank" rel="noopener noreferrer">Vezi demo</a>
           <a class="btn btn-reverse" href="https://www.vogo.me" target="_blank" rel="noopener noreferrer">Resurse</a>
+          <div class="store-links" aria-label="Download stores">
+            <a class="store-link" href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
+              <img src="https://cdn.simpleicons.org/googleplay" alt="Google Play icon" />
+            </a>
+            <a class="store-link" href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer" aria-label="Apple App Store">
+              <img src="https://cdn.simpleicons.org/apple" alt="Apple icon" />
+            </a>
+          </div>
         </div>
       </div>
       <div class="hero-visual">
@@ -1189,6 +1221,28 @@ Urmează 3 pași simpli și începe să câștigi.</p>
     /** Section purpose and behavior: Trigger the fixed chatbot button when clicking the chat preview call-to-action text. */
     affiliateChatPreviewCta.addEventListener('click', () => {
       chatbotToggle.click();
+    });
+
+    /** Section purpose and behavior: Open WhatsApp with the contact form values when the hero form is submitted. */
+    const heroForm = document.querySelector('.hero-form');
+
+    heroForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(heroForm);
+      const prenume = (formData.get('prenume') || '').toString().trim();
+      const nume = (formData.get('nume') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const whatsappMessage = [
+        'Salut! Doresc sa solicit contact pentru programul VOGO Partner Sprint.',
+        '',
+        `Prenume: ${prenume}`,
+        `Nume: ${nume}`,
+        `Email: ${email}`
+      ].join('\n');
+
+      const whatsappUrl = `https://wa.me/40723313296?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     });
   </script>
 </body>
