@@ -1175,6 +1175,28 @@ Urmează 3 pași simpli și începe să câștigi.</p>
     affiliateChatPreviewCta.addEventListener('click', () => {
       chatbotToggle.click();
     });
+
+    /** Section purpose and behavior: Open WhatsApp with the contact form values when the hero form is submitted. */
+    const heroForm = document.querySelector('.hero-form');
+
+    heroForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(heroForm);
+      const prenume = (formData.get('prenume') || '').toString().trim();
+      const nume = (formData.get('nume') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const whatsappMessage = [
+        'Salut! Doresc sa solicit contact pentru programul VOGO Partner Sprint.',
+        '',
+        `Prenume: ${prenume}`,
+        `Nume: ${nume}`,
+        `Email: ${email}`
+      ].join('\n');
+
+      const whatsappUrl = `https://wa.me/40723313296?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
   </script>
 </body>
 </html>
