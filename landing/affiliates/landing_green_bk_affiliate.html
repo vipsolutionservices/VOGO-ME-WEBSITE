@@ -39,6 +39,38 @@
     }
 
     /** Section purpose and behavior */
+    .top-links-band {
+      border-bottom: 1px solid rgba(95, 200, 150, 0.2);
+      background: linear-gradient(180deg, #093b2d, #06261d);
+      padding: 14px 20px;
+      text-align: center;
+    }
+
+    .top-links-band nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .top-links-band a {
+      color: #d9f1e7;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .top-links-band a:hover {
+      text-decoration: underline;
+    }
+
+    .top-links-separator {
+      color: #8fb8a7;
+      font-size: 1rem;
+    }
+
+    /** Section purpose and behavior */
     .hero {
       padding: 30px 0 60px;
       text-align: center;
@@ -223,6 +255,18 @@
   </style>
 </head>
 <body>
+  <div class="top-links-band" aria-label="Navigare rapidă">
+    <nav>
+      <a href="#plans">Prețuri</a>
+      <span class="top-links-separator">|</span>
+      <a href="#enterprise">Enterprise</a>
+      <span class="top-links-separator">|</span>
+      <a href="#overview">Produse</a>
+      <span class="top-links-separator">|</span>
+      <a href="https://vogo.me/ecomm-contact-request/" target="_blank" rel="noopener noreferrer">Contact</a>
+    </nav>
+  </div>
+
   <main>
     <section class="hero container">
       <div class="badge">VOGO PARTNER PROGRAM • WordPress • WooCommerce • Mobile Apps • AI</div>
@@ -238,7 +282,7 @@
       </div>
     </section>
 
-    <section class="container">
+    <section class="container" id="overview">
       <h2>Cum funcționează programul</h2>
       <p class="subtitle">Un flux simplu și clar: te înscrii, promovezi, urmărești rezultate și încasezi recurent.</p>
       <div class="grid-3">
@@ -258,7 +302,7 @@
       </div>
     </section>
 
-    <section class="container future">
+    <section class="container future" id="enterprise">
       <div class="panel">
         <div>
           <p style="font-size:2.2rem;margin:0">📱 🛒 🤖</p>
@@ -281,7 +325,7 @@
       </div>
     </section>
 
-    <section class="container">
+    <section class="container" id="plans">
       <h2>Alege varianta de comisionare</h2>
       <p class="subtitle">Structură clară de câștig, pe baza vânzărilor generate de tine.</p>
       <div class="grid-2 plans">
