@@ -49,6 +49,30 @@
       max-width: 100%;
     }
 
+    /** Section purpose and behavior: Short testimonial strip placed above the hero for immediate trust. */
+    .hero-short-testimonials {
+      background: #f3f3f3;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+      border: 1px solid #e4e4e4;
+    }
+
+    .hero-short-testimonials .stars {
+      color: #f6c247;
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .hero-short-testimonials p {
+      margin: 8px 0 0;
+      font-size: 20px;
+      color: #1a223d;
+      max-width: none;
+    }
+
     /** Section purpose and behavior: Tighten spacing between hero title row and hero content row. */
     .hero-layout {
       padding-top: 8px;
@@ -151,21 +175,64 @@
       border: 2px solid var(--vogo-green);
     }
 
-    /** Section purpose and behavior: Decorative image blocks to mirror the reference visual style. */
+    /** Section purpose and behavior: Short lead form displayed in hero right column. */
     .hero-visual {
       position: relative;
-      min-height: 430px;
-      background: var(--light-purple);
-      border-radius: 0 0 90px 0;
-      overflow: hidden;
-      padding: 28px;
+      background: linear-gradient(180deg, #8f3a93, #963f97);
+      border-radius: 12px;
+      padding: 24px;
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(14, 23, 50, 0.24);
     }
-    .hero-visual img {
+
+    .hero-form-title {
+      color: #fff;
+      font-size: 34px;
+      margin: 0;
+    }
+
+    .hero-form-subtitle {
+      margin: 8px 0 18px;
+      color: #f4e9f4;
+      font-size: 26px;
+      max-width: none;
+    }
+
+    .hero-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .hero-form input {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 28px;
-      min-height: 374px;
+      border: 1px solid #ccb5d8;
+      border-radius: 6px;
+      padding: 14px 12px;
+      font-size: 18px;
+      color: #1f2b4d;
+    }
+
+    .hero-form button {
+      border: 1px solid #a8beff;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      background: #7192e6;
+      cursor: pointer;
+    }
+
+    .hero-form-note {
+      margin-top: 12px;
+      color: #f7eef9;
+      font-size: 16px;
     }
 
     .section-alt { background: #f2f2f2; }
@@ -711,6 +778,9 @@
         width: min(100%, 320px);
         text-align: center;
       }
+      .hero-form-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -730,22 +800,28 @@
   <main>
     <!-- Section purpose and behavior: Hero title rendered full-width above content while preserving original text styling. -->
     <section class="container hero-title-row">
+      <div class="hero-short-testimonials" aria-label="Testimoniale scurte">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>„Am scăpat definitiv de infecțiile urinare recurente” – Dana</p>
+        <p>„Digestie ușoară și confort intim absolut!” – Nicoleta</p>
+        <p>„Rezultate vizibile în doar 2 săptămâni!” – Sara</p>
+      </div>
       <h1>VOGO Partner program</h1>
     </section>
 
     <section class="container two-col hero-layout">
       <div class="hero-content">
-        <div class="lead">Câștigă venituri recurente promovând soluțiile digitale VOGO pentru Start AI si mobile apps iOS & Android</div>
+        <div class="lead">Te ocupi de business online? Câștigi comisioane recurente, simplu și clar.</div>
         <div class="hero-copy">
-          <p>Alătură-te programului de parteneriat VOGO și promovează ecosistemul nostru complet de soluții digitale: WordPress, WooCommerce, aplicații mobile iOS & Android și tehnologii AI.</p>
-          <p>Recomandă produsele VOGO pe site-ul tău, blog, newsletter sau rețele sociale și obține comisioane recurente pentru fiecare abonament activ. <a href="https://www.vogo.me" target="_blank" rel="noopener noreferrer">[read more]</a></p>
+          <p>Spune simplu ce faci: ajuți clienții să vândă mai mult online, fără risc.</p>
+          <p>Promovezi serviciile VOGO pe canalele tale și primești comision recurent pentru fiecare abonament activ. <a href="https://www.vogo.me" target="_blank" rel="noopener noreferrer">[read more]</a></p>
           <ul class="hero-points">
-            <li style="color: var(--blue); font-weight: 700;">✔ Transforma rapid site-ul wordpress / woo commerce in aplicatie mobila nativa iOS & Android , cu ajutorul VOGO Wordpress plugin</li>
-            <li>✔ Soluții complete pentru aplicații mobile <b>native </b> și e-commerce</li>
-            <li>✔ Aplicații mobile reale, dezvoltate in Flutter cu servicii web, nu simple ambalaje sau WebView.</li>
-            <li>✔ Soluții de Inteligență Artificială (AI & LLM), Asistent inteligent pentru vanzari in magazinul on-line</li>
+            <li style="color: var(--blue); font-weight: 700;">✔ Tu recomanzi. Noi livrăm soluții complete WordPress, WooCommerce, iOS, Android și AI.</li>
+            <li>✔ Ai mesaj autentic și ușor de explicat, pe înțelesul tuturor.</li>
+            <li>✔ Câștigi comisioane recurente, transparent și predictibil.</li>
+            <li>✔ Crești încrederea prin testimoniale, rezultate și suport profesionist.</li>
           </ul>
-          <div class="hero-highlight">Transformă audiența ta în venituri recurente stabile.</div>
+          <div class="hero-highlight">Transformi recomandările tale în venituri recurente pe termen lung.</div>
         </div>
         <div class="hero-actions">
           <a class="btn" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">Devino Partner</a>
@@ -755,7 +831,17 @@
         </div>
       </div>
       <div class="hero-visual">
-        <img src="../../img/landing/high-angle-hands-holding-smartphone-scaled.jpg" alt="VOGO affiliate partners collaborating" />
+        <h2 class="hero-form-title">Infecții urogenitale recurente?</h2>
+        <p class="hero-form-subtitle">5 schimbări simple ce le poți face în alimentația ta.</p>
+        <form class="hero-form" method="post" action="#">
+          <div class="hero-form-row">
+            <input type="text" name="prenume" placeholder="Prenume" aria-label="Prenume" required />
+            <input type="text" name="nume" placeholder="Nume" aria-label="Nume" required />
+          </div>
+          <input type="email" name="email" placeholder="Email" aria-label="Email" required />
+          <button type="submit">Descarcă ghidul</button>
+        </form>
+        <p class="hero-form-note">Primești instant materialul pe email + conținut bonus.</p>
       </div>
     </section>
 
