@@ -1115,6 +1115,12 @@ width: clamp(130.75px, 15.075vw, 180.25px);
   color: var(--white);
   border-color: var(--vogo-green);
 }
+/* Blue variant for the Made in EUROPE badge with EU yellow text. */
+.badge-made-in-europe {
+  background: #003399;
+  color: #FFCC00;
+  border-color: #003399;
+}
 /* ISO badge card style for image-based credibility marks from /img-general/iso. */
 .badge-iso-card {
   margin: 0;
