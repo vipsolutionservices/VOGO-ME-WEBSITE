@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program afiliere VOGO - Landing Green</title>
+  <title>Program parteneri VOGO - Landing Green</title>
   <style>
     /** File purpose and role */
     :root {
@@ -291,13 +291,13 @@
 
     /** Section purpose and behavior: Scrollable mobile app screenshots carousel sourced from the affiliate reference page. */
     .affiliate-reel {
-      padding: 40px 0;
-      background: #f3f3f3;
+      padding: 56px 0;
+      background: transparent;
     }
 
     .affiliate-reel-viewport {
       position: relative;
-      max-width: 100%;
+      width: min(1140px, 92%);
       margin: 0 auto;
       overflow: hidden;
     }
@@ -315,12 +315,12 @@
 
     .affiliate-reel-viewport::before {
       left: 0;
-      background: linear-gradient(90deg, #f3f3f3 0%, rgba(243, 243, 243, 0) 100%);
+      background: linear-gradient(90deg, rgba(8, 30, 23, 0.95) 0%, rgba(8, 30, 23, 0) 100%);
     }
 
     .affiliate-reel-viewport::after {
       right: 0;
-      background: linear-gradient(270deg, #f3f3f3 0%, rgba(243, 243, 243, 0) 100%);
+      background: linear-gradient(270deg, rgba(8, 30, 23, 0.95) 0%, rgba(8, 30, 23, 0) 100%);
     }
 
     .affiliate-reel-track {
@@ -342,9 +342,9 @@
 
     .affiliate-reel-card {
       border-radius: 26px;
-      border: 1px solid #d8d8d8;
-      background: #fff;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--card-border);
+      background: rgba(9, 40, 30, 0.88);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
       padding: 3px;
       overflow: hidden;
     }
@@ -359,37 +359,36 @@
 
     /** Section purpose and behavior: Testimonials and credibility blocks copied from the affiliate reference page. */
     .testimonials {
-      background: #f3f3f3;
-      color: #08112f;
+      background: transparent;
+      color: var(--text-main);
       padding: 56px 0;
     }
 
     .testimonials h2 {
       text-align: center;
-      margin: 0;
-      font-size: 64px;
+      margin: 0 0 14px;
+      font-size: clamp(1.7rem, 4vw, 3rem);
     }
 
     .testimonials .sub {
       text-align: center;
-      max-width: 980px;
-      margin: 16px auto 0;
-      font-size: 44px;
-      color: #1f2f5c;
+      max-width: 760px;
+      margin: 0 auto 36px;
+      font-size: clamp(1rem, 2vw, 1.65rem);
+      color: var(--text-muted);
     }
 
     .testimonials-grid {
-      margin-top: 40px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
     .testimonial-card {
-      background: #f7f7f7;
-      border: 1px solid #e8e8e8;
-      border-radius: 24px;
-      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 26px;
     }
 
     .testimonial-head {
@@ -407,34 +406,34 @@
     }
 
     .testimonial-name {
-      font-size: 42px;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
       font-weight: 800;
-      color: #08112f;
+      color: var(--text-main);
     }
 
     .testimonial-stars {
       margin-left: 8px;
       color: #f3c44f;
-      font-size: 30px;
+      font-size: 1.4rem;
       letter-spacing: 1px;
       vertical-align: middle;
     }
 
     .testimonial-role {
-      font-size: 18px;
-      color: #1f2f5c;
+      font-size: 1.1rem;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
     .testimonial-text {
       margin: 0;
-      font-size: 42px;
+      font-size: 1.9rem;
       line-height: 1.35;
-      color: #1f2f5c;
+      color: #d8ebdf;
     }
 
     .trust-section {
-      background: #abc0c2;
+      background: transparent;
       padding: 56px 0;
     }
 
@@ -443,6 +442,10 @@
       grid-template-columns: 1fr 1fr;
       gap: 28px;
       align-items: center;
+      background: rgba(9, 37, 29, 0.78);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 26px;
     }
 
     .eyebrow {
@@ -450,20 +453,22 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-weight: 700;
-      color: #08112f;
-      font-size: 44px;
+      color: var(--accent-2);
+      font-size: 1rem;
     }
 
     .trust-section h2 {
       margin: 0;
-      font-size: 62px;
-      color: #090909;
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      color: var(--text-main);
+      text-align: left;
     }
 
     .trust-section p {
       margin-top: 16px;
-      font-size: 40px;
-      color: #25315a;
+      font-size: 1.3rem;
+      line-height: 1.5;
+      color: var(--text-muted);
       max-width: 720px;
     }
 
@@ -476,8 +481,8 @@
 
     .badge-iso-card {
       margin: 0;
-      background: #fff;
-      border: 1px solid #dde3e8;
+      background: rgba(242, 248, 245, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 14px;
       padding: 8px;
       text-align: center;
@@ -502,22 +507,23 @@
       display: inline-block;
       padding: 10px 12px;
       border-radius: 999px;
-      background: #fff;
-      border: 1px solid #d5dde6;
+      background: rgba(242, 248, 245, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       font-size: 12px;
       font-weight: 700;
       color: #24335f;
       text-align: center;
     }
 
-    .benefits-wrap { background: #fff; }
+    .benefits-wrap { background: transparent; }
 
     .benefits-head {
-      max-width: 1460px;
+      max-width: 1140px;
       margin: 0 auto 34px;
-      border-radius: 64px 0 64px 0;
-      background: #05045a;
-      padding: 48px 64px;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      padding: 26px;
     }
 
     .benefits-head h2,
@@ -528,22 +534,30 @@
 
     .benefits-head p {
       margin-top: 14px;
-      font-size: 18px;
+      font-size: 1.2rem;
+      color: var(--text-muted);
     }
 
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 34px;
-      max-width: 1460px;
+      gap: 18px;
+      max-width: 1140px;
       margin: 0 auto;
+    }
+
+    .benefit {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 26px;
     }
 
     .benefit h3 {
       margin: 0;
-      font-size: 22px;
+      font-size: 1.8rem;
       line-height: 1.25;
-      color: #081266;
+      color: var(--text-main);
       display: flex;
       align-items: flex-start;
       gap: 12px;
@@ -574,9 +588,16 @@
 
     .benefit p {
       margin: 10px 0 0;
-      font-size: 16px;
-      color: #24335f;
+      font-size: 1.2rem;
+      color: var(--text-muted);
       max-width: none;
+    }
+
+    .trust-section .badge,
+    .trust-section .badge-hosted-eu,
+    .trust-section .badge-made-in-europe {
+      margin-bottom: 0;
+      font-weight: 700;
     }
 
     /** Section purpose and behavior: Floating chatbot launcher and expandable panel matching the provided model. */
@@ -717,42 +738,42 @@
   <main>
     <section class="hero container">
       <div class="badge">VOGO PARTNER PROGRAM • WordPress • WooCommerce • Mobile Apps • AI</div>
-      <h1>Câștigă comisioane recurente cu <span class="accent">ecosistemul digital VOGO</span></h1>
+      <h1>Devino distribuitor și generează venit recurent cu <span class="accent">soluțiile VOGO</span></h1>
       <p>
-        Alătură-te programului de afiliere VOGO și promovează soluții complete: WordPress, WooCommerce,
-        aplicații mobile native iOS &amp; Android și servicii AI &amp; LLM pentru business-uri moderne.
+        Activezi rapid ca partener VOGO și revinzi tehnologii gata de livrare: WordPress, WooCommerce,
+        aplicații mobile native iOS &amp; Android și soluții AI pentru business-uri care vor să crească.
       </p>
       <div class="stats">
         <div class="stat"><strong>25%</strong><span>comision recurent</span></div>
-        <div class="stat"><strong>35%</strong><span>după 10 vânzări unice</span></div>
-        <div class="stat"><strong>10%</strong><span>din toata reteaua ta</span></div>
+        <div class="stat"><strong>35%</strong><span>după 10 vânzări validate</span></div>
+        <div class="stat"><strong>10%</strong><span>bonus din rețeaua ta</span></div>
       </div>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">Devino Partner</a>
-        <a class="btn btn-secondary" href="https://www.vogo.me" target="_blank" rel="noopener noreferrer">Resurse</a>
+        <a class="btn btn-primary" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">Devino Partener VOGO</a>
+        <a class="btn btn-secondary" href="https://www.vogo.me" target="_blank" rel="noopener noreferrer">Vezi platforma</a>
       </div>
     </section>
 
     <section class="container" id="overview">
-      <h2>Cum funcționează programul</h2>
-      <p class="subtitle">Un flux simplu și clar: te înscrii, promovezi, urmărești rezultate și încasezi recurent.</p>
+      <h2>Cum funcționează parteneriatul</h2>
+      <p class="subtitle">Proces simplu: te înscrii, vinzi către clienții tăi, urmărești rezultatele și încasezi lunar.</p>
       <div class="grid-3">
-        <article class="card"><div class="step">1</div><h3>Înscriere rapidă</h3><p>Completezi cererea pentru programul de afiliere VOGO și primești acces la contul tău.</p></article>
-        <article class="card"><div class="step">2</div><h3>Promovare activă</h3><p>Distribui soluțiile VOGO pe site, blog, newsletter sau social media cu mesajele tale.</p></article>
-        <article class="card"><div class="step">3</div><h3>Comisioane recurente</h3><p>Câștigi lunar din abonamentele active generate prin recomandările tale.</p></article>
+        <article class="card"><div class="step">1</div><h3>Aplici în program</h3><p>Completezi formularul, iar echipa VOGO validează rapid activarea contului tău de partener.</p></article>
+        <article class="card"><div class="step">2</div><h3>Revinzi către clienții tăi</h3><p>Prezinți soluțiile VOGO agenției tale, portofoliului propriu sau comunității tale digitale.</p></article>
+        <article class="card"><div class="step">3</div><h3>Încasezi comisioane</h3><p>Primești comisioane recurente din abonamentele active generate prin recomandările tale.</p></article>
       </div>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">Începe să câștigi acum</a>
+        <a class="btn btn-primary" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">Aplică și începe vânzarea</a>
       </div>
     </section>
 
     <section class="container">
-      <h2>Ce promovezi în programul VOGO</h2>
-      <p class="subtitle">Produse digitale reale, orientate spre venit și scalare pentru clienți.</p>
+      <h2>Ce poți revinde ca partener VOGO</h2>
+      <p class="subtitle">Soluții gata de implementare, create pentru rezultate rapide și venit recurent.</p>
       <div class="grid-3">
-        <article class="card"><h3>WordPress → Mobile App</h3><p>Transformare rapidă din site WordPress / WooCommerce în aplicație mobilă nativă iOS &amp; Android.</p></article>
-        <article class="card"><h3>Aplicații mobile native</h3><p>Aplicații dezvoltate în Flutter cu servicii web, nu simple WebView sau ambalaje de browser.</p></article>
-        <article class="card"><h3>AI &amp; Asistent vânzări</h3><p>Soluții AI &amp; LLM pentru suport și automatizare, inclusiv asistent inteligent pentru magazine online.</p></article>
+        <article class="card"><h3>WordPress → Mobile App</h3><p>Convertești rapid un site WordPress / WooCommerce într-o aplicație mobilă nativă iOS &amp; Android.</p></article>
+        <article class="card"><h3>Aplicații mobile native</h3><p>Livrezi aplicații Flutter complete, pregătite pentru business-uri care vor experiență mobilă reală.</p></article>
+        <article class="card"><h3>AI pentru vânzări și suport</h3><p>Adaugi automatizare AI pentru conversii, suport clienți și procese comerciale mai rapide.</p></article>
       </div>
     </section>
 
@@ -760,42 +781,42 @@
       <div class="panel">
         <div>
           <p style="font-size:2.2rem;margin:0">📱 🛒 🤖</p>
-          <h3 style="margin:12px 0 8px;font-size:2.6rem">Oferta care convertește</h3>
-          <p style="margin:0;color:var(--text-muted);font-size:1.25rem">WordPress • WooCommerce • Flutter • AI</p>
+          <h3 style="margin:12px 0 8px;font-size:2.6rem">Oferta care se vinde ușor</h3>
+          <p style="margin:0;color:var(--text-muted);font-size:1.25rem">WordPress • WooCommerce • Mobile Apps • AI</p>
         </div>
       </div>
       <div>
-        <h2 style="text-align:left">De ce este inovator pentru afiliere</h2>
+        <h2 style="text-align:left">De ce agențiile aleg acest parteneriat</h2>
         <p style="color:var(--text-muted);font-size:1.35rem;margin:0 0 10px">
-          VOGO combină într-un singur ecosistem web, mobile și AI, astfel încât partenerii pot promova o soluție completă,
-          cu valoare clară pentru clienți și potențial ridicat de retenție.
+          VOGO combină web, mobile și AI într-un singur ecosistem. Astfel, poți vinde un pachet complet,
+          cu implementare rapidă, valoare clară pentru client și retenție ridicată.
         </p>
         <ul>
-          <li>✓ Soluție all-in-one: website + aplicație mobilă + AI</li>
-          <li>✓ Accent pe aplicații native și performanță reală</li>
-          <li>✓ Comisioane recurente pe durata abonamentelor active</li>
-          <li>✓ Canal direct de suport pentru parteneri și întrebări comerciale</li>
+          <li>✓ Revânzare simplă: website + aplicație mobilă + AI într-o singură ofertă</li>
+          <li>✓ Tehnologie gata de livrare, fără dezvoltare de la zero</li>
+          <li>✓ Comisioane recurente cât timp abonamentele rămân active</li>
+          <li>✓ Suport direct VOGO pentru parteneri și discuții comerciale</li>
         </ul>
       </div>
     </section>
 
     <section class="container" id="plans">
-      <h2>Alege varianta de comisionare</h2>
-      <p class="subtitle">Structură clară de câștig, pe baza vânzărilor generate de tine.</p>
+      <h2>Alege modelul de comision</h2>
+      <p class="subtitle">Plan de câștig clar, construit pentru parteneri care vând constant.</p>
       <div class="grid-2 plans">
         <article class="card">
-          <h3>Standard Affiliate</h3>
+          <h3>Standard Partner</h3>
           <p class="price">25%</p>
-          <p>Comision recurent pentru fiecare abonament activ venit prin linkul tău de afiliat.</p>
+          <p>Comision recurent pentru fiecare abonament activ generat prin recomandările tale.</p>
         </article>
         <article class="card" style="border-color: rgba(106, 255, 190, 0.7)">
-          <h3>Growth Affiliate</h3>
+          <h3>Growth Partner</h3>
           <p class="price">35%</p>
-          <p>După 10 vânzări unice, comisionul crește la 35% pentru vânzările viitoare eligibile.</p>
+          <p>După 10 vânzări validate, comisionul urcă la 35% pentru vânzările viitoare eligibile.</p>
         </article>
       </div>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">ÎNSCRIE-TE ACUM</a>
+        <a class="btn btn-primary" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">Devino Partener Acum</a>
       </div>
     </section>
 
@@ -916,13 +937,13 @@
 
     <section class="container">
       <h2>Întrebări frecvente</h2>
-      <p class="subtitle">Răspunsuri rapide pentru decizii clare în programul de afiliere.</p>
-      <div class="faq-item">Când pot primi plata? — După atingerea pragului minim de 100€, prin PayPal, Revolut sau IBAN.</div>
-      <div class="faq-item">Cum verific performanța? — Din dashboard-ul tău de afiliere, după activarea contului.</div>
-      <div class="faq-item">Ce fac dacă am nevoie de ajutor? — Contactezi echipa VOGO pentru suport de configurare și promovare.</div>
+      <p class="subtitle">Răspunsuri scurte pentru partenerii care vor să înceapă rapid.</p>
+      <div class="faq-item">Când primesc plata? — După atingerea pragului minim de 100€, prin PayPal, Revolut sau IBAN.</div>
+      <div class="faq-item">Cum urmăresc rezultatele? — Din dashboard-ul tău de partener, după activarea contului.</div>
+      <div class="faq-item">Primesc suport dacă am întrebări? — Da. Echipa VOGO te asistă în configurare și promovare.</div>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">Aplică în program</a>
-        <a class="btn btn-secondary" href="https://wa.me/70723313296?text=Hello%20VOGO%20team%2C%20I%20want%20to%20join%20the%20affiliate%20program." target="_blank" rel="noopener noreferrer">Discută cu noi</a>
+        <a class="btn btn-primary" href="https://vogo.me/ecomm-contact-request/?request=VOGO%20Affiliate%20program#request-field">Aplică în Program</a>
+        <a class="btn btn-secondary" href="https://wa.me/70723313296?text=Hello%20VOGO%20team%2C%20I%20want%20to%20join%20the%20affiliate%20program." target="_blank" rel="noopener noreferrer">Vorbește cu echipa</a>
       </div>
     </section>
   </main>
