@@ -291,13 +291,13 @@
 
     /** Section purpose and behavior: Scrollable mobile app screenshots carousel sourced from the affiliate reference page. */
     .affiliate-reel {
-      padding: 40px 0;
-      background: #f3f3f3;
+      padding: 56px 0;
+      background: transparent;
     }
 
     .affiliate-reel-viewport {
       position: relative;
-      max-width: 100%;
+      width: min(1140px, 92%);
       margin: 0 auto;
       overflow: hidden;
     }
@@ -315,12 +315,12 @@
 
     .affiliate-reel-viewport::before {
       left: 0;
-      background: linear-gradient(90deg, #f3f3f3 0%, rgba(243, 243, 243, 0) 100%);
+      background: linear-gradient(90deg, rgba(8, 30, 23, 0.95) 0%, rgba(8, 30, 23, 0) 100%);
     }
 
     .affiliate-reel-viewport::after {
       right: 0;
-      background: linear-gradient(270deg, #f3f3f3 0%, rgba(243, 243, 243, 0) 100%);
+      background: linear-gradient(270deg, rgba(8, 30, 23, 0.95) 0%, rgba(8, 30, 23, 0) 100%);
     }
 
     .affiliate-reel-track {
@@ -342,9 +342,9 @@
 
     .affiliate-reel-card {
       border-radius: 26px;
-      border: 1px solid #d8d8d8;
-      background: #fff;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--card-border);
+      background: rgba(9, 40, 30, 0.88);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
       padding: 3px;
       overflow: hidden;
     }
@@ -359,37 +359,36 @@
 
     /** Section purpose and behavior: Testimonials and credibility blocks copied from the affiliate reference page. */
     .testimonials {
-      background: #f3f3f3;
-      color: #08112f;
+      background: transparent;
+      color: var(--text-main);
       padding: 56px 0;
     }
 
     .testimonials h2 {
       text-align: center;
-      margin: 0;
-      font-size: 64px;
+      margin: 0 0 14px;
+      font-size: clamp(1.7rem, 4vw, 3rem);
     }
 
     .testimonials .sub {
       text-align: center;
-      max-width: 980px;
-      margin: 16px auto 0;
-      font-size: 44px;
-      color: #1f2f5c;
+      max-width: 760px;
+      margin: 0 auto 36px;
+      font-size: clamp(1rem, 2vw, 1.65rem);
+      color: var(--text-muted);
     }
 
     .testimonials-grid {
-      margin-top: 40px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
     .testimonial-card {
-      background: #f7f7f7;
-      border: 1px solid #e8e8e8;
-      border-radius: 24px;
-      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 26px;
     }
 
     .testimonial-head {
@@ -407,34 +406,34 @@
     }
 
     .testimonial-name {
-      font-size: 42px;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
       font-weight: 800;
-      color: #08112f;
+      color: var(--text-main);
     }
 
     .testimonial-stars {
       margin-left: 8px;
       color: #f3c44f;
-      font-size: 30px;
+      font-size: 1.4rem;
       letter-spacing: 1px;
       vertical-align: middle;
     }
 
     .testimonial-role {
-      font-size: 18px;
-      color: #1f2f5c;
+      font-size: 1.1rem;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
     .testimonial-text {
       margin: 0;
-      font-size: 42px;
+      font-size: 1.9rem;
       line-height: 1.35;
-      color: #1f2f5c;
+      color: #d8ebdf;
     }
 
     .trust-section {
-      background: #abc0c2;
+      background: transparent;
       padding: 56px 0;
     }
 
@@ -443,6 +442,10 @@
       grid-template-columns: 1fr 1fr;
       gap: 28px;
       align-items: center;
+      background: rgba(9, 37, 29, 0.78);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 26px;
     }
 
     .eyebrow {
@@ -450,20 +453,22 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-weight: 700;
-      color: #08112f;
-      font-size: 44px;
+      color: var(--accent-2);
+      font-size: 1rem;
     }
 
     .trust-section h2 {
       margin: 0;
-      font-size: 62px;
-      color: #090909;
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      color: var(--text-main);
+      text-align: left;
     }
 
     .trust-section p {
       margin-top: 16px;
-      font-size: 40px;
-      color: #25315a;
+      font-size: 1.3rem;
+      line-height: 1.5;
+      color: var(--text-muted);
       max-width: 720px;
     }
 
@@ -476,8 +481,8 @@
 
     .badge-iso-card {
       margin: 0;
-      background: #fff;
-      border: 1px solid #dde3e8;
+      background: rgba(242, 248, 245, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 14px;
       padding: 8px;
       text-align: center;
@@ -502,22 +507,23 @@
       display: inline-block;
       padding: 10px 12px;
       border-radius: 999px;
-      background: #fff;
-      border: 1px solid #d5dde6;
+      background: rgba(242, 248, 245, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       font-size: 12px;
       font-weight: 700;
       color: #24335f;
       text-align: center;
     }
 
-    .benefits-wrap { background: #fff; }
+    .benefits-wrap { background: transparent; }
 
     .benefits-head {
-      max-width: 1460px;
+      max-width: 1140px;
       margin: 0 auto 34px;
-      border-radius: 64px 0 64px 0;
-      background: #05045a;
-      padding: 48px 64px;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      padding: 26px;
     }
 
     .benefits-head h2,
@@ -528,22 +534,30 @@
 
     .benefits-head p {
       margin-top: 14px;
-      font-size: 18px;
+      font-size: 1.2rem;
+      color: var(--text-muted);
     }
 
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 34px;
-      max-width: 1460px;
+      gap: 18px;
+      max-width: 1140px;
       margin: 0 auto;
+    }
+
+    .benefit {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 26px;
     }
 
     .benefit h3 {
       margin: 0;
-      font-size: 22px;
+      font-size: 1.8rem;
       line-height: 1.25;
-      color: #081266;
+      color: var(--text-main);
       display: flex;
       align-items: flex-start;
       gap: 12px;
@@ -574,9 +588,16 @@
 
     .benefit p {
       margin: 10px 0 0;
-      font-size: 16px;
-      color: #24335f;
+      font-size: 1.2rem;
+      color: var(--text-muted);
       max-width: none;
+    }
+
+    .trust-section .badge,
+    .trust-section .badge-hosted-eu,
+    .trust-section .badge-made-in-europe {
+      margin-bottom: 0;
+      font-weight: 700;
     }
 
     /** Section purpose and behavior: Floating chatbot launcher and expandable panel matching the provided model. */
