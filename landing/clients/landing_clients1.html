@@ -175,7 +175,7 @@
       border: 2px solid var(--vogo-green);
     }
 
-    /** Section purpose and behavior: Quick links to Google Play and Apple Store shown near the resources action. */
+    /** Section purpose and behavior: Quick links to app stores and WordPress plugins displayed in the hero area. */
     .store-links {
       display: inline-flex;
       align-items: center;
@@ -197,6 +197,10 @@
       width: 22px;
       height: 22px;
       display: block;
+    }
+
+    .hero-store-links {
+      margin-bottom: 16px;
     }
 
     /** Section purpose and behavior: Short lead form displayed in hero right column. */
@@ -870,17 +874,20 @@
           <a class="btn btn-talk" href="https://wa.me/40723313296?text=Salut%21%20Sunt%20interesat%20de%20solutiile%20VOGO%20Mobile%20Apps%20si%20AI%20pentru%20compania%20mea." target="_blank" rel="noopener noreferrer">Vorbește cu un specialist</a>
           <a class="btn btn-reverse" href="https://www.vogo.family" target="_blank" rel="noopener noreferrer">Vezi cum funcționează</a>
           <a class="btn btn-reverse" href="https://www.vogo.me" target="_blank" rel="noopener noreferrer">Solicită demo</a>
-          <div class="store-links" aria-label="Download stores">
-            <a class="store-link" href="https://play.google.com/store/apps/details?id=com.vogo.family" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
-              <img src="https://cdn.simpleicons.org/googleplay" alt="Google Play icon" />
-            </a>
-            <a class="store-link" href="https://apps.apple.com/us/app/vogo-vendor/id6755652733" target="_blank" rel="noopener noreferrer" aria-label="Apple App Store">
-              <img src="https://cdn.simpleicons.org/apple" alt="Apple icon" />
-            </a>
-          </div>
         </div>
       </div>
       <div class="hero-visual">
+        <div class="store-links hero-store-links" aria-label="Store and plugin links">
+          <a class="store-link" href="https://apps.apple.com/us/app/vogo-vendor/id6755652733" target="_blank" rel="noopener noreferrer" aria-label="Apple App Store">
+            <img src="https://cdn.simpleicons.org/apple" alt="Apple icon" />
+          </a>
+          <a class="store-link" href="https://play.google.com/store/apps/details?id=com.vogo.family" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
+            <img src="https://cdn.simpleicons.org/googleplay" alt="Google Play icon" />
+          </a>
+          <a class="store-link" href="https://wordpress.org/plugins/" target="_blank" rel="noopener noreferrer" aria-label="WordPress Plugin Directory">
+            <img src="https://cdn.simpleicons.org/wordpress" alt="WordPress icon" />
+          </a>
+        </div>
         <h2 class="hero-form-title">Vrei soluții digitale pentru compania ta?</h2>
         <p class="hero-form-subtitle">Completează formularul și te contactăm pentru o prezentare personalizată.</p>
         <form class="hero-form" method="post" action="#">
