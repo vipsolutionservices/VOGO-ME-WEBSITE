@@ -175,27 +175,32 @@
       border: 2px solid var(--vogo-green);
     }
 
-    /** Section purpose and behavior: Quick links to Google Play and Apple Store shown near the resources action. */
+    /** Section purpose and behavior: Large store and WordPress links placed above the green form card. */
+    .hero-visual-column {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
     .store-links {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .store-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
-      border: 1px solid #d7d7d7;
-      border-radius: 50%;
       background: #fff;
+      border-radius: 8px;
+      padding: 4px 6px;
     }
 
     .store-link img {
-      width: 22px;
-      height: 22px;
+      height: 40px;
+      width: auto;
       display: block;
     }
 
@@ -784,7 +789,7 @@
         display: flex;
         flex-direction: column;
       }
-      .hero-visual {
+      .hero-visual-column {
         order: 1;
       }
       .hero-content {
@@ -870,18 +875,22 @@
           <a class="btn btn-talk" href="https://wa.me/40723313296?text=Salut%21%20Sunt%20interesat%20de%20solutiile%20VOGO%20Mobile%20Apps%20si%20AI%20pentru%20compania%20mea." target="_blank" rel="noopener noreferrer">Vorbește cu un specialist</a>
           <a class="btn btn-reverse" href="https://www.vogo.family" target="_blank" rel="noopener noreferrer">Vezi cum funcționează</a>
           <a class="btn btn-reverse" href="https://www.vogo.me" target="_blank" rel="noopener noreferrer">Solicită demo</a>
-          <div class="store-links" aria-label="Download stores">
-            <a class="store-link" href="https://play.google.com/store/apps/details?id=com.vogo.family" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
-              <img src="https://cdn.simpleicons.org/googleplay" alt="Google Play icon" />
-            </a>
-            <a class="store-link" href="https://apps.apple.com/us/app/vogo-vendor/id6755652733" target="_blank" rel="noopener noreferrer" aria-label="Apple App Store">
-              <img src="https://cdn.simpleicons.org/apple" alt="Apple icon" />
-            </a>
-          </div>
         </div>
       </div>
-      <div class="hero-visual">
-        <h2 class="hero-form-title">Vrei soluții digitale pentru compania ta?</h2>
+      <div class="hero-visual-column">
+        <div class="store-links" aria-label="Store and plugin links">
+          <a class="store-link" href="https://apps.apple.com/us/app/vogo-vendor/id6755652733" target="_blank" rel="noopener noreferrer" aria-label="Apple App Store">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" />
+          </a>
+          <a class="store-link" href="https://play.google.com/store/apps/details?id=com.vogo.family" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+          </a>
+          <a class="store-link" href="https://wordpress.org/plugins/" target="_blank" rel="noopener noreferrer" aria-label="WordPress Plugin Directory">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" alt="WordPress Plugin Directory" />
+          </a>
+        </div>
+        <div class="hero-visual">
+          <h2 class="hero-form-title">Vrei soluții digitale pentru compania ta?</h2>
         <p class="hero-form-subtitle">Completează formularul și te contactăm pentru o prezentare personalizată.</p>
         <form class="hero-form" method="post" action="#">
           <div class="hero-form-row">
@@ -892,11 +901,12 @@
           <button type="submit">Solicită prezentare</button>
         </form>
         <p class="hero-form-note">Primești pe email pașii de implementare pentru aplicația mobilă și soluțiile AI.</p>
-        <div class="hero-short-testimonials" aria-label="Testimoniale scurte">
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <p>„Am lansat aplicația mobilă mai repede decât estimam și am crescut comenzile recurente.” – Bianca L.</p>
-          <p>„Chatbotul AI ne-a redus timpul de răspuns și ne-a crescut satisfacția clienților.” – Adrian M.</p>
-          <p>„Am centralizat mobile + AI într-o singură soluție, fără blocaje tehnice.” – Roxana P.</p>
+          <div class="hero-short-testimonials" aria-label="Testimoniale scurte">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <p>„Am lansat aplicația mobilă mai repede decât estimam și am crescut comenzile recurente.” – Bianca L.</p>
+            <p>„Chatbotul AI ne-a redus timpul de răspuns și ne-a crescut satisfacția clienților.” – Adrian M.</p>
+            <p>„Am centralizat mobile + AI într-o singură soluție, fără blocaje tehnice.” – Roxana P.</p>
+          </div>
         </div>
       </div>
     </section>
