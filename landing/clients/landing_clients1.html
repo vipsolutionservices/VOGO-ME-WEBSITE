@@ -162,7 +162,13 @@
       text-align: justify;
     }
 
-    .hero-actions .btn { margin-top: 0; }
+    /** Section purpose and behavior: Keep the four hero CTA buttons compact so they fit better on narrower layouts. */
+    .hero-actions .btn {
+      margin-top: 0;
+      padding: 12px 28px;
+      font-size: 20px;
+      border-radius: 34px;
+    }
 
     .btn-talk {
       background: #0c542d;
@@ -806,6 +812,10 @@
         order: 2;
       }
       .hero-actions { justify-content: center; }
+      .hero-actions .btn {
+        padding: 10px 22px;
+        font-size: 18px;
+      }
       .affiliate-reel-item { width: 80vw; }
       .affiliate-reel-card img {
         height: 60vh;
